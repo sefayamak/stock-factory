@@ -10,6 +10,7 @@ import datetime as _dt
 from dataclasses import dataclass
 
 from .events import Event
+from . import deadlines
 
 # The scan looks exactly HORIZON_DAYS ahead of the scan date, across every
 # calendar year that range touches (an Aug 1 scan must see Jan-Jul of the
@@ -19,13 +20,12 @@ HORIZON_DAYS = 365
 SCAN_WINDOWS_DAYS = (7, 30, 60, 90, 180, HORIZON_DAYS)
 ALERT_THRESHOLDS_DAYS = (120, 90, 60, 30)
 
-# Realistic platform review lead time (calendar days). Magnific: <=25
-# working days ~= 35 calendar days (docs/PLATFORM_RULES.md). Used to decide
-# whether an alert inside the window is still actionable or already late.
-PLATFORM_REVIEW_LEAD_DAYS = 35
-# Add buffer for production (generation + QC + processing) on top of review.
-PRODUCTION_BUFFER_DAYS = 14
-TOTAL_LEAD_DAYS = PLATFORM_REVIEW_LEAD_DAYS + PRODUCTION_BUFFER_DAYS  # 49
+# Lead times come from the single shared date model in deadlines.py
+# (buyer lead + platform review + submission prep + production). Kept as
+# module names for backward compatibility; do not redefine them here.
+PLATFORM_REVIEW_LEAD_DAYS = deadlines.PLATFORM_REVIEW_DAYS
+PRODUCTION_BUFFER_DAYS = deadlines.PRODUCTION_DAYS
+TOTAL_LEAD_DAYS = deadlines.total_lead_days()
 
 
 @dataclass
@@ -67,7 +67,8 @@ def alerts_for(events: list[Event], today: _dt.date) -> list[Alert]:
             if days_out == threshold:
                 # Plenty of margin if the threshold itself clears the total
                 # lead time needed; otherwise this is already tight.
-                urgency = 'ok' if threshold >= TOTAL_LEAD_DAYS else 'notice' if threshold >= 30 else 'urgent'
+                status = deadlines.schedule_for(e.event_date).status(today)
+                urgency = {deadlines.ON_TIME: 'ok', deadlines.COMPRESSED: 'urgent', deadlines.LATE: 'late'}[status]
                 alerts.append(Alert(event=e, days_out=days_out, threshold_days=threshold, urgency=urgency))
     return alerts
 

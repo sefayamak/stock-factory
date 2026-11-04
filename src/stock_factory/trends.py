@@ -210,8 +210,14 @@ def _calendar_opportunity_concepts(day: str, remaining_slots: int) -> list[Conce
     for b in feed.get('creative_briefs', []):
         if b.get('format') != 'PHOTO_JPG':
             continue  # this pipeline's active generation path is photo today
-        start = b.get('production_window_start')
-        end = b.get('production_window_end')
+        # Shared date model (trend_intelligence/deadlines.py): only queue a
+        # brief on a day inside [production_start, production_deadline]; a
+        # brief past its production deadline (e.g. from a 2-day-old feed)
+        # or already late is never produced.
+        if b.get('schedule_status') == 'late':
+            continue
+        start = b.get('production_start')
+        end = b.get('production_deadline')
         if not (start and end and start <= day <= end):
             continue
         candidates.append(b)
