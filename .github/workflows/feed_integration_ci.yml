@@ -5,8 +5,11 @@ on:
       - 'src/stock_factory/trend_intelligence/**'
       - 'src/stock_factory/trends.py'
       - 'src/stock_factory/prompts.py'
+      - 'src/stock_factory/config.py'
+      - 'src/stock_factory/pipeline.py'
       - 'tests/test_ti_*.py'
       - 'tests/test_trend_intelligence*.py'
+      - 'tests/test_adapters_and_pipeline.py'
       - 'requirements.txt'
       - '.github/workflows/feed_integration_ci.yml'
   push:

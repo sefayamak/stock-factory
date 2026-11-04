@@ -60,6 +60,10 @@ GOOGLE_SERVICE_ACCOUNT_JSON = os.getenv('GOOGLE_SERVICE_ACCOUNT_JSON', '')
 DRIVE_ADOBE_FOLDER_ID = os.getenv('DRIVE_ADOBE_FOLDER_ID', '')
 DRIVE_MAGNIFIC_FOLDER_ID = os.getenv('DRIVE_MAGNIFIC_FOLDER_ID', '')
 
+# Adobe production dispatch is paused; Magnific is the sole active production queue.
+# Flip to '1'/'true' to resume the alternating adobe/magnific split.
+ADOBE_MARKETPLACE_ACTIVE = os.getenv('ADOBE_MARKETPLACE_ACTIVE', '0').lower() in ('1', 'true', 'yes')
+
 JPEG_QUALITY = int(os.getenv('JPEG_QUALITY', '96'))
 MIN_BYTES = 1_500_000
 MIN_SHORT_EDGE = 2048
