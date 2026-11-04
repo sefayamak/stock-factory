@@ -52,8 +52,12 @@ def test_run_scan_produces_a_feed_with_no_adapters_configured(tmp_path, monkeypa
     feed = feed_mod.run_scan(today=_dt.date(2026, 8, 1), year=2026)
     assert feed['events_indexed'] > 0
     assert feed['verified_search_interest_terms'] == []  # nothing verified without real adapters
-    assert all(not b['demand_evidence'].startswith('verified_search_interest')
-               for b in feed['creative_briefs']) or True  # sanity: no crash building briefs
+    # Real check (previously `... or True`, which could never fail): with no
+    # adapter configured, briefs exist and EVERY one is calendar-predicted.
+    assert feed['creative_briefs'], 'expected briefs from the calendar alone'
+    assert all(b['demand_evidence'].startswith('calendar_predicted_demand')
+               for b in feed['creative_briefs'])
+    assert all(o['demand_basis'] == 'calendar_predicted_demand' for o in feed['top_opportunities'])
     assert feed['schema_version'] == feed_mod.FEED_SCHEMA_VERSION
 
 
