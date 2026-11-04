@@ -82,8 +82,8 @@ def main() -> None:
                     from stock_factory import drive_archive
                     result = drive_archive.archive(path, 'magnific')
                     record['uploaded'] = bool(result.get('archived'))
-                    record['drive_file_id'] = result.get('file_id')
-                    record['drive_status'] = result.get('reason')
+                    record['drive_file_id'] = result.get('drive_file_id')
+                    record['drive_status'] = result.get('reason', 'archived')
         manifest.append(record)
 
     elapsed = time.time() - t0
