@@ -1,3 +1,4 @@
+import csv
 from io import BytesIO
 from PIL import Image
 from stock_factory.qc import validate_image
@@ -38,3 +39,34 @@ def test_dry_run_builds_queue_without_fetching(tmp_path, monkeypatch):
     assert summary['counts']['fetched'] == 0
     assert len(list((tmp_path / 'out').glob('*.jpg'))) == 0
     assert (tmp_path / 'out' / 'submission.csv').exists()
+
+
+def test_submission_csv_has_ai_disclosure_column(tmp_path, monkeypatch):
+    import os
+    inbox_dir = tmp_path / 'inbox'
+    inbox_dir.mkdir()
+    size = (2560, 2048)  # above MIN_SHORT_EDGE/MIN_MEGAPIXELS with room to spare
+    noise = os.urandom(size[0] * size[1] * 3)
+    im = Image.frombytes('RGB', size, noise)
+    b = BytesIO()
+    im.save(b, format='JPEG', quality=95)
+    data = b.getvalue()
+    assert len(data) >= 1_500_000, f'fixture too small: {len(data)} bytes'
+    (inbox_dir / 'asset-001.jpg').write_bytes(data)
+
+    monkeypatch.setattr('stock_factory.config.OUT_DIR', tmp_path / 'out')
+    monkeypatch.setattr('stock_factory.config.STATE_DIR', tmp_path / 'state')
+    monkeypatch.setattr('stock_factory.config.INBOX_DIR', inbox_dir)
+    monkeypatch.setattr('stock_factory.pipeline.config.OUT_DIR', tmp_path / 'out')
+    monkeypatch.setattr('stock_factory.pipeline.config.STATE_DIR', tmp_path / 'state')
+
+    run_pipeline('2026-11-04', 1, dry_run=False)
+
+    csv_path = tmp_path / 'out' / 'submission.csv'
+    assert csv_path.exists()
+    with csv_path.open(newline='', encoding='utf-8') as f:
+        rows = list(csv.DictReader(f))
+    assert '_ai_generated' in rows[0].keys()
+    accepted = [r for r in rows if r['status'] == 'PENDING_HUMAN_VISUAL_QC']
+    assert accepted, 'expected at least one accepted asset in the CSV'
+    assert all(r['_ai_generated'] == 'yes' for r in accepted)

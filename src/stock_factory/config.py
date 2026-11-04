@@ -24,6 +24,10 @@ INBOX_DIR = Path(os.getenv('INBOX_DIR', 'inbox'))
 STATE_DIR = Path(os.getenv('STATE_DIR', 'state'))
 OUT_DIR = Path(os.getenv('OUT_DIR', 'output'))
 
+# Manual-import snapshots of Magnific Search Trends (login-gated SPA, no
+# official export API -- see docs/PLATFORM_RULES.md and trend_import.py).
+TREND_SNAPSHOT_DIR = Path(os.getenv('TREND_SNAPSHOT_DIR', 'trend_inbox'))
+
 # Google Drive archival (requirement 6). Needs a service account; see docs/ADAPTERS.md.
 GOOGLE_SERVICE_ACCOUNT_JSON = os.getenv('GOOGLE_SERVICE_ACCOUNT_JSON', '')
 DRIVE_ADOBE_FOLDER_ID = os.getenv('DRIVE_ADOBE_FOLDER_ID', '')

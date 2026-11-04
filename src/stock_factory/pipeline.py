@@ -98,12 +98,13 @@ def run(day: str, target: int, dry_run: bool) -> dict:
                 rows.append({
                     'job_id': name, 'status': 'PENDING_HUMAN_VISUAL_QC', 'dimensions': f'{w}x{h}',
                     'source': asset.source, 'drive_queue': queue_name, 'drive_status': archive_result.get('reason', 'archived'),
+                    '_ai_generated': 'yes',
                 })
         ledger.save()
 
     config.STATE_DIR.mkdir(parents=True, exist_ok=True)
     csv_path = config.OUT_DIR / 'submission.csv'
-    fieldnames = ['job_id', 'category', 'title', 'prompt', 'status', 'reason', 'dimensions', 'source', 'drive_queue', 'drive_status']
+    fieldnames = ['job_id', 'category', 'title', 'prompt', 'status', 'reason', 'dimensions', 'source', 'drive_queue', 'drive_status', '_ai_generated']
     with csv_path.open('w', newline='', encoding='utf-8') as f:
         writer = csv.DictWriter(f, fieldnames=fieldnames, extrasaction='ignore')
         writer.writeheader()

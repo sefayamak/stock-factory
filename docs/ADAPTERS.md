@@ -55,9 +55,52 @@ stays disabled until separately authorized.
 
 Unattended GitHub Actions runs cannot reuse an interactive Google sign-in;
 they need a **service account** with access granted on the target Drive
-folders. Until `GOOGLE_SERVICE_ACCOUNT_JSON` (secret) and
-`DRIVE_ADOBE_FOLDER_ID` / `DRIVE_MAGNIFIC_FOLDER_ID` (variables) are set,
-`drive_archive.archive()` is a documented no-op: it reports
-`drive_not_configured` per file instead of uploading, so nothing is
-fabricated as working. Once those three are configured it uploads for
-real via the Drive v3 API.
+folders (`production/`, `production_assets/`, or whichever Adobe/Magnific
+queue folders the owner designates inside the existing Drive workspace --
+not a new Google Cloud project). Until `GOOGLE_SERVICE_ACCOUNT_JSON`
+(secret) and `DRIVE_ADOBE_FOLDER_ID` / `DRIVE_MAGNIFIC_FOLDER_ID`
+(variables) are set, `drive_archive.archive()` is a documented no-op: it
+reports `drive_not_configured` per file instead of uploading, so nothing is
+fabricated as working. Once those three are configured it uploads for real
+via the Drive v3 API, with:
+
+- SHA256 integrity verification (local hash recorded as a Drive file
+  property, compared against a read-back hash after upload).
+- Retry with exponential backoff (4 attempts) on transient API errors.
+- Duplicate protection -- a file with the same name *and* recorded sha256
+  already in the target folder is skipped, not re-uploaded.
+- A persistent archive log at `STATE_DIR/drive_archive_log.jsonl` (one
+  record per archived file: name, Drive file id, sha256, queue, duplicate
+  flag).
+- `drive_archive.verify_with_test_artifact()` -- uploads a small harmless
+  text file, reads it back, checks its sha256, then deletes it. Use this to
+  confirm credentials/folder IDs are wired correctly without touching any
+  real production asset.
+
+This code path is implemented and unit-tested (`tests/test_drive_archive.py`,
+against a fake Drive service -- no real credentials needed for tests), but
+has not been exercised against a real Drive folder: that requires the
+owner to provision the service account (see Gaps in PLATFORM_RULES.md /
+the final report's BLOCKERS).
+
+## Magnific Search Trends -- manual-import adapter (`trend_import.py`)
+
+`contributor.magnific.com/search-trends` is a JS-rendered SPA, likely
+login-gated, with no static fetch or officially supported export (see
+`docs/PLATFORM_RULES.md`). Scraping an authenticated session is not
+attempted -- same rationale as Flow above.
+
+`trend_import.py` is the supported alternative: the account owner opens the
+page in their own authenticated browser and drops a small JSON/CSV
+snapshot of the visible terms into `TREND_SNAPSHOT_DIR` (default
+`trend_inbox/`). `import_pending_snapshots()` ingests new files (claiming
+them into `_claimed/`, same pattern as `manual_inbox_adapter`), keeps every
+snapshot in `STATE_DIR/trend_history/index.jsonl` (never overwritten),
+de-duplicates a byte-identical re-import, and `latest_trend_report()`
+scores what changed between the two most recent snapshots (new / rising /
+falling / dropped terms, by rank and volume delta).
+
+This is explicitly **not** live trend monitoring -- it is only as fresh as
+the most recent human-provided snapshot, and `trends.py`'s deterministic
+static topic bank remains the default until a real snapshot history exists
+and is wired in. Do not represent the static topic bank as trend data.
