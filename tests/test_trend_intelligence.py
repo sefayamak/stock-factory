@@ -229,7 +229,10 @@ def test_windowed_events_buckets_correctly():
     ]
     buckets = early_warning.windowed_events(events, today)
     assert any(e.english_name == 'A' for e in buckets[7])
-    assert all(e.english_name != 'A' for e in buckets[7] if e.english_name == 'C')
+    # (was: `all(e.english_name != 'A' for e in buckets[7] if e.english_name == 'C')`,
+    # which is vacuously true) -- C (400 days out) must be in no window, B not in the 7-day one.
+    assert all(e.english_name != 'C' for w in buckets for e in buckets[w])
+    assert all(e.english_name != 'B' for e in buckets[7])
     assert any(e.english_name == 'B' for e in buckets[365])
     assert all(e.english_name != 'C' for e in buckets[365])
 
