@@ -11,7 +11,12 @@ from dataclasses import dataclass
 
 from .events import Event
 
-SCAN_WINDOWS_DAYS = (7, 30, 60, 90, 180, 365)
+# The scan looks exactly HORIZON_DAYS ahead of the scan date, across every
+# calendar year that range touches (an Aug 1 scan must see Jan-Jul of the
+# following year). Events before the scan date or after the horizon end
+# are never indexed, scored, alerted on, or briefed.
+HORIZON_DAYS = 365
+SCAN_WINDOWS_DAYS = (7, 30, 60, 90, 180, HORIZON_DAYS)
 ALERT_THRESHOLDS_DAYS = (120, 90, 60, 30)
 
 # Realistic platform review lead time (calendar days). Magnific: <=25
