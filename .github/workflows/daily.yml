@@ -65,9 +65,13 @@ jobs:
         run: |
           mkdir -p state/intelligence
           if git ls-remote --exit-code --heads origin intelligence-feed > /dev/null 2>&1; then
+            # A shallow actions/checkout only tracks the default branch under
+            # refs/remotes/origin/*, so a plain `git fetch origin
+            # intelligence-feed` lands in FETCH_HEAD, not
+            # origin/intelligence-feed -- read it from FETCH_HEAD instead.
             git fetch --depth 1 origin intelligence-feed
-            git show origin/intelligence-feed:state/intelligence/feed.json > state/intelligence/feed.json 2>/dev/null || true
-            git show origin/intelligence-feed:state/intelligence/feed.sha256 > state/intelligence/feed.sha256 2>/dev/null || true
+            git show FETCH_HEAD:state/intelligence/feed.json > state/intelligence/feed.json 2>/dev/null || true
+            git show FETCH_HEAD:state/intelligence/feed.sha256 > state/intelligence/feed.sha256 2>/dev/null || true
             echo "fetched intelligence-feed branch"
           else
             echo "::warning::intelligence-feed branch does not exist yet -- no feed to fetch"
