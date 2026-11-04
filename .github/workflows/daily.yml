@@ -1,0 +1,47 @@
+name: Stock Factory - controlled daily batch
+on:
+  schedule:
+    - cron: '23 7 * * *'
+  workflow_dispatch:
+    inputs:
+      execute:
+        description: 'Enable paid image generation (requires ALLOW_PAID_GENERATION=true variable)'
+        required: true
+        type: boolean
+        default: false
+permissions:
+  contents: read
+concurrency:
+  group: stock-factory-daily
+  cancel-in-progress: false
+jobs:
+  generate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    env:
+      GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+      ALLOW_PAID_GENERATION: ${{ vars.ALLOW_PAID_GENERATION }}
+      DAILY_LIMIT: '3'
+      MAX_REQUESTS: '3'
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+          cache: 'pip'
+      - run: pip install -r requirements.txt
+      - name: Generate or dry-run
+        shell: bash
+        env:
+          MANUAL_EXECUTE: ${{ inputs.execute }}
+        run: |
+          if [[ "${ALLOW_PAID_GENERATION}" == "true" && ( "${GITHUB_EVENT_NAME}" == "schedule" || "${MANUAL_EXECUTE}" == "true" ) && -n "${GEMINI_API_KEY}" ]]; then
+            python -m src.factory --out "output/${GITHUB_RUN_ID}" --count 3 --execute
+          else
+            python -m src.factory --out "output/${GITHUB_RUN_ID}" --count 3
+          fi
+      - uses: actions/upload-artifact@v4
+        with:
+          name: stock-batch-${{ github.run_id }}
+          path: output/
+          retention-days: 30
