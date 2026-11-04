@@ -19,9 +19,10 @@ stock_factory.trend_intelligence.scan`) fills further slots with
 calendar-backed opportunities (holidays/observances/seasons/retail
 campaigns) whose production window covers `day`, ranked by the
 explainable opportunity score -- so the scan's scoring actually changes
-what gets produced, not just a report nobody reads. A missing or stale
-(> config.TREND_STALE_AFTER_DAYS old) feed is skipped silently, same
-stale-data policy as the Magnific snapshot above.
+what gets produced, not just a report nobody reads. A missing, stale
+(feed.is_feed_stale, default >2 days old), or integrity-check-failed feed
+contributes nothing (fail-safe fallback to the static topic bank), never
+a crash -- same stale-data philosophy as the Magnific snapshot above.
 """
 from __future__ import annotations
 import random
@@ -112,32 +113,64 @@ def _scene_for_trend_term(term: trend_import.TrendTerm) -> str:
     )
 
 
+def _dedup_key(concept: Concept) -> str:
+    """One key per concept used to prevent the same production candidate
+    being queued twice across tiers (e.g. a term appearing in both the
+    Magnific trend snapshot and the calendar-opportunity feed on the same
+    day). Event-backed concepts dedup on (country, event name); everything
+    else dedups on its scene text, which is what actually drives the
+    generated image."""
+    if concept.event_country is not None:
+        return f'event:{concept.event_country}:{concept.category}'.strip().lower()
+    if concept.trend_term is not None:
+        return f'trend:{concept.trend_term}'.strip().lower()
+    return f'scene:{concept.scene}'.strip().lower()
+
+
 def select_concepts_detailed(day: str, n: int) -> list[Concept]:
     snapshot = _latest_fresh_snapshot()
     concepts: list[Concept] = []
+    seen: set[str] = set()
+
+    def _add(c: Concept) -> bool:
+        key = _dedup_key(c)
+        if key in seen:
+            return False
+        seen.add(key)
+        concepts.append(c)
+        return True
 
     if snapshot is not None:
         ordered_terms, status_by_term = _trend_priority_terms(snapshot)
         slots = min(n, config.TREND_PRIORITY_SLOTS_MAX)
-        seen_terms: set[str] = set()
+        trend_added = 0
         for term in ordered_terms:
-            if len(concepts) >= slots:
+            if trend_added >= slots:
                 break
             key = term.key()
-            if key in seen_terms:
-                continue
-            seen_terms.add(key)
-            concepts.append(Concept(
+            candidate = Concept(
                 category=term.category or 'trending',
                 scene=_scene_for_trend_term(term),
                 source='trend_snapshot',
                 trend_term=term.term,
                 trend_status=status_by_term.get(key, 'stable'),
                 trend_snapshot_imported_at=snapshot.imported_at,
-            ))
+            )
+            if _add(candidate):
+                trend_added += 1
 
-    concepts.extend(_calendar_opportunity_concepts(day, n - len(concepts)))
+    for candidate in _calendar_opportunity_concepts(day, n - len(concepts)):
+        if len(concepts) >= n:
+            break
+        _add(candidate)
 
+    # The static topic bank deliberately repeats its ~12 topics to fill the
+    # remaining daily volume (target is 100-150/day; the bank is much
+    # smaller) -- that repetition is pre-existing, intended behavior, not
+    # a "duplicate production candidate". The dedup guard above only
+    # applies to named trend/calendar opportunities, where the same event
+    # or trending term appearing twice in one day's queue would be a real
+    # defect (same concept double-booked).
     pool = _static_pool(day)
     i = 0
     while len(concepts) < n and pool:
@@ -163,7 +196,10 @@ def _calendar_opportunity_concepts(day: str, remaining_slots: int) -> list[Conce
 
     feed = feed_mod.load_feed()
     if feed_mod.is_feed_stale(feed):
-        return []
+        return []  # fail-safe fallback: missing/stale feed contributes nothing, never a crash
+    integrity_ok, _ = feed_mod.verify_integrity()
+    if not integrity_ok:
+        return []  # fail-safe fallback: a corrupt/tampered feed is treated as absent
 
     try:
         day_date = date.fromisoformat(day)

@@ -1,28 +1,45 @@
 """Explainable, deterministic commercial-opportunity score for one Event.
 
 Every factor is a 0-1 heuristic derived from data this repo actually has
-(the event calendar, the Magnific baseline acceptance rate) or from
-documented, named assumptions -- never a fabricated "observed sales"
-number. `Score.explain()` lists each factor's value and weight so a human
-can audit why an event ranked where it did.
+(the event calendar, adapter signals, the Magnific baseline acceptance
+rate) or from documented, named assumptions -- never a fabricated
+"observed sales" number. `Score.explain()` lists each factor's value and
+weight so a human can audit why an event ranked where it did.
+
+Four distinct evidence categories feed this module (see
+adapters/base.py's SIGNAL_* constants) and must stay distinct:
+  - verified_search_demand          -- real search/interest signal
+  - catalog_supply                  -- existing-content/competition count
+  - calendar_predicted_demand       -- calendar heuristic, no live signal
+  - historical_download_performance -- past acceptance/download record
+A catalog-supply number is NEVER promoted into the demand factor, and a
+demand number is never used as the competition factor -- that conflation
+is exactly what earlier produced an incorrect score basis.
 """
 from __future__ import annotations
 from dataclasses import dataclass, field
+import math
 
 from .events import Event
 from .. import acceptance_learning
+from .adapters.base import (
+    SIGNAL_SEARCH_DEMAND, SIGNAL_CATALOG_SUPPLY,
+    SIGNAL_CALENDAR_PREDICTED_DEMAND, SIGNAL_HISTORICAL_DOWNLOAD_PERFORMANCE,
+)
 
 # Weights sum to 1.0. Chosen to prioritize evidence-backed and
 # high-urgency opportunities over broad-but-generic ones.
 WEIGHTS = {
-    'market_size': 0.15,
+    'market_size': 0.12,
     'demand_evidence': 0.25,
     'seasonal_urgency': 0.15,
-    'competition_gap': 0.10,
-    'buyer_intent': 0.15,
-    'cultural_accuracy_risk': 0.10,   # inverted: higher risk -> lower score
-    'portfolio_coverage': 0.10,       # inverted: already well-covered -> lower score
+    'competition_gap': 0.13,
+    'buyer_intent': 0.12,
+    'cultural_accuracy_risk': 0.08,    # inverted: higher risk -> lower score
+    'portfolio_coverage': 0.07,        # inverted: already well-covered -> lower score
+    'historical_download_performance': 0.08,
 }
+assert abs(sum(WEIGHTS.values()) - 1.0) < 1e-9, 'WEIGHTS must sum to 1.0'
 
 # Rough relative market-size weighting by country (population/commercial
 # stock-buyer-base proxy, coarse 0-1 scale) -- an explicit, documented
@@ -46,7 +63,8 @@ class Score:
     event: Event
     total: float
     factors: dict[str, float] = field(default_factory=dict)
-    demand_label: str = 'calendar_based_predicted_demand'  # vs 'verified_search_demand'
+    demand_label: str = SIGNAL_CALENDAR_PREDICTED_DEMAND  # one of the four SIGNAL_* constants
+    competition_label: str = 'no_supply_data_available'   # SIGNAL_CATALOG_SUPPLY or this default
 
     def explain(self) -> list[str]:
         lines = [f'{k}: value={v:.2f} weight={WEIGHTS[k]:.2f} contrib={v * WEIGHTS[k]:.3f}'
@@ -59,35 +77,59 @@ class Score:
             'event': self.event.to_dict(),
             'total_score': round(self.total, 4),
             'demand_basis': self.demand_label,
+            'competition_basis': self.competition_label,
             'factors': {k: round(v, 4) for k, v in self.factors.items()},
             'explanation': self.explain(),
         }
 
 
-def _demand_evidence(event: Event, verified_terms: set[str] | None) -> tuple[float, str]:
-    """Returns (value, label). If a fresh verified-trend snapshot term
-    matches this event's name, use that (still heuristic, but backed by a
-    real imported snapshot) and label it verified; otherwise fall back to
-    a calendar-based heuristic and label it predicted. Never claims a
-    predicted value is observed/verified demand."""
-    if verified_terms:
+def _demand_evidence(event: Event, verified_demand_terms: set[str] | None) -> tuple[float, str]:
+    """Returns (value, label). `verified_demand_terms` must already be
+    filtered to SIGNAL_SEARCH_DEMAND-only terms by the caller (feed.py) --
+    this function has no way to re-check that itself, so it trusts the
+    contract and never treats a catalog-supply or historical-performance
+    term as demand. Falls back to a calendar-based heuristic, clearly
+    labeled as predicted, never claimed as observed/verified."""
+    if verified_demand_terms:
         name_low = event.english_name.lower()
-        if any(t in name_low or name_low in t for t in verified_terms):
-            return 0.9, 'verified_search_demand'
+        if any(t in name_low or name_low in t for t in verified_demand_terms):
+            return 0.9, SIGNAL_SEARCH_DEMAND
     name_low = event.english_name.lower()
     if any(m in name_low for m in _HIGH_DEMAND_MARKERS):
-        return 0.8, 'calendar_based_predicted_demand'
+        return 0.8, SIGNAL_CALENDAR_PREDICTED_DEMAND
     if event.category == 'national_holiday':
-        return 0.6, 'calendar_based_predicted_demand'
+        return 0.6, SIGNAL_CALENDAR_PREDICTED_DEMAND
     if event.category == 'religious_cultural':
-        return 0.65, 'calendar_based_predicted_demand'
+        return 0.65, SIGNAL_CALENDAR_PREDICTED_DEMAND
     if event.category == 'retail_campaign':
-        return 0.85, 'calendar_based_predicted_demand'
+        return 0.85, SIGNAL_CALENDAR_PREDICTED_DEMAND
     if event.category == 'un_observance':
-        return 0.4, 'calendar_based_predicted_demand'
+        return 0.4, SIGNAL_CALENDAR_PREDICTED_DEMAND
     if event.category == 'season':
-        return 0.5, 'calendar_based_predicted_demand'
-    return 0.3, 'calendar_based_predicted_demand'
+        return 0.5, SIGNAL_CALENDAR_PREDICTED_DEMAND
+    return 0.3, SIGNAL_CALENDAR_PREDICTED_DEMAND
+
+
+def _competition_gap(event: Event, catalog_supply_by_term: dict[str, float] | None) -> tuple[float, str]:
+    """Returns (value, label). value is 0-1, HIGHER meaning LESS
+    competition (a gap worth filling). Uses a real catalog_supply count
+    (e.g. Adobe Stock nb_results) when available for this event, via a
+    log-scale normalization since result counts span orders of magnitude;
+    otherwise falls back to a neutral default and labels it explicitly as
+    having no supply data, rather than silently reusing an unrelated
+    number."""
+    if catalog_supply_by_term:
+        name_low = event.english_name.lower()
+        nb_results = None
+        for term, value in catalog_supply_by_term.items():
+            if term in name_low or name_low in term:
+                nb_results = value
+                break
+        if nb_results is not None:
+            # log10(1)=0 -> gap 1.0 (no existing supply); log10(1e6)=6 -> gap ~0.14.
+            gap = 1.0 / (1.0 + math.log10(max(nb_results, 1.0) + 1.0))
+            return max(0.0, min(1.0, gap)), SIGNAL_CATALOG_SUPPLY
+    return 0.5, 'no_supply_data_available'
 
 
 def _seasonal_urgency(days_out: int) -> float:
@@ -129,24 +171,26 @@ def _portfolio_coverage(event: Event, existing_topics: set[str] | None) -> float
 def score_event(
     event: Event,
     today,
-    verified_trend_terms: set[str] | None = None,
+    verified_demand_terms: set[str] | None = None,
     existing_topics: set[str] | None = None,
+    catalog_supply_by_term: dict[str, float] | None = None,
 ) -> Score:
     days_out = (event.event_date - today).days
     market_size = _MARKET_SIZE_BY_COUNTRY.get(event.country, 0.3)
-    demand, demand_label = _demand_evidence(event, verified_trend_terms)
+    demand, demand_label = _demand_evidence(event, verified_demand_terms)
     seasonal_urgency = _seasonal_urgency(days_out)
-    # Competition/gap: no licensed competitive-intelligence feed exists, so
-    # this uses the one real signal the repo has -- the Magnific baseline
-    # acceptance rate -- as a portfolio-quality-bar proxy: a lower
-    # historical acceptance rate implies a higher bar as a mild caution,
-    # not a competition measurement. Documented limitation, see docs.
-    competition_gap = round(acceptance_learning.MAGNIFIC_BASELINE['acceptance_rate'], 2)
+    competition_gap, competition_label = _competition_gap(event, catalog_supply_by_term)
     buyer_intent = 0.9 if event.category == 'retail_campaign' else (
         0.7 if event.category in ('national_holiday', 'religious_cultural') else 0.4
     )
     cultural_risk = _cultural_accuracy_risk(event)
     portfolio_coverage = _portfolio_coverage(event, existing_topics)
+    # Historical download/acceptance performance: the only real record this
+    # repo has is the portfolio-wide Magnific baseline acceptance rate
+    # (acceptance_learning.MAGNIFIC_BASELINE) -- NOT per-topic history,
+    # which isn't tracked anywhere yet (documented gap). Kept as its own
+    # factor so it is never mistaken for a competition/supply measurement.
+    historical_performance = round(acceptance_learning.MAGNIFIC_BASELINE['acceptance_rate'], 2)
 
     factors = {
         'market_size': market_size,
@@ -156,16 +200,22 @@ def score_event(
         'buyer_intent': buyer_intent,
         'cultural_accuracy_risk': 1.0 - cultural_risk,
         'portfolio_coverage': 1.0 - portfolio_coverage,
+        'historical_download_performance': historical_performance,
     }
     total = sum(factors[k] * WEIGHTS[k] for k in WEIGHTS)
-    return Score(event=event, total=total, factors=factors, demand_label=demand_label)
+    return Score(event=event, total=total, factors=factors,
+                 demand_label=demand_label, competition_label=competition_label)
 
 
 def score_events(
     events: list[Event],
     today,
-    verified_trend_terms: set[str] | None = None,
+    verified_demand_terms: set[str] | None = None,
     existing_topics: set[str] | None = None,
+    catalog_supply_by_term: dict[str, float] | None = None,
 ) -> list[Score]:
-    scored = [score_event(e, today, verified_trend_terms, existing_topics) for e in events]
+    scored = [
+        score_event(e, today, verified_demand_terms, existing_topics, catalog_supply_by_term)
+        for e in events
+    ]
     return sorted(scored, key=lambda s: s.total, reverse=True)

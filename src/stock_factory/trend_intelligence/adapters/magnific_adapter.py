@@ -13,7 +13,7 @@ replaces this one needs no other code changes."""
 from __future__ import annotations
 from datetime import datetime, timezone
 
-from .base import TrendAdapter, TrendSignal
+from .base import TrendAdapter, TrendSignal, SIGNAL_SEARCH_DEMAND
 from ... import trend_import
 
 
@@ -39,6 +39,7 @@ class MagnificManualImportAdapter(TrendAdapter):
             signals.append(TrendSignal(
                 term=match.term, source=self.name, verified=True,
                 value=float(match.rank) if match.rank is not None else match.volume,
+                signal_type=SIGNAL_SEARCH_DEMAND,
                 unit='rank' if match.rank is not None else 'volume',
                 fetched_at=fetched_at,
                 note=f'human-exported snapshot imported_at={latest.imported_at}; '
