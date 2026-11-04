@@ -63,20 +63,61 @@ secondary/legacy path (kept only for a possible future Shared Drive; see
 "Shared Drive evaluation" below).
 
 **Supported path: OAuth 2.0 user credentials for the owner's own account.**
-One-time, interactive, run locally by the owner:
+
+### Publishing status and verification requirements (corrected 2026-11-04)
+
+An earlier version of this doc said OAuth consent-screen "Testing" status
+was fine since only the owner would use the client. **That was wrong and
+has been corrected.** Google issues refresh tokens that **expire after 7
+days** for apps in "Testing" status that request a sensitive scope --
+`drive.file` is classified as sensitive. A token obtained while "Testing"
+will work for about a week, then every unattended run fails with
+`invalid_grant`, silently, with no code change. "Testing" is **not**
+suitable for unattended production use, however convenient it looks
+during setup.
+
+**Supported configuration for this single-user production app:**
+- **User type: External.** Personal Google accounts cannot use "Internal"
+  consent-screen type -- that requires a Google Workspace organization.
+- **Publishing status: "In production"** (click "Publish app" on the
+  OAuth consent screen). This removes the 7-day cap entirely, for any
+  number of days, regardless of verification status.
+- **Verification: not required for this use case.** Google requires
+  formal app verification before "In production" only for apps that
+  request a "restricted" scope, or that are expected to serve many/
+  unknown users. `drive.file` is "sensitive", not "restricted" (the
+  restricted list is things like full `drive`, Gmail full access, etc. --
+  see Google's scope list). With exactly one consenting user (the
+  owner), publishing without completing verification is Google's normal,
+  documented path for this case. The only visible consequence: during the
+  one-time consent, Google shows an "unverified app" interstitial that the
+  owner clicks through once ("Advanced" -> "Go to <app> (unsafe)"). This
+  reflects Google's policy as published at the time of this check; if
+  Google changes that policy, re-verify before relying on it.
+- `scripts/setup_drive_oauth.py` now requires the owner to explicitly
+  confirm ("Type YES") that publishing status is already "In production"
+  before it will proceed, specifically to prevent silently generating a
+  7-day token.
+
+### Setup steps (one-time, interactive, run locally by the owner)
 
 1. In the existing `pam-cloud-508907` GCP project (no new project): APIs &
-   Services -> OAuth consent screen (configure once) -> Credentials ->
-   Create OAuth client ID -> type **Desktop app**.
-2. Owner runs `python3 scripts/setup_drive_oauth.py --client-id ... --client-secret ...`
+   Services -> OAuth consent screen -> User type **External** -> fill
+   required fields -> add the owner's email as a test user -> **click
+   "Publish app"** to move status to **In production** (see above --
+   skipping this step is the one mistake that breaks everything in a
+   week).
+2. APIs & Services -> Credentials -> Create OAuth client ID -> type
+   **Desktop app**.
+3. Owner runs `python3 scripts/setup_drive_oauth.py --client-id ... --client-secret ...`
    (or `--client-secrets-file client_secret.json`) on their own machine.
    This opens a real Google sign-in/consent screen in their browser,
-   scoped to the single minimum permission `drive.file` (the app can only
-   see/manage files *it* creates -- never the owner's whole Drive).
-3. The script exchanges consent for a refresh token and prints the three
-   values to set as GitHub secrets. Nothing is written to this repo or to
-   Drive.
-4. Owner runs:
+   scoped to the single minimum permission `drive.file`.
+4. The script exchanges consent for a refresh token and prints the three
+   values, to the owner's own terminal only, for the owner to set as
+   GitHub secrets themselves. Nothing is written to this repo or to
+   Drive, and nothing is printed by this assistant into chat/CI logs.
+5. Owner runs (values filled in on their own machine, never shared here):
    ```
    gh secret set GOOGLE_OAUTH_CLIENT_ID --body "..."
    gh secret set GOOGLE_OAUTH_CLIENT_SECRET --body "..."
@@ -84,13 +125,17 @@ One-time, interactive, run locally by the owner:
    gh variable set DRIVE_ADOBE_FOLDER_ID --body "..."
    gh variable set DRIVE_MAGNIFIC_FOLDER_ID --body "..."
    ```
+6. Owner runs the GitHub Actions workflow **"Stock Factory - verify Drive
+   connectivity"** (`workflow_dispatch`, `.github/workflows/verify-drive.yml`)
+   -- see "Production readiness gate" below. This is required, not
+   optional, before Drive archival is used for real.
 
 Every unattended run then builds `google.oauth2.credentials.Credentials`
 from the stored refresh token and calls `.refresh()` immediately
 (`drive_archive._build_oauth_credentials()`), so an unattended cloud run
 always starts with a valid access token -- no further owner interaction is
-needed unless the refresh token is revoked. The owner never has to sign in
-again after the one-time setup.
+needed unless the refresh token is revoked, as long as step 1's "Publish
+app" was done.
 
 Until the three `GOOGLE_OAUTH_*` secrets (or, for a future Shared Drive,
 `GOOGLE_SERVICE_ACCOUNT_JSON`) and both `DRIVE_ADOBE_FOLDER_ID` /
@@ -106,17 +151,49 @@ Once configured it uploads for real via the Drive v3 API, with:
 - A persistent archive log at `STATE_DIR/drive_archive_log.jsonl` (one
   record per archived file: name, Drive file id, sha256, queue, duplicate
   flag).
-- `drive_archive.verify_with_test_artifact()` -- uploads a small harmless
-  text file, reads it back, checks its sha256, then deletes it. Use this to
-  confirm credentials/folder IDs are wired correctly without touching any
-  real production asset.
+- `drive_archive.verify_with_test_artifact(queue)` -- uploads a small
+  harmless text file into the real folder for `queue` ('adobe' or
+  'magnific'), reads it back, checks its sha256, then deletes it.
+  `verify_both_queues()` runs this against both folders.
+- `drive_archive.verify_token_refresh_is_durable()` -- builds OAuth
+  credentials from the stored refresh token twice in a row, to catch an
+  only-once-usable or already-expired token before relying on it.
 
-This code path is implemented and unit-tested (`tests/test_drive_archive.py`,
-against a fake Drive service and fake OAuth credentials object -- no real
-credentials or network access needed for tests, 44 tests total, all
-passing). It has not yet been exercised against the real Drive folders:
-that requires the owner to complete the one-time OAuth consent above (see
-the final report's BLOCKERS).
+### Does `drive.file` scope actually let us write into pre-existing folders?
+
+Folder IDs alone do not prove write access -- this was explicitly flagged
+as a gap and is addressed as follows. Per the Drive API's documented
+behavior, a `drive.file`-scoped, user-authorized app may call
+`files().create()` with `parents` set to **any** folder ID the caller
+supplies, including a folder the app never created and has never listed;
+the resulting file is then owned/readable/deletable by the app because
+the app created it, regardless of who owns the parent folder. This is
+the standard mechanism many productivity apps rely on to let a user save
+into a folder the user already has open elsewhere, without a Picker flow.
+**This is a documented claim, not yet a verified fact for OUR two
+specific folders** -- see "Production readiness gate" below. If the real
+test fails (e.g. because of some folder-specific permission quirk), the
+supported fallback -- in order, narrowest first -- is: (1) the Google
+Picker API combined with `drive.file` (user explicitly re-selects the
+folder once through the Picker, which grants the app durable access to
+that exact folder without widening the scope), before (2) ever
+broadening to the full `https://www.googleapis.com/auth/drive` scope.
+Neither fallback has been implemented, because it is not yet known to be
+needed.
+
+### Production readiness gate -- NOT YET PASSED
+
+**Do not treat Drive archival as production-ready based on the unit
+tests alone.** `tests/test_drive_archive.py` uses a fake Drive service
+and a fake OAuth credentials object (44 tests total, all passing) -- this
+proves the *code* behaves correctly given a working API, not that the
+*real* Google API/account/folders behave as assumed. Before relying on
+this in production, run `scripts/verify_drive_connectivity.py` (or
+trigger the `verify-drive.yml` workflow) and confirm it reports **PASS**
+for: (1) token refresh is durable (built twice successfully), (2) real
+write/readback/sha256/cleanup against BOTH the Adobe and Magnific
+folders. This has not yet been run against the real account -- it is
+blocked on the owner completing the OAuth setup steps above.
 
 ### Shared Drive evaluation (no migration performed)
 

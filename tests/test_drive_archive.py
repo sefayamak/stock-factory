@@ -250,12 +250,64 @@ def test_verify_with_test_artifact_not_configured(monkeypatch):
     monkeypatch.setattr('stock_factory.config.DRIVE_ADOBE_FOLDER_ID', '')
     monkeypatch.setattr('stock_factory.config.DRIVE_MAGNIFIC_FOLDER_ID', '')
     result = drive_archive.verify_with_test_artifact()
-    assert result == {'verified': False, 'reason': 'drive_not_configured'}
+    assert result == {'verified': False, 'queue': 'adobe', 'reason': 'drive_not_configured'}
 
 
-def test_verify_with_test_artifact_uploads_reads_back_and_deletes(fake_service):
-    result = drive_archive.verify_with_test_artifact()
+def test_verify_with_test_artifact_rejects_unknown_queue():
+    with pytest.raises(ValueError):
+        drive_archive.verify_with_test_artifact('bogus')
+
+
+# NOTE: everything below uses a fake Drive service / fake OAuth credentials
+# object -- it proves the CODE behaves correctly given a working API, not
+# that Google's real API, our real account, and our real pre-existing
+# folders behave as assumed. It is not a substitute for running
+# scripts/verify_drive_connectivity.py (or the verify-drive.yml workflow)
+# against the real account before treating Drive archival as
+# production-ready -- see docs/ADAPTERS.md "Production readiness gate".
+
+def test_verify_with_test_artifact_uploads_reads_back_and_deletes_mocked(fake_service):
+    result = drive_archive.verify_with_test_artifact('adobe')
     assert result['verified'] is True
+    assert result['queue'] == 'adobe'
     assert 'sha256' in result
     # The test artifact must not be left behind in the target folder.
     assert fake_service.files().store == {}
+
+
+def test_verify_both_queues_checks_adobe_and_magnific_mocked(fake_service):
+    results = drive_archive.verify_both_queues()
+    assert set(results.keys()) == {'adobe', 'magnific'}
+    assert results['adobe']['verified'] is True
+    assert results['magnific']['verified'] is True
+    # Both test artifacts cleaned up -- nothing left behind in either folder.
+    assert fake_service.files().store == {}
+
+
+def test_verify_token_refresh_is_durable_not_configured(monkeypatch):
+    _clear_all_drive_config(monkeypatch)
+    result = drive_archive.verify_token_refresh_is_durable()
+    assert result == {'verified': False, 'reason': 'oauth_not_configured'}
+
+
+def test_verify_token_refresh_is_durable_builds_credentials_twice_mocked(monkeypatch):
+    _clear_all_drive_config(monkeypatch)
+    monkeypatch.setattr('stock_factory.config.GOOGLE_OAUTH_CLIENT_ID', 'cid')
+    monkeypatch.setattr('stock_factory.config.GOOGLE_OAUTH_CLIENT_SECRET', 'csecret')
+    monkeypatch.setattr('stock_factory.config.GOOGLE_OAUTH_REFRESH_TOKEN', 'rtoken')
+
+    build_calls = {'n': 0}
+
+    class _FakeCreds:
+        def __init__(self):
+            self.token = 'fake-access-token'
+
+    def fake_build():
+        build_calls['n'] += 1
+        return _FakeCreds()
+
+    monkeypatch.setattr(drive_archive, '_build_oauth_credentials', fake_build)
+
+    result = drive_archive.verify_token_refresh_is_durable()
+    assert result == {'verified': True, 'attempts': 2}
+    assert build_calls['n'] == 2

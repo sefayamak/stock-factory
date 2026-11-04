@@ -203,18 +203,34 @@ def archive(path: Path, queue: str) -> dict:
     return entry
 
 
-def verify_with_test_artifact() -> dict:
-    """Uploads a small harmless text file, reads it back, checks its
-    sha256, then deletes it. Used to verify Drive credentials/folders are
-    correctly wired without touching any real production asset. Returns a
-    status dict; raises on any verification failure."""
+def verify_with_test_artifact(queue: str = 'adobe') -> dict:
+    """Uploads a small harmless text file into the REAL pre-existing
+    target folder for `queue` ('adobe' or 'magnific'), reads it back,
+    checks its sha256, then deletes it. This directly tests the one thing
+    that is NOT guaranteed by folder IDs alone: that drive.file-scoped
+    user credentials can actually create a file inside a folder the app
+    did not create and has never listed -- the Drive API's documented
+    behavior is that a user-authorized app may create a new file under
+    any parent folder ID the caller supplies, and drive.file then grants
+    the app read/update/delete on that file it just created, regardless
+    of who owns the parent folder. This function is the only way to
+    confirm that holds for OUR specific folders; it must be run for real
+    (no mocks) against each configured folder before Drive archival is
+    considered production-ready -- see
+    docs/ADAPTERS.md "Production readiness gate" and
+    scripts/verify_drive_connectivity.py.
+
+    Returns a status dict; raises on any verification failure. Never logs
+    or returns credential/token values."""
     import tempfile
 
+    if queue not in ('adobe', 'magnific'):
+        raise ValueError(f'unknown queue: {queue}')
     if not is_configured():
-        return {'verified': False, 'reason': 'drive_not_configured'}
+        return {'verified': False, 'queue': queue, 'reason': 'drive_not_configured'}
 
     service = _build_service()
-    content = f'stock-factory drive connectivity test -- safe to delete\n'.encode()
+    content = f'stock-factory drive connectivity test ({queue}) -- safe to delete\n'.encode()
     local_sha256 = hashlib.sha256(content).hexdigest()
 
     with tempfile.NamedTemporaryFile(suffix='.txt', delete=False) as tmp:
@@ -222,9 +238,9 @@ def verify_with_test_artifact() -> dict:
         tmp_path = Path(tmp.name)
 
     try:
-        folder_id = config.DRIVE_ADOBE_FOLDER_ID
+        folder_id = config.DRIVE_ADOBE_FOLDER_ID if queue == 'adobe' else config.DRIVE_MAGNIFIC_FOLDER_ID
         file_metadata = {
-            'name': '_stock_factory_connectivity_test.txt',
+            'name': f'_stock_factory_connectivity_test_{queue}.txt',
             'parents': [folder_id],
             'properties': {'sha256': local_sha256},
         }
@@ -232,24 +248,54 @@ def verify_with_test_artifact() -> dict:
         media = MediaFileUpload(str(tmp_path), mimetype='text/plain')
         uploaded = _with_retries(
             lambda: service.files().create(body=file_metadata, media_body=media, fields='id').execute(),
-            what='drive test upload',
+            what=f'drive test upload ({queue})',
         )
         file_id = uploaded['id']
 
         downloaded = _with_retries(
             lambda: service.files().get_media(fileId=file_id).execute(),
-            what='drive test read-back',
+            what=f'drive test read-back ({queue})',
         )
         remote_sha256 = hashlib.sha256(downloaded).hexdigest()
 
         _with_retries(
             lambda: service.files().delete(fileId=file_id).execute(),
-            what='drive test cleanup',
+            what=f'drive test cleanup ({queue})',
         )
 
         if remote_sha256 != local_sha256:
-            raise RuntimeError(f'test artifact integrity mismatch: local={local_sha256} remote={remote_sha256}')
+            raise RuntimeError(
+                f'test artifact integrity mismatch ({queue}): local={local_sha256} remote={remote_sha256}'
+            )
 
-        return {'verified': True, 'sha256': local_sha256, 'drive_file_id': file_id}
+        return {'verified': True, 'queue': queue, 'sha256': local_sha256, 'drive_file_id': file_id}
     finally:
         tmp_path.unlink(missing_ok=True)
+
+
+def verify_both_queues() -> dict:
+    """Runs verify_with_test_artifact() against both the Adobe and
+    Magnific folders -- the minimum real (non-mocked) check before
+    treating Drive archival as production-ready, since write access to
+    one pre-existing folder does not prove it for the other."""
+    return {queue: verify_with_test_artifact(queue) for queue in ('adobe', 'magnific')}
+
+
+def verify_token_refresh_is_durable() -> dict:
+    """Builds OAuth credentials from the stored refresh token TWICE, in
+    two separate credential objects, simulating two independent
+    unattended runs reusing the same stored refresh token (what actually
+    happens across days in production). A refresh token that is only
+    valid once (e.g. issued to an app still in OAuth consent-screen
+    'Testing' status, where Google expires it after ~7 days, or that was
+    already consumed/rotated) will fail the second build. This does not
+    wait 7 days -- it only proves the token is reusable *right now*; the
+    owner's one-time setup must still have moved the OAuth consent screen
+    to 'In production' publishing status for the token to remain valid
+    beyond 7 days (see docs/ADAPTERS.md). Never logs or returns the
+    refresh token itself."""
+    if not _oauth_configured():
+        return {'verified': False, 'reason': 'oauth_not_configured'}
+    first = _build_oauth_credentials()
+    second = _build_oauth_credentials()
+    return {'verified': bool(first.token and second.token), 'attempts': 2}
