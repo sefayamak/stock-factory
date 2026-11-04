@@ -48,6 +48,36 @@ jobs:
           python-version: '3.11'
           cache: 'pip'
       - run: pip install -r requirements.txt
+
+      # --- Cloud feed handoff (consumer side) ---------------------------
+      # Fetches the global-trend-intelligence scan's output from the
+      # dedicated `intelligence-feed` branch (published by
+      # .github/workflows/trend_intelligence.yml) into this job's own
+      # state/intelligence/, then verifies freshness + integrity + source
+      # identification BEFORE the pipeline runs. A missing/stale/corrupt
+      # feed never blocks or crashes production (--fail-soft): trends.py
+      # already falls back to the static topic bank on its own when
+      # load_feed()/is_feed_stale()/verify_integrity() say not to trust it
+      # -- this step's job is only to make that outcome observable in the
+      # run log, not to gate the job.
+      - name: Fetch global-trend-intelligence feed
+        shell: bash
+        run: |
+          mkdir -p state/intelligence
+          if git ls-remote --exit-code --heads origin intelligence-feed > /dev/null 2>&1; then
+            git fetch --depth 1 origin intelligence-feed
+            git show origin/intelligence-feed:state/intelligence/feed.json > state/intelligence/feed.json 2>/dev/null || true
+            git show origin/intelligence-feed:state/intelligence/feed.sha256 > state/intelligence/feed.sha256 2>/dev/null || true
+            echo "fetched intelligence-feed branch"
+          else
+            echo "::warning::intelligence-feed branch does not exist yet -- no feed to fetch"
+          fi
+      - name: Verify fetched feed (fail-safe -- never blocks production)
+        shell: bash
+        env:
+          PYTHONPATH: src
+        run: python -m stock_factory.trend_intelligence.verify_feed --fail-soft
+
       - name: Run pipeline (dry-run unless execute requested)
         shell: bash
         env:

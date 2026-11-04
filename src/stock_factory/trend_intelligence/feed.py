@@ -1,18 +1,20 @@
 """Builds and persists the versioned production-intelligence feed that
 `trends.py` (stage 1) reads to influence concept selection."""
 from __future__ import annotations
+import hashlib
 import json
-from dataclasses import asdict
+import os
 from datetime import datetime, date, timezone
 from pathlib import Path
 
 from .. import config
 from . import calendar_sources, early_warning, scoring, briefs
+from .adapters.base import SIGNAL_SEARCH_DEMAND, SIGNAL_CATALOG_SUPPLY
 from .adapters.adobe_stock_adapter import AdobeStockSearchAdapter
 from .adapters.google_trends_adapter import GoogleTrendsBigQueryAdapter
 from .adapters.magnific_adapter import MagnificManualImportAdapter
 
-FEED_SCHEMA_VERSION = 1
+FEED_SCHEMA_VERSION = 2  # bumped: v1 incorrectly conflated catalog_supply into demand terms
 
 
 def _feed_dir() -> Path:
@@ -23,22 +25,39 @@ def _feed_path() -> Path:
     return _feed_dir() / 'feed.json'
 
 
-def _collect_verified_terms(candidate_terms: list[str]) -> set[str]:
-    """Queries every adapter that reports itself available and returns the
-    set of terms any adapter verified (case-folded), for scoring's
-    'verified_search_demand' path. Adapter failures never crash the scan --
-    an unavailable/erroring adapter just contributes nothing."""
-    verified: set[str] = set()
+def _checksum_path() -> Path:
+    return _feed_dir() / 'feed.sha256'
+
+
+def _collect_signals(candidate_terms: list[str]) -> tuple[set[str], dict[str, float]]:
+    """Queries every adapter that reports itself available and splits its
+    signals STRICTLY by `signal_type`:
+      - demand_terms: term is in a SIGNAL_SEARCH_DEMAND signal only.
+      - catalog_supply_by_term: term -> value, SIGNAL_CATALOG_SUPPLY only.
+    A term is never counted as demand just because some adapter call
+    succeeded ("verified=True") -- verified only means "this is a real
+    live/official value", not "this is demand". Adapter failures never
+    crash the scan -- an unavailable/erroring adapter just contributes
+    nothing to either set."""
+    demand_terms: set[str] = set()
+    catalog_supply_by_term: dict[str, float] = {}
     for adapter in (AdobeStockSearchAdapter(), GoogleTrendsBigQueryAdapter(), MagnificManualImportAdapter()):
         try:
             if not adapter.available():
                 continue
             for sig in adapter.fetch(candidate_terms):
-                if sig.verified and sig.value is not None:
-                    verified.add(sig.term.strip().lower())
+                if not sig.verified or sig.value is None:
+                    continue
+                key = sig.term.strip().lower()
+                if sig.signal_type == SIGNAL_SEARCH_DEMAND:
+                    demand_terms.add(key)
+                elif sig.signal_type == SIGNAL_CATALOG_SUPPLY:
+                    catalog_supply_by_term[key] = sig.value
+                # Any other signal_type (e.g. historical_download_performance)
+                # is intentionally not routed here -- it has its own factor.
         except Exception:
             continue
-    return verified
+    return demand_terms, catalog_supply_by_term
 
 
 def adapter_status() -> dict[str, dict]:
@@ -70,9 +89,13 @@ def run_scan(today: date | None = None, year: int | None = None) -> dict:
     duplicate_groups = calendar_sources.find_duplicate_groups(events)
 
     candidate_terms = list({e.english_name for e in events})
-    verified_terms = _collect_verified_terms(candidate_terms)
+    demand_terms, catalog_supply_by_term = _collect_signals(candidate_terms)
 
-    scores = scoring.score_events(events, today, verified_trend_terms=verified_terms)
+    scores = scoring.score_events(
+        events, today,
+        verified_demand_terms=demand_terms,
+        catalog_supply_by_term=catalog_supply_by_term,
+    )
     windows = early_warning.windowed_events(events, today)
     alerts = early_warning.alerts_for(events, today)
     missed = early_warning.missed_opportunity_check(events, today)
@@ -82,11 +105,24 @@ def run_scan(today: date | None = None, year: int | None = None) -> dict:
         'schema_version': FEED_SCHEMA_VERSION,
         'generated_at': datetime.now(timezone.utc).isoformat(),
         'scan_date': today.isoformat(),
+        # Source identification: which code/run produced this feed, so a
+        # consuming workflow can tell a stale local file from a fresh
+        # cloud-generated one even if the clock looks right.
+        'provenance': {
+            'generator': 'stock_factory.trend_intelligence.scan',
+            'git_sha': os.getenv('GITHUB_SHA', ''),
+            'workflow_run_id': os.getenv('GITHUB_RUN_ID', ''),
+            'workflow': os.getenv('GITHUB_WORKFLOW', ''),
+        },
         'countries_covered': sorted(calendar_sources.SUPPORTED_COUNTRIES.keys()),
         'events_indexed': len(events),
         'duplicate_event_groups': len(duplicate_groups),
         'adapter_status': adapter_status(),
-        'verified_demand_terms': sorted(verified_terms),
+        # Four distinct evidence categories -- see scoring.py module docstring.
+        # Never merge verified_demand_terms and catalog_supply_terms.
+        'verified_demand_terms': sorted(demand_terms),
+        'catalog_supply_terms': {k: v for k, v in sorted(catalog_supply_by_term.items())},
+        'historical_download_performance_basis': 'portfolio_wide_magnific_baseline_acceptance_rate',
         'window_counts': {str(k): len(v) for k, v in windows.items()},
         'alerts': [a.to_dict() for a in alerts],
         'missed_opportunities': missed,
@@ -96,6 +132,10 @@ def run_scan(today: date | None = None, year: int | None = None) -> dict:
     return feed
 
 
+def _sha256_of(text: str) -> str:
+    return hashlib.sha256(text.encode('utf-8')).hexdigest()
+
+
 def write_feed(feed: dict) -> Path:
     _feed_dir().mkdir(parents=True, exist_ok=True)
     path = _feed_path()
@@ -103,7 +143,13 @@ def write_feed(feed: dict) -> Path:
     if path.exists():
         prior = _feed_dir() / f'feed.v{feed["schema_version"]}.prior.json'
         path.replace(prior)
-    path.write_text(json.dumps(feed, indent=2, ensure_ascii=False))
+    serialized = json.dumps(feed, indent=2, ensure_ascii=False)
+    path.write_text(serialized)
+    # Integrity: a companion checksum file, verified by the consumer before
+    # trusting the feed (see verify_integrity below and the daily workflow's
+    # fetch step). Computed over the exact bytes written, not re-derived
+    # from the dict (which could mask a mid-write truncation).
+    _checksum_path().write_text(_sha256_of(path.read_text()) + '\n')
     return path
 
 
@@ -115,6 +161,23 @@ def load_feed() -> dict | None:
         return json.loads(path.read_text())
     except (json.JSONDecodeError, OSError):
         return None
+
+
+def verify_integrity() -> tuple[bool, str]:
+    """Returns (ok, message). Checks that feed.json's bytes match the
+    sha256 recorded in feed.sha256 at write time -- catches a truncated or
+    corrupted handoff (e.g. a partial artifact download) that `load_feed`
+    alone would not notice as long as the JSON still happens to parse."""
+    path, checksum_path = _feed_path(), _checksum_path()
+    if not path.exists():
+        return False, 'feed.json missing'
+    if not checksum_path.exists():
+        return False, 'feed.sha256 missing -- cannot verify integrity'
+    expected = checksum_path.read_text().strip()
+    actual = _sha256_of(path.read_text())
+    if expected != actual:
+        return False, f'checksum mismatch: expected {expected}, got {actual}'
+    return True, 'ok'
 
 
 def is_feed_stale(feed: dict | None, today: date | None = None, max_age_days: int = 2) -> bool:

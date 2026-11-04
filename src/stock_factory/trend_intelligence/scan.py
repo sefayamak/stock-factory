@@ -23,6 +23,11 @@ def main() -> int:
           f'briefs={len(feed["creative_briefs"])}')
     for platform, status in feed['adapter_status'].items():
         print(f'[trend-intelligence] adapter[{platform}] = {status}')
+    ok, msg = feed_mod.verify_integrity()
+    print(f'[trend-intelligence] integrity_check={"PASS" if ok else "FAIL"}: {msg}')
+    if not ok:
+        print('[trend-intelligence] ERROR: wrote a feed that fails its own integrity check', file=sys.stderr)
+        return 1
     if feed['missed_opportunities']:
         print(f'[trend-intelligence] WARNING: {len(feed["missed_opportunities"])} event(s) inside '
               f'lead time with no prior alert -- see missed_opportunities in the feed.', file=sys.stderr)
