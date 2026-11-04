@@ -10,7 +10,7 @@ import datetime as _dt
 from dataclasses import dataclass
 
 from .events import Event
-from . import deadlines
+from . import deadlines, alert_history
 
 # The scan looks exactly HORIZON_DAYS ahead of the scan date, across every
 # calendar year that range touches (an Aug 1 scan must see Jan-Jul of the
@@ -32,12 +32,15 @@ TOTAL_LEAD_DAYS = deadlines.total_lead_days()
 class Alert:
     event: Event
     days_out: int
-    threshold_days: int
-    urgency: str  # 'ok' | 'notice' | 'urgent' | 'late'
+    threshold_days: int                 # tightest threshold crossed by this alert
+    urgency: str                        # 'ok' | 'urgent' | 'late' (from deadlines.Schedule.status)
+    thresholds_crossed: tuple = ()      # every not-yet-alerted threshold this alert covers
+    catch_up: bool = False              # True if the exact threshold day was missed (scan gap / first sight)
 
     def to_dict(self) -> dict:
         d = self.event.to_dict()
-        d.update(days_out=self.days_out, threshold_days=self.threshold_days, urgency=self.urgency)
+        d.update(days_out=self.days_out, threshold_days=self.threshold_days, urgency=self.urgency,
+                 thresholds_crossed=list(self.thresholds_crossed), catch_up=self.catch_up)
         return d
 
 
@@ -54,47 +57,77 @@ def windowed_events(events: list[Event], today: _dt.date) -> dict[int, list[Even
     return buckets
 
 
-def alerts_for(events: list[Event], today: _dt.date) -> list[Alert]:
-    """One alert per event whose days-out matches (or has just passed) one
-    of ALERT_THRESHOLDS_DAYS, i.e. the day the production team should be
-    told 'you have N days left, lead time needed is ~TOTAL_LEAD_DAYS'."""
-    alerts = []
+_URGENCY = {deadlines.ON_TIME: 'ok', deadlines.COMPRESSED: 'urgent', deadlines.LATE: 'late'}
+
+
+def evaluate(events: list[Event], today: _dt.date, history: dict) -> tuple[list[Alert], list[dict]]:
+    """Stateful early-warning pass over `events`, reading and UPDATING
+    `history` (see alert_history.py; caller persists it).
+
+    Alerts: a threshold counts as crossed once days_out <= threshold, not
+    only on the exact day -- so a scan gap that skips the threshold day
+    still alerts. Each threshold alerts exactly once per event: thresholds
+    already in history are never re-alerted, and several thresholds
+    crossed during one gap produce ONE alert (catch_up=True) listing them.
+
+    Missed opportunities: an event whose production_start has passed
+    (schedule status COMPRESSED or LATE) with NO alert recorded before
+    this scan and no active production status. Reported once (the first
+    scan that detects it). production_status is reported as recorded --
+    'unknown' unless something set it, never a false "not produced".
+    Missed is computed BEFORE this scan's alerts are recorded, so a
+    first-sight catch-up alert does not hide that the window was missed."""
+    alerts: list[Alert] = []
+    missed: list[dict] = []
     for e in events:
         days_out = (e.event_date - today).days
         if days_out < 0:
             continue
-        for threshold in ALERT_THRESHOLDS_DAYS:
-            if days_out == threshold:
-                # Plenty of margin if the threshold itself clears the total
-                # lead time needed; otherwise this is already tight.
-                status = deadlines.schedule_for(e.event_date).status(today)
-                urgency = {deadlines.ON_TIME: 'ok', deadlines.COMPRESSED: 'urgent', deadlines.LATE: 'late'}[status]
-                alerts.append(Alert(event=e, days_out=days_out, threshold_days=threshold, urgency=urgency))
-    return alerts
+        rec = alert_history.record_for(history, e, today)
+        schedule = deadlines.schedule_for(e.event_date)
+        status = schedule.status(today)
+        prior_alerts = [a for a in rec['alerts'] if a.get('date', '') < today.isoformat()]
+        production_status = rec.get('production_status') or 'unknown'
 
-
-def missed_opportunity_check(events: list[Event], today: _dt.date) -> list[dict]:
-    """For every event within the next TOTAL_LEAD_DAYS that has NOT yet
-    crossed a 120/90/60/30-day alert threshold from `today`'s vantage point
-    in the *past* (i.e. today is already inside the lead-time window but no
-    prior alert would have fired), flags it as a missed opportunity -- the
-    scenario the brief's Thanksgiving example describes. In a system run
-    daily from >=120 days out this list should normally be empty; a
-    non-empty result means today is the first time this event has been
-    seen with fewer than TOTAL_LEAD_DAYS remaining."""
-    missed = []
-    for e in events:
-        days_out = (e.event_date - today).days
-        # Any threshold larger than days_out has already elapsed (its alert
-        # day was earlier than today) -- if we're only seeing this event
-        # now, that alert was effectively missed.
-        if 0 <= days_out < TOTAL_LEAD_DAYS and any(t > days_out for t in ALERT_THRESHOLDS_DAYS):
+        if (status != deadlines.ON_TIME and not prior_alerts and not rec['alerted_thresholds']
+                and production_status not in alert_history.ACTIVE_PRODUCTION_STATUSES
+                and not rec.get('missed_reported_on')):
+            rec['missed_reported_on'] = today.isoformat()
             missed.append({
                 'event': e.to_dict(),
                 'days_out': days_out,
+                'schedule': schedule.to_dict(today),
                 'lead_time_needed_days': TOTAL_LEAD_DAYS,
                 'shortfall_days': TOTAL_LEAD_DAYS - days_out,
-                'reason': 'event is inside the required production+review lead time '
-                          'with no earlier 120/90/60/30-day alert on record for it',
+                'production_status': production_status,
+                'first_seen': rec['first_seen'],
+                'reason': 'production start date has passed and no earlier lead-time alert is on '
+                          'record for this event (production status: ' + production_status + ')',
             })
-    return missed
+
+        pending = sorted((t for t in ALERT_THRESHOLDS_DAYS
+                          if days_out <= t and t not in rec['alerted_thresholds']), reverse=True)
+        if pending:
+            tightest = pending[-1]
+            alert = Alert(event=e, days_out=days_out, threshold_days=tightest, urgency=_URGENCY[status],
+                          thresholds_crossed=tuple(pending), catch_up=days_out != tightest)
+            alerts.append(alert)
+            rec['alerted_thresholds'] = sorted(set(rec['alerted_thresholds']) | set(pending), reverse=True)
+            rec['alerts'].append({'date': today.isoformat(), 'thresholds': pending, 'catch_up': alert.catch_up})
+    return alerts, missed
+
+
+def alerts_for(events: list[Event], today: _dt.date, history: dict | None = None) -> list[Alert]:
+    """Alerts for this scan. Without `history`, behaves as a first-ever
+    scan (empty history). Mutates `history` when one is passed."""
+    history = history if history is not None else alert_history._empty('ephemeral')
+    return evaluate(events, today, history)[0]
+
+
+def missed_opportunity_check(events: list[Event], today: _dt.date, history: dict | None = None) -> list[dict]:
+    """Missed opportunities as of `today` (see evaluate). Without
+    `history`, behaves as a first-ever scan. Does NOT mutate a passed
+    history (works on a copy) -- use evaluate() in the real scan."""
+    import copy
+    history = copy.deepcopy(history) if history is not None else alert_history._empty('ephemeral')
+    return evaluate(events, today, history)[1]
