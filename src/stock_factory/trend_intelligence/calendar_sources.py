@@ -147,16 +147,43 @@ SUPPORTED_COUNTRIES: dict[str, dict] = {
 }
 
 
+def _default_language(iso2: str) -> str | None:
+    """The `holidays` library's own stated default_language for a country
+    (e.g. 'ar' for Saudi Arabia, 'he' for Israel). Determined once with no
+    `language=` kwarg so it reflects the library's own country-specific
+    default, not environment detection."""
+    try:
+        return _holidays.country_holidays(iso2, years=_dt.date.today().year).default_language
+    except Exception:
+        return None
+
+
 def _country_holidays(iso2: str, year: int) -> dict:
     """Returns {date: [(name, category_hint)]} for one country/year.
     Tries the richer category set first (adds e.g. Hanukkah for Israel,
     optional/school observances elsewhere); falls back to the library's
-    default (public only) if a given country doesn't support that kwarg."""
+    default (public only) if a given country doesn't support that kwarg.
+
+    Explicitly pins `language=` to the country's own default_language
+    rather than omitting it. Confirmed by a real cross-platform CI failure
+    (2026-11-04): with no explicit `language=`, the `holidays` library
+    appears to fall back toward the *host process's* detected locale
+    (e.g. GitHub Actions' ubuntu-latest runner reporting
+    `locale.getlocale() == ('en_US', 'UTF-8')`) rather than reliably using
+    each country's own default_language when that happens to collide with
+    a language the country also supports (every affected country here
+    lists 'en_US' as a supported alternate language) -- so the exact same
+    code/library version returned native-script names on macOS but English
+    names on Linux CI. Pinning `language=` removes that host-dependence."""
     cls = _holidays.country_holidays
+    language = _default_language(iso2)
     try:
-        result = cls(iso2, years=year, categories=('public', 'optional', 'school'))
+        result = cls(iso2, years=year, categories=('public', 'optional', 'school'), language=language)
     except (NotImplementedError, TypeError, KeyError, ValueError):
-        result = cls(iso2, years=year)
+        try:
+            result = cls(iso2, years=year, language=language)
+        except (NotImplementedError, TypeError, KeyError, ValueError):
+            result = cls(iso2, years=year)
     by_date: dict[_dt.date, list[str]] = {}
     for d, name in result.items():
         by_date.setdefault(d, []).append(name)

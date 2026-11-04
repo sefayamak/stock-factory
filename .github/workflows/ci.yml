@@ -16,28 +16,6 @@ jobs:
           python-version: '3.11'
           cache: 'pip'
       - run: pip install -r requirements.txt
-      - name: TEMP diagnostic (holidays env investigation, removed once root cause found)
-        shell: bash
-        env:
-          PYTHONPATH: src
-        run: |
-          python3 -c "
-          import locale, sys, os
-          print('python', sys.version)
-          print('LANG', os.environ.get('LANG'), 'LC_ALL', os.environ.get('LC_ALL'))
-          print('locale.getlocale()', locale.getlocale())
-          import holidays
-          print('holidays version', holidays.__version__)
-          h = holidays.country_holidays('SA', years=2026)
-          print('SA direct call len', len(h))
-          for d, n in sorted(h.items())[:3]:
-              print(repr(d), repr(n))
-          try:
-              h2 = holidays.country_holidays('SA', years=2026, categories=('public','optional','school'))
-              print('SA categories call len', len(h2))
-          except Exception as e:
-              print('SA categories call EXC', type(e).__name__, e)
-          "
       - name: Run test suite
         shell: bash
         env:
