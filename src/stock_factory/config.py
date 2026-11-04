@@ -34,6 +34,13 @@ TREND_STALE_AFTER_DAYS = int(os.getenv('TREND_STALE_AFTER_DAYS', '14'))
 # the rest always comes from the deterministic static topic bank.
 TREND_PRIORITY_SLOTS_MAX = int(os.getenv('TREND_PRIORITY_SLOTS_MAX', '20'))
 
+# At most this many queue slots per day are filled from the global
+# trend-intelligence feed's calendar-backed opportunities (see
+# trend_intelligence/feed.py), after trend-snapshot slots and before the
+# static topic bank. A missing/stale feed (same staleness policy as the
+# trend snapshot above) contributes zero slots.
+CALENDAR_OPPORTUNITY_SLOTS_MAX = int(os.getenv('CALENDAR_OPPORTUNITY_SLOTS_MAX', '15'))
+
 # Google Drive archival (requirement 6). The target Drive folder is in a
 # personal My Drive account -- a service account cannot own/write files
 # there even with folder Editor access, so OAuth 2.0 user credentials
@@ -52,6 +59,16 @@ GOOGLE_SERVICE_ACCOUNT_JSON = os.getenv('GOOGLE_SERVICE_ACCOUNT_JSON', '')
 
 DRIVE_ADOBE_FOLDER_ID = os.getenv('DRIVE_ADOBE_FOLDER_ID', '')
 DRIVE_MAGNIFIC_FOLDER_ID = os.getenv('DRIVE_MAGNIFIC_FOLDER_ID', '')
+
+# Marketplace activation. Magnific is the sole active marketplace per
+# project decision (2026-11-04): Adobe production, queue dispatch, and
+# Drive delivery are disabled by default, but every existing Adobe asset,
+# Drive folder, and the DRIVE_ADOBE_FOLDER_ID config above are preserved
+# unchanged -- this flag only stops *new* items from being routed to the
+# 'adobe' queue; it does not touch, move, or delete anything already
+# archived. Set ADOBE_MARKETPLACE_ACTIVE=true to re-enable Adobe dispatch.
+ADOBE_MARKETPLACE_ACTIVE = os.getenv('ADOBE_MARKETPLACE_ACTIVE', 'false').lower() == 'true'
+MAGNIFIC_MARKETPLACE_ACTIVE = os.getenv('MAGNIFIC_MARKETPLACE_ACTIVE', 'true').lower() == 'true'
 
 JPEG_QUALITY = int(os.getenv('JPEG_QUALITY', '96'))
 MIN_BYTES = 1_500_000

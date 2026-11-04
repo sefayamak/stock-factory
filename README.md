@@ -44,8 +44,24 @@ PYTHONPATH=src python -m stock_factory.pipeline --target 100 --execute  # ingest
 - Drive archival fails safe (no-op, clearly reported) without real service-account credentials.
 - Daily report + non-zero exit on shortfall vs. `DAILY_TARGET_MIN` gives GitHub Actions something to alert on without extra integrations.
 
+## Global trend intelligence (stage 1 upgrade)
+`stock_factory/trend_intelligence/` adds a multi-country (not worldwide: an explicit
+country subset, with a coverage-and-gaps report in the feed) holiday/UN-observance/
+season/retail-campaign calendar, a 365-day rolling early-warning scan, and
+an explainable opportunity score, feeding a versioned `state/intelligence/feed.json`
+that stage 1 (`trends.py`) reads to prioritize queue slots ahead of the
+static topic bank. Run it with `PYTHONPATH=src python -m
+stock_factory.trend_intelligence.scan`; see
+[docs/GLOBAL_TREND_INTELLIGENCE.md](docs/GLOBAL_TREND_INTELLIGENCE.md) for
+full status (what's verified vs. still a documented gap) and a scheduled
+GitHub Actions workflow at `.github/workflows/trend_intelligence.yml`.
+
 ## Gaps before this is a full 24/7 production line
-1. No real trend-research source wired up yet (stage 1 is a static topic bank).
+1. Trend research now has a real multi-country calendar engine (see above;
+   not worldwide -- `feed.json` `calendar_coverage` lists covered countries and gaps);
+   Adobe Stock Search API / Google Trends BigQuery adapters exist but need
+   `ADOBE_STOCK_API_KEY` / `GOOGLE_CLOUD_PROJECT` configured to go live;
+   Magnific stays manual-import only (confirmed blocked, no official export).
 2. Flow generation is still a manual human step (no official API to automate it).
 3. Drive service account + folder sharing not yet created/configured.
 4. No email/Slack alerting wired up; alerting today is "run report + non-zero exit on shortfall."
