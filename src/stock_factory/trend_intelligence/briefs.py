@@ -17,6 +17,7 @@ SUPPORTED_FORMATS = ('PHOTO_JPG', 'VECTOR_EPS')
 class CreativeBrief:
     event_country: str
     event_name: str
+    event_date: str
     format: str
     demand_evidence: str
     demand_source: str
@@ -71,6 +72,7 @@ def build_brief(score: Score, fmt: str, lead_days: int = 49) -> CreativeBrief:
     return CreativeBrief(
         event_country=e.country,
         event_name=e.english_name,
+        event_date=e.event_date.isoformat(),
         format=fmt,
         demand_evidence=f'{score.demand_label} (score {score.total:.2f}/1.0, see factors)',
         demand_source=e.source,
