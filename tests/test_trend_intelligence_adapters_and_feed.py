@@ -51,8 +51,8 @@ def test_run_scan_produces_a_feed_with_no_adapters_configured(tmp_path, monkeypa
     monkeypatch.delenv('GOOGLE_CLOUD_PROJECT', raising=False)
     feed = feed_mod.run_scan(today=_dt.date(2026, 8, 1), year=2026)
     assert feed['events_indexed'] > 0
-    assert feed['verified_demand_terms'] == []  # nothing verified without real adapters
-    assert all(not b['demand_evidence'].startswith('verified_search_demand')
+    assert feed['verified_search_interest_terms'] == []  # nothing verified without real adapters
+    assert all(not b['demand_evidence'].startswith('verified_search_interest')
                for b in feed['creative_briefs']) or True  # sanity: no crash building briefs
     assert feed['schema_version'] == feed_mod.FEED_SCHEMA_VERSION
 
@@ -61,7 +61,7 @@ def test_adobe_supply_signal_never_lands_in_verified_demand_terms(tmp_path, monk
     """Regression test for PR #1 review finding 2 (supply vs demand): even
     when Adobe's adapter is "available" and returns a verified nb_results
     value for 'Thanksgiving Day', that term must end up only in
-    catalog_supply_terms, never in verified_demand_terms."""
+    catalog_supply_terms, never in verified_search_interest_terms."""
     monkeypatch.setattr(config, 'STATE_DIR', tmp_path / 'state')
 
     class FakeAvailableAdobeAdapter(AdobeStockSearchAdapter):
@@ -78,10 +78,10 @@ def test_adobe_supply_signal_never_lands_in_verified_demand_terms(tmp_path, monk
         'stock_factory.trend_intelligence.feed.AdobeStockSearchAdapter', FakeAvailableAdobeAdapter
     )
     feed = feed_mod.run_scan(today=_dt.date(2026, 8, 1), year=2026)
-    assert 'thanksgiving day' not in feed['verified_demand_terms']
+    assert 'thanksgiving day' not in feed['verified_search_interest_terms']
     assert feed['catalog_supply_terms'].get('thanksgiving day') == 812345.0
     # Any top_opportunities entry for Thanksgiving Day must keep its demand
-    # basis calendar-predicted, never upgraded to verified_search_demand on
+    # basis calendar-predicted, never upgraded to verified_search_interest on
     # the strength of a supply number.
     thanksgiving_scores = [s for s in feed['top_opportunities'] if s['event']['english_name'] == 'Thanksgiving Day']
     assert all(s['demand_basis'] == 'calendar_predicted_demand' for s in thanksgiving_scores)

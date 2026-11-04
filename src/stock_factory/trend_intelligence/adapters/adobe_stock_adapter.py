@@ -22,7 +22,7 @@ import urllib.request
 import urllib.parse
 from datetime import datetime, timezone
 
-from .base import TrendAdapter, TrendSignal, SIGNAL_CATALOG_SUPPLY
+from .base import TrendAdapter, TrendSignal, AdapterStatus, SIGNAL_CATALOG_SUPPLY
 
 API_URL = 'https://stock.adobe.io/Rest/Media/1/Search/Files'
 
@@ -37,7 +37,15 @@ class AdobeStockSearchAdapter(TrendAdapter):
     def available(self) -> bool:
         return bool(self.api_key)
 
-    def fetch(self, terms: list[str]) -> list[TrendSignal]:
+    def readiness(self) -> AdapterStatus:
+        # stdlib-only (urllib): no optional dependency. Auth validity is
+        # only knowable from a real call, so auth_ready stays None here.
+        configured = bool(self.available())
+        return AdapterStatus(adapter=self.name, configured=configured, dependency_ready=None,
+                             auth_ready=None,
+                             notes='' if configured else 'ADOBE_STOCK_API_KEY not set')
+
+    def fetch(self, terms: list[str], today=None) -> list[TrendSignal]:
         if not self.available():
             return []
         signals = []
@@ -56,9 +64,11 @@ class AdobeStockSearchAdapter(TrendAdapter):
                 term=term, source=self.name, verified=True, value=float(nb_results),
                 signal_type=SIGNAL_CATALOG_SUPPLY,
                 unit='catalog_result_count', fetched_at=fetched_at,
+                observation_date=fetched_at[:10], region='adobe_stock_global_catalog',
+                measure='catalog_result_count',
                 note='Adobe Stock public Search API nb_results is EXISTING CATALOG SUPPLY '
                      '(competition), not search demand -- must never be promoted into a '
-                     'verified_search_demand term.',
+                     'verified_search_interest term.',
             ))
         return signals
 
