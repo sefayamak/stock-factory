@@ -4,6 +4,7 @@ from __future__ import annotations
 from dataclasses import dataclass, asdict
 
 from .scoring import Score
+from . import deadlines
 
 # This repo's pipeline (prompts.py / processing.py / vector/) only has a
 # working path for PHOTO_JPG today, plus an experimental vector module.
@@ -21,8 +22,12 @@ class CreativeBrief:
     format: str
     demand_evidence: str
     demand_source: str
-    production_window_start: str
-    production_window_end: str
+    # Shared date model (deadlines.py) -- identical to the Score's schedule.
+    buyer_ready_date: str
+    submission_deadline: str
+    production_start: str
+    production_deadline: str
+    schedule_status: str
     creative_concept: str
     differentiation_strategy: str
     quantity_recommendation: int
@@ -36,13 +41,6 @@ class CreativeBrief:
         return asdict(self)
 
 
-def _window(score: Score, lead_days: int) -> tuple[str, str]:
-    end = score.event.event_date
-    import datetime as _dt
-    start = end - _dt.timedelta(days=lead_days)
-    return start.isoformat(), end.isoformat()
-
-
 def _quantity(score: Score) -> int:
     if score.total >= 0.75:
         return 12
@@ -53,9 +51,9 @@ def _quantity(score: Score) -> int:
     return 1
 
 
-def build_brief(score: Score, fmt: str, lead_days: int = 49) -> CreativeBrief:
+def build_brief(score: Score, fmt: str) -> CreativeBrief:
     e = score.event
-    start, end = _window(score, lead_days)
+    sched = score.schedule or deadlines.schedule_for(e.event_date)
     risk_notes = []
     if e.category == 'religious_cultural':
         risk_notes.append('Religious/cultural symbolism must be verified against the specific tradition '
@@ -76,8 +74,11 @@ def build_brief(score: Score, fmt: str, lead_days: int = 49) -> CreativeBrief:
         format=fmt,
         demand_evidence=f'{score.demand_label} (score {score.total:.2f}/1.0, see factors)',
         demand_source=e.source,
-        production_window_start=start,
-        production_window_end=end,
+        buyer_ready_date=sched.buyer_ready_date.isoformat(),
+        submission_deadline=sched.submission_deadline.isoformat(),
+        production_start=sched.production_start.isoformat(),
+        production_deadline=sched.production_deadline.isoformat(),
+        schedule_status=score.schedule_status,
         creative_concept=_concept_for(e, fmt),
         differentiation_strategy='Specific, culturally-accurate scene (named local custom/detail) rather than '
                                   'a generic/stock-looking holiday scene; avoid duplicating the static topic bank.',
@@ -98,8 +99,12 @@ def _concept_for(event, fmt: str) -> str:
 
 
 def qualifying_briefs(scores: list[Score], min_score: float = 0.45, top_n: int = 25) -> list[CreativeBrief]:
+    """LATE opportunities (submission deadline passed) never get a brief:
+    they cannot reach buyers in time, so producing them would only burn
+    generation budget."""
     briefs = []
-    for score in [s for s in scores if s.total >= min_score][:top_n]:
+    on_time = [s for s in scores if s.schedule_status != deadlines.LATE]
+    for score in [s for s in on_time if s.total >= min_score][:top_n]:
         for fmt in SUPPORTED_FORMATS:
             briefs.append(build_brief(score, fmt))
     return briefs

@@ -8,13 +8,13 @@ from datetime import datetime, date, timedelta, timezone
 from pathlib import Path
 
 from .. import config
-from . import calendar_sources, early_warning, scoring, briefs
+from . import calendar_sources, early_warning, scoring, briefs, deadlines
 from .adapters.base import SIGNAL_SEARCH_DEMAND, SIGNAL_CATALOG_SUPPLY
 from .adapters.adobe_stock_adapter import AdobeStockSearchAdapter
 from .adapters.google_trends_adapter import GoogleTrendsBigQueryAdapter
 from .adapters.magnific_adapter import MagnificManualImportAdapter
 
-FEED_SCHEMA_VERSION = 2  # bumped: v1 incorrectly conflated catalog_supply into demand terms
+FEED_SCHEMA_VERSION = 3  # v2: separated catalog_supply from demand; v3: shared deadline model in briefs (no production_window_*)
 
 
 def _feed_dir() -> Path:
@@ -116,7 +116,12 @@ def run_scan(today: date | None = None, year: int | None = None) -> dict:
     windows = early_warning.windowed_events(events, today)
     alerts = early_warning.alerts_for(events, today)
     missed = early_warning.missed_opportunity_check(events, today)
-    briefs_list = briefs.qualifying_briefs(scores)
+    # Same date model as briefs (deadlines.py): opportunities whose
+    # submission deadline has passed are bucketed separately and never
+    # compete for top_opportunities / brief slots.
+    on_time_scores = [s for s in scores if s.schedule_status != deadlines.LATE]
+    late_scores = [s for s in scores if s.schedule_status == deadlines.LATE]
+    briefs_list = briefs.qualifying_briefs(on_time_scores)
 
     feed = {
         'schema_version': FEED_SCHEMA_VERSION,
@@ -149,7 +154,10 @@ def run_scan(today: date | None = None, year: int | None = None) -> dict:
         'window_counts': {str(k): len(v) for k, v in windows.items()},
         'alerts': [a.to_dict() for a in alerts],
         'missed_opportunities': missed,
-        'top_opportunities': [s.to_dict() for s in scores[:50]],
+        'deadline_model': deadlines.config_dict(),
+        'top_opportunities': [s.to_dict() for s in on_time_scores[:50]],
+        'late_opportunities': [s.to_dict() for s in late_scores[:50]],
+        'late_opportunities_total': len(late_scores),
         'creative_briefs': [b.to_dict() for b in briefs_list],
     }
     return feed
