@@ -35,6 +35,12 @@ def build_adapters(queue_prompts: list[str]) -> list[Adapter]:
         elif name == 'flow':
             from .adapters.flow_adapter import FlowAdapter
             adapters.append(FlowAdapter())  # will raise BLOCKED if actually fetched from
+        elif name == 'cloudflare_flux':
+            if not config.CLOUDFLARE_API_TOKEN or not config.CLOUDFLARE_ACCOUNT_ID:
+                print(f'[pipeline] skipping cloudflare_flux adapter: CLOUDFLARE_API_TOKEN/CLOUDFLARE_ACCOUNT_ID not set', file=sys.stderr)
+                continue
+            from .adapters.cloudflare_flux_adapter import CloudflareFluxAdapter
+            adapters.append(CloudflareFluxAdapter(queue_prompts))
         else:
             print(f'[pipeline] unknown adapter "{name}", skipping', file=sys.stderr)
     return adapters

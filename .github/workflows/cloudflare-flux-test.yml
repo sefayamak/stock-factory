@@ -1,0 +1,66 @@
+name: Cloudflare Workers AI - FLUX.1 Schnell Real Test
+on:
+  workflow_dispatch: {}
+permissions:
+  contents: read
+jobs:
+  cloudflare-flux-test:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    env:
+      CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+      CLOUDFLARE_ACCOUNT_ID: ${{ vars.CLOUDFLARE_ACCOUNT_ID }}
+      CLOUDFLARE_TIMEOUT: 60
+      CLOUDFLARE_MAX_RETRIES: 3
+      CLOUDFLARE_RETRY_DELAY: 2
+      CLOUDFLARE_DAILY_GENERATION_CAP: 50
+      GOOGLE_OAUTH_CLIENT_ID: ${{ secrets.GOOGLE_OAUTH_CLIENT_ID }}
+      GOOGLE_OAUTH_CLIENT_SECRET: ${{ secrets.GOOGLE_OAUTH_CLIENT_SECRET }}
+      GOOGLE_OAUTH_REFRESH_TOKEN: ${{ secrets.GOOGLE_OAUTH_REFRESH_TOKEN }}
+      GOOGLE_SERVICE_ACCOUNT_JSON: ${{ secrets.GOOGLE_SERVICE_ACCOUNT_JSON }}
+      DRIVE_MAGNIFIC_FOLDER_ID: ${{ vars.DRIVE_MAGNIFIC_FOLDER_ID }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+          cache: 'pip'
+
+      - run: pip install -r requirements.txt
+
+      - name: Verify free-tier eligibility and generate real Cloudflare FLUX.1 image
+        shell: bash
+        env:
+          PYTHONPATH: src
+        run: python3 scripts/test_cloudflare_flux_real.py
+
+      - name: Upload generated image as artifact
+        if: success()
+        uses: actions/upload-artifact@v4
+        with:
+          name: cloudflare-flux-test-image
+          path: /tmp/cloudflare_flux_test_output.jpg
+          retention-days: 7
+
+      - name: Retrieve artifact metadata
+        if: success()
+        shell: bash
+        env:
+          PYTHONPATH: src
+        run: |
+          python3 << 'EOF'
+          import json
+          with open("/tmp/cloudflare_flux_metadata.json", "r") as f:
+              metadata = json.load(f)
+              print("=== CLOUDFLARE FLUX TEST RESULTS ===")
+              print(f"Image size: {metadata[\"file_size\"]:,} bytes")
+              print(f"Dimensions: {metadata[\"dimensions\"][0]}x{metadata[\"dimensions\"][1]}")
+              print(f"QC Status: {\"PASS\" if metadata[\"qc_pass\"] else \"FAIL\"}")
+              print(f"QC Reason: {metadata[\"qc_reason\"]}")
+              print(f"Drive Archived: {metadata.get(\"drive_archived\", False)}")
+              if metadata.get("drive_file_id"):
+                  print(f"Drive File ID: {metadata[\"drive_file_id\"]}")
+              print(f"SHA256: {metadata[\"sha256\"]}")
+              print("====================================")
+          EOF

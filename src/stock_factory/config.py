@@ -17,8 +17,17 @@ GEMINI_API_KEY = os.getenv('GEMINI_API_KEY', '')
 # Adapter selection: which source(s) supply raw images for this run.
 # 'manual_inbox' = human-downloaded Flow (or any other) images dropped in INBOX_DIR.
 # 'gemini' = paid Gemini API (requires ALLOW_PAID_GENERATION=true).
+# 'cloudflare_flux' = free tier Cloudflare Workers AI (@cf/black-forest-labs/flux-1-schnell).
 # 'flow' = BLOCKED, see adapters/flow_adapter.py and docs/ADAPTERS.md.
 ENABLED_ADAPTERS = [a.strip() for a in os.getenv('ENABLED_ADAPTERS', 'manual_inbox').split(',') if a.strip()]
+
+# Cloudflare Workers AI (free tier only).
+CLOUDFLARE_API_TOKEN = os.getenv('CLOUDFLARE_API_TOKEN', '')
+CLOUDFLARE_ACCOUNT_ID = os.getenv('CLOUDFLARE_ACCOUNT_ID', '')
+CLOUDFLARE_TIMEOUT = int(os.getenv('CLOUDFLARE_TIMEOUT', '60'))
+CLOUDFLARE_MAX_RETRIES = int(os.getenv('CLOUDFLARE_MAX_RETRIES', '3'))
+CLOUDFLARE_RETRY_DELAY = float(os.getenv('CLOUDFLARE_RETRY_DELAY', '2'))
+CLOUDFLARE_DAILY_GENERATION_CAP = int(os.getenv('CLOUDFLARE_DAILY_GENERATION_CAP', '50'))
 
 INBOX_DIR = Path(os.getenv('INBOX_DIR', 'inbox'))
 STATE_DIR = Path(os.getenv('STATE_DIR', 'state'))
