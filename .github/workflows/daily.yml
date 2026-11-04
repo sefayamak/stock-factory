@@ -30,6 +30,14 @@ jobs:
       DAILY_TARGET_STRETCH: '150'
       DAILY_TARGET_CEILING: '200'
       # Drive archival (stage 6) stays a documented no-op until these are set.
+      # OAuth (owner's own account) is the supported path for the current
+      # personal My Drive folders -- see docs/ADAPTERS.md and
+      # scripts/setup_drive_oauth.py. GOOGLE_SERVICE_ACCOUNT_JSON is kept
+      # only for a possible future Shared Drive architecture; it will not
+      # work against today's personal My Drive folders.
+      GOOGLE_OAUTH_CLIENT_ID: ${{ secrets.GOOGLE_OAUTH_CLIENT_ID }}
+      GOOGLE_OAUTH_CLIENT_SECRET: ${{ secrets.GOOGLE_OAUTH_CLIENT_SECRET }}
+      GOOGLE_OAUTH_REFRESH_TOKEN: ${{ secrets.GOOGLE_OAUTH_REFRESH_TOKEN }}
       GOOGLE_SERVICE_ACCOUNT_JSON: ${{ secrets.GOOGLE_SERVICE_ACCOUNT_JSON }}
       DRIVE_ADOBE_FOLDER_ID: ${{ vars.DRIVE_ADOBE_FOLDER_ID }}
       DRIVE_MAGNIFIC_FOLDER_ID: ${{ vars.DRIVE_MAGNIFIC_FOLDER_ID }}

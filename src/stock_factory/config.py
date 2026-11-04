@@ -34,8 +34,22 @@ TREND_STALE_AFTER_DAYS = int(os.getenv('TREND_STALE_AFTER_DAYS', '14'))
 # the rest always comes from the deterministic static topic bank.
 TREND_PRIORITY_SLOTS_MAX = int(os.getenv('TREND_PRIORITY_SLOTS_MAX', '20'))
 
-# Google Drive archival (requirement 6). Needs a service account; see docs/ADAPTERS.md.
+# Google Drive archival (requirement 6). The target Drive folder is in a
+# personal My Drive account -- a service account cannot own/write files
+# there even with folder Editor access, so OAuth 2.0 user credentials
+# (the owner's own account) are the primary, supported path. See
+# docs/ADAPTERS.md and scripts/setup_drive_oauth.py for the one-time
+# interactive consent flow that produces these three values.
+GOOGLE_OAUTH_CLIENT_ID = os.getenv('GOOGLE_OAUTH_CLIENT_ID', '')
+GOOGLE_OAUTH_CLIENT_SECRET = os.getenv('GOOGLE_OAUTH_CLIENT_SECRET', '')
+GOOGLE_OAUTH_REFRESH_TOKEN = os.getenv('GOOGLE_OAUTH_REFRESH_TOKEN', '')
+
+# Legacy/alternate path: a service account only works if the target folder
+# lives on a Shared Drive (service accounts cannot own files in personal
+# My Drive). Kept for that future architecture; OAuth above is preferred
+# for the current personal-My-Drive setup. See docs/ADAPTERS.md.
 GOOGLE_SERVICE_ACCOUNT_JSON = os.getenv('GOOGLE_SERVICE_ACCOUNT_JSON', '')
+
 DRIVE_ADOBE_FOLDER_ID = os.getenv('DRIVE_ADOBE_FOLDER_ID', '')
 DRIVE_MAGNIFIC_FOLDER_ID = os.getenv('DRIVE_MAGNIFIC_FOLDER_ID', '')
 

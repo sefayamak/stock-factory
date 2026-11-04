@@ -1,12 +1,24 @@
 """Stage 6: Google Drive archival with separate Adobe/Magnific queues.
 
-Unattended (GitHub Actions) Drive access needs a Google Cloud *service
-account* with Drive API access granted to the target Drive folders --
-the interactive OAuth session used inside this chat does not carry over
-to a scheduled cloud job. Until GOOGLE_SERVICE_ACCOUNT_JSON,
-DRIVE_ADOBE_FOLDER_ID, and DRIVE_MAGNIFIC_FOLDER_ID are configured as
-secrets/variables, this stage is a documented no-op: it reports which
-files *would* be archived and to which queue, but uploads nothing.
+The target Drive folders live in a *personal* Google My Drive account, not
+a Google Workspace Shared Drive. A Google Cloud service account cannot own
+or write files in personal My Drive even when granted folder Editor access
+-- Google enforces this regardless of sharing settings. The supported path
+is therefore **OAuth 2.0 user credentials for the owner's own account**:
+a one-time interactive consent (scripts/setup_drive_oauth.py, run locally
+by the owner) produces a refresh token, which is stored only as GitHub
+Actions secrets and used to silently refresh an access token on every
+unattended run. See docs/ADAPTERS.md for the full setup flow and the
+Shared Drive alternative this project evaluated (not adopted; no
+migration performed).
+
+Until GOOGLE_OAUTH_CLIENT_ID, GOOGLE_OAUTH_CLIENT_SECRET,
+GOOGLE_OAUTH_REFRESH_TOKEN, DRIVE_ADOBE_FOLDER_ID, and
+DRIVE_MAGNIFIC_FOLDER_ID are configured as secrets/variables, this stage
+is a documented no-op: it reports which files *would* be archived and to
+which queue, but uploads nothing. A legacy GOOGLE_SERVICE_ACCOUNT_JSON
+path remains available only for a future Shared Drive architecture -- it
+will not work against the current personal My Drive folders.
 
 Once configured, archive() provides:
 - SHA256 integrity verification (local hash recorded in Drive file
@@ -23,14 +35,32 @@ import hashlib
 import json
 import time
 from pathlib import Path
+
+from google.auth.transport.requests import Request
+from google.oauth2.credentials import Credentials
+
 from . import config
 
 MAX_RETRIES = 4
 RETRY_BASE_DELAY_SECONDS = 2
 
 
+OAUTH_SCOPES = ['https://www.googleapis.com/auth/drive.file']
+
+
+def _oauth_configured() -> bool:
+    return bool(
+        config.GOOGLE_OAUTH_CLIENT_ID and config.GOOGLE_OAUTH_CLIENT_SECRET and config.GOOGLE_OAUTH_REFRESH_TOKEN
+    )
+
+
+def _service_account_configured() -> bool:
+    return bool(config.GOOGLE_SERVICE_ACCOUNT_JSON)
+
+
 def is_configured() -> bool:
-    return bool(config.GOOGLE_SERVICE_ACCOUNT_JSON and config.DRIVE_ADOBE_FOLDER_ID and config.DRIVE_MAGNIFIC_FOLDER_ID)
+    folders_configured = bool(config.DRIVE_ADOBE_FOLDER_ID and config.DRIVE_MAGNIFIC_FOLDER_ID)
+    return folders_configured and (_oauth_configured() or _service_account_configured())
 
 
 def _sha256_file(path: Path) -> str:
@@ -41,14 +71,37 @@ def _sha256_file(path: Path) -> str:
     return h.hexdigest()
 
 
+def _build_oauth_credentials():
+    """Builds user (owner-account) OAuth credentials from a stored refresh
+    token and refreshes them to a valid access token immediately, so a
+    bad/revoked refresh token fails fast with a clear error rather than
+    surfacing as an opaque 401 deep inside the upload call."""
+    creds = Credentials(
+        token=None,
+        refresh_token=config.GOOGLE_OAUTH_REFRESH_TOKEN,
+        client_id=config.GOOGLE_OAUTH_CLIENT_ID,
+        client_secret=config.GOOGLE_OAUTH_CLIENT_SECRET,
+        token_uri='https://oauth2.googleapis.com/token',
+        scopes=OAUTH_SCOPES,
+    )
+    creds.refresh(Request())
+    return creds
+
+
 def _build_service():
-    from google.oauth2 import service_account
     from googleapiclient.discovery import build
 
-    creds_info = json.loads(config.GOOGLE_SERVICE_ACCOUNT_JSON)
-    creds = service_account.Credentials.from_service_account_info(
-        creds_info, scopes=['https://www.googleapis.com/auth/drive']
-    )
+    if _oauth_configured():
+        creds = _build_oauth_credentials()
+    elif _service_account_configured():
+        # Only valid against a Shared Drive -- see module docstring.
+        from google.oauth2 import service_account
+        creds_info = json.loads(config.GOOGLE_SERVICE_ACCOUNT_JSON)
+        creds = service_account.Credentials.from_service_account_info(
+            creds_info, scopes=['https://www.googleapis.com/auth/drive']
+        )
+    else:
+        raise RuntimeError('drive_archive._build_service called while not configured')
     return build('drive', 'v3', credentials=creds)
 
 

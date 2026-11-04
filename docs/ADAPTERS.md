@@ -53,16 +53,50 @@ stays disabled until separately authorized.
 
 ## Google Drive archival -- implemented, inactive until configured
 
-Unattended GitHub Actions runs cannot reuse an interactive Google sign-in;
-they need a **service account** with access granted on the target Drive
-folders (`production/`, `production_assets/`, or whichever Adobe/Magnific
-queue folders the owner designates inside the existing Drive workspace --
-not a new Google Cloud project). Until `GOOGLE_SERVICE_ACCOUNT_JSON`
-(secret) and `DRIVE_ADOBE_FOLDER_ID` / `DRIVE_MAGNIFIC_FOLDER_ID`
-(variables) are set, `drive_archive.archive()` is a documented no-op: it
-reports `drive_not_configured` per file instead of uploading, so nothing is
-fabricated as working. Once those three are configured it uploads for real
-via the Drive v3 API, with:
+**Corrected architecture (2026-11-04):** the target Drive folders live in a
+**personal Google My Drive account**, not a Workspace Shared Drive. A
+Google Cloud service account cannot own or write files there even when
+granted folder "Editor" access -- Google enforces this regardless of
+sharing settings, so the service-account path proposed earlier would
+silently fail against these specific folders. It has been corrected to a
+secondary/legacy path (kept only for a possible future Shared Drive; see
+"Shared Drive evaluation" below).
+
+**Supported path: OAuth 2.0 user credentials for the owner's own account.**
+One-time, interactive, run locally by the owner:
+
+1. In the existing `pam-cloud-508907` GCP project (no new project): APIs &
+   Services -> OAuth consent screen (configure once) -> Credentials ->
+   Create OAuth client ID -> type **Desktop app**.
+2. Owner runs `python3 scripts/setup_drive_oauth.py --client-id ... --client-secret ...`
+   (or `--client-secrets-file client_secret.json`) on their own machine.
+   This opens a real Google sign-in/consent screen in their browser,
+   scoped to the single minimum permission `drive.file` (the app can only
+   see/manage files *it* creates -- never the owner's whole Drive).
+3. The script exchanges consent for a refresh token and prints the three
+   values to set as GitHub secrets. Nothing is written to this repo or to
+   Drive.
+4. Owner runs:
+   ```
+   gh secret set GOOGLE_OAUTH_CLIENT_ID --body "..."
+   gh secret set GOOGLE_OAUTH_CLIENT_SECRET --body "..."
+   gh secret set GOOGLE_OAUTH_REFRESH_TOKEN --body "..."
+   gh variable set DRIVE_ADOBE_FOLDER_ID --body "..."
+   gh variable set DRIVE_MAGNIFIC_FOLDER_ID --body "..."
+   ```
+
+Every unattended run then builds `google.oauth2.credentials.Credentials`
+from the stored refresh token and calls `.refresh()` immediately
+(`drive_archive._build_oauth_credentials()`), so an unattended cloud run
+always starts with a valid access token -- no further owner interaction is
+needed unless the refresh token is revoked. The owner never has to sign in
+again after the one-time setup.
+
+Until the three `GOOGLE_OAUTH_*` secrets (or, for a future Shared Drive,
+`GOOGLE_SERVICE_ACCOUNT_JSON`) and both `DRIVE_ADOBE_FOLDER_ID` /
+`DRIVE_MAGNIFIC_FOLDER_ID` are set, `drive_archive.archive()` is a
+documented no-op: it reports `drive_not_configured` instead of uploading.
+Once configured it uploads for real via the Drive v3 API, with:
 
 - SHA256 integrity verification (local hash recorded as a Drive file
   property, compared against a read-back hash after upload).
@@ -78,10 +112,34 @@ via the Drive v3 API, with:
   real production asset.
 
 This code path is implemented and unit-tested (`tests/test_drive_archive.py`,
-against a fake Drive service -- no real credentials needed for tests), but
-has not been exercised against a real Drive folder: that requires the
-owner to provision the service account (see Gaps in PLATFORM_RULES.md /
+against a fake Drive service and fake OAuth credentials object -- no real
+credentials or network access needed for tests, 44 tests total, all
+passing). It has not yet been exercised against the real Drive folders:
+that requires the owner to complete the one-time OAuth consent above (see
 the final report's BLOCKERS).
+
+### Shared Drive evaluation (no migration performed)
+
+A dedicated Google Workspace Shared Drive would let a service account own
+files directly (Shared Drives, unlike personal My Drive, support
+service-account ownership), which would remove the refresh-token lifecycle
+entirely and make multi-user access/auditing cleaner. Trade-offs:
+
+- **Requires a paid Google Workspace plan** (Shared Drives are a Workspace
+  feature, not available to a plain personal Google account) -- a real
+  cost, not just a config change.
+- Would mean moving `production/`, `production_assets/`, `intelligence/`,
+  and `docs/` into a new Shared Drive, which changes every existing
+  sharing link and permission currently pointing at the personal-account
+  folders.
+- The OAuth path above has no such cost and no migration risk, and the
+  `drive.file` scope already keeps the service's reach minimal.
+
+**Recommendation: keep OAuth on the existing personal My Drive for now.**
+Revisit a Shared Drive only if/when there's an actual Workspace plan in
+place and a concrete need for service-account ownership or multi-user
+write access -- not before. No files were moved or restructured as part of
+this evaluation.
 
 ## Magnific Search Trends -- manual-import adapter (`trend_import.py`)
 

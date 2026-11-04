@@ -9,14 +9,92 @@ import pytest
 from stock_factory import drive_archive
 
 
+def _clear_all_drive_config(monkeypatch):
+    for name in (
+        'GOOGLE_OAUTH_CLIENT_ID', 'GOOGLE_OAUTH_CLIENT_SECRET', 'GOOGLE_OAUTH_REFRESH_TOKEN',
+        'GOOGLE_SERVICE_ACCOUNT_JSON', 'DRIVE_ADOBE_FOLDER_ID', 'DRIVE_MAGNIFIC_FOLDER_ID',
+    ):
+        monkeypatch.setattr(f'stock_factory.config.{name}', '')
+
+
 def test_not_configured_is_a_safe_noop(tmp_path, monkeypatch):
-    monkeypatch.setattr('stock_factory.config.GOOGLE_SERVICE_ACCOUNT_JSON', '')
-    monkeypatch.setattr('stock_factory.config.DRIVE_ADOBE_FOLDER_ID', '')
-    monkeypatch.setattr('stock_factory.config.DRIVE_MAGNIFIC_FOLDER_ID', '')
+    _clear_all_drive_config(monkeypatch)
     f = tmp_path / 'a.jpg'
     f.write_bytes(b'x' * 10)
     result = drive_archive.archive(f, 'adobe')
     assert result == {'archived': False, 'queue': 'adobe', 'reason': 'drive_not_configured', 'file': 'a.jpg'}
+
+
+def test_is_configured_requires_folder_ids_even_with_oauth(monkeypatch):
+    _clear_all_drive_config(monkeypatch)
+    monkeypatch.setattr('stock_factory.config.GOOGLE_OAUTH_CLIENT_ID', 'id')
+    monkeypatch.setattr('stock_factory.config.GOOGLE_OAUTH_CLIENT_SECRET', 'secret')
+    monkeypatch.setattr('stock_factory.config.GOOGLE_OAUTH_REFRESH_TOKEN', 'refresh')
+    assert drive_archive.is_configured() is False  # no folder IDs yet
+    monkeypatch.setattr('stock_factory.config.DRIVE_ADOBE_FOLDER_ID', 'adobe-folder')
+    monkeypatch.setattr('stock_factory.config.DRIVE_MAGNIFIC_FOLDER_ID', 'magnific-folder')
+    assert drive_archive.is_configured() is True
+
+
+def test_is_configured_true_via_oauth_without_service_account(monkeypatch):
+    _clear_all_drive_config(monkeypatch)
+    monkeypatch.setattr('stock_factory.config.GOOGLE_OAUTH_CLIENT_ID', 'id')
+    monkeypatch.setattr('stock_factory.config.GOOGLE_OAUTH_CLIENT_SECRET', 'secret')
+    monkeypatch.setattr('stock_factory.config.GOOGLE_OAUTH_REFRESH_TOKEN', 'refresh')
+    monkeypatch.setattr('stock_factory.config.DRIVE_ADOBE_FOLDER_ID', 'adobe-folder')
+    monkeypatch.setattr('stock_factory.config.DRIVE_MAGNIFIC_FOLDER_ID', 'magnific-folder')
+    assert drive_archive._oauth_configured() is True
+    assert drive_archive._service_account_configured() is False
+    assert drive_archive.is_configured() is True
+
+
+def test_build_oauth_credentials_refreshes_with_refresh_token(monkeypatch):
+    _clear_all_drive_config(monkeypatch)
+    monkeypatch.setattr('stock_factory.config.GOOGLE_OAUTH_CLIENT_ID', 'cid')
+    monkeypatch.setattr('stock_factory.config.GOOGLE_OAUTH_CLIENT_SECRET', 'csecret')
+    monkeypatch.setattr('stock_factory.config.GOOGLE_OAUTH_REFRESH_TOKEN', 'rtoken')
+
+    refreshed = {'called': False}
+
+    class _FakeCreds:
+        def __init__(self, **kwargs):
+            self.kwargs = kwargs
+
+        def refresh(self, request):
+            refreshed['called'] = True
+
+    monkeypatch.setattr(drive_archive, 'Credentials', _FakeCreds)
+    monkeypatch.setattr(drive_archive, 'Request', lambda: None)
+
+    creds = drive_archive._build_oauth_credentials()
+
+    assert refreshed['called'] is True
+    assert creds.kwargs['refresh_token'] == 'rtoken'
+    assert creds.kwargs['client_id'] == 'cid'
+    assert creds.kwargs['client_secret'] == 'csecret'
+    assert creds.kwargs['scopes'] == drive_archive.OAUTH_SCOPES
+
+
+def test_build_service_raises_clear_error_when_not_configured(monkeypatch):
+    _clear_all_drive_config(monkeypatch)
+    with pytest.raises(RuntimeError, match='not configured'):
+        drive_archive._build_service()
+
+
+def test_build_service_prefers_oauth_over_service_account(monkeypatch):
+    _clear_all_drive_config(monkeypatch)
+    monkeypatch.setattr('stock_factory.config.GOOGLE_OAUTH_CLIENT_ID', 'cid')
+    monkeypatch.setattr('stock_factory.config.GOOGLE_OAUTH_CLIENT_SECRET', 'csecret')
+    monkeypatch.setattr('stock_factory.config.GOOGLE_OAUTH_REFRESH_TOKEN', 'rtoken')
+    monkeypatch.setattr('stock_factory.config.GOOGLE_SERVICE_ACCOUNT_JSON', '{"type": "service_account"}')
+
+    calls = {'oauth': 0, 'service_account': 0}
+    monkeypatch.setattr(drive_archive, '_build_oauth_credentials', lambda: calls.__setitem__('oauth', calls['oauth'] + 1) or object())
+    monkeypatch.setattr('googleapiclient.discovery.build', lambda *a, **k: 'fake-service')
+
+    result = drive_archive._build_service()
+    assert result == 'fake-service'
+    assert calls['oauth'] == 1
 
 
 def test_unknown_queue_raises(tmp_path):
