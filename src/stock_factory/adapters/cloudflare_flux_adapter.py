@@ -1,6 +1,7 @@
 """Cloudflare Workers AI FLUX.1 Schnell text-to-image adapter. Free tier only."""
 from __future__ import annotations
 import os
+import sys
 import base64
 import time
 import requests
@@ -60,13 +61,16 @@ class CloudflareFluxAdapter(Adapter):
                         prompt=prompt,
                     )
                 else:
+                    print(f'ERROR: Unexpected API response structure: {result}', file=sys.stderr)
                     return None
             except requests.exceptions.RequestException as e:
+                print(f'ERROR: API request failed (attempt {attempt + 1}/{self.max_retries}): {type(e).__name__}: {e}', file=sys.stderr)
                 if attempt < self.max_retries - 1:
                     time.sleep(self.retry_delay ** (attempt + 1))
                 else:
                     return None
-            except Exception:
+            except Exception as e:
+                print(f'ERROR: Unexpected error in _generate_image: {type(e).__name__}: {e}', file=sys.stderr)
                 return None
 
         return None
