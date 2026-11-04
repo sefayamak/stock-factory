@@ -101,6 +101,18 @@ scores what changed between the two most recent snapshots (new / rising /
 falling / dropped terms, by rank and volume delta).
 
 This is explicitly **not** live trend monitoring -- it is only as fresh as
-the most recent human-provided snapshot, and `trends.py`'s deterministic
-static topic bank remains the default until a real snapshot history exists
-and is wired in. Do not represent the static topic bank as trend data.
+the most recent human-provided snapshot.
+
+**Prioritization wiring (2026-11-04):** `trends.select_concepts_detailed()`
+uses a snapshot only if it is younger than `config.TREND_STALE_AFTER_DAYS`
+(default 14 days); a stale or missing snapshot falls back to the
+deterministic static topic bank with no trend influence at all. When a
+fresh snapshot exists, its terms are ranked new/rising-first (via
+`trend_import.score_trend_changes` against the prior snapshot, or by rank
+alone with only one snapshot on file) and fill up to
+`config.TREND_PRIORITY_SLOTS_MAX` queue slots; remaining slots are always
+static-bank concepts. Provenance (`source`, `trend_term`, `trend_status`,
+`trend_snapshot_imported_at`) is carried on every `Concept`/`QueueItem` and
+into the dry-run CSV, so a report always shows whether and why a given
+day's queue was trend-influenced. Do not represent the static topic bank,
+or a stale snapshot, as current trend data.

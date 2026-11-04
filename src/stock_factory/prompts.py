@@ -1,7 +1,7 @@
 """Stage 2: prompt generation and the daily production queue."""
 from __future__ import annotations
 from dataclasses import dataclass
-from .trends import select_concepts
+from .trends import select_concepts_detailed
 
 
 @dataclass
@@ -10,6 +10,10 @@ class QueueItem:
     category: str
     scene: str
     prompt: str
+    source: str = 'static_topic_bank'  # 'trend_snapshot' | 'static_topic_bank' -- provenance
+    trend_term: str | None = None
+    trend_status: str | None = None
+    trend_snapshot_imported_at: str | None = None
 
 
 def make_prompt(scene: str) -> str:
@@ -25,9 +29,13 @@ def make_prompt(scene: str) -> str:
 
 
 def build_queue(day: str, count: int) -> list[QueueItem]:
-    concepts = select_concepts(day, count)
+    concepts = select_concepts_detailed(day, count)
     queue = []
-    for i, (cat, scene) in enumerate(concepts, 1):
+    for i, c in enumerate(concepts, 1):
         job_id = f'STK-{day.replace("-", "")}-{i:04d}'
-        queue.append(QueueItem(job_id=job_id, category=cat, scene=scene, prompt=make_prompt(scene)))
+        queue.append(QueueItem(
+            job_id=job_id, category=c.category, scene=c.scene, prompt=make_prompt(c.scene),
+            source=c.source, trend_term=c.trend_term, trend_status=c.trend_status,
+            trend_snapshot_imported_at=c.trend_snapshot_imported_at,
+        ))
     return queue

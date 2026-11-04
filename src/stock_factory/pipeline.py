@@ -47,6 +47,8 @@ def run(day: str, target: int, dry_run: bool) -> dict:
             rows.append({
                 'job_id': item.job_id, 'category': item.category, 'title': item.scene.split(',')[0][:145],
                 'prompt': item.prompt, 'status': 'NOT_FETCHED_DRY_RUN',
+                'trend_source': item.source, 'trend_term': item.trend_term,
+                'trend_status': item.trend_status, 'trend_snapshot_imported_at': item.trend_snapshot_imported_at,
             })
         tracker.record('fetched', 0)
     else:
@@ -104,7 +106,11 @@ def run(day: str, target: int, dry_run: bool) -> dict:
 
     config.STATE_DIR.mkdir(parents=True, exist_ok=True)
     csv_path = config.OUT_DIR / 'submission.csv'
-    fieldnames = ['job_id', 'category', 'title', 'prompt', 'status', 'reason', 'dimensions', 'source', 'drive_queue', 'drive_status', '_ai_generated']
+    fieldnames = [
+        'job_id', 'category', 'title', 'prompt', 'status', 'reason', 'dimensions', 'source',
+        'drive_queue', 'drive_status', '_ai_generated',
+        'trend_source', 'trend_term', 'trend_status', 'trend_snapshot_imported_at',
+    ]
     with csv_path.open('w', newline='', encoding='utf-8') as f:
         writer = csv.DictWriter(f, fieldnames=fieldnames, extrasaction='ignore')
         writer.writeheader()

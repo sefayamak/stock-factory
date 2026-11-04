@@ -27,6 +27,12 @@ OUT_DIR = Path(os.getenv('OUT_DIR', 'output'))
 # Manual-import snapshots of Magnific Search Trends (login-gated SPA, no
 # official export API -- see docs/PLATFORM_RULES.md and trend_import.py).
 TREND_SNAPSHOT_DIR = Path(os.getenv('TREND_SNAPSHOT_DIR', 'trend_inbox'))
+# A snapshot older than this is treated as stale and ignored by concept
+# selection, which falls back to the static topic bank instead.
+TREND_STALE_AFTER_DAYS = int(os.getenv('TREND_STALE_AFTER_DAYS', '14'))
+# At most this many queue slots per day are filled from trending terms;
+# the rest always comes from the deterministic static topic bank.
+TREND_PRIORITY_SLOTS_MAX = int(os.getenv('TREND_PRIORITY_SLOTS_MAX', '20'))
 
 # Google Drive archival (requirement 6). Needs a service account; see docs/ADAPTERS.md.
 GOOGLE_SERVICE_ACCOUNT_JSON = os.getenv('GOOGLE_SERVICE_ACCOUNT_JSON', '')

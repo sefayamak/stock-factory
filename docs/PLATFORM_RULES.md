@@ -13,10 +13,21 @@ attempted (would bypass login and is not something this project does).
 `docs/ADAPTERS.md`): the owner exports/copies visible terms from their own
 authenticated session into a JSON/CSV snapshot, which the pipeline ingests
 with historical snapshots, de-duplication, and rank/volume trend-change
-scoring. `trends.py` still defaults to its deterministic static topic bank
--- the manual-import history is not yet wired into concept selection, and
-is never to be described as live trend monitoring since it is only as
-fresh as the last human-provided snapshot.
+scoring.
+
+**Wired into production prioritization 2026-11-04**: `trends.select_concepts_detailed`
+now checks for a snapshot younger than `TREND_STALE_AFTER_DAYS` (default 14);
+if fresh, its new/rising terms (by the two-snapshot trend-change score, falling
+back to rank order with only one snapshot) fill up to `TREND_PRIORITY_SLOTS_MAX`
+(default 20) queue slots first, and the static topic bank fills the rest. A
+stale or absent snapshot falls back to the static bank entirely. Every
+`QueueItem` and CSV row (dry-run) carries `source`/`trend_source`
+(`trend_snapshot` vs `static_topic_bank`), `trend_term`, `trend_status`, and
+`trend_snapshot_imported_at`, so provenance and staleness are always visible,
+never silently implied as live data. The real (`--execute`) CSV path does not
+yet carry this provenance per accepted image -- the manual-inbox adapter has
+no link between a fetched file and the queue slot it fulfills; only dry-run
+rows (which are 1:1 with queue items) currently show it.
 
 ## Magnific Contributor Guidelines (Google Slides deck, full deck fetched via export)
 **VERIFIED**, retrieved in full ("FAQs for Magnific Contributors").
