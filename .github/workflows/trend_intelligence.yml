@@ -37,6 +37,29 @@ jobs:
           restore-keys: |
             trend-intelligence-state-
 
+      # Alert history (state/intelligence/alert_history.json) must survive
+      # across runs or every scan would believe no alert was ever sent. The
+      # cache above is best-effort (evicted after 7 days unused), so if it
+      # missed, restore the copy published to the intelligence-feed branch.
+      - name: Restore alert history from intelligence-feed branch (if cache missed)
+        shell: bash
+        run: |
+          if [ -f state/intelligence/alert_history.json ]; then
+            echo "alert history restored from cache"
+          elif git ls-remote --exit-code --heads origin intelligence-feed > /dev/null 2>&1; then
+            git fetch --depth 1 origin intelligence-feed
+            mkdir -p state/intelligence
+            if git show FETCH_HEAD:state/intelligence/alert_history.json > /tmp/alert_history.json 2>/dev/null \
+               && [ -s /tmp/alert_history.json ]; then
+              mv /tmp/alert_history.json state/intelligence/alert_history.json
+              echo "alert history restored from intelligence-feed branch"
+            else
+              echo "::warning::no alert history on intelligence-feed branch -- starting a new history"
+            fi
+          else
+            echo "::warning::intelligence-feed branch missing -- starting a new alert history"
+          fi
+
       - uses: actions/setup-python@v5
         with:
           python-version: '3.11'
@@ -105,11 +128,12 @@ jobs:
 
           mkdir -p /tmp/feed-branch/state/intelligence
           cp state/intelligence/feed.json state/intelligence/feed.sha256 /tmp/feed-branch/state/intelligence/
+          cp state/intelligence/alert_history.json /tmp/feed-branch/state/intelligence/
 
           cd /tmp/feed-branch
           git config user.name 'stock-factory-trend-intelligence-bot'
           git config user.email 'actions@users.noreply.github.com'
-          git add state/intelligence/feed.json state/intelligence/feed.sha256
+          git add state/intelligence/feed.json state/intelligence/feed.sha256 state/intelligence/alert_history.json
           if git diff --cached --quiet; then
             echo "no change in feed content -- nothing to publish"
           else
