@@ -1,0 +1,83 @@
+name: Stock Factory - global trend intelligence scan
+on:
+  schedule:
+    # Runs daily, ahead of the main production workflow (07:23 UTC) so a
+    # fresh feed.json is always available to trends.py by the time it runs.
+    - cron: '5 6 * * *'
+  workflow_dispatch: {}
+permissions:
+  contents: read
+concurrency:
+  group: stock-factory-trend-intelligence
+  cancel-in-progress: false
+jobs:
+  scan:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    env:
+      # Real adapters only activate when these are set; both are OPTIONAL.
+      # Unset = adapter reports unavailable, scan falls back to
+      # calendar-based predicted demand (never fabricates a number).
+      ADOBE_STOCK_API_KEY: ${{ secrets.ADOBE_STOCK_API_KEY }}
+      GOOGLE_CLOUD_PROJECT: ${{ vars.GOOGLE_CLOUD_PROJECT }}
+    steps:
+      - uses: actions/checkout@v4
+
+      # Incremental/cached state: restore the previous run's feed + trend
+      # history so staleness checks and trend-change scoring (new/rising
+      # vs stable) have something to diff against, instead of starting
+      # cold every day.
+      - name: Restore prior intelligence state
+        uses: actions/cache@v4
+        with:
+          path: |
+            state/intelligence
+            state/trend_history
+          key: trend-intelligence-state-${{ github.run_id }}
+          restore-keys: |
+            trend-intelligence-state-
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+          cache: 'pip'
+      - run: pip install -r requirements.txt
+
+      - name: Run global trend-intelligence scan
+        shell: bash
+        env:
+          PYTHONPATH: src
+        run: |
+          set -e
+          attempt=0
+          until python -m stock_factory.trend_intelligence.scan; do
+            attempt=$((attempt+1))
+            if [ "$attempt" -ge 3 ]; then
+              echo "::error::trend-intelligence scan failed after 3 attempts"
+              exit 1
+            fi
+            echo "scan attempt $attempt failed, retrying in 10s..."
+            sleep 10
+          done
+
+      - name: Stale-feed guard
+        shell: bash
+        env:
+          PYTHONPATH: src
+        run: |
+          python - <<'PY'
+          import sys
+          from stock_factory.trend_intelligence import feed as feed_mod
+          f = feed_mod.load_feed()
+          if feed_mod.is_feed_stale(f):
+              print('::warning::trend-intelligence feed is missing or stale after this run')
+              sys.exit(1)
+          print(f"feed OK: scan_date={f['scan_date']} events_indexed={f['events_indexed']}")
+          PY
+
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: trend-intelligence-feed-${{ github.run_id }}
+          path: state/intelligence/
+          retention-days: 30
