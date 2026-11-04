@@ -10,7 +10,7 @@ from datetime import datetime, date, timedelta, timezone
 from pathlib import Path
 
 from .. import config
-from . import calendar_sources, early_warning, scoring, briefs, deadlines
+from . import calendar_sources, early_warning, scoring, briefs, deadlines, alert_history
 from .adapters.base import SIGNAL_SEARCH_DEMAND, SIGNAL_CATALOG_SUPPLY
 from .adapters.adobe_stock_adapter import AdobeStockSearchAdapter
 from .adapters.google_trends_adapter import GoogleTrendsBigQueryAdapter
@@ -120,9 +120,13 @@ def collect_horizon_events(today: date, countries: list[str] | None = None) -> l
     return [e for e in events if start <= e.event_date <= end]
 
 
-def run_scan(today: date | None = None, year: int | None = None) -> dict:
+def run_scan(today: date | None = None, year: int | None = None, persist_history: bool = True) -> dict:
     """`year` is accepted for backward compatibility only and ignored:
-    the horizon is always derived from `today` (see collect_horizon_events)."""
+    the horizon is always derived from `today` (see collect_horizon_events).
+
+    Loads the persistent alert history (alert_history.py), evaluates
+    alerts / missed opportunities against it, and -- unless
+    persist_history=False -- saves the updated history at the end."""
     today = today or datetime.now(timezone.utc).date()
     horizon_start, horizon_end = horizon_bounds(today)
     events = collect_horizon_events(today)
@@ -138,8 +142,11 @@ def run_scan(today: date | None = None, year: int | None = None) -> dict:
         catalog_supply_by_term=catalog_supply_by_term,
     )
     windows = early_warning.windowed_events(events, today)
-    alerts = early_warning.alerts_for(events, today)
-    missed = early_warning.missed_opportunity_check(events, today)
+    history = alert_history.load_history()
+    history_load_status = history.get('_load_status')
+    scan_gap_days = alert_history.mark_scan(history, today)
+    alerts, missed = early_warning.evaluate(events, today, history)
+    alert_history.prune(history, today)
     # Same date model as briefs (deadlines.py): opportunities whose
     # submission deadline has passed are bucketed separately and never
     # compete for top_opportunities / brief slots.
@@ -177,6 +184,16 @@ def run_scan(today: date | None = None, year: int | None = None) -> dict:
         'historical_download_performance_basis': 'portfolio_wide_magnific_baseline_acceptance_rate',
         'window_counts': {str(k): len(v) for k, v in windows.items()},
         'alerts': [a.to_dict() for a in alerts],
+        'alert_state': {
+            'history_file': 'state/intelligence/alert_history.json',
+            'history_load_status': history_load_status,
+            'last_successful_scan_date': today.isoformat(),
+            'previous_scan_date': history.get('previous_scan_date'),
+            'scan_gap_days': scan_gap_days,
+            'events_tracked': len(history['events']),
+            'production_status_source': 'none wired -- every event reports production_status="unknown" '
+                                        'unless alert_history.set_production_status() recorded one',
+        },
         'missed_opportunities': missed,
         'deadline_model': deadlines.config_dict(),
         'top_opportunities': [s.to_dict() for s in on_time_scores[:50]],
@@ -184,6 +201,8 @@ def run_scan(today: date | None = None, year: int | None = None) -> dict:
         'late_opportunities_total': len(late_scores),
         'creative_briefs': [b.to_dict() for b in briefs_list],
     }
+    if persist_history:
+        alert_history.save_history(history)
     return feed
 
 
