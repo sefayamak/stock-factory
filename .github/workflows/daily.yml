@@ -1,11 +1,11 @@
-name: Stock Factory - controlled daily batch
+name: Stock Factory - daily production run
 on:
   schedule:
     - cron: '23 7 * * *'
   workflow_dispatch:
     inputs:
       execute:
-        description: 'Enable paid image generation (requires ALLOW_PAID_GENERATION=true variable)'
+        description: 'Actually ingest/process (otherwise just builds the prompt queue)'
         required: true
         type: boolean
         default: false
@@ -17,12 +17,22 @@ concurrency:
 jobs:
   generate:
     runs-on: ubuntu-latest
-    timeout-minutes: 25
+    timeout-minutes: 30
     env:
+      # Paid Gemini API generation stays off unless both are set.
       GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
       ALLOW_PAID_GENERATION: ${{ vars.ALLOW_PAID_GENERATION }}
-      DAILY_LIMIT: '3'
-      MAX_REQUESTS: '3'
+      # Source(s) this run pulls from. 'manual_inbox' = human-downloaded Flow
+      # images committed/synced into INBOX_DIR; 'flow' is deliberately absent
+      # here -- see src/stock_factory/adapters/flow_adapter.py (BLOCKED).
+      ENABLED_ADAPTERS: ${{ vars.ENABLED_ADAPTERS || 'manual_inbox' }}
+      DAILY_TARGET_MIN: '100'
+      DAILY_TARGET_STRETCH: '150'
+      DAILY_TARGET_CEILING: '200'
+      # Drive archival (stage 6) stays a documented no-op until these are set.
+      GOOGLE_SERVICE_ACCOUNT_JSON: ${{ secrets.GOOGLE_SERVICE_ACCOUNT_JSON }}
+      DRIVE_ADOBE_FOLDER_ID: ${{ vars.DRIVE_ADOBE_FOLDER_ID }}
+      DRIVE_MAGNIFIC_FOLDER_ID: ${{ vars.DRIVE_MAGNIFIC_FOLDER_ID }}
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
@@ -30,18 +40,22 @@ jobs:
           python-version: '3.11'
           cache: 'pip'
       - run: pip install -r requirements.txt
-      - name: Generate or dry-run
+      - name: Run pipeline (dry-run unless execute requested)
         shell: bash
         env:
           MANUAL_EXECUTE: ${{ inputs.execute }}
+          PYTHONPATH: src
         run: |
-          if [[ "${ALLOW_PAID_GENERATION}" == "true" && ( "${GITHUB_EVENT_NAME}" == "schedule" || "${MANUAL_EXECUTE}" == "true" ) && -n "${GEMINI_API_KEY}" ]]; then
-            python -m src.factory --out "output/${GITHUB_RUN_ID}" --count 3 --execute
+          if [[ "${GITHUB_EVENT_NAME}" == "schedule" || "${MANUAL_EXECUTE}" == "true" ]]; then
+            python -m stock_factory.pipeline --target "${DAILY_TARGET_MIN}" --execute
           else
-            python -m src.factory --out "output/${GITHUB_RUN_ID}" --count 3
+            python -m stock_factory.pipeline --target "${DAILY_TARGET_MIN}"
           fi
       - uses: actions/upload-artifact@v4
+        if: always()
         with:
-          name: stock-batch-${{ github.run_id }}
-          path: output/
+          name: stock-factory-${{ github.run_id }}
+          path: |
+            output/
+            state/
           retention-days: 30
