@@ -13,8 +13,9 @@ class Event:
     category: str             # 'national_holiday' | 'religious_cultural' | 'un_observance' |
                                # 'season' | 'retail_campaign' | 'regional_festival'
     source: str                # where the date came from (library/dataset + citation)
-    verified_at: str           # ISO date this record was generated/verified -- never
-                               # inherited silently from a prior year
+    verified_at: str           # ISO date the underlying SOURCE was last actually verified
+                               # ('' = computed/derived, not independently verified). This is
+                               # NOT the scan date -- see feed.source_verification.
     region: str = ''           # subdivision, if any; '' = whole country
     timezone: str = ''         # IANA tz, best-effort, '' if not resolvable
     cultural_context: str = ''

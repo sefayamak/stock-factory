@@ -45,7 +45,8 @@ PYTHONPATH=src python -m stock_factory.pipeline --target 100 --execute  # ingest
 - Daily report + non-zero exit on shortfall vs. `DAILY_TARGET_MIN` gives GitHub Actions something to alert on without extra integrations.
 
 ## Global trend intelligence (stage 1 upgrade)
-`stock_factory/trend_intelligence/` adds a worldwide holiday/UN-observance/
+`stock_factory/trend_intelligence/` adds a multi-country (not worldwide: an explicit
+country subset, with a coverage-and-gaps report in the feed) holiday/UN-observance/
 season/retail-campaign calendar, a 365-day rolling early-warning scan, and
 an explainable opportunity score, feeding a versioned `state/intelligence/feed.json`
 that stage 1 (`trends.py`) reads to prioritize queue slots ahead of the
@@ -56,7 +57,8 @@ full status (what's verified vs. still a documented gap) and a scheduled
 GitHub Actions workflow at `.github/workflows/trend_intelligence.yml`.
 
 ## Gaps before this is a full 24/7 production line
-1. Trend research now has a real worldwide calendar engine (see above);
+1. Trend research now has a real multi-country calendar engine (see above;
+   not worldwide -- `feed.json` `calendar_coverage` lists covered countries and gaps);
    Adobe Stock Search API / Google Trends BigQuery adapters exist but need
    `ADOBE_STOCK_API_KEY` / `GOOGLE_CLOUD_PROJECT` configured to go live;
    Magnific stays manual-import only (confirmed blocked, no official export).

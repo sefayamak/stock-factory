@@ -1,4 +1,5 @@
-"""Worldwide event calendar sources.
+"""Multi-country event calendar sources (an explicit subset, NOT worldwide --
+see coverage_report() for the covered countries and the gap list).
 
 Data sources actually wired up here, and why they're legitimate/accessible:
 
@@ -91,12 +92,50 @@ def _country_holidays(iso2: str, year: int) -> dict:
     return by_date
 
 
+# Date the curated UN observance list below was last checked against the
+# published UN page (PR #1 authoring). Update ONLY when it is re-checked --
+# it is deliberately not "today", which would claim a daily re-verification
+# that never happens.
+UN_LIST_VERIFIED_ON = '2026-11-04'
+
+# Calendar sources that are NOT covered at all (no uniform free/official API).
+UNCOVERED_SOURCE_TYPES = (
+    'countries not in SUPPORTED_COUNTRIES (see calendar_coverage.library_supported_not_covered)',
+    'sub-national/regional holidays (only whole-country holidays are indexed)',
+    'school-term calendars', 'tourism-board event calendars', 'sports fixtures',
+    'retail campaigns other than US Black Friday / Cyber Monday',
+)
+
+
+def coverage_report() -> dict:
+    """Explicit coverage-and-gaps report. This calendar is a multi-country
+    SUBSET, never "worldwide"."""
+    try:
+        supported = set(_holidays.list_supported_countries().keys())
+    except Exception:
+        supported = set()
+    covered = set(SUPPORTED_COUNTRIES)
+    return {
+        'is_worldwide': False,
+        'countries_covered': len(covered),
+        'country_codes_covered': sorted(covered),
+        'holidays_library_supported_countries': len(supported),
+        'library_supported_not_covered': sorted(supported - covered),
+        'regional_subdivisions_covered': False,
+        'gaps': list(UNCOVERED_SOURCE_TYPES),
+        'note': f'{len(covered)} countries out of {len(supported)} the holidays library supports '
+                '(and ~195 countries worldwide); plus GLOBAL UN observances and astronomical seasons.',
+    }
+
+
 def holiday_events(year: int, countries: list[str] | None = None) -> list[Event]:
     """National/religious/cultural holiday events for the given year,
     always recomputed for that exact year (movable dates are never
     hardcoded or copied from a previous year)."""
     countries = countries or list(SUPPORTED_COUNTRIES.keys())
-    verified_at = _dt.date.today().isoformat()
+    # Computed offline by the library at scan time; not independently
+    # verified against an official gazette by this scan -> verified_at ''.
+    verified_at = ''
     events: list[Event] = []
     for iso2 in countries:
         meta = SUPPORTED_COUNTRIES.get(iso2, {})
@@ -112,7 +151,7 @@ def holiday_events(year: int, countries: list[str] | None = None) -> list[Event]
                     local_name=name,
                     english_name=name,
                     category='religious_cultural' if _looks_religious(name) else 'national_holiday',
-                    source=f'holidays library (python "holidays" package) country_holidays({iso2!r}, {year})',
+                    source=f'holidays library (python "holidays" package {_holidays.__version__}) country_holidays({iso2!r}, {year})',
                     verified_at=verified_at,
                     region=meta.get('region', ''),
                     timezone=meta.get('tz', ''),
@@ -200,7 +239,7 @@ _UN_FIXED_DATES: list[tuple[int, int, str, str]] = [
 
 
 def un_observance_events(year: int) -> list[Event]:
-    verified_at = _dt.date.today().isoformat()
+    verified_at = UN_LIST_VERIFIED_ON
     events = []
     for month, day, name, hint in _UN_FIXED_DATES:
         events.append(Event(
@@ -250,7 +289,7 @@ def season_events(year: int) -> list[Event]:
     """One pair of Event records per equinox/solstice: the same instant,
     labeled once for the Northern-hemisphere season and once for the
     Southern-hemisphere season (they differ)."""
-    verified_at = _dt.date.today().isoformat()
+    verified_at = ''  # computed (approximation), nothing external to verify against
     events = []
     for which, (label, n_season, s_season) in _SEASON_LABELS.items():
         d = _equinox_solstice_approx(year, which)
@@ -278,7 +317,7 @@ def retail_campaign_events(year: int) -> list[Event]:
     thanksgiving = next((d for d, n in us.items() if 'Thanksgiving' in n), None)
     if thanksgiving is None:
         return []
-    verified_at = _dt.date.today().isoformat()
+    verified_at = ''  # derived from the computed Thanksgiving date, not verified externally
     black_friday = thanksgiving + _dt.timedelta(days=1)
     # Next Monday after Black Friday.
     days_to_monday = (7 - black_friday.weekday()) % 7 or 7

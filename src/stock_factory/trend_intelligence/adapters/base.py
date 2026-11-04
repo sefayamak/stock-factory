@@ -54,6 +54,8 @@ class AdapterStatus:
     signal_count: int = 0
     error: str | None = None
     notes: str = ''
+    last_fetched_at: str | None = None          # when WE fetched (latest signal)
+    latest_observation_date: str | None = None  # when the SOURCE observed it -- distinct from fetched_at
 
     @property
     def available(self) -> bool:
