@@ -3,3 +3,4 @@ google-api-python-client>=2.150,<3
 google-auth>=2.35,<3
 Pillow>=11,<13
 pytest>=8,<10
+holidays>=0.58,<1

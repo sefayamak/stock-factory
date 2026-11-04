@@ -12,11 +12,21 @@ report can show whether a given day's queue was trend-informed or not.
 A snapshot older than config.TREND_STALE_AFTER_DAYS is treated as stale
 and ignored -- this module never represents stale or absent snapshot
 data as live trend monitoring.
+
+After that, the global trend-intelligence feed (see
+trend_intelligence/feed.py, written by `python -m
+stock_factory.trend_intelligence.scan`) fills further slots with
+calendar-backed opportunities (holidays/observances/seasons/retail
+campaigns) whose production window covers `day`, ranked by the
+explainable opportunity score -- so the scan's scoring actually changes
+what gets produced, not just a report nobody reads. A missing or stale
+(> config.TREND_STALE_AFTER_DAYS old) feed is skipped silently, same
+stale-data policy as the Magnific snapshot above.
 """
 from __future__ import annotations
 import random
 from dataclasses import dataclass
-from datetime import datetime, timezone
+from datetime import date, datetime, timezone
 
 from . import config, trend_import
 
@@ -44,6 +54,8 @@ class Concept:
     trend_term: str | None = None
     trend_status: str | None = None
     trend_snapshot_imported_at: str | None = None
+    opportunity_score: float | None = None
+    event_country: str | None = None
 
 
 def select_concepts(day: str, n: int) -> list[tuple[str, str]]:
@@ -124,6 +136,8 @@ def select_concepts_detailed(day: str, n: int) -> list[Concept]:
                 trend_snapshot_imported_at=snapshot.imported_at,
             ))
 
+    concepts.extend(_calendar_opportunity_concepts(day, n - len(concepts)))
+
     pool = _static_pool(day)
     i = 0
     while len(concepts) < n and pool:
@@ -132,3 +146,56 @@ def select_concepts_detailed(day: str, n: int) -> list[Concept]:
         i += 1
 
     return concepts[:n]
+
+
+def _calendar_opportunity_concepts(day: str, remaining_slots: int) -> list[Concept]:
+    """Pulls briefs from the trend_intelligence feed whose production
+    window covers `day`, highest opportunity_score first, up to
+    config.CALENDAR_OPPORTUNITY_SLOTS_MAX. Import is local/lazy so this
+    module (and the rest of the pipeline) still works if the
+    trend_intelligence package or its feed is absent."""
+    if remaining_slots <= 0:
+        return []
+    try:
+        from .trend_intelligence import feed as feed_mod
+    except ImportError:
+        return []
+
+    feed = feed_mod.load_feed()
+    if feed_mod.is_feed_stale(feed):
+        return []
+
+    try:
+        day_date = date.fromisoformat(day)
+    except ValueError:
+        return []
+
+    candidates = []
+    for b in feed.get('creative_briefs', []):
+        if b.get('format') != 'PHOTO_JPG':
+            continue  # this pipeline's active generation path is photo today
+        start = b.get('production_window_start')
+        end = b.get('production_window_end')
+        if not (start and end and start <= day <= end):
+            continue
+        candidates.append(b)
+    candidates.sort(key=lambda b: b.get('opportunity_score', 0), reverse=True)
+
+    slots = min(remaining_slots, config.CALENDAR_OPPORTUNITY_SLOTS_MAX)
+    seen_events: set[str] = set()
+    concepts = []
+    for b in candidates:
+        if len(concepts) >= slots:
+            break
+        ev_key = f'{b.get("event_country")}:{b.get("event_name")}'
+        if ev_key in seen_events:
+            continue
+        seen_events.add(ev_key)
+        concepts.append(Concept(
+            category=f'calendar:{b.get("event_name", "")}',
+            scene=b.get('creative_concept', b.get('event_name', '')),
+            source='calendar_opportunity',
+            opportunity_score=b.get('opportunity_score'),
+            event_country=b.get('event_country'),
+        ))
+    return concepts
