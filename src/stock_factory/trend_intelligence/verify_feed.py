@@ -15,6 +15,8 @@ import sys
 
 from . import feed as feed_mod
 
+MAX_PROBLEMS_PRINTED = 20
+
 
 def main() -> int:
     parser = argparse.ArgumentParser()
@@ -29,8 +31,11 @@ def main() -> int:
     result = feed_mod.validate_feed(max_age_days=args.max_age_days)
 
     if not result.ok:
-        for p in result.problems:
+        for p in result.problems[:MAX_PROBLEMS_PRINTED]:
             print(f'::warning::[feed-verify] {p}', file=sys.stderr)
+        if len(result.problems) > MAX_PROBLEMS_PRINTED:
+            print(f'::warning::[feed-verify] ... and {len(result.problems) - MAX_PROBLEMS_PRINTED} more problem(s)',
+                  file=sys.stderr)
         print('[feed-verify] FAIL-SAFE FALLBACK: production will proceed using the static '
               'topic bank / any fresh trend_snapshot only -- calendar-based opportunity '
               'concepts are skipped for this run.', file=sys.stderr)
