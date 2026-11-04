@@ -320,3 +320,33 @@ def test_guess_mimetype_by_extension():
     assert _guess_mimetype(Path('x.svg')) == 'image/svg+xml'
     assert _guess_mimetype(Path('x.eps')) == 'application/postscript'
     assert _guess_mimetype(Path('x.unknownext')) == 'application/octet-stream'
+
+
+def test_is_configured_per_queue_magnific_only(monkeypatch):
+    from stock_factory import drive_archive
+    monkeypatch.setattr('stock_factory.drive_archive.config.GOOGLE_OAUTH_REFRESH_TOKEN', 'tok')
+    monkeypatch.setattr('stock_factory.drive_archive.config.GOOGLE_OAUTH_CLIENT_ID', 'id')
+    monkeypatch.setattr('stock_factory.drive_archive.config.GOOGLE_OAUTH_CLIENT_SECRET', 'sec')
+    monkeypatch.setattr('stock_factory.drive_archive.config.DRIVE_ADOBE_FOLDER_ID', '')
+    monkeypatch.setattr('stock_factory.drive_archive.config.DRIVE_MAGNIFIC_FOLDER_ID', 'magnific-folder')
+    assert drive_archive.is_configured(queue='magnific') is True
+    assert drive_archive.is_configured(queue='adobe') is False
+    assert drive_archive.is_configured() is False  # whole-pipeline gate still needs both
+
+
+def test_is_configured_no_queue_requires_both_folders(monkeypatch):
+    from stock_factory import drive_archive
+    monkeypatch.setattr('stock_factory.drive_archive.config.GOOGLE_OAUTH_REFRESH_TOKEN', 'tok')
+    monkeypatch.setattr('stock_factory.drive_archive.config.GOOGLE_OAUTH_CLIENT_ID', 'id')
+    monkeypatch.setattr('stock_factory.drive_archive.config.GOOGLE_OAUTH_CLIENT_SECRET', 'sec')
+    monkeypatch.setattr('stock_factory.drive_archive.config.DRIVE_ADOBE_FOLDER_ID', 'adobe-folder')
+    monkeypatch.setattr('stock_factory.drive_archive.config.DRIVE_MAGNIFIC_FOLDER_ID', 'magnific-folder')
+    assert drive_archive.is_configured() is True
+
+
+def test_is_configured_no_credentials_always_false(monkeypatch):
+    from stock_factory import drive_archive
+    monkeypatch.setattr('stock_factory.drive_archive.config.GOOGLE_OAUTH_REFRESH_TOKEN', '')
+    monkeypatch.setattr('stock_factory.drive_archive.config.GOOGLE_SERVICE_ACCOUNT_JSON', '')
+    monkeypatch.setattr('stock_factory.drive_archive.config.DRIVE_MAGNIFIC_FOLDER_ID', 'magnific-folder')
+    assert drive_archive.is_configured(queue='magnific') is False

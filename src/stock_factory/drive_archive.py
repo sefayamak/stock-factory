@@ -58,9 +58,23 @@ def _service_account_configured() -> bool:
     return bool(config.GOOGLE_SERVICE_ACCOUNT_JSON)
 
 
-def is_configured() -> bool:
-    folders_configured = bool(config.DRIVE_ADOBE_FOLDER_ID and config.DRIVE_MAGNIFIC_FOLDER_ID)
-    return folders_configured and (_oauth_configured() or _service_account_configured())
+def is_configured(queue: str | None = None) -> bool:
+    """With no `queue`, true only if credentials are present AND both
+    folder IDs are set (used by the pipeline-wide gate / verify_both_queues).
+    With `queue` ('adobe' or 'magnific'), true if credentials are present
+    AND that specific queue's folder ID is set -- this matters now that
+    Adobe is disabled by default (config.ADOBE_MARKETPLACE_ACTIVE=False):
+    without this, a missing/unset DRIVE_ADOBE_FOLDER_ID would silently
+    make Magnific archival a no-op too, even though Magnific is the sole
+    active marketplace and has its own folder correctly configured."""
+    creds_ok = _oauth_configured() or _service_account_configured()
+    if not creds_ok:
+        return False
+    if queue == 'adobe':
+        return bool(config.DRIVE_ADOBE_FOLDER_ID)
+    if queue == 'magnific':
+        return bool(config.DRIVE_MAGNIFIC_FOLDER_ID)
+    return bool(config.DRIVE_ADOBE_FOLDER_ID and config.DRIVE_MAGNIFIC_FOLDER_ID)
 
 
 def _sha256_file(path: Path) -> str:
@@ -172,7 +186,7 @@ def archive(path: Path, queue: str, mimetype: str | None = None) -> dict:
         mimetype = _guess_mimetype(path)
     if queue not in ('adobe', 'magnific'):
         raise ValueError(f'unknown queue: {queue}')
-    if not is_configured():
+    if not is_configured(queue=queue):
         return {'archived': False, 'queue': queue, 'reason': 'drive_not_configured', 'file': path.name}
 
     local_sha256 = _sha256_file(path)
@@ -247,7 +261,7 @@ def verify_with_test_artifact(queue: str = 'adobe') -> dict:
 
     if queue not in ('adobe', 'magnific'):
         raise ValueError(f'unknown queue: {queue}')
-    if not is_configured():
+    if not is_configured(queue=queue):
         return {'verified': False, 'queue': queue, 'reason': 'drive_not_configured'}
 
     service = _build_service()
