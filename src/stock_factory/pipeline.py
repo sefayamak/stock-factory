@@ -34,6 +34,25 @@ def build_adapters(queue_prompts: list[str]) -> list[Adapter]:
     return adapters
 
 
+def _select_queue(qc_passed_count: int) -> str | None:
+    """Routes an asset to 'adobe' or 'magnific' based on which
+    marketplaces are currently active (config.ADOBE_MARKETPLACE_ACTIVE /
+    config.MAGNIFIC_MARKETPLACE_ACTIVE). Returns None if neither is
+    active (nothing is dispatched or delivered in that case). With
+    Magnific as the sole active marketplace (the current default),
+    every QC-passed asset routes to 'magnific' and Adobe dispatch/
+    delivery stays fully disabled -- existing Adobe assets/folders are
+    untouched either way, since this function only decides where *new*
+    assets go."""
+    if config.ADOBE_MARKETPLACE_ACTIVE and config.MAGNIFIC_MARKETPLACE_ACTIVE:
+        return 'adobe' if (qc_passed_count % 2 == 1) else 'magnific'
+    if config.MAGNIFIC_MARKETPLACE_ACTIVE:
+        return 'magnific'
+    if config.ADOBE_MARKETPLACE_ACTIVE:
+        return 'adobe'
+    return None
+
+
 def run(day: str, target: int, dry_run: bool) -> dict:
     target = min(target, config.DAILY_TARGET_CEILING)
     queue = build_queue(day, target)
@@ -91,7 +110,15 @@ def run(day: str, target: int, dry_run: bool) -> dict:
                 out_path.write_bytes(jpeg)
                 tracker.record('qc_passed')
 
-                queue_name = 'adobe' if (tracker.counts['qc_passed'] % 2 == 1) else 'magnific'
+                queue_name = _select_queue(tracker.counts['qc_passed'])
+                if queue_name is None:
+                    tracker.record('archive_skipped')
+                    rows.append({
+                        'job_id': name, 'status': 'PENDING_HUMAN_VISUAL_QC', 'dimensions': f'{w}x{h}',
+                        'source': asset.source, 'drive_queue': '', 'drive_status': 'no_active_marketplace',
+                        '_ai_generated': 'yes',
+                    })
+                    continue
                 archive_result = drive_archive.archive(out_path, queue_name)
                 if archive_result.get('archived'):
                     tracker.record('archived')

@@ -60,6 +60,16 @@ GOOGLE_SERVICE_ACCOUNT_JSON = os.getenv('GOOGLE_SERVICE_ACCOUNT_JSON', '')
 DRIVE_ADOBE_FOLDER_ID = os.getenv('DRIVE_ADOBE_FOLDER_ID', '')
 DRIVE_MAGNIFIC_FOLDER_ID = os.getenv('DRIVE_MAGNIFIC_FOLDER_ID', '')
 
+# Marketplace activation. Magnific is the sole active marketplace per
+# project decision (2026-11-04): Adobe production, queue dispatch, and
+# Drive delivery are disabled by default, but every existing Adobe asset,
+# Drive folder, and the DRIVE_ADOBE_FOLDER_ID config above are preserved
+# unchanged -- this flag only stops *new* items from being routed to the
+# 'adobe' queue; it does not touch, move, or delete anything already
+# archived. Set ADOBE_MARKETPLACE_ACTIVE=true to re-enable Adobe dispatch.
+ADOBE_MARKETPLACE_ACTIVE = os.getenv('ADOBE_MARKETPLACE_ACTIVE', 'false').lower() == 'true'
+MAGNIFIC_MARKETPLACE_ACTIVE = os.getenv('MAGNIFIC_MARKETPLACE_ACTIVE', 'true').lower() == 'true'
+
 JPEG_QUALITY = int(os.getenv('JPEG_QUALITY', '96'))
 MIN_BYTES = 1_500_000
 MIN_SHORT_EDGE = 2048

@@ -55,7 +55,7 @@ terms; v2's never can).
 
 | Component | Status |
 |---|---|
-| Holiday calendar (25 countries, Gregorian + Islamic/Hebrew/Hindu/Chinese-lunisolar/Persian via the `holidays` library) | **VERIFIED_WORKING** -- offline, recomputed per year, no live network |
+| Holiday calendar (92 countries, Gregorian + Islamic/Hebrew/Hindu/Chinese-lunisolar/Persian/Ethiopian via the `holidays` library) | **VERIFIED_WORKING** -- offline, recomputed per year, no live network. Expanded 2026-11-04 from 25 to 92; every added country code was verified to return real, non-empty 2026 holiday data before inclusion (`UA`/Ukraine was tried and excluded -- the library returned empty for 2026 at check time). |
 | UN international observances (25 curated, fixed-date) | **VERIFIED_WORKING** -- static but sourced/dated, fixed annual dates so no staleness risk |
 | Astronomical seasons (both hemispheres) | **VERIFIED_WORKING** -- computed, not fetched |
 | Black Friday / Cyber Monday | **VERIFIED_WORKING** -- derived from Thanksgiving date |
@@ -105,9 +105,11 @@ step logs showing the published feed was actually retrieved and verified
 
 ## Known limitations / gaps (not closed in this PR)
 
-1. **Not full worldwide coverage.** 25 countries chosen for calendar-system
-   diversity and hemisphere balance -- a real subset, not a claim of
-   covering every country with reliable data.
+1. **Not full worldwide coverage.** 92 of the `holidays` library's 250
+   supported countries chosen for calendar-system diversity, regional
+   spread (added NE/SE/S Asia, Middle East, broader Africa, Central/South
+   America, Central/Eastern Europe), and hemisphere balance -- a real,
+   larger subset, still not a claim of covering every country.
 2. **Season/retail/school/tourism calendars beyond what's listed above**
    need per-country sources with no uniform free/official API; not
    attempted here rather than guessed at.

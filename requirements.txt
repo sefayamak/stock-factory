@@ -4,3 +4,4 @@ google-auth>=2.35,<3
 Pillow>=11,<13
 pytest>=8,<10
 holidays>=0.58,<1
+defusedxml>=0.7,<1
