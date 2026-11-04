@@ -1,0 +1,6675 @@
+{
+  "events": {
+    "AR:2026-11-09:visita de su santidad el papa león xiv": {
+      "alerted_thresholds": [
+        120,
+        90,
+        60,
+        30
+      ],
+      "alerts": [
+        {
+          "catch_up": true,
+          "date": "2026-11-04",
+          "thresholds": [
+            120,
+            90,
+            60,
+            30
+          ]
+        }
+      ],
+      "event": {
+        "country": "AR",
+        "english_name": "Visita de Su Santidad el Papa León XIV",
+        "event_date": "2026-11-09"
+      },
+      "first_seen": "2026-11-04",
+      "missed_reported_on": "2026-11-04",
+      "production_status": "unknown"
+    },
+    "AR:2026-11-23:día de la soberanía nacional": {
+      "alerted_thresholds": [
+        120,
+        90,
+        60,
+        30
+      ],
+      "alerts": [
+        {
+          "catch_up": true,
+          "date": "2026-11-04",
+          "thresholds": [
+            120,
+            90,
+            60,
+            30
+          ]
+        }
+      ],
+      "event": {
+        "country": "AR",
+        "english_name": "Día de la Soberanía Nacional",
+        "event_date": "2026-11-23"
+      },
+      "first_seen": "2026-11-04",
+      "missed_reported_on": "2026-11-04",
+      "production_status": "unknown"
+    },
+    "AR:2026-12-07:feriado con fines turísticos": {
+      "alerted_thresholds": [
+        120,
+        90,
+        60
+      ],
+      "alerts": [
+        {
+          "catch_up": true,
+          "date": "2026-11-04",
+          "thresholds": [
+            120,
+            90,
+            60
+          ]
+        }
+      ],
+      "event": {
+        "country": "AR",
+        "english_name": "Feriado con fines turísticos",
+        "event_date": "2026-12-07"
+      },
+      "first_seen": "2026-11-04",
+      "missed_reported_on": "2026-11-04",
+      "production_status": "unknown"
+    },
+    "AR:2026-12-08:inmaculada concepción de maría": {
+      "alerted_thresholds": [
+        120,
+        90,
+        60
+      ],
+      "alerts": [
+        {
+          "catch_up": true,
+          "date": "2026-11-04",
+          "thresholds": [
+            120,
+            90,
+            60
+          ]
+        }
+      ],
+      "event": {
+        "country": "AR",
+        "english_name": "Inmaculada Concepción de María",
+        "event_date": "2026-12-08"
+      },
+      "first_seen": "2026-11-04",
+      "missed_reported_on": "2026-11-04",
+      "production_status": "unknown"
+    },
+    "AR:2026-12-25:navidad": {
+      "alerted_thresholds": [
+        120,
+        90,
+        60
+      ],
+      "alerts": [
+        {
+          "catch_up": true,
+          "date": "2026-11-04",
+          "thresholds": [
+            120,
+            90,
+            60
+          ]
+        }
+      ],
+      "event": {
+        "country": "AR",
+        "english_name": "Navidad",
+        "event_date": "2026-12-25"
+      },
+      "first_seen": "2026-11-04",
+      "missed_reported_on": "2026-11-04",
+      "production_status": "unknown"
+    },
+    "AR:2027-01-01:año nuevo": {
+      "alerted_thresholds": [
+        120,
+        90,
+        60
+      ],
+      "alerts": [
+        {
+          "catch_up": true,
+          "date": "2026-11-04",
+          "thresholds": [
+            120,
+            90,
+            60
+          ]
+        }
+      ],
+      "event": {
+        "country": "AR",
+        "english_name": "Año Nuevo",
+        "event_date": "2027-01-01"
+      },
+      "first_seen": "2026-11-04",
+      "missed_reported_on": "2026-11-04",
+      "production_status": "unknown"
+    },
+    "AR:2027-02-08:lunes de carnaval": {
+      "alerted_thresholds": [
+        120
+      ],
+      "alerts": [
+        {
+          "catch_up": true,
+          "date": "2026-11-04",
+          "thresholds": [
+            120
+          ]
+        }
+      ],
+      "event": {
+        "country": "AR",
+        "english_name": "Lunes de Carnaval",
+        "event_date": "2027-02-08"
+      },
+      "first_seen": "2026-11-04",
+      "missed_reported_on": null,
+      "production_status": "unknown"
+    },
+    "AR:2027-02-09:martes de carnaval": {
+      "alerted_thresholds": [
+        120
+      ],
+      "alerts": [
+        {
+          "catch_up": true,
+          "date": "2026-11-04",
+          "thresholds": [
+            120
+          ]
+        }
+      ],
+      "event": {
+        "country": "AR",
+        "english_name": "Martes de Carnaval",
+        "event_date": "2027-02-09"
+      },
+      "first_seen": "2026-11-04",
+      "missed_reported_on": null,
+      "production_status": "unknown"
+    },
+    "AR:2027-03-24:día nacional de la memoria por la verdad y la justicia": {
+      "alerted_thresholds": [],
+      "alerts": [],
+      "event": {
+        "country": "AR",
+        "english_name": "Día Nacional de la Memoria por la Verdad y la Justicia",
+        "event_date": "2027-03-24"
+      },
+      "first_seen": "2026-11-04",
+      "missed_reported_on": null,
+      "production_status": "unknown"
+    },
+    "AR:2027-03-25:jueves santo": {
+      "alerted_thresholds": [],
+      "alerts": [],
+      "event": {
+        "country": "AR",
+        "english_name": "Jueves Santo",
+        "event_date": "2027-03-25"
+      },
+      "first_seen": "2026-11-04",
+      "missed_reported_on": null,
+      "production_status": "unknown"
+    },
+    "AR:2027-03-26:viernes santo": {
+      "alerted_thresholds": [],
+      "alerts": [],
+      "event": {
+        "country": "AR",
+        "english_name": "Viernes Santo",
+        "event_date": "2027-03-26"
+      },
+      "first_seen": "2026-11-04",
+      "missed_reported_on": null,
+      "production_status": "unknown"
+    },
+    "AR:2027-04-02:día del veterano y de los caidos en la guerra de malvinas": {
+      "alerted_thresholds": [],
+      "alerts": [],
+      "event": {
+        "country": "AR",
+        "english_name": "Día del Veterano y de los Caidos en la Guerra de Malvinas",
+        "event_date": "2027-04-02"
+      },
+      "first_seen": "2026-11-04",
+      "missed_reported_on": null,
+      "production_status": "unknown"
+    },
+    "AR:2027-05-01:día del trabajo": {
+      "alerted_thresholds": [],
+      "alerts": [],
+      "event": {
+        "country": "AR",
+        "english_name": "Día del Trabajo",
+        "event_date": "2027-05-01"
+      },
+      "first_seen": "2026-11-04",
+      "missed_reported_on": null,
+      "production_status": "unknown"
+    },
+    "AR:2027-05-25:día de la revolución de mayo": {
+      "alerted_thresholds": [],
+      "alerts": [],
+      "event": {
+        "country": "AR",
+        "english_name": "Día de la Revolución de Mayo",
+        "event_date": "2027-05-25"
+      },
+      "first_seen": "2026-11-04",
+      "missed_reported_on": null,
+      "production_status": "unknown"
+    },
+    "AR:2027-06-20:paso a la inmortalidad del general don manuel belgrano": {
+      "alerted_thresholds": [],
+      "alerts": [],
+      "event": {
+        "country": "AR",
+        "english_name": "Paso a la Inmortalidad del General Don Manuel Belgrano",
+        "event_date": "2027-06-20"
+      },
+      "first_seen": "2026-11-04",
+      "missed_reported_on": null,
+      "production_status": "unknown"
+    },
+    "AR:2027-06-21:paso a la inmortalidad del general don martín miguel de güemes": {
+      "alerted_thresholds": [],
+      "alerts": [],
+      "event": {
+        "country": "AR",
+        "english_name": "Paso a la Inmortalidad del General Don Martín Miguel de Güemes",
+        "event_date": "2027-06-21"
+      },
+      "first_seen": "2026-11-04",
+      "missed_reported_on": null,
+      "production_status": "unknown"
+    },
+    "AR:2027-07-09:día de la independencia": {
+      "alerted_thresholds": [],
+      "alerts": [],
+      "event": {
+        "country": "AR",
+        "english_name": "Día de la Independencia",
+        "event_date": "2027-07-09"
+      },
+      "first_seen": "2026-11-04",
+      "missed_reported_on": null,
+      "production_status": "unknown"
+    },
+    "AR:2027-08-16:paso a la inmortalidad del general don josé de san martín": {
+      "alerted_thresholds": [],
+      "alerts": [],
+      "event": {
+        "country": "AR",
+        "english_name": "Paso a la Inmortalidad del General Don José de San Martín",
+        "event_date": "2027-08-16"
+      },
+      "first_seen": "2026-11-04",
+      "missed_reported_on": null,
+      "production_status": "unknown"
+    },
+    "AR:2027-10-11:día del respeto a la diversidad cultural": {
+      "alerted_thresholds": [],
+      "alerts": [],
+      "event": {
+        "country": "AR",
+        "english_name": "Día del Respeto a la Diversidad Cultural",
+        "event_date": "2027-10-11"
+      },
+      "first_seen": "2026-11-04",
+      "missed_reported_on": null,
+      "production_status": "unknown"
+    },
+    "AU:2026-12-25:christmas day": {
+      "alerted_thresholds": [
+        120,
+        90,
+        60
+      ],
+      "alerts": [
+        {
+          "catch_up": true,
+          "date": "2026-11-04",
+          "thresholds": [
+            120,
+            90,
+            60
+          ]
+        }
+      ],
+      "event": {
+        "country": "AU",
+        "english_name": "Christmas Day",
+        "event_date": "2026-12-25"
+      },
+      "first_seen": "2026-11-04",
+      "missed_reported_on": "2026-11-04",
+      "production_status": "unknown"
+    },
+    "AU:2026-12-26:boxing day": {
+      "alerted_thresholds": [
+        120,
+        90,
+        60
+      ],
+      "alerts": [
+        {
+          "catch_up": true,
+          "date": "2026-11-04",
+          "thresholds": [
+            120,
+            90,
+            60
+          ]
+        }
+      ],
+      "event": {
+        "country": "AU",
+        "english_name": "Boxing Day",
+        "event_date": "2026-12-26"
+      },
+      "first_seen": "2026-11-04",
+      "missed_reported_on": "2026-11-04",
+      "production_status": "unknown"
+    },
+    "AU:2027-01-01:new year's day": {
+      "alerted_thresholds": [
+        120,
+        90,
+        60
+      ],
+      "alerts": [
+        {
+          "catch_up": true,
+          "date": "2026-11-04",
+          "thresholds": [
+            120,
+            90,
+            60
+          ]
+        }
+      ],
+      "event": {
+        "country": "AU",
+        "english_name": "New Year's Day",
+        "event_date": "2027-01-01"
+      },
+      "first_seen": "2026-11-04",
+      "missed_reported_on": "2026-11-04",
+      "production_status": "unknown"
+    },
+    "AU:2027-01-26:australia day": {
+      "alerted_thresholds": [
+        120,
+        90
+      ],
+      "alerts": [
+        {
+          "catch_up": true,
+          "date": "2026-11-04",
+          "thresholds": [
+            120,
+            90
+          ]
+        }
+      ],
+      "event": {
+        "country": "AU",
+        "english_name": "Australia Day",
+        "event_date": "2027-01-26"
+      },
+      "first_seen": "2026-11-04",
+      "missed_reported_on": null,
+      "production_status": "unknown"
+    },
+    "AU:2027-03-26:good friday": {
+      "alerted_thresholds": [],
+      "alerts": [],
+      "event": {
+        "country": "AU",
+        "english_name": "Good Friday",
+        "event_date": "2027-03-26"
+      },
+      "first_seen": "2026-11-04",
+      "missed_reported_on": null,
+      "production_status": "unknown"
+    },
+    "AU:2027-03-29:easter monday": {
+      "alerted_thresholds": [],
+      "alerts": [],
+      "event": {
+        "country": "AU",
+        "english_name": "Easter Monday",
+        "event_date": "2027-03-29"
+      },
+      "first_seen": "2026-11-04",
+      "missed_reported_on": null,
+      "production_status": "unknown"
+    },
+    "AU:2027-04-25:anzac day": {
+      "alerted_thresholds": [],
+      "alerts": [],
+      "event": {
+        "country": "AU",
+        "english_name": "ANZAC Day",
+        "event_date": "2027-04-25"
+      },
+      "first_seen": "2026-11-04",
+      "missed_reported_on": null,
+      "production_status": "unknown"
+    },
+    "BR:2026-11-15:proclamação da república": {
+      "alerted_thresholds": [
+        120,
+        90,
+        60,
+        30
+      ],
+      "alerts": [
+        {
+          "catch_up": true,
+          "date": "2026-11-04",
+          "thresholds": [
+            120,
+            90,
+            60,
+            30
+          ]
+        }
+      ],
+      "event": {
+        "country": "BR",
+        "english_name": "Proclamação da República",
+        "event_date": "2026-11-15"
+      },
+      "first_seen": "2026-11-04",
+      "missed_reported_on": "2026-11-04",
+      "production_status": "unknown"
+    },
+    "BR:2026-11-20:dia nacional de zumbi e da consciência negra": {
+      "alerted_thresholds": [
+        120,
+        90,
+        60,
+        30
+      ],
+      "alerts": [
+        {
+          "catch_up": true,
+          "date": "2026-11-04",
+          "thresholds": [
+            120,
+            90,
+            60,
+            30
+          ]
+        }
+      ],
+      "event": {
+        "country": "BR",
+        "english_name": "Dia Nacional de Zumbi e da Consciência Negra",
+        "event_date": "2026-11-20"
+      },
+      "first_seen": "2026-11-04",
+      "missed_reported_on": "2026-11-04",
+      "production_status": "unknown"
+    },
+    "BR:2026-12-25:natal": {
+      "alerted_thresholds": [
+        120,
+        90,
+        60
+      ],
+      "alerts": [
+        {
+          "catch_up": true,
+          "date": "2026-11-04",
+          "thresholds": [
+            120,
+            90,
+            60
+          ]
+        }
+      ],
+      "event": {
+        "country": "BR",
+        "english_name": "Natal",
+        "event_date": "2026-12-25"
+      },
+      "first_seen": "2026-11-04",
+      "missed_reported_on": "2026-11-04",
+      "production_status": "unknown"
+    },
+    "BR:2027-01-01:confraternização universal": {
+      "alerted_thresholds": [
+        120,
+        90,
+        60
+      ],
+      "alerts": [
+        {
+          "catch_up": true,
+          "date": "2026-11-04",
+          "thresholds": [
+            120,
+            90,
+            60
+          ]
+        }
+      ],
+      "event": {
+        "country": "BR",
+        "english_name": "Confraternização Universal",
+        "event_date": "2027-01-01"
+      },
+      "first_seen": "2026-11-04",
+      "missed_reported_on": "2026-11-04",
+      "production_status": "unknown"
+    },
+    "BR:2027-03-26:sexta-feira santa": {
+      "alerted_thresholds": [],
+      "alerts": [],
+      "event": {
+        "country": "BR",
+        "english_name": "Sexta-feira Santa",
+        "event_date": "2027-03-26"
+      },
+      "first_seen": "2026-11-04",
+      "missed_reported_on": null,
+      "production_status": "unknown"
+    },
+    "BR:2027-04-21:tiradentes": {
+      "alerted_thresholds": [],
+      "alerts": [],
+      "event": {
+        "country": "BR",
+        "english_name": "Tiradentes",
+        "event_date": "2027-04-21"
+      },
+      "first_seen": "2026-11-04",
+      "missed_reported_on": null,
+      "production_status": "unknown"
+    },
+    "BR:2027-05-01:dia do trabalhador": {
+      "alerted_thresholds": [],
+      "alerts": [],
+      "event": {
+        "country": "BR",
+        "english_name": "Dia do Trabalhador",
+        "event_date": "2027-05-01"
+      },
+      "first_seen": "2026-11-04",
+      "missed_reported_on": null,
+      "production_status": "unknown"
+    },
+    "BR:2027-09-07:independência do brasil": {
+      "alerted_thresholds": [],
+      "alerts": [],
+      "event": {
+        "country": "BR",
+        "english_name": "Independência do Brasil",
+        "event_date": "2027-09-07"
+      },
+      "first_seen": "2026-11-04",
+      "missed_reported_on": null,
+      "production_status": "unknown"
+    },
+    "BR:2027-10-12:nossa senhora aparecida": {
+      "alerted_thresholds": [],
+      "alerts": [],
+      "event": {
+        "country": "BR",
+        "english_name": "Nossa Senhora Aparecida",
+        "event_date": "2027-10-12"
+      },
+      "first_seen": "2026-11-04",
+      "missed_reported_on": null,
+      "production_status": "unknown"
+    },
+    "BR:2027-11-02:finados": {
+      "alerted_thresholds": [],
+      "alerts": [],
+      "event": {
+        "country": "BR",
+        "english_name": "Finados",
+        "event_date": "2027-11-02"
+      },
+      "first_seen": "2026-11-04",
+      "missed_reported_on": null,
+      "production_status": "unknown"
+    },
+    "CA:2026-12-25:christmas day": {
+      "alerted_thresholds": [
+        120,
+        90,
+        60
+      ],
+      "alerts": [
+        {
+          "catch_up": true,
+          "date": "2026-11-04",
+          "thresholds": [
+            120,
+            90,
+            60
+          ]
+        }
+      ],
+      "event": {
+        "country": "CA",
+        "english_name": "Christmas Day",
+        "event_date": "2026-12-25"
+      },
+      "first_seen": "2026-11-04",
+      "missed_reported_on": "2026-11-04",
+      "production_status": "unknown"
+    },
+    "CA:2027-01-01:new year's day": {
+      "alerted_thresholds": [
+        120,
+        90,
+        60
+      ],
+      "alerts": [
+        {
+          "catch_up": true,
+          "date": "2026-11-04",
+          "thresholds": [
+            120,
+            90,
+            60
+          ]
+        }
+      ],
+      "event": {
+        "country": "CA",
+        "english_name": "New Year's Day",
+        "event_date": "2027-01-01"
+      },
+      "first_seen": "2026-11-04",
+      "missed_reported_on": "2026-11-04",
+      "production_status": "unknown"
+    },
+    "CA:2027-03-26:good friday": {
+      "alerted_thresholds": [],
+      "alerts": [],
+      "event": {
+        "country": "CA",
+        "english_name": "Good Friday",
+        "event_date": "2027-03-26"
+      },
+      "first_seen": "2026-11-04",
+      "missed_reported_on": null,
+      "production_status": "unknown"
+    },
+    "CA:2027-07-01:canada day": {
+      "alerted_thresholds": [],
+      "alerts": [],
+      "event": {
+        "country": "CA",
+        "english_name": "Canada Day",
+        "event_date": "2027-07-01"
+      },
+      "first_seen": "2026-11-04",
+      "missed_reported_on": null,
+      "production_status": "unknown"
+    },
+    "CA:2027-09-06:labour day": {
+      "alerted_thresholds": [],
+      "alerts": [],
+      "event": {
+        "country": "CA",
+        "english_name": "Labour Day",
+        "event_date": "2027-09-06"
+      },
+      "first_seen": "2026-11-04",
+      "missed_reported_on": null,
+      "production_status": "unknown"
+    },
+    "CN:2027-01-01:元旦": {
+      "alerted_thresholds": [
+        120,
+        90,
+        60
+      ],
+      "alerts": [
+        {
+          "catch_up": true,
+          "date": "2026-11-04",
+          "thresholds": [
+            120,
+            90,
+            60
+          ]
+        }
+      ],
+      "event": {
+        "country": "CN",
+        "english_name": "元旦",
+        "event_date": "2027-01-01"
+      },
+      "first_seen": "2026-11-04",
+      "missed_reported_on": "2026-11-04",
+      "production_status": "unknown"
+    },
+    "CN:2027-02-05:农历除夕": {
+      "alerted_thresholds": [
+        120
+      ],
+      "alerts": [
+        {
+          "catch_up": true,
+          "date": "2026-11-04",
+          "thresholds": [
+            120
+          ]
+        }
+      ],
+      "event": {
+        "country": "CN",
+        "english_name": "农历除夕",
+        "event_date": "2027-02-05"
+      },
+      "first_seen": "2026-11-04",
+      "missed_reported_on": null,
+      "production_status": "unknown"
+    },
+    "CN:2027-02-06:春节": {
+      "alerted_thresholds": [
+        120
+      ],
+      "alerts": [
+        {
+          "catch_up": true,
+          "date": "2026-11-04",
+          "thresholds": [
+            120
+          ]
+        }
+      ],
+      "event": {
+        "country": "CN",
+        "english_name": "春节",
+        "event_date": "2027-02-06"
+      },
+      "first_seen": "2026-11-04",
+      "missed_reported_on": null,
+      "production_status": "unknown"
+    },
+    "CN:2027-02-07:春节": {
+      "alerted_thresholds": [
+        120
+      ],
+      "alerts": [
+        {
+          "catch_up": true,
+          "date": "2026-11-04",
+          "thresholds": [
+            120
+          ]
+        }
+      ],
+      "event": {
+        "country": "CN",
+        "english_name": "春节",
+        "event_date": "2027-02-07"
+      },
+      "first_seen": "2026-11-04",
+      "missed_reported_on": null,
+      "production_status": "unknown"
+    },
+    "CN:2027-02-08:春节": {
+      "alerted_thresholds": [
+        120
+      ],
+      "alerts": [
+        {
+          "catch_up": true,
+          "date": "2026-11-04",
+          "thresholds": [
+            120
+          ]
+        }
+      ],
+      "event": {
+        "country": "CN",
+        "english_name": "春节",
+        "event_date": "2027-02-08"
+      },
+      "first_seen": "2026-11-04",
+      "missed_reported_on": null,
+      "production_status": "unknown"
+    },
+    "CN:2027-02-09:春节（补假）": {
+      "alerted_thresholds": [
+        120
+      ],
+      "alerts": [
+        {
+          "catch_up": true,
+          "date": "2026-11-04",
+          "thresholds": [
+            120
+          ]
+        }
+      ],
+      "event": {
+        "country": "CN",
+        "english_name": "春节（补假）",
+        "event_date": "2027-02-09"
+      },
+      "first_seen": "2026-11-04",
+      "missed_reported_on": null,
+      "production_status": "unknown"
+    },
+    "CN:2027-02-10:春节（补假）": {
+      "alerted_thresholds": [
+        120
+      ],
+      "alerts": [
+        {
+          "catch_up": true,
+          "date": "2026-11-04",
+          "thresholds": [
+            120
+          ]
+        }
+      ],
+      "event": {
+        "country": "CN",
+        "english_name": "春节（补假）",
+        "event_date": "2027-02-10"
+      },
+      "first_seen": "2026-11-04",
+      "missed_reported_on": null,
+      "production_status": "unknown"
+    },
+    "CN:2027-04-05:清明节": {
+      "alerted_thresholds": [],
+      "alerts": [],
+      "event": {
+        "country": "CN",
+        "english_name": "清明节",
+        "event_date": "2027-04-05"
+      },
+      "first_seen": "2026-11-04",
+      "missed_reported_on": null,
+      "production_status": "unknown"
+    },
+    "CN:2027-05-01:劳动节": {
+      "alerted_thresholds": [],
+      "alerts": [],
+      "event": {
+        "country": "CN",
+        "english_name": "劳动节",
+        "event_date": "2027-05-01"
+      },
+      "first_seen": "2026-11-04",
+      "missed_reported_on": null,
+      "production_status": "unknown"
+    },
+    "CN:2027-05-02:劳动节": {
+      "alerted_thresholds": [],
+      "alerts": [],
+      "event": {
+        "country": "CN",
+        "english_name": "劳动节",
+        "event_date": "2027-05-02"
+      },
+      "first_seen": "2026-11-04",
+      "missed_reported_on": null,
+      "production_status": "unknown"
+    },
+    "CN:2027-05-03:劳动节（补假）": {
+      "alerted_thresholds": [],
+      "alerts": [],
+      "event": {
+        "country": "CN",
+        "english_name": "劳动节（补假）",
+        "event_date": "2027-05-03"
+      },
+      "first_seen": "2026-11-04",
+      "missed_reported_on": null,
+      "production_status": "unknown"
+    },
+    "CN:2027-05-04:劳动节（补假）": {
+      "alerted_thresholds": [],
+      "alerts": [],
+      "event": {
+        "country": "CN",
+        "english_name": "劳动节（补假）",
+        "event_date": "2027-05-04"
+      },
+      "first_seen": "2026-11-04",
+      "missed_reported_on": null,
+      "production_status": "unknown"
+    },
+    "CN:2027-06-09:端午节": {
+      "alerted_thresholds": [],
+      "alerts": [],
+      "event": {
+        "country": "CN",
+        "english_name": "端午节",
+        "event_date": "2027-06-09"
+      },
+      "first_seen": "2026-11-04",
+      "missed_reported_on": null,
+      "production_status": "unknown"
+    },
+    "CN:2027-09-15:中秋节": {
+      "alerted_thresholds": [],
+      "alerts": [],
+      "event": {
+        "country": "CN",
+        "english_name": "中秋节",
+        "event_date": "2027-09-15"
+      },
+      "first_seen": "2026-11-04",
+      "missed_reported_on": null,
+      "production_status": "unknown"
+    },
+    "CN:2027-10-01:国庆节": {
+      "alerted_thresholds": [],
+      "alerts": [],
+      "event": {
+        "country": "CN",
+        "english_name": "国庆节",
+        "event_date": "2027-10-01"
+      },
+      "first_seen": "2026-11-04",
+      "missed_reported_on": null,
+      "production_status": "unknown"
+    },
+    "CN:2027-10-02:国庆节": {
+      "alerted_thresholds": [],
+      "alerts": [],
+      "event": {
+        "country": "CN",
+        "english_name": "国庆节",
+        "event_date": "2027-10-02"
+      },
+      "first_seen": "2026-11-04",
+      "missed_reported_on": null,
+      "production_status": "unknown"
+    },
+    "CN:2027-10-03:国庆节": {
+      "alerted_thresholds": [],
+      "alerts": [],
+      "event": {
+        "country": "CN",
+        "english_name": "国庆节",
+        "event_date": "2027-10-03"
+      },
+      "first_seen": "2026-11-04",
+      "missed_reported_on": null,
+      "production_status": "unknown"
+    },
+    "CN:2027-10-04:国庆节（补假）": {
+      "alerted_thresholds": [],
+      "alerts": [],
+      "event": {
+        "country": "CN",
+        "english_name": "国庆节（补假）",
+        "event_date": "2027-10-04"
+      },
+      "first_seen": "2026-11-04",
+      "missed_reported_on": null,
+      "production_status": "unknown"
+    },
+    "CN:2027-10-05:国庆节（补假）": {
+      "alerted_thresholds": [],
+      "alerts": [],
+      "event": {
+        "country": "CN",
+        "english_name": "国庆节（补假）",
+        "event_date": "2027-10-05"
+      },
+      "first_seen": "2026-11-04",
+      "missed_reported_on": null,
+      "production_status": "unknown"
+    },
+    "DE:2026-12-25:erster weihnachtstag": {
+      "alerted_thresholds": [
+        120,
+        90,
+        60
+      ],
+      "alerts": [
+        {
+          "catch_up": true,
+          "date": "2026-11-04",
+          "thresholds": [
+            120,
+            90,
+            60
+          ]
+        }
+      ],
+      "event": {
+        "country": "DE",
+        "english_name": "Erster Weihnachtstag",
+        "event_date": "2026-12-25"
+      },
+      "first_seen": "2026-11-04",
+      "missed_reported_on": "2026-11-04",
+      "production_status": "unknown"
+    },
+    "DE:2026-12-26:zweiter weihnachtstag": {
+      "alerted_thresholds": [
+        120,
+        90,
+        60
+      ],
+      "alerts": [
+        {
+          "catch_up": true,
+          "date": "2026-11-04",
+          "thresholds": [
+            120,
+            90,
+            60
+          ]
+        }
+      ],
+      "event": {
+        "country": "DE",
+        "english_name": "Zweiter Weihnachtstag",
+        "event_date": "2026-12-26"
+      },
+      "first_seen": "2026-11-04",
+      "missed_reported_on": "2026-11-04",
+      "production_status": "unknown"
+    },
+    "DE:2027-01-01:neujahr": {
+      "alerted_thresholds": [
+        120,
+        90,
+        60
+      ],
+      "alerts": [
+        {
+          "catch_up": true,
+          "date": "2026-11-04",
+          "thresholds": [
+            120,
+            90,
+            60
+          ]
+        }
+      ],
+      "event": {
+        "country": "DE",
+        "english_name": "Neujahr",
+        "event_date": "2027-01-01"
+      },
+      "first_seen": "2026-11-04",
+      "missed_reported_on": "2026-11-04",
+      "production_status": "unknown"
+    },
+    "DE:2027-03-26:karfreitag": {
+      "alerted_thresholds": [],
+      "alerts": [],
+      "event": {
+        "country": "DE",
+        "english_name": "Karfreitag",
+        "event_date": "2027-03-26"
+      },
+      "first_seen": "2026-11-04",
+      "missed_reported_on": null,
+      "production_status": "unknown"
+    },
+    "DE:2027-03-29:ostermontag": {
+      "alerted_thresholds": [],
+      "alerts": [],
+      "event": {
+        "country": "DE",
+        "english_name": "Ostermontag",
+        "event_date": "2027-03-29"
+      },
+      "first_seen": "2026-11-04",
+      "missed_reported_on": null,
+      "production_status": "unknown"
+    },
+    "DE:2027-05-01:erster mai": {
+      "alerted_thresholds": [],
+      "alerts": [],
+      "event": {
+        "country": "DE",
+        "english_name": "Erster Mai",
+        "event_date": "2027-05-01"
+      },
+      "first_seen": "2026-11-04",
+      "missed_reported_on": null,
+      "production_status": "unknown"
+    },
+    "DE:2027-05-06:christi himmelfahrt": {
+      "alerted_thresholds": [],
+      "alerts": [],
+      "event": {
+        "country": "DE",
+        "english_name": "Christi Himmelfahrt",
+        "event_date": "2027-05-06"
+      },
+      "first_seen": "2026-11-04",
+      "missed_reported_on": null,
+      "production_status": "unknown"
+    },
+    "DE:2027-05-17:pfingstmontag": {
+      "alerted_thresholds": [],
+      "alerts": [],
+      "event": {
+        "country": "DE",
+        "english_name": "Pfingstmontag",
+        "event_date": "2027-05-17"
+      },
+      "first_seen": "2026-11-04",
+      "missed_reported_on": null,
+      "production_status": "unknown"
+    },
+    "DE:2027-10-03:tag der deutschen einheit": {
+      "alerted_thresholds": [],
+      "alerts": [],
+      "event": {
+        "country": "DE",
+        "english_name": "Tag der Deutschen Einheit",
+        "event_date": "2027-10-03"
+      },
+      "first_seen": "2026-11-04",
+      "missed_reported_on": null,
+      "production_status": "unknown"
+    },
+    "EG:2027-01-07:عيد الميلاد المجيد": {
+      "alerted_thresholds": [
+        120,
+        90
+      ],
+      "alerts": [
+        {
+          "catch_up": true,
+          "date": "2026-11-04",
+          "thresholds": [
+            120,
+            90
+          ]
+        }
+      ],
+      "event": {
+        "country": "EG",
+        "english_name": "عيد الميلاد المجيد",
+        "event_date": "2027-01-07"
+      },
+      "first_seen": "2026-11-04",
+      "missed_reported_on": "2026-11-04",
+      "production_status": "unknown"
+    },
+    "EG:2027-01-28:ثورة ٢٥ يناير وعيد الشرطة (يوم تعويضي)": {
+      "alerted_thresholds": [
+        120,
+        90
+      ],
+      "alerts": [
+        {
+          "catch_up": true,
+          "date": "2026-11-04",
+          "thresholds": [
+            120,
+            90
+          ]
+        }
+      ],
+      "event": {
+        "country": "EG",
+        "english_name": "ثورة ٢٥ يناير وعيد الشرطة (يوم تعويضي)",
+        "event_date": "2027-01-28"
+      },
+      "first_seen": "2026-11-04",
+      "missed_reported_on": null,
+      "production_status": "unknown"
+    },
+    "EG:2027-03-09:عيد الفطر المبارك (تقديري)": {
+      "alerted_thresholds": [],
+      "alerts": [],
+      "event": {
+        "country": "EG",
+        "english_name": "عيد الفطر المبارك (تقديري)",
+        "event_date": "2027-03-09"
+      },
+      "first_seen": "2026-11-04",
+      "missed_reported_on": null,
+      "production_status": "unknown"
+    },
+    "EG:2027-03-10:عيد الفطر المبارك (تقديري)": {
+      "alerted_thresholds": [],
+      "alerts": [],
+      "event": {
+        "country": "EG",
+        "english_name": "عيد الفطر المبارك (تقديري)",
+        "event_date": "2027-03-10"
+      },
+      "first_seen": "2026-11-04",
+      "missed_reported_on": null,
+      "production_status": "unknown"
+    },
+    "EG:2027-04-29:عيد تحرير سيناء (يوم تعويضي)": {
+      "alerted_thresholds": [],
+      "alerts": [],
+      "event": {
+        "country": "EG",
+        "english_name": "عيد تحرير سيناء (يوم تعويضي)",
+        "event_date": "2027-04-29"
+      },
+      "first_seen": "2026-11-04",
+      "missed_reported_on": null,
+      "production_status": "unknown"
+    },
+    "EG:2027-05-01:عيد العمال": {
+      "alerted_thresholds": [],
+      "alerts": [],
+      "event": {
+        "country": "EG",
+        "english_name": "عيد العمال",
+        "event_date": "2027-05-01"
+      },
+      "first_seen": "2026-11-04",
+      "missed_reported_on": null,
+      "production_status": "unknown"
+    },
+    "EG:2027-05-03:عيد شم النسيم": {
+      "alerted_thresholds": [],
+      "alerts": [],
+      "event": {
+        "country": "EG",
+        "english_name": "عيد شم النسيم",
+        "event_date": "2027-05-03"
+      },
+      "first_seen": "2026-11-04",
+      "missed_reported_on": null,
+      "production_status": "unknown"
+    },
+    "EG:2027-05-15:وقفة عيد الأضحى المبارك (تقديري)": {
+      "alerted_thresholds": [],
+      "alerts": [],
+      "event": {
+        "country": "EG",
+        "english_name": "وقفة عيد الأضحى المبارك (تقديري)",
+        "event_date": "2027-05-15"
+      },
+      "first_seen": "2026-11-04",
+      "missed_reported_on": null,
+      "production_status": "unknown"
+    },
+    "EG:2027-05-16:عيد الأضحى المبارك (تقديري)": {
+      "alerted_thresholds": [],
+      "alerts": [],
+      "event": {
+        "country": "EG",
+        "english_name": "عيد الأضحى المبارك (تقديري)",
+        "event_date": "2027-05-16"
+      },
+      "first_seen": "2026-11-04",
+      "missed_reported_on": null,
+      "production_status": "unknown"
+    },
+    "EG:2027-05-17:عيد الأضحى المبارك (تقديري)": {
+      "alerted_thresholds": [],
+      "alerts": [],
+      "event": {
+        "country": "EG",
+        "english_name": "عيد الأضحى المبارك (تقديري)",
+        "event_date": "2027-05-17"
+      },
+      "first_seen": "2026-11-04",
+      "missed_reported_on": null,
+      "production_status": "unknown"
+    },
+    "EG:2027-05-18:عيد الأضحى المبارك (تقديري)": {
+      "alerted_thresholds": [],
+      "alerts": [],
+      "event": {
+        "country": "EG",
+        "english_name": "عيد الأضحى المبارك (تقديري)",
+        "event_date": "2027-05-18"
+      },
+      "first_seen": "2026-11-04",
+      "missed_reported_on": null,
+      "production_status": "unknown"
+    },
+    "EG:2027-06-10:رأس السنة الهجرية (يوم تعويضي تقديري)": {
+      "alerted_thresholds": [],
+      "alerts": [],
+      "event": {
+        "country": "EG",
+        "english_name": "رأس السنة الهجرية (يوم تعويضي تقديري)",
+        "event_date": "2027-06-10"
+      },
+      "first_seen": "2026-11-04",
+      "missed_reported_on": null,
+      "production_status": "unknown"
+    },
+    "EG:2027-07-01:عيد ثورة ٣٠ يونيو (يوم تعويضي)": {
+      "alerted_thresholds": [],
+      "alerts": [],
+      "event": {
+        "country": "EG",
+        "english_name": "عيد ثورة ٣٠ يونيو (يوم تعويضي)",
+        "event_date": "2027-07-01"
+      },
+      "first_seen": "2026-11-04",
+      "missed_reported_on": null,
+      "production_status": "unknown"
+    },
+    "EG:2027-07-23:عيد ثورة ٢٣ يوليو": {
+      "alerted_thresholds": [],
+      "alerts": [],
+      "event": {
+        "country": "EG",
+        "english_name": "عيد ثورة ٢٣ يوليو",
+        "event_date": "2027-07-23"
+      },
+      "first_seen": "2026-11-04",
+      "missed_reported_on": null,
+      "production_status": "unknown"
+    },
+    "EG:2027-08-14:المولد النبوي الشريف (تقديري)": {
+      "alerted_thresholds": [],
+      "alerts": [],
+      "event": {
+        "country": "EG",
+        "english_name": "المولد النبوي الشريف (تقديري)",
+        "event_date": "2027-08-14"
+      },
+      "first_seen": "2026-11-04",
+      "missed_reported_on": null,
+      "production_status": "unknown"
+    },
+    "EG:2027-10-07:عيد القوات المسلحة (يوم تعويضي)": {
+      "alerted_thresholds": [],
+      "alerts": [],
+      "event": {
+        "country": "EG",
+        "english_name": "عيد القوات المسلحة (يوم تعويضي)",
+        "event_date": "2027-10-07"
+      },
+      "first_seen": "2026-11-04",
+      "missed_reported_on": null,
+      "production_status": "unknown"
+    },
+    "ES:2026-12-08:inmaculada concepción": {
+      "alerted_thresholds": [
+        120,
+        90,
+        60
+      ],
+      "alerts": [
+        {
+          "catch_up": true,
+          "date": "2026-11-04",
+          "thresholds": [
+            120,
+            90,
+            60
+          ]
+        }
+      ],
+      "event": {
+        "country": "ES",
+        "english_name": "Inmaculada Concepción",
+        "event_date": "2026-12-08"
+      },
+      "first_seen": "2026-11-04",
+      "missed_reported_on": "2026-11-04",
+      "production_status": "unknown"
+    },
+    "ES:2026-12-25:natividad del señor": {
+      "alerted_thresholds": [
+        120,
+        90,
+        60
+      ],
+      "alerts": [
+        {
+          "catch_up": true,
+          "date": "2026-11-04",
+          "thresholds": [
+            120,
+            90,
+            60
+          ]
+        }
+      ],
+      "event": {
+        "country": "ES",
+        "english_name": "Natividad del Señor",
+        "event_date": "2026-12-25"
+      },
+      "first_seen": "2026-11-04",
+      "missed_reported_on": "2026-11-04",
+      "production_status": "unknown"
+    },
+    "ES:2027-01-01:año nuevo": {
+      "alerted_thresholds": [
+        120,
+        90,
+        60
+      ],
+      "alerts": [
+        {
+          "catch_up": true,
+          "date": "2026-11-04",
+          "thresholds": [
+            120,
+            90,
+            60
+          ]
+        }
+      ],
+      "event": {
+        "country": "ES",
+        "english_name": "Año Nuevo",
+        "event_date": "2027-01-01"
+      },
+      "first_seen": "2026-11-04",
+      "missed_reported_on": "2026-11-04",
+      "production_status": "unknown"
+    },
+    "ES:2027-01-06:epifanía del señor": {
+      "alerted_thresholds": [
+        120,
+        90
+      ],
+      "alerts": [
+        {
+          "catch_up": true,
+          "date": "2026-11-04",
+          "thresholds": [
+            120,
+            90
+          ]
+        }
+      ],
+      "event": {
+        "country": "ES",
+        "english_name": "Epifanía del Señor",
+        "event_date": "2027-01-06"
+      },
+      "first_seen": "2026-11-04",
+      "missed_reported_on": "2026-11-04",
+      "production_status": "unknown"
+    },
+    "ES:2027-03-26:viernes santo": {
+      "alerted_thresholds": [],
+      "alerts": [],
+      "event": {
+        "country": "ES",
+        "english_name": "Viernes Santo",
+        "event_date": "2027-03-26"
+      },
+      "first_seen": "2026-11-04",
+      "missed_reported_on": null,
+      "production_status": "unknown"
+    },
+    "ES:2027-05-01:fiesta del trabajo": {
+      "alerted_thresholds": [],
+      "alerts": [],
+      "event": {
+        "country": "ES",
+        "english_name": "Fiesta del Trabajo",
+        "event_date": "2027-05-01"
+      },
+      "first_seen": "2026-11-04",
+      "missed_reported_on": null,
+      "production_status": "unknown"
+    },
+    "ES:2027-10-12:fiesta nacional de españa": {
+      "alerted_thresholds": [],
+      "alerts": [],
+      "event": {
+        "country": "ES",
+        "english_name": "Fiesta Nacional de España",
+        "event_date": "2027-10-12"
+      },
+      "first_seen": "2026-11-04",
+      "missed_reported_on": null,
+      "production_status": "unknown"
+    },
+    "ES:2027-11-01:todos los santos": {
+      "alerted_thresholds": [],
+      "alerts": [],
+      "event": {
+        "country": "ES",
+        "english_name": "Todos los Santos",
+        "event_date": "2027-11-01"
+      },
+      "first_seen": "2026-11-04",
+      "missed_reported_on": null,
+      "production_status": "unknown"
+    },
+    "FR:2026-11-11:armistice": {
+      "alerted_thresholds": [
+        120,
+        90,
+        60,
+        30
+      ],
+      "alerts": [
+        {
+          "catch_up": true,
+          "date": "2026-11-04",
+          "thresholds": [
+            120,
+            90,
+            60,
+            30
+          ]
+        }
+      ],
+      "event": {
+        "country": "FR",
+        "english_name": "Armistice",
+        "event_date": "2026-11-11"
+      },
+      "first_seen": "2026-11-04",
+      "missed_reported_on": "2026-11-04",
+      "production_status": "unknown"
+    },
+    "FR:2026-12-25:noël": {
+      "alerted_thresholds": [
+        120,
+        90,
+        60
+      ],
+      "alerts": [
+        {
+          "catch_up": true,
+          "date": "2026-11-04",
+          "thresholds": [
+            120,
+            90,
+            60
+          ]
+        }
+      ],
+      "event": {
+        "country": "FR",
+        "english_name": "Noël",
+        "event_date": "2026-12-25"
+      },
+      "first_seen": "2026-11-04",
+      "missed_reported_on": "2026-11-04",
+      "production_status": "unknown"
+    },
+    "FR:2027-01-01:jour de l'an": {
+      "alerted_thresholds": [
+        120,
+        90,
+        60
+      ],
+      "alerts": [
+        {
+          "catch_up": true,
+          "date": "2026-11-04",
+          "thresholds": [
+            120,
+            90,
+            60
+          ]
+        }
+      ],
+      "event": {
+        "country": "FR",
+        "english_name": "Jour de l'an",
+        "event_date": "2027-01-01"
+      },
+      "first_seen": "2026-11-04",
+      "missed_reported_on": "2026-11-04",
+      "production_status": "unknown"
+    },
+    "FR:2027-03-29:lundi de pâques": {
+      "alerted_thresholds": [],
+      "alerts": [],
+      "event": {
+        "country": "FR",
+        "english_name": "Lundi de Pâques",
+        "event_date": "2027-03-29"
+      },
+      "first_seen": "2026-11-04",
+      "missed_reported_on": null,
+      "production_status": "unknown"
+    },
+    "FR:2027-05-01:fête du travail": {
+      "alerted_thresholds": [],
+      "alerts": [],
+      "event": {
+        "country": "FR",
+        "english_name": "Fête du Travail",
+        "event_date": "2027-05-01"
+      },
+      "first_seen": "2026-11-04",
+      "missed_reported_on": null,
+      "production_status": "unknown"
+    },
+    "FR:2027-05-06:ascension": {
+      "alerted_thresholds": [],
+      "alerts": [],
+      "event": {
+        "country": "FR",
+        "english_name": "Ascension",
+        "event_date": "2027-05-06"
+      },
+      "first_seen": "2026-11-04",
+      "missed_reported_on": null,
+      "production_status": "unknown"
+    },
+    "FR:2027-05-08:fête de la victoire": {
+      "alerted_thresholds": [],
+      "alerts": [],
+      "event": {
+        "country": "FR",
+        "english_name": "Fête de la Victoire",
+        "event_date": "2027-05-08"
+      },
+      "first_seen": "2026-11-04",
+      "missed_reported_on": null,
+      "production_status": "unknown"
+    },
+    "FR:2027-05-17:lundi de pentecôte": {
+      "alerted_thresholds": [],
+      "alerts": [],
+      "event": {
+        "country": "FR",
+        "english_name": "Lundi de Pentecôte",
+        "event_date": "2027-05-17"
+      },
+      "first_seen": "2026-11-04",
+      "missed_reported_on": null,
+      "production_status": "unknown"
+    },
+    "FR:2027-07-14:fête nationale": {
+      "alerted_thresholds": [],
+      "alerts": [],
+      "event": {
+        "country": "FR",
+        "english_name": "Fête nationale",
+        "event_date": "2027-07-14"
+      },
+      "first_seen": "2026-11-04",
+      "missed_reported_on": null,
+      "production_status": "unknown"
+    },
+    "FR:2027-08-15:assomption": {
+      "alerted_thresholds": [],
+      "alerts": [],
+      "event": {
+        "country": "FR",
+        "english_name": "Assomption",
+        "event_date": "2027-08-15"
+      },
+      "first_seen": "2026-11-04",
+      "missed_reported_on": null,
+      "production_status": "unknown"
+    },
+    "FR:2027-11-01:toussaint": {
+      "alerted_thresholds": [],
+      "alerts": [],
+      "event": {
+        "country": "FR",
+        "english_name": "Toussaint",
+        "event_date": "2027-11-01"
+      },
+      "first_seen": "2026-11-04",
+      "missed_reported_on": null,
+      "production_status": "unknown"
+    },
+    "GB:2026-12-25:christmas day": {
+      "alerted_thresholds": [
+        120,
+        90,
+        60
+      ],
+      "alerts": [
+        {
+          "catch_up": true,
+          "date": "2026-11-04",
+          "thresholds": [
+            120,
+            90,
+            60
+          ]
+        }
+      ],
+      "event": {
+        "country": "GB",
+        "english_name": "Christmas Day",
+        "event_date": "2026-12-25"
+      },
+      "first_seen": "2026-11-04",
+      "missed_reported_on": "2026-11-04",
+      "production_status": "unknown"
+    },
+    "GB:2026-12-26:boxing day": {
+      "alerted_thresholds": [
+        120,
+        90,
+        60
+      ],
+      "alerts": [
+        {
+          "catch_up": true,
+          "date": "2026-11-04",
+          "thresholds": [
+            120,
+            90,
+            60
+          ]
+        }
+      ],
+      "event": {
+        "country": "GB",
+        "english_name": "Boxing Day",
+        "event_date": "2026-12-26"
+      },
+      "first_seen": "2026-11-04",
+      "missed_reported_on": "2026-11-04",
+      "production_status": "unknown"
+    },
+    "GB:2026-12-28:boxing day (observed)": {
+      "alerted_thresholds": [
+        120,
+        90,
+        60
+      ],
+      "alerts": [
+        {
+          "catch_up": true,
+          "date": "2026-11-04",
+          "thresholds": [
+            120,
+            90,
+            60
+          ]
+        }
+      ],
+      "event": {
+        "country": "GB",
+        "english_name": "Boxing Day (observed)",
+        "event_date": "2026-12-28"
+      },
+      "first_seen": "2026-11-04",
+      "missed_reported_on": "2026-11-04",
+      "production_status": "unknown"
+    },
+    "GB:2027-01-01:new year's day": {
+      "alerted_thresholds": [
+        120,
+        90,
+        60
+      ],
+      "alerts": [
+        {
+          "catch_up": true,
+          "date": "2026-11-04",
+          "thresholds": [
+            120,
+            90,
+            60
+          ]
+        }
+      ],
+      "event": {
+        "country": "GB",
+        "english_name": "New Year's Day",
+        "event_date": "2027-01-01"
+      },
+      "first_seen": "2026-11-04",
+      "missed_reported_on": "2026-11-04",
+      "production_status": "unknown"
+    },
+    "GB:2027-03-26:good friday": {
+      "alerted_thresholds": [],
+      "alerts": [],
+      "event": {
+        "country": "GB",
+        "english_name": "Good Friday",
+        "event_date": "2027-03-26"
+      },
+      "first_seen": "2026-11-04",
+      "missed_reported_on": null,
+      "production_status": "unknown"
+    },
+    "GB:2027-05-03:may day": {
+      "alerted_thresholds": [],
+      "alerts": [],
+      "event": {
+        "country": "GB",
+        "english_name": "May Day",
+        "event_date": "2027-05-03"
+      },
+      "first_seen": "2026-11-04",
+      "missed_reported_on": null,
+      "production_status": "unknown"
+    },
+    "GB:2027-05-31:spring bank holiday": {
+      "alerted_thresholds": [],
+      "alerts": [],
+      "event": {
+        "country": "GB",
+        "english_name": "Spring Bank Holiday",
+        "event_date": "2027-05-31"
+      },
+      "first_seen": "2026-11-04",
+      "missed_reported_on": null,
+      "production_status": "unknown"
+    },
+    "GLOBAL:2026-11-19:international men's day": {
+      "alerted_thresholds": [
+        120,
+        90,
+        60,
+        30
+      ],
+      "alerts": [
+        {
+          "catch_up": true,
+          "date": "2026-11-04",
+          "thresholds": [
+            120,
+            90,
+            60,
+            30
+          ]
+        }
+      ],
+      "event": {
+        "country": "GLOBAL",
+        "english_name": "International Men's Day",
+        "event_date": "2026-11-19"
+      },
+      "first_seen": "2026-11-04",
+      "missed_reported_on": "2026-11-04",
+      "production_status": "unknown"
+    },
+    "GLOBAL:2026-11-25:international day for the elimination of violence against women": {
+      "alerted_thresholds": [
+        120,
+        90,
+        60,
+        30
+      ],
+      "alerts": [
+        {
+          "catch_up": true,
+          "date": "2026-11-04",
+          "thresholds": [
+            120,
+            90,
+            60,
+            30
+          ]
+        }
+      ],
+      "event": {
+        "country": "GLOBAL",
+        "english_name": "International Day for the Elimination of Violence against Women",
+        "event_date": "2026-11-25"
+      },
+      "first_seen": "2026-11-04",
+      "missed_reported_on": "2026-11-04",
+      "production_status": "unknown"
+    },
+    "GLOBAL:2026-12-03:international day of persons with disabilities": {
+      "alerted_thresholds": [
+        120,
+        90,
+        60,
+        30
+      ],
+      "alerts": [
+        {
+          "catch_up": true,
+          "date": "2026-11-04",
+          "thresholds": [
+            120,
+            90,
+            60,
+            30
+          ]
+        }
+      ],
+      "event": {
+        "country": "GLOBAL",
+        "english_name": "International Day of Persons with Disabilities",
+        "event_date": "2026-12-03"
+      },
+      "first_seen": "2026-11-04",
+      "missed_reported_on": "2026-11-04",
+      "production_status": "unknown"
+    },
+    "GLOBAL:2026-12-10:human rights day": {
+      "alerted_thresholds": [
+        120,
+        90,
+        60
+      ],
+      "alerts": [
+        {
+          "catch_up": true,
+          "date": "2026-11-04",
+          "thresholds": [
+            120,
+            90,
+            60
+          ]
+        }
+      ],
+      "event": {
+        "country": "GLOBAL",
+        "english_name": "Human Rights Day",
+        "event_date": "2026-12-10"
+      },
+      "first_seen": "2026-11-04",
+      "missed_reported_on": "2026-11-04",
+      "production_status": "unknown"
+    },
+    "GLOBAL:2026-12-21:december solstice -- start of summer (southern hemisphere)": {
+      "alerted_thresholds": [
+        120,
+        90,
+        60
+      ],
+      "alerts": [
+        {
+          "catch_up": true,
+          "date": "2026-11-04",
+          "thresholds": [
+            120,
+            90,
+            60
+          ]
+        }
+      ],
+      "event": {
+        "country": "GLOBAL",
+        "english_name": "December solstice -- start of summer (Southern Hemisphere)",
+        "event_date": "2026-12-21"
+      },
+      "first_seen": "2026-11-04",
+      "missed_reported_on": "2026-11-04",
+      "production_status": "unknown"
+    },
+    "GLOBAL:2026-12-21:december solstice -- start of winter (northern hemisphere)": {
+      "alerted_thresholds": [
+        120,
+        90,
+        60
+      ],
+      "alerts": [
+        {
+          "catch_up": true,
+          "date": "2026-11-04",
+          "thresholds": [
+            120,
+            90,
+            60
+          ]
+        }
+      ],
+      "event": {
+        "country": "GLOBAL",
+        "english_name": "December solstice -- start of winter (Northern Hemisphere)",
+        "event_date": "2026-12-21"
+      },
+      "first_seen": "2026-11-04",
+      "missed_reported_on": "2026-11-04",
+      "production_status": "unknown"
+    },
+    "GLOBAL:2027-01-24:international day of education": {
+      "alerted_thresholds": [
+        120,
+        90
+      ],
+      "alerts": [
+        {
+          "catch_up": true,
+          "date": "2026-11-04",
+          "thresholds": [
+            120,
+            90
+          ]
+        }
+      ],
+      "event": {
+        "country": "GLOBAL",
+        "english_name": "International Day of Education",
+        "event_date": "2027-01-24"
+      },
+      "first_seen": "2026-11-04",
+      "missed_reported_on": null,
+      "production_status": "unknown"
+    },
+    "GLOBAL:2027-02-20:world day of social justice": {
+      "alerted_thresholds": [
+        120
+      ],
+      "alerts": [
+        {
+          "catch_up": true,
+          "date": "2026-11-04",
+          "thresholds": [
+            120
+          ]
+        }
+      ],
+      "event": {
+        "country": "GLOBAL",
+        "english_name": "World Day of Social Justice",
+        "event_date": "2027-02-20"
+      },
+      "first_seen": "2026-11-04",
+      "missed_reported_on": null,
+      "production_status": "unknown"
+    },
+    "GLOBAL:2027-03-08:international women's day": {
+      "alerted_thresholds": [],
+      "alerts": [],
+      "event": {
+        "country": "GLOBAL",
+        "english_name": "International Women's Day",
+        "event_date": "2027-03-08"
+      },
+      "first_seen": "2026-11-04",
+      "missed_reported_on": null,
+      "production_status": "unknown"
+    },
+    "GLOBAL:2027-03-20:international day of happiness": {
+      "alerted_thresholds": [],
+      "alerts": [],
+      "event": {
+        "country": "GLOBAL",
+        "english_name": "International Day of Happiness",
+        "event_date": "2027-03-20"
+      },
+      "first_seen": "2026-11-04",
+      "missed_reported_on": null,
+      "production_status": "unknown"
+    },
+    "GLOBAL:2027-03-20:march equinox -- start of autumn (southern hemisphere)": {
+      "alerted_thresholds": [],
+      "alerts": [],
+      "event": {
+        "country": "GLOBAL",
+        "english_name": "March equinox -- start of autumn (Southern Hemisphere)",
+        "event_date": "2027-03-20"
+      },
+      "first_seen": "2026-11-04",
+      "missed_reported_on": null,
+      "production_status": "unknown"
+    },
+    "GLOBAL:2027-03-20:march equinox -- start of spring (northern hemisphere)": {
+      "alerted_thresholds": [],
+      "alerts": [],
+      "event": {
+        "country": "GLOBAL",
+        "english_name": "March equinox -- start of spring (Northern Hemisphere)",
+        "event_date": "2027-03-20"
+      },
+      "first_seen": "2026-11-04",
+      "missed_reported_on": null,
+      "production_status": "unknown"
+    },
+    "GLOBAL:2027-03-21:international day of forests": {
+      "alerted_thresholds": [],
+      "alerts": [],
+      "event": {
+        "country": "GLOBAL",
+        "english_name": "International Day of Forests",
+        "event_date": "2027-03-21"
+      },
+      "first_seen": "2026-11-04",
+      "missed_reported_on": null,
+      "production_status": "unknown"
+    },
+    "GLOBAL:2027-03-22:world water day": {
+      "alerted_thresholds": [],
+      "alerts": [],
+      "event": {
+        "country": "GLOBAL",
+        "english_name": "World Water Day",
+        "event_date": "2027-03-22"
+      },
+      "first_seen": "2026-11-04",
+      "missed_reported_on": null,
+      "production_status": "unknown"
+    },
+    "GLOBAL:2027-04-07:world health day": {
+      "alerted_thresholds": [],
+      "alerts": [],
+      "event": {
+        "country": "GLOBAL",
+        "english_name": "World Health Day",
+        "event_date": "2027-04-07"
+      },
+      "first_seen": "2026-11-04",
+      "missed_reported_on": null,
+      "production_status": "unknown"
+    },
+    "GLOBAL:2027-04-22:international mother earth day": {
+      "alerted_thresholds": [],
+      "alerts": [],
+      "event": {
+        "country": "GLOBAL",
+        "english_name": "International Mother Earth Day",
+        "event_date": "2027-04-22"
+      },
+      "first_seen": "2026-11-04",
+      "missed_reported_on": null,
+      "production_status": "unknown"
+    },
+    "GLOBAL:2027-05-01:international workers' day": {
+      "alerted_thresholds": [],
+      "alerts": [],
+      "event": {
+        "country": "GLOBAL",
+        "english_name": "International Workers' Day",
+        "event_date": "2027-05-01"
+      },
+      "first_seen": "2026-11-04",
+      "missed_reported_on": null,
+      "production_status": "unknown"
+    },
+    "GLOBAL:2027-05-15:international day of families": {
+      "alerted_thresholds": [],
+      "alerts": [],
+      "event": {
+        "country": "GLOBAL",
+        "english_name": "International Day of Families",
+        "event_date": "2027-05-15"
+      },
+      "first_seen": "2026-11-04",
+      "missed_reported_on": null,
+      "production_status": "unknown"
+    },
+    "GLOBAL:2027-06-05:world environment day": {
+      "alerted_thresholds": [],
+      "alerts": [],
+      "event": {
+        "country": "GLOBAL",
+        "english_name": "World Environment Day",
+        "event_date": "2027-06-05"
+      },
+      "first_seen": "2026-11-04",
+      "missed_reported_on": null,
+      "production_status": "unknown"
+    },
+    "GLOBAL:2027-06-08:world oceans day": {
+      "alerted_thresholds": [],
+      "alerts": [],
+      "event": {
+        "country": "GLOBAL",
+        "english_name": "World Oceans Day",
+        "event_date": "2027-06-08"
+      },
+      "first_seen": "2026-11-04",
+      "missed_reported_on": null,
+      "production_status": "unknown"
+    },
+    "GLOBAL:2027-06-20:world refugee day": {
+      "alerted_thresholds": [],
+      "alerts": [],
+      "event": {
+        "country": "GLOBAL",
+        "english_name": "World Refugee Day",
+        "event_date": "2027-06-20"
+      },
+      "first_seen": "2026-11-04",
+      "missed_reported_on": null,
+      "production_status": "unknown"
+    },
+    "GLOBAL:2027-06-21:june solstice -- start of summer (northern hemisphere)": {
+      "alerted_thresholds": [],
+      "alerts": [],
+      "event": {
+        "country": "GLOBAL",
+        "english_name": "June solstice -- start of summer (Northern Hemisphere)",
+        "event_date": "2027-06-21"
+      },
+      "first_seen": "2026-11-04",
+      "missed_reported_on": null,
+      "production_status": "unknown"
+    },
+    "GLOBAL:2027-06-21:june solstice -- start of winter (southern hemisphere)": {
+      "alerted_thresholds": [],
+      "alerts": [],
+      "event": {
+        "country": "GLOBAL",
+        "english_name": "June solstice -- start of winter (Southern Hemisphere)",
+        "event_date": "2027-06-21"
+      },
+      "first_seen": "2026-11-04",
+      "missed_reported_on": null,
+      "production_status": "unknown"
+    },
+    "GLOBAL:2027-07-11:world population day": {
+      "alerted_thresholds": [],
+      "alerts": [],
+      "event": {
+        "country": "GLOBAL",
+        "english_name": "World Population Day",
+        "event_date": "2027-07-11"
+      },
+      "first_seen": "2026-11-04",
+      "missed_reported_on": null,
+      "production_status": "unknown"
+    },
+    "GLOBAL:2027-08-12:international youth day": {
+      "alerted_thresholds": [],
+      "alerts": [],
+      "event": {
+        "country": "GLOBAL",
+        "english_name": "International Youth Day",
+        "event_date": "2027-08-12"
+      },
+      "first_seen": "2026-11-04",
+      "missed_reported_on": null,
+      "production_status": "unknown"
+    },
+    "GLOBAL:2027-09-08:international literacy day": {
+      "alerted_thresholds": [],
+      "alerts": [],
+      "event": {
+        "country": "GLOBAL",
+        "english_name": "International Literacy Day",
+        "event_date": "2027-09-08"
+      },
+      "first_seen": "2026-11-04",
+      "missed_reported_on": null,
+      "production_status": "unknown"
+    },
+    "GLOBAL:2027-09-21:international day of peace": {
+      "alerted_thresholds": [],
+      "alerts": [],
+      "event": {
+        "country": "GLOBAL",
+        "english_name": "International Day of Peace",
+        "event_date": "2027-09-21"
+      },
+      "first_seen": "2026-11-04",
+      "missed_reported_on": null,
+      "production_status": "unknown"
+    },
+    "GLOBAL:2027-09-23:september equinox -- start of autumn (northern hemisphere)": {
+      "alerted_thresholds": [],
+      "alerts": [],
+      "event": {
+        "country": "GLOBAL",
+        "english_name": "September equinox -- start of autumn (Northern Hemisphere)",
+        "event_date": "2027-09-23"
+      },
+      "first_seen": "2026-11-04",
+      "missed_reported_on": null,
+      "production_status": "unknown"
+    },
+    "GLOBAL:2027-09-23:september equinox -- start of spring (southern hemisphere)": {
+      "alerted_thresholds": [],
+      "alerts": [],
+      "event": {
+        "country": "GLOBAL",
+        "english_name": "September equinox -- start of spring (Southern Hemisphere)",
+        "event_date": "2027-09-23"
+      },
+      "first_seen": "2026-11-04",
+      "missed_reported_on": null,
+      "production_status": "unknown"
+    },
+    "GLOBAL:2027-09-29:international day of awareness of food loss and waste": {
+      "alerted_thresholds": [],
+      "alerts": [],
+      "event": {
+        "country": "GLOBAL",
+        "english_name": "International Day of Awareness of Food Loss and Waste",
+        "event_date": "2027-09-29"
+      },
+      "first_seen": "2026-11-04",
+      "missed_reported_on": null,
+      "production_status": "unknown"
+    },
+    "GLOBAL:2027-10-01:international day of older persons": {
+      "alerted_thresholds": [],
+      "alerts": [],
+      "event": {
+        "country": "GLOBAL",
+        "english_name": "International Day of Older Persons",
+        "event_date": "2027-10-01"
+      },
+      "first_seen": "2026-11-04",
+      "missed_reported_on": null,
+      "production_status": "unknown"
+    },
+    "GLOBAL:2027-10-05:world teachers' day": {
+      "alerted_thresholds": [],
+      "alerts": [],
+      "event": {
+        "country": "GLOBAL",
+        "english_name": "World Teachers' Day",
+        "event_date": "2027-10-05"
+      },
+      "first_seen": "2026-11-04",
+      "missed_reported_on": null,
+      "production_status": "unknown"
+    },
+    "GLOBAL:2027-10-16:world food day": {
+      "alerted_thresholds": [],
+      "alerts": [],
+      "event": {
+        "country": "GLOBAL",
+        "english_name": "World Food Day",
+        "event_date": "2027-10-16"
+      },
+      "first_seen": "2026-11-04",
+      "missed_reported_on": null,
+      "production_status": "unknown"
+    },
+    "ID:2026-12-25:hari raya natal": {
+      "alerted_thresholds": [
+        120,
+        90,
+        60
+      ],
+      "alerts": [
+        {
+          "catch_up": true,
+          "date": "2026-11-04",
+          "thresholds": [
+            120,
+            90,
+            60
+          ]
+        }
+      ],
+      "event": {
+        "country": "ID",
+        "english_name": "Hari Raya Natal",
+        "event_date": "2026-12-25"
+      },
+      "first_seen": "2026-11-04",
+      "missed_reported_on": "2026-11-04",
+      "production_status": "unknown"
+    },
+    "ID:2027-01-01:tahun baru masehi": {
+      "alerted_thresholds": [
+        120,
+        90,
+        60
+      ],
+      "alerts": [
+        {
+          "catch_up": true,
+          "date": "2026-11-04",
+          "thresholds": [
+            120,
+            90,
+            60
+          ]
+        }
+      ],
+      "event": {
+        "country": "ID",
+        "english_name": "Tahun Baru Masehi",
+        "event_date": "2027-01-01"
+      },
+      "first_seen": "2026-11-04",
+      "missed_reported_on": "2026-11-04",
+      "production_status": "unknown"
+    },
+    "ID:2027-01-05:isra mikraj nabi muhammad": {
+      "alerted_thresholds": [
+        120,
+        90
+      ],
+      "alerts": [
+        {
+          "catch_up": true,
+          "date": "2026-11-04",
+          "thresholds": [
+            120,
+            90
+          ]
+        }
+      ],
+      "event": {
+        "country": "ID",
+        "english_name": "Isra Mikraj Nabi Muhammad",
+        "event_date": "2027-01-05"
+      },
+      "first_seen": "2026-11-04",
+      "missed_reported_on": "2026-11-04",
+      "production_status": "unknown"
+    },
+    "ID:2027-02-06:tahun baru imlek": {
+      "alerted_thresholds": [
+        120
+      ],
+      "alerts": [
+        {
+          "catch_up": true,
+          "date": "2026-11-04",
+          "thresholds": [
+            120
+          ]
+        }
+      ],
+      "event": {
+        "country": "ID",
+        "english_name": "Tahun Baru Imlek",
+        "event_date": "2027-02-06"
+      },
+      "first_seen": "2026-11-04",
+      "missed_reported_on": null,
+      "production_status": "unknown"
+    },
+    "ID:2027-03-08:hari suci nyepi": {
+      "alerted_thresholds": [],
+      "alerts": [],
+      "event": {
+        "country": "ID",
+        "english_name": "Hari Suci Nyepi",
+        "event_date": "2027-03-08"
+      },
+      "first_seen": "2026-11-04",
+      "missed_reported_on": null,
+      "production_status": "unknown"
+    },
+    "ID:2027-03-10:hari raya idul fitri (perkiraan)": {
+      "alerted_thresholds": [],
+      "alerts": [],
+      "event": {
+        "country": "ID",
+        "english_name": "Hari Raya Idul Fitri (perkiraan)",
+        "event_date": "2027-03-10"
+      },
+      "first_seen": "2026-11-04",
+      "missed_reported_on": null,
+      "production_status": "unknown"
+    },
+    "ID:2027-03-11:hari kedua dari hari raya idul fitri (perkiraan)": {
+      "alerted_thresholds": [],
+      "alerts": [],
+      "event": {
+        "country": "ID",
+        "english_name": "Hari kedua dari Hari Raya Idul Fitri (perkiraan)",
+        "event_date": "2027-03-11"
+      },
+      "first_seen": "2026-11-04",
+      "missed_reported_on": null,
+      "production_status": "unknown"
+    },
+    "ID:2027-03-26:wafat yesus kristus": {
+      "alerted_thresholds": [],
+      "alerts": [],
+      "event": {
+        "country": "ID",
+        "english_name": "Wafat Yesus Kristus",
+        "event_date": "2027-03-26"
+      },
+      "first_seen": "2026-11-04",
+      "missed_reported_on": null,
+      "production_status": "unknown"
+    },
+    "ID:2027-03-28:kebangkitan yesus kristus": {
+      "alerted_thresholds": [],
+      "alerts": [],
+      "event": {
+        "country": "ID",
+        "english_name": "Kebangkitan Yesus Kristus",
+        "event_date": "2027-03-28"
+      },
+      "first_seen": "2026-11-04",
+      "missed_reported_on": null,
+      "production_status": "unknown"
+    },
+    "ID:2027-05-01:hari buruh internasional": {
+      "alerted_thresholds": [],
+      "alerts": [],
+      "event": {
+        "country": "ID",
+        "english_name": "Hari Buruh Internasional",
+        "event_date": "2027-05-01"
+      },
+      "first_seen": "2026-11-04",
+      "missed_reported_on": null,
+      "production_status": "unknown"
+    },
+    "ID:2027-05-06:kenaikan yesus kristus": {
+      "alerted_thresholds": [],
+      "alerts": [],
+      "event": {
+        "country": "ID",
+        "english_name": "Kenaikan Yesus Kristus",
+        "event_date": "2027-05-06"
+      },
+      "first_seen": "2026-11-04",
+      "missed_reported_on": null,
+      "production_status": "unknown"
+    },
+    "ID:2027-05-17:hari raya idul adha (perkiraan)": {
+      "alerted_thresholds": [],
+      "alerts": [],
+      "event": {
+        "country": "ID",
+        "english_name": "Hari Raya Idul Adha (perkiraan)",
+        "event_date": "2027-05-17"
+      },
+      "first_seen": "2026-11-04",
+      "missed_reported_on": null,
+      "production_status": "unknown"
+    },
+    "ID:2027-05-20:hari raya waisak": {
+      "alerted_thresholds": [],
+      "alerts": [],
+      "event": {
+        "country": "ID",
+        "english_name": "Hari Raya Waisak",
+        "event_date": "2027-05-20"
+      },
+      "first_seen": "2026-11-04",
+      "missed_reported_on": null,
+      "production_status": "unknown"
+    },
+    "ID:2027-06-01:hari lahir pancasila": {
+      "alerted_thresholds": [],
+      "alerts": [],
+      "event": {
+        "country": "ID",
+        "english_name": "Hari Lahir Pancasila",
+        "event_date": "2027-06-01"
+      },
+      "first_seen": "2026-11-04",
+      "missed_reported_on": null,
+      "production_status": "unknown"
+    },
+    "ID:2027-06-06:tahun baru islam": {
+      "alerted_thresholds": [],
+      "alerts": [],
+      "event": {
+        "country": "ID",
+        "english_name": "Tahun Baru Islam",
+        "event_date": "2027-06-06"
+      },
+      "first_seen": "2026-11-04",
+      "missed_reported_on": null,
+      "production_status": "unknown"
+    },
+    "ID:2027-08-15:maulid nabi muhammad": {
+      "alerted_thresholds": [],
+      "alerts": [],
+      "event": {
+        "country": "ID",
+        "english_name": "Maulid Nabi Muhammad",
+        "event_date": "2027-08-15"
+      },
+      "first_seen": "2026-11-04",
+      "missed_reported_on": null,
+      "production_status": "unknown"
+    },
+    "ID:2027-08-17:hari kemerdekaan republik indonesia": {
+      "alerted_thresholds": [],
+      "alerts": [],
+      "event": {
+        "country": "ID",
+        "english_name": "Hari Kemerdekaan Republik Indonesia",
+        "event_date": "2027-08-17"
+      },
+      "first_seen": "2026-11-04",
+      "missed_reported_on": null,
+      "production_status": "unknown"
+    },
+    "IL:2026-11-09:סיגד": {
+      "alerted_thresholds": [
+        120,
+        90,
+        60,
+        30
+      ],
+      "alerts": [
+        {
+          "catch_up": true,
+          "date": "2026-11-04",
+          "thresholds": [
+            120,
+            90,
+            60,
+            30
+          ]
+        }
+      ],
+      "event": {
+        "country": "IL",
+        "english_name": "סיגד",
+        "event_date": "2026-11-09"
+      },
+      "first_seen": "2026-11-04",
+      "missed_reported_on": "2026-11-04",
+      "production_status": "unknown"
+    },
+    "IL:2026-12-05:חנוכה": {
+      "alerted_thresholds": [
+        120,
+        90,
+        60
+      ],
+      "alerts": [
+        {
+          "catch_up": true,
+          "date": "2026-11-04",
+          "thresholds": [
+            120,
+            90,
+            60
+          ]
+        }
+      ],
+      "event": {
+        "country": "IL",
+        "english_name": "חנוכה",
+        "event_date": "2026-12-05"
+      },
+      "first_seen": "2026-11-04",
+      "missed_reported_on": "2026-11-04",
+      "production_status": "unknown"
+    },
+    "IL:2026-12-06:חנוכה": {
+      "alerted_thresholds": [
+        120,
+        90,
+        60
+      ],
+      "alerts": [
+        {
+          "catch_up": true,
+          "date": "2026-11-04",
+          "thresholds": [
+            120,
+            90,
+            60
+          ]
+        }
+      ],
+      "event": {
+        "country": "IL",
+        "english_name": "חנוכה",
+        "event_date": "2026-12-06"
+      },
+      "first_seen": "2026-11-04",
+      "missed_reported_on": "2026-11-04",
+      "production_status": "unknown"
+    },
+    "IL:2026-12-07:חנוכה": {
+      "alerted_thresholds": [
+        120,
+        90,
+        60
+      ],
+      "alerts": [
+        {
+          "catch_up": true,
+          "date": "2026-11-04",
+          "thresholds": [
+            120,
+            90,
+            60
+          ]
+        }
+      ],
+      "event": {
+        "country": "IL",
+        "english_name": "חנוכה",
+        "event_date": "2026-12-07"
+      },
+      "first_seen": "2026-11-04",
+      "missed_reported_on": "2026-11-04",
+      "production_status": "unknown"
+    },
+    "IL:2026-12-08:חנוכה": {
+      "alerted_thresholds": [
+        120,
+        90,
+        60
+      ],
+      "alerts": [
+        {
+          "catch_up": true,
+          "date": "2026-11-04",
+          "thresholds": [
+            120,
+            90,
+            60
+          ]
+        }
+      ],
+      "event": {
+        "country": "IL",
+        "english_name": "חנוכה",
+        "event_date": "2026-12-08"
+      },
+      "first_seen": "2026-11-04",
+      "missed_reported_on": "2026-11-04",
+      "production_status": "unknown"
+    },
+    "IL:2026-12-09:חנוכה": {
+      "alerted_thresholds": [
+        120,
+        90,
+        60
+      ],
+      "alerts": [
+        {
+          "catch_up": true,
+          "date": "2026-11-04",
+          "thresholds": [
+            120,
+            90,
+            60
+          ]
+        }
+      ],
+      "event": {
+        "country": "IL",
+        "english_name": "חנוכה",
+        "event_date": "2026-12-09"
+      },
+      "first_seen": "2026-11-04",
+      "missed_reported_on": "2026-11-04",
+      "production_status": "unknown"
+    },
+    "IL:2026-12-10:חנוכה": {
+      "alerted_thresholds": [
+        120,
+        90,
+        60
+      ],
+      "alerts": [
+        {
+          "catch_up": true,
+          "date": "2026-11-04",
+          "thresholds": [
+            120,
+            90,
+            60
+          ]
+        }
+      ],
+      "event": {
+        "country": "IL",
+        "english_name": "חנוכה",
+        "event_date": "2026-12-10"
+      },
+      "first_seen": "2026-11-04",
+      "missed_reported_on": "2026-11-04",
+      "production_status": "unknown"
+    },
+    "IL:2026-12-11:חנוכה": {
+      "alerted_thresholds": [
+        120,
+        90,
+        60
+      ],
+      "alerts": [
+        {
+          "catch_up": true,
+          "date": "2026-11-04",
+          "thresholds": [
+            120,
+            90,
+            60
+          ]
+        }
+      ],
+      "event": {
+        "country": "IL",
+        "english_name": "חנוכה",
+        "event_date": "2026-12-11"
+      },
+      "first_seen": "2026-11-04",
+      "missed_reported_on": "2026-11-04",
+      "production_status": "unknown"
+    },
+    "IL:2026-12-12:חנוכה": {
+      "alerted_thresholds": [
+        120,
+        90,
+        60
+      ],
+      "alerts": [
+        {
+          "catch_up": true,
+          "date": "2026-11-04",
+          "thresholds": [
+            120,
+            90,
+            60
+          ]
+        }
+      ],
+      "event": {
+        "country": "IL",
+        "english_name": "חנוכה",
+        "event_date": "2026-12-12"
+      },
+      "first_seen": "2026-11-04",
+      "missed_reported_on": "2026-11-04",
+      "production_status": "unknown"
+    },
+    "IL:2027-03-22:תענית אסתר": {
+      "alerted_thresholds": [],
+      "alerts": [],
+      "event": {
+        "country": "IL",
+        "english_name": "תענית אסתר",
+        "event_date": "2027-03-22"
+      },
+      "first_seen": "2026-11-04",
+      "missed_reported_on": null,
+      "production_status": "unknown"
+    },
+    "IL:2027-03-23:פורים": {
+      "alerted_thresholds": [],
+      "alerts": [],
+      "event": {
+        "country": "IL",
+        "english_name": "פורים",
+        "event_date": "2027-03-23"
+      },
+      "first_seen": "2026-11-04",
+      "missed_reported_on": null,
+      "production_status": "unknown"
+    },
+    "IL:2027-04-22:פסח": {
+      "alerted_thresholds": [],
+      "alerts": [],
+      "event": {
+        "country": "IL",
+        "english_name": "פסח",
+        "event_date": "2027-04-22"
+      },
+      "first_seen": "2026-11-04",
+      "missed_reported_on": null,
+      "production_status": "unknown"
+    },
+    "IL:2027-04-23:חול המועד פסח": {
+      "alerted_thresholds": [],
+      "alerts": [],
+      "event": {
+        "country": "IL",
+        "english_name": "חול המועד פסח",
+        "event_date": "2027-04-23"
+      },
+      "first_seen": "2026-11-04",
+      "missed_reported_on": null,
+      "production_status": "unknown"
+    },
+    "IL:2027-04-24:חול המועד פסח": {
+      "alerted_thresholds": [],
+      "alerts": [],
+      "event": {
+        "country": "IL",
+        "english_name": "חול המועד פסח",
+        "event_date": "2027-04-24"
+      },
+      "first_seen": "2026-11-04",
+      "missed_reported_on": null,
+      "production_status": "unknown"
+    },
+    "IL:2027-04-25:חול המועד פסח": {
+      "alerted_thresholds": [],
+      "alerts": [],
+      "event": {
+        "country": "IL",
+        "english_name": "חול המועד פסח",
+        "event_date": "2027-04-25"
+      },
+      "first_seen": "2026-11-04",
+      "missed_reported_on": null,
+      "production_status": "unknown"
+    },
+    "IL:2027-04-26:חול המועד פסח": {
+      "alerted_thresholds": [],
+      "alerts": [],
+      "event": {
+        "country": "IL",
+        "english_name": "חול המועד פסח",
+        "event_date": "2027-04-26"
+      },
+      "first_seen": "2026-11-04",
+      "missed_reported_on": null,
+      "production_status": "unknown"
+    },
+    "IL:2027-04-27:חול המועד פסח": {
+      "alerted_thresholds": [],
+      "alerts": [],
+      "event": {
+        "country": "IL",
+        "english_name": "חול המועד פסח",
+        "event_date": "2027-04-27"
+      },
+      "first_seen": "2026-11-04",
+      "missed_reported_on": null,
+      "production_status": "unknown"
+    },
+    "IL:2027-04-28:שביעי של פסח": {
+      "alerted_thresholds": [],
+      "alerts": [],
+      "event": {
+        "country": "IL",
+        "english_name": "שביעי של פסח",
+        "event_date": "2027-04-28"
+      },
+      "first_seen": "2026-11-04",
+      "missed_reported_on": null,
+      "production_status": "unknown"
+    },
+    "IL:2027-05-11:יום הזיכרון לחללי מערכות ישראל ונפגעי פעולות האיבה": {
+      "alerted_thresholds": [],
+      "alerts": [],
+      "event": {
+        "country": "IL",
+        "english_name": "יום הזיכרון לחללי מערכות ישראל ונפגעי פעולות האיבה",
+        "event_date": "2027-05-11"
+      },
+      "first_seen": "2026-11-04",
+      "missed_reported_on": null,
+      "production_status": "unknown"
+    },
+    "IL:2027-05-12:יום העצמאות": {
+      "alerted_thresholds": [],
+      "alerts": [],
+      "event": {
+        "country": "IL",
+        "english_name": "יום העצמאות",
+        "event_date": "2027-05-12"
+      },
+      "first_seen": "2026-11-04",
+      "missed_reported_on": null,
+      "production_status": "unknown"
+    },
+    "IL:2027-05-25:ל״ג בעומר": {
+      "alerted_thresholds": [],
+      "alerts": [],
+      "event": {
+        "country": "IL",
+        "english_name": "ל״ג בעומר",
+        "event_date": "2027-05-25"
+      },
+      "first_seen": "2026-11-04",
+      "missed_reported_on": null,
+      "production_status": "unknown"
+    },
+    "IL:2027-06-04:יום ירושלים": {
+      "alerted_thresholds": [],
+      "alerts": [],
+      "event": {
+        "country": "IL",
+        "english_name": "יום ירושלים",
+        "event_date": "2027-06-04"
+      },
+      "first_seen": "2026-11-04",
+      "missed_reported_on": null,
+      "production_status": "unknown"
+    },
+    "IL:2027-06-11:שבועות": {
+      "alerted_thresholds": [],
+      "alerts": [],
+      "event": {
+        "country": "IL",
+        "english_name": "שבועות",
+        "event_date": "2027-06-11"
+      },
+      "first_seen": "2026-11-04",
+      "missed_reported_on": null,
+      "production_status": "unknown"
+    },
+    "IL:2027-08-12:תשעה באב": {
+      "alerted_thresholds": [],
+      "alerts": [],
+      "event": {
+        "country": "IL",
+        "english_name": "תשעה באב",
+        "event_date": "2027-08-12"
+      },
+      "first_seen": "2026-11-04",
+      "missed_reported_on": null,
+      "production_status": "unknown"
+    },
+    "IL:2027-10-02:ראש השנה": {
+      "alerted_thresholds": [],
+      "alerts": [],
+      "event": {
+        "country": "IL",
+        "english_name": "ראש השנה",
+        "event_date": "2027-10-02"
+      },
+      "first_seen": "2026-11-04",
+      "missed_reported_on": null,
+      "production_status": "unknown"
+    },
+    "IL:2027-10-03:ראש השנה": {
+      "alerted_thresholds": [],
+      "alerts": [],
+      "event": {
+        "country": "IL",
+        "english_name": "ראש השנה",
+        "event_date": "2027-10-03"
+      },
+      "first_seen": "2026-11-04",
+      "missed_reported_on": null,
+      "production_status": "unknown"
+    },
+    "IL:2027-10-11:יום כיפור": {
+      "alerted_thresholds": [],
+      "alerts": [],
+      "event": {
+        "country": "IL",
+        "english_name": "יום כיפור",
+        "event_date": "2027-10-11"
+      },
+      "first_seen": "2026-11-04",
+      "missed_reported_on": null,
+      "production_status": "unknown"
+    },
+    "IL:2027-10-16:סוכות": {
+      "alerted_thresholds": [],
+      "alerts": [],
+      "event": {
+        "country": "IL",
+        "english_name": "סוכות",
+        "event_date": "2027-10-16"
+      },
+      "first_seen": "2026-11-04",
+      "missed_reported_on": null,
+      "production_status": "unknown"
+    },
+    "IL:2027-10-17:חול המועד סוכות": {
+      "alerted_thresholds": [],
+      "alerts": [],
+      "event": {
+        "country": "IL",
+        "english_name": "חול המועד סוכות",
+        "event_date": "2027-10-17"
+      },
+      "first_seen": "2026-11-04",
+      "missed_reported_on": null,
+      "production_status": "unknown"
+    },
+    "IL:2027-10-18:חול המועד סוכות": {
+      "alerted_thresholds": [],
+      "alerts": [],
+      "event": {
+        "country": "IL",
+        "english_name": "חול המועד סוכות",
+        "event_date": "2027-10-18"
+      },
+      "first_seen": "2026-11-04",
+      "missed_reported_on": null,
+      "production_status": "unknown"
+    },
+    "IL:2027-10-19:חול המועד סוכות": {
+      "alerted_thresholds": [],
+      "alerts": [],
+      "event": {
+        "country": "IL",
+        "english_name": "חול המועד סוכות",
+        "event_date": "2027-10-19"
+      },
+      "first_seen": "2026-11-04",
+      "missed_reported_on": null,
+      "production_status": "unknown"
+    },
+    "IL:2027-10-20:חול המועד סוכות": {
+      "alerted_thresholds": [],
+      "alerts": [],
+      "event": {
+        "country": "IL",
+        "english_name": "חול המועד סוכות",
+        "event_date": "2027-10-20"
+      },
+      "first_seen": "2026-11-04",
+      "missed_reported_on": null,
+      "production_status": "unknown"
+    },
+    "IL:2027-10-21:חול המועד סוכות": {
+      "alerted_thresholds": [],
+      "alerts": [],
+      "event": {
+        "country": "IL",
+        "english_name": "חול המועד סוכות",
+        "event_date": "2027-10-21"
+      },
+      "first_seen": "2026-11-04",
+      "missed_reported_on": null,
+      "production_status": "unknown"
+    },
+    "IL:2027-10-23:שמחת תורה/שמיני עצרת": {
+      "alerted_thresholds": [],
+      "alerts": [],
+      "event": {
+        "country": "IL",
+        "english_name": "שמחת תורה/שמיני עצרת",
+        "event_date": "2027-10-23"
+      },
+      "first_seen": "2026-11-04",
+      "missed_reported_on": null,
+      "production_status": "unknown"
+    },
+    "IN:2026-11-08:diwali (deepavali)": {
+      "alerted_thresholds": [
+        120,
+        90,
+        60,
+        30
+      ],
+      "alerts": [
+        {
+          "catch_up": true,
+          "date": "2026-11-04",
+          "thresholds": [
+            120,
+            90,
+            60,
+            30
+          ]
+        }
+      ],
+      "event": {
+        "country": "IN",
+        "english_name": "Diwali (Deepavali)",
+        "event_date": "2026-11-08"
+      },
+      "first_seen": "2026-11-04",
+      "missed_reported_on": "2026-11-04",
+      "production_status": "unknown"
+    },
+    "IN:2026-11-24:guru nanak's jayanti": {
+      "alerted_thresholds": [
+        120,
+        90,
+        60,
+        30
+      ],
+      "alerts": [
+        {
+          "catch_up": true,
+          "date": "2026-11-04",
+          "thresholds": [
+            120,
+            90,
+            60,
+            30
+          ]
+        }
+      ],
+      "event": {
+        "country": "IN",
+        "english_name": "Guru Nanak's Jayanti",
+        "event_date": "2026-11-24"
+      },
+      "first_seen": "2026-11-04",
+      "missed_reported_on": "2026-11-04",
+      "production_status": "unknown"
+    },
+    "IN:2026-12-25:christmas": {
+      "alerted_thresholds": [
+        120,
+        90,
+        60
+      ],
+      "alerts": [
+        {
+          "catch_up": true,
+          "date": "2026-11-04",
+          "thresholds": [
+            120,
+            90,
+            60
+          ]
+        }
+      ],
+      "event": {
+        "country": "IN",
+        "english_name": "Christmas",
+        "event_date": "2026-12-25"
+      },
+      "first_seen": "2026-11-04",
+      "missed_reported_on": "2026-11-04",
+      "production_status": "unknown"
+    },
+    "IN:2027-01-26:republic day": {
+      "alerted_thresholds": [
+        120,
+        90
+      ],
+      "alerts": [
+        {
+          "catch_up": true,
+          "date": "2026-11-04",
+          "thresholds": [
+            120,
+            90
+          ]
+        }
+      ],
+      "event": {
+        "country": "IN",
+        "english_name": "Republic Day",
+        "event_date": "2027-01-26"
+      },
+      "first_seen": "2026-11-04",
+      "missed_reported_on": null,
+      "production_status": "unknown"
+    },
+    "IN:2027-03-06:maha shivaratri": {
+      "alerted_thresholds": [],
+      "alerts": [],
+      "event": {
+        "country": "IN",
+        "english_name": "Maha Shivaratri",
+        "event_date": "2027-03-06"
+      },
+      "first_seen": "2026-11-04",
+      "missed_reported_on": null,
+      "production_status": "unknown"
+    },
+    "IN:2027-03-10:id-ul-fitr (estimated)": {
+      "alerted_thresholds": [],
+      "alerts": [],
+      "event": {
+        "country": "IN",
+        "english_name": "Id-ul-Fitr (estimated)",
+        "event_date": "2027-03-10"
+      },
+      "first_seen": "2026-11-04",
+      "missed_reported_on": null,
+      "production_status": "unknown"
+    },
+    "IN:2027-03-22:holi": {
+      "alerted_thresholds": [],
+      "alerts": [],
+      "event": {
+        "country": "IN",
+        "english_name": "Holi",
+        "event_date": "2027-03-22"
+      },
+      "first_seen": "2026-11-04",
+      "missed_reported_on": null,
+      "production_status": "unknown"
+    },
+    "IN:2027-03-26:good friday": {
+      "alerted_thresholds": [],
+      "alerts": [],
+      "event": {
+        "country": "IN",
+        "english_name": "Good Friday",
+        "event_date": "2027-03-26"
+      },
+      "first_seen": "2026-11-04",
+      "missed_reported_on": null,
+      "production_status": "unknown"
+    },
+    "IN:2027-04-14:dr. b. r. ambedkar's jayanti": {
+      "alerted_thresholds": [],
+      "alerts": [],
+      "event": {
+        "country": "IN",
+        "english_name": "Dr. B. R. Ambedkar's Jayanti",
+        "event_date": "2027-04-14"
+      },
+      "first_seen": "2026-11-04",
+      "missed_reported_on": null,
+      "production_status": "unknown"
+    },
+    "IN:2027-04-15:ram navami": {
+      "alerted_thresholds": [],
+      "alerts": [],
+      "event": {
+        "country": "IN",
+        "english_name": "Ram Navami",
+        "event_date": "2027-04-15"
+      },
+      "first_seen": "2026-11-04",
+      "missed_reported_on": null,
+      "production_status": "unknown"
+    },
+    "IN:2027-04-18:mahavir jayanti": {
+      "alerted_thresholds": [],
+      "alerts": [],
+      "event": {
+        "country": "IN",
+        "english_name": "Mahavir Jayanti",
+        "event_date": "2027-04-18"
+      },
+      "first_seen": "2026-11-04",
+      "missed_reported_on": null,
+      "production_status": "unknown"
+    },
+    "IN:2027-05-17:id-ul-zuha (bakrid) (estimated)": {
+      "alerted_thresholds": [],
+      "alerts": [],
+      "event": {
+        "country": "IN",
+        "english_name": "Id-ul-Zuha (Bakrid) (estimated)",
+        "event_date": "2027-05-17"
+      },
+      "first_seen": "2026-11-04",
+      "missed_reported_on": null,
+      "production_status": "unknown"
+    },
+    "IN:2027-05-20:buddha purnima": {
+      "alerted_thresholds": [],
+      "alerts": [],
+      "event": {
+        "country": "IN",
+        "english_name": "Buddha Purnima",
+        "event_date": "2027-05-20"
+      },
+      "first_seen": "2026-11-04",
+      "missed_reported_on": null,
+      "production_status": "unknown"
+    },
+    "IN:2027-06-16:muharram (estimated)": {
+      "alerted_thresholds": [],
+      "alerts": [],
+      "event": {
+        "country": "IN",
+        "english_name": "Muharram (estimated)",
+        "event_date": "2027-06-16"
+      },
+      "first_seen": "2026-11-04",
+      "missed_reported_on": null,
+      "production_status": "unknown"
+    },
+    "IN:2027-08-15:independence day; milad-un-nabi (estimated)": {
+      "alerted_thresholds": [],
+      "alerts": [],
+      "event": {
+        "country": "IN",
+        "english_name": "Independence Day; Milad-un-Nabi (estimated)",
+        "event_date": "2027-08-15"
+      },
+      "first_seen": "2026-11-04",
+      "missed_reported_on": null,
+      "production_status": "unknown"
+    },
+    "IN:2027-08-25:janmashtami (vaishnava)": {
+      "alerted_thresholds": [],
+      "alerts": [],
+      "event": {
+        "country": "IN",
+        "english_name": "Janmashtami (Vaishnava)",
+        "event_date": "2027-08-25"
+      },
+      "first_seen": "2026-11-04",
+      "missed_reported_on": null,
+      "production_status": "unknown"
+    },
+    "IN:2027-10-02:mahatma gandhi's jayanti": {
+      "alerted_thresholds": [],
+      "alerts": [],
+      "event": {
+        "country": "IN",
+        "english_name": "Mahatma Gandhi's Jayanti",
+        "event_date": "2027-10-02"
+      },
+      "first_seen": "2026-11-04",
+      "missed_reported_on": null,
+      "production_status": "unknown"
+    },
+    "IN:2027-10-09:dussehra": {
+      "alerted_thresholds": [],
+      "alerts": [],
+      "event": {
+        "country": "IN",
+        "english_name": "Dussehra",
+        "event_date": "2027-10-09"
+      },
+      "first_seen": "2026-11-04",
+      "missed_reported_on": null,
+      "production_status": "unknown"
+    },
+    "IN:2027-10-29:diwali (deepavali)": {
+      "alerted_thresholds": [],
+      "alerts": [],
+      "event": {
+        "country": "IN",
+        "english_name": "Diwali (Deepavali)",
+        "event_date": "2027-10-29"
+      },
+      "first_seen": "2026-11-04",
+      "missed_reported_on": null,
+      "production_status": "unknown"
+    },
+    "IR:2026-11-13:شهادت حضرت فاطمه زهرا سلام الله علیها": {
+      "alerted_thresholds": [
+        120,
+        90,
+        60,
+        30
+      ],
+      "alerts": [
+        {
+          "catch_up": true,
+          "date": "2026-11-04",
+          "thresholds": [
+            120,
+            90,
+            60,
+            30
+          ]
+        }
+      ],
+      "event": {
+        "country": "IR",
+        "english_name": "شهادت حضرت فاطمه زهرا سلام الله علیها",
+        "event_date": "2026-11-13"
+      },
+      "first_seen": "2026-11-04",
+      "missed_reported_on": "2026-11-04",
+      "production_status": "unknown"
+    },
+    "IR:2026-12-23:ولادت امام علی علیه السلام و روز پدر": {
+      "alerted_thresholds": [
+        120,
+        90,
+        60
+      ],
+      "alerts": [
+        {
+          "catch_up": true,
+          "date": "2026-11-04",
+          "thresholds": [
+            120,
+            90,
+            60
+          ]
+        }
+      ],
+      "event": {
+        "country": "IR",
+        "english_name": "ولادت امام علی علیه السلام و روز پدر",
+        "event_date": "2026-12-23"
+      },
+      "first_seen": "2026-11-04",
+      "missed_reported_on": "2026-11-04",
+      "production_status": "unknown"
+    },
+    "IR:2027-01-06:مبعث رسول اکرم (ص) (تخمینی)": {
+      "alerted_thresholds": [
+        120,
+        90
+      ],
+      "alerts": [
+        {
+          "catch_up": true,
+          "date": "2026-11-04",
+          "thresholds": [
+            120,
+            90
+          ]
+        }
+      ],
+      "event": {
+        "country": "IR",
+        "english_name": "مبعث رسول اکرم (ص) (تخمینی)",
+        "event_date": "2027-01-06"
+      },
+      "first_seen": "2026-11-04",
+      "missed_reported_on": "2026-11-04",
+      "production_status": "unknown"
+    },
+    "IR:2027-01-24:ولادت حضرت قائم عجل الله تعالی فرجه و جشن نیمه شعبان (تخمینی)": {
+      "alerted_thresholds": [
+        120,
+        90
+      ],
+      "alerts": [
+        {
+          "catch_up": true,
+          "date": "2026-11-04",
+          "thresholds": [
+            120,
+            90
+          ]
+        }
+      ],
+      "event": {
+        "country": "IR",
+        "english_name": "ولادت حضرت قائم عجل الله تعالی فرجه و جشن نیمه شعبان (تخمینی)",
+        "event_date": "2027-01-24"
+      },
+      "first_seen": "2026-11-04",
+      "missed_reported_on": null,
+      "production_status": "unknown"
+    },
+    "IR:2027-02-11:پیروزی انقلاب اسلامی": {
+      "alerted_thresholds": [
+        120
+      ],
+      "alerts": [
+        {
+          "catch_up": true,
+          "date": "2026-11-04",
+          "thresholds": [
+            120
+          ]
+        }
+      ],
+      "event": {
+        "country": "IR",
+        "english_name": "پیروزی انقلاب اسلامی",
+        "event_date": "2027-02-11"
+      },
+      "first_seen": "2026-11-04",
+      "missed_reported_on": null,
+      "production_status": "unknown"
+    },
+    "IR:2027-03-01:شهادت حضرت علی علیه السلام (تخمینی)": {
+      "alerted_thresholds": [
+        120
+      ],
+      "alerts": [
+        {
+          "catch_up": true,
+          "date": "2026-11-04",
+          "thresholds": [
+            120
+          ]
+        }
+      ],
+      "event": {
+        "country": "IR",
+        "english_name": "شهادت حضرت علی علیه السلام (تخمینی)",
+        "event_date": "2027-03-01"
+      },
+      "first_seen": "2026-11-04",
+      "missed_reported_on": null,
+      "production_status": "unknown"
+    },
+    "IR:2027-03-10:عید سعید فطر (تخمینی)": {
+      "alerted_thresholds": [],
+      "alerts": [],
+      "event": {
+        "country": "IR",
+        "english_name": "عید سعید فطر (تخمینی)",
+        "event_date": "2027-03-10"
+      },
+      "first_seen": "2026-11-04",
+      "missed_reported_on": null,
+      "production_status": "unknown"
+    },
+    "IR:2027-03-11:تعطیل به مناسبت عید سعید فطر (تخمینی)": {
+      "alerted_thresholds": [],
+      "alerts": [],
+      "event": {
+        "country": "IR",
+        "english_name": "تعطیل به مناسبت عید سعید فطر (تخمینی)",
+        "event_date": "2027-03-11"
+      },
+      "first_seen": "2026-11-04",
+      "missed_reported_on": null,
+      "production_status": "unknown"
+    },
+    "IR:2027-03-20:روز ملی شدن صنعت نفت ایران": {
+      "alerted_thresholds": [],
+      "alerts": [],
+      "event": {
+        "country": "IR",
+        "english_name": "روز ملی شدن صنعت نفت ایران",
+        "event_date": "2027-03-20"
+      },
+      "first_seen": "2026-11-04",
+      "missed_reported_on": null,
+      "production_status": "unknown"
+    },
+    "IR:2027-03-21:جشن نوروز": {
+      "alerted_thresholds": [],
+      "alerts": [],
+      "event": {
+        "country": "IR",
+        "english_name": "جشن نوروز",
+        "event_date": "2027-03-21"
+      },
+      "first_seen": "2026-11-04",
+      "missed_reported_on": null,
+      "production_status": "unknown"
+    },
+    "IR:2027-03-22:عیدنوروز": {
+      "alerted_thresholds": [],
+      "alerts": [],
+      "event": {
+        "country": "IR",
+        "english_name": "عیدنوروز",
+        "event_date": "2027-03-22"
+      },
+      "first_seen": "2026-11-04",
+      "missed_reported_on": null,
+      "production_status": "unknown"
+    },
+    "IR:2027-03-23:عیدنوروز": {
+      "alerted_thresholds": [],
+      "alerts": [],
+      "event": {
+        "country": "IR",
+        "english_name": "عیدنوروز",
+        "event_date": "2027-03-23"
+      },
+      "first_seen": "2026-11-04",
+      "missed_reported_on": null,
+      "production_status": "unknown"
+    },
+    "IR:2027-03-24:عیدنوروز": {
+      "alerted_thresholds": [],
+      "alerts": [],
+      "event": {
+        "country": "IR",
+        "english_name": "عیدنوروز",
+        "event_date": "2027-03-24"
+      },
+      "first_seen": "2026-11-04",
+      "missed_reported_on": null,
+      "production_status": "unknown"
+    },
+    "IR:2027-04-01:روز جمهوری اسلامی": {
+      "alerted_thresholds": [],
+      "alerts": [],
+      "event": {
+        "country": "IR",
+        "english_name": "روز جمهوری اسلامی",
+        "event_date": "2027-04-01"
+      },
+      "first_seen": "2026-11-04",
+      "missed_reported_on": null,
+      "production_status": "unknown"
+    },
+    "IR:2027-04-02:روز طبیعت": {
+      "alerted_thresholds": [],
+      "alerts": [],
+      "event": {
+        "country": "IR",
+        "english_name": "روز طبیعت",
+        "event_date": "2027-04-02"
+      },
+      "first_seen": "2026-11-04",
+      "missed_reported_on": null,
+      "production_status": "unknown"
+    },
+    "IR:2027-04-03:شهادت امام جعفر صادق علیه السلام (تخمینی)": {
+      "alerted_thresholds": [],
+      "alerts": [],
+      "event": {
+        "country": "IR",
+        "english_name": "شهادت امام جعفر صادق علیه السلام (تخمینی)",
+        "event_date": "2027-04-03"
+      },
+      "first_seen": "2026-11-04",
+      "missed_reported_on": null,
+      "production_status": "unknown"
+    },
+    "IR:2027-05-17:عید سعید قربان (تخمینی)": {
+      "alerted_thresholds": [],
+      "alerts": [],
+      "event": {
+        "country": "IR",
+        "english_name": "عید سعید قربان (تخمینی)",
+        "event_date": "2027-05-17"
+      },
+      "first_seen": "2026-11-04",
+      "missed_reported_on": null,
+      "production_status": "unknown"
+    },
+    "IR:2027-05-25:عید سعید غدیر خم (تخمینی)": {
+      "alerted_thresholds": [],
+      "alerts": [],
+      "event": {
+        "country": "IR",
+        "english_name": "عید سعید غدیر خم (تخمینی)",
+        "event_date": "2027-05-25"
+      },
+      "first_seen": "2026-11-04",
+      "missed_reported_on": null,
+      "production_status": "unknown"
+    },
+    "IR:2027-06-04:رحلت حضرت امام خمینی": {
+      "alerted_thresholds": [],
+      "alerts": [],
+      "event": {
+        "country": "IR",
+        "english_name": "رحلت حضرت امام خمینی",
+        "event_date": "2027-06-04"
+      },
+      "first_seen": "2026-11-04",
+      "missed_reported_on": null,
+      "production_status": "unknown"
+    },
+    "IR:2027-06-05:قیام 15 خرداد": {
+      "alerted_thresholds": [],
+      "alerts": [],
+      "event": {
+        "country": "IR",
+        "english_name": "قیام 15 خرداد",
+        "event_date": "2027-06-05"
+      },
+      "first_seen": "2026-11-04",
+      "missed_reported_on": null,
+      "production_status": "unknown"
+    },
+    "IR:2027-06-15:تاسوعای حسینی (تخمینی)": {
+      "alerted_thresholds": [],
+      "alerts": [],
+      "event": {
+        "country": "IR",
+        "english_name": "تاسوعای حسینی (تخمینی)",
+        "event_date": "2027-06-15"
+      },
+      "first_seen": "2026-11-04",
+      "missed_reported_on": null,
+      "production_status": "unknown"
+    },
+    "IR:2027-06-16:عاشورای حسینی (تخمینی)": {
+      "alerted_thresholds": [],
+      "alerts": [],
+      "event": {
+        "country": "IR",
+        "english_name": "عاشورای حسینی (تخمینی)",
+        "event_date": "2027-06-16"
+      },
+      "first_seen": "2026-11-04",
+      "missed_reported_on": null,
+      "production_status": "unknown"
+    },
+    "IR:2027-07-25:اربعین حسینی (تخمینی)": {
+      "alerted_thresholds": [],
+      "alerts": [],
+      "event": {
+        "country": "IR",
+        "english_name": "اربعین حسینی (تخمینی)",
+        "event_date": "2027-07-25"
+      },
+      "first_seen": "2026-11-04",
+      "missed_reported_on": null,
+      "production_status": "unknown"
+    },
+    "IR:2027-08-02:رحلت رسول اکرم؛شهادت امام حسن مجتبی علیه السلام (تخمینی)": {
+      "alerted_thresholds": [],
+      "alerts": [],
+      "event": {
+        "country": "IR",
+        "english_name": "رحلت رسول اکرم؛شهادت امام حسن مجتبی علیه السلام (تخمینی)",
+        "event_date": "2027-08-02"
+      },
+      "first_seen": "2026-11-04",
+      "missed_reported_on": null,
+      "production_status": "unknown"
+    },
+    "IR:2027-08-03:شهادت امام رضا علیه السلام (تخمینی)": {
+      "alerted_thresholds": [],
+      "alerts": [],
+      "event": {
+        "country": "IR",
+        "english_name": "شهادت امام رضا علیه السلام (تخمینی)",
+        "event_date": "2027-08-03"
+      },
+      "first_seen": "2026-11-04",
+      "missed_reported_on": null,
+      "production_status": "unknown"
+    },
+    "IR:2027-08-11:شهادت امام حسن عسکری علیه السلام (تخمینی)": {
+      "alerted_thresholds": [],
+      "alerts": [],
+      "event": {
+        "country": "IR",
+        "english_name": "شهادت امام حسن عسکری علیه السلام (تخمینی)",
+        "event_date": "2027-08-11"
+      },
+      "first_seen": "2026-11-04",
+      "missed_reported_on": null,
+      "production_status": "unknown"
+    },
+    "IR:2027-08-20:میلاد رسول اکرم و امام جعفر صادق علیه السلام (تخمینی)": {
+      "alerted_thresholds": [],
+      "alerts": [],
+      "event": {
+        "country": "IR",
+        "english_name": "میلاد رسول اکرم و امام جعفر صادق علیه السلام (تخمینی)",
+        "event_date": "2027-08-20"
+      },
+      "first_seen": "2026-11-04",
+      "missed_reported_on": null,
+      "production_status": "unknown"
+    },
+    "IR:2027-11-03:شهادت حضرت فاطمه زهرا سلام الله علیها (تخمینی)": {
+      "alerted_thresholds": [],
+      "alerts": [],
+      "event": {
+        "country": "IR",
+        "english_name": "شهادت حضرت فاطمه زهرا سلام الله علیها (تخمینی)",
+        "event_date": "2027-11-03"
+      },
+      "first_seen": "2026-11-04",
+      "missed_reported_on": null,
+      "production_status": "unknown"
+    },
+    "IT:2026-12-08:immacolata concezione": {
+      "alerted_thresholds": [
+        120,
+        90,
+        60
+      ],
+      "alerts": [
+        {
+          "catch_up": true,
+          "date": "2026-11-04",
+          "thresholds": [
+            120,
+            90,
+            60
+          ]
+        }
+      ],
+      "event": {
+        "country": "IT",
+        "english_name": "Immacolata Concezione",
+        "event_date": "2026-12-08"
+      },
+      "first_seen": "2026-11-04",
+      "missed_reported_on": "2026-11-04",
+      "production_status": "unknown"
+    },
+    "IT:2026-12-25:natale": {
+      "alerted_thresholds": [
+        120,
+        90,
+        60
+      ],
+      "alerts": [
+        {
+          "catch_up": true,
+          "date": "2026-11-04",
+          "thresholds": [
+            120,
+            90,
+            60
+          ]
+        }
+      ],
+      "event": {
+        "country": "IT",
+        "english_name": "Natale",
+        "event_date": "2026-12-25"
+      },
+      "first_seen": "2026-11-04",
+      "missed_reported_on": "2026-11-04",
+      "production_status": "unknown"
+    },
+    "IT:2026-12-26:santo stefano": {
+      "alerted_thresholds": [
+        120,
+        90,
+        60
+      ],
+      "alerts": [
+        {
+          "catch_up": true,
+          "date": "2026-11-04",
+          "thresholds": [
+            120,
+            90,
+            60
+          ]
+        }
+      ],
+      "event": {
+        "country": "IT",
+        "english_name": "Santo Stefano",
+        "event_date": "2026-12-26"
+      },
+      "first_seen": "2026-11-04",
+      "missed_reported_on": "2026-11-04",
+      "production_status": "unknown"
+    },
+    "IT:2027-01-01:capodanno": {
+      "alerted_thresholds": [
+        120,
+        90,
+        60
+      ],
+      "alerts": [
+        {
+          "catch_up": true,
+          "date": "2026-11-04",
+          "thresholds": [
+            120,
+            90,
+            60
+          ]
+        }
+      ],
+      "event": {
+        "country": "IT",
+        "english_name": "Capodanno",
+        "event_date": "2027-01-01"
+      },
+      "first_seen": "2026-11-04",
+      "missed_reported_on": "2026-11-04",
+      "production_status": "unknown"
+    },
+    "IT:2027-01-06:epifania": {
+      "alerted_thresholds": [
+        120,
+        90
+      ],
+      "alerts": [
+        {
+          "catch_up": true,
+          "date": "2026-11-04",
+          "thresholds": [
+            120,
+            90
+          ]
+        }
+      ],
+      "event": {
+        "country": "IT",
+        "english_name": "Epifania",
+        "event_date": "2027-01-06"
+      },
+      "first_seen": "2026-11-04",
+      "missed_reported_on": "2026-11-04",
+      "production_status": "unknown"
+    },
+    "IT:2027-03-28:pasqua": {
+      "alerted_thresholds": [],
+      "alerts": [],
+      "event": {
+        "country": "IT",
+        "english_name": "Pasqua",
+        "event_date": "2027-03-28"
+      },
+      "first_seen": "2026-11-04",
+      "missed_reported_on": null,
+      "production_status": "unknown"
+    },
+    "IT:2027-03-29:lunedì dell'angelo": {
+      "alerted_thresholds": [],
+      "alerts": [],
+      "event": {
+        "country": "IT",
+        "english_name": "Lunedì dell'Angelo",
+        "event_date": "2027-03-29"
+      },
+      "first_seen": "2026-11-04",
+      "missed_reported_on": null,
+      "production_status": "unknown"
+    },
+    "IT:2027-04-25:anniversario della liberazione": {
+      "alerted_thresholds": [],
+      "alerts": [],
+      "event": {
+        "country": "IT",
+        "english_name": "Anniversario della Liberazione",
+        "event_date": "2027-04-25"
+      },
+      "first_seen": "2026-11-04",
+      "missed_reported_on": null,
+      "production_status": "unknown"
+    },
+    "IT:2027-05-01:festa del lavoro": {
+      "alerted_thresholds": [],
+      "alerts": [],
+      "event": {
+        "country": "IT",
+        "english_name": "Festa del Lavoro",
+        "event_date": "2027-05-01"
+      },
+      "first_seen": "2026-11-04",
+      "missed_reported_on": null,
+      "production_status": "unknown"
+    },
+    "IT:2027-06-02:festa della repubblica": {
+      "alerted_thresholds": [],
+      "alerts": [],
+      "event": {
+        "country": "IT",
+        "english_name": "Festa della Repubblica",
+        "event_date": "2027-06-02"
+      },
+      "first_seen": "2026-11-04",
+      "missed_reported_on": null,
+      "production_status": "unknown"
+    },
+    "IT:2027-08-15:assunzione della beata vergine maria": {
+      "alerted_thresholds": [],
+      "alerts": [],
+      "event": {
+        "country": "IT",
+        "english_name": "Assunzione della Beata Vergine Maria",
+        "event_date": "2027-08-15"
+      },
+      "first_seen": "2026-11-04",
+      "missed_reported_on": null,
+      "production_status": "unknown"
+    },
+    "IT:2027-10-04:festa nazionale di san francesco d'assisi, patrono d'italia": {
+      "alerted_thresholds": [],
+      "alerts": [],
+      "event": {
+        "country": "IT",
+        "english_name": "Festa nazionale di San Francesco d'Assisi, patrono d'Italia",
+        "event_date": "2027-10-04"
+      },
+      "first_seen": "2026-11-04",
+      "missed_reported_on": null,
+      "production_status": "unknown"
+    },
+    "IT:2027-11-01:ognissanti": {
+      "alerted_thresholds": [],
+      "alerts": [],
+      "event": {
+        "country": "IT",
+        "english_name": "Ognissanti",
+        "event_date": "2027-11-01"
+      },
+      "first_seen": "2026-11-04",
+      "missed_reported_on": null,
+      "production_status": "unknown"
+    },
+    "JP:2026-11-23:勤労感謝の日": {
+      "alerted_thresholds": [
+        120,
+        90,
+        60,
+        30
+      ],
+      "alerts": [
+        {
+          "catch_up": true,
+          "date": "2026-11-04",
+          "thresholds": [
+            120,
+            90,
+            60,
+            30
+          ]
+        }
+      ],
+      "event": {
+        "country": "JP",
+        "english_name": "勤労感謝の日",
+        "event_date": "2026-11-23"
+      },
+      "first_seen": "2026-11-04",
+      "missed_reported_on": "2026-11-04",
+      "production_status": "unknown"
+    },
+    "JP:2027-01-01:元日": {
+      "alerted_thresholds": [
+        120,
+        90,
+        60
+      ],
+      "alerts": [
+        {
+          "catch_up": true,
+          "date": "2026-11-04",
+          "thresholds": [
+            120,
+            90,
+            60
+          ]
+        }
+      ],
+      "event": {
+        "country": "JP",
+        "english_name": "元日",
+        "event_date": "2027-01-01"
+      },
+      "first_seen": "2026-11-04",
+      "missed_reported_on": "2026-11-04",
+      "production_status": "unknown"
+    },
+    "JP:2027-01-11:成人の日": {
+      "alerted_thresholds": [
+        120,
+        90
+      ],
+      "alerts": [
+        {
+          "catch_up": true,
+          "date": "2026-11-04",
+          "thresholds": [
+            120,
+            90
+          ]
+        }
+      ],
+      "event": {
+        "country": "JP",
+        "english_name": "成人の日",
+        "event_date": "2027-01-11"
+      },
+      "first_seen": "2026-11-04",
+      "missed_reported_on": "2026-11-04",
+      "production_status": "unknown"
+    },
+    "JP:2027-02-11:建国記念の日": {
+      "alerted_thresholds": [
+        120
+      ],
+      "alerts": [
+        {
+          "catch_up": true,
+          "date": "2026-11-04",
+          "thresholds": [
+            120
+          ]
+        }
+      ],
+      "event": {
+        "country": "JP",
+        "english_name": "建国記念の日",
+        "event_date": "2027-02-11"
+      },
+      "first_seen": "2026-11-04",
+      "missed_reported_on": null,
+      "production_status": "unknown"
+    },
+    "JP:2027-02-23:天皇誕生日": {
+      "alerted_thresholds": [
+        120
+      ],
+      "alerts": [
+        {
+          "catch_up": true,
+          "date": "2026-11-04",
+          "thresholds": [
+            120
+          ]
+        }
+      ],
+      "event": {
+        "country": "JP",
+        "english_name": "天皇誕生日",
+        "event_date": "2027-02-23"
+      },
+      "first_seen": "2026-11-04",
+      "missed_reported_on": null,
+      "production_status": "unknown"
+    },
+    "JP:2027-03-21:春分の日": {
+      "alerted_thresholds": [],
+      "alerts": [],
+      "event": {
+        "country": "JP",
+        "english_name": "春分の日",
+        "event_date": "2027-03-21"
+      },
+      "first_seen": "2026-11-04",
+      "missed_reported_on": null,
+      "production_status": "unknown"
+    },
+    "JP:2027-03-22:振替休日": {
+      "alerted_thresholds": [],
+      "alerts": [],
+      "event": {
+        "country": "JP",
+        "english_name": "振替休日",
+        "event_date": "2027-03-22"
+      },
+      "first_seen": "2026-11-04",
+      "missed_reported_on": null,
+      "production_status": "unknown"
+    },
+    "JP:2027-04-29:昭和の日": {
+      "alerted_thresholds": [],
+      "alerts": [],
+      "event": {
+        "country": "JP",
+        "english_name": "昭和の日",
+        "event_date": "2027-04-29"
+      },
+      "first_seen": "2026-11-04",
+      "missed_reported_on": null,
+      "production_status": "unknown"
+    },
+    "JP:2027-05-03:憲法記念日": {
+      "alerted_thresholds": [],
+      "alerts": [],
+      "event": {
+        "country": "JP",
+        "english_name": "憲法記念日",
+        "event_date": "2027-05-03"
+      },
+      "first_seen": "2026-11-04",
+      "missed_reported_on": null,
+      "production_status": "unknown"
+    },
+    "JP:2027-05-04:みどりの日": {
+      "alerted_thresholds": [],
+      "alerts": [],
+      "event": {
+        "country": "JP",
+        "english_name": "みどりの日",
+        "event_date": "2027-05-04"
+      },
+      "first_seen": "2026-11-04",
+      "missed_reported_on": null,
+      "production_status": "unknown"
+    },
+    "JP:2027-05-05:こどもの日": {
+      "alerted_thresholds": [],
+      "alerts": [],
+      "event": {
+        "country": "JP",
+        "english_name": "こどもの日",
+        "event_date": "2027-05-05"
+      },
+      "first_seen": "2026-11-04",
+      "missed_reported_on": null,
+      "production_status": "unknown"
+    },
+    "JP:2027-07-19:海の日": {
+      "alerted_thresholds": [],
+      "alerts": [],
+      "event": {
+        "country": "JP",
+        "english_name": "海の日",
+        "event_date": "2027-07-19"
+      },
+      "first_seen": "2026-11-04",
+      "missed_reported_on": null,
+      "production_status": "unknown"
+    },
+    "JP:2027-08-11:山の日": {
+      "alerted_thresholds": [],
+      "alerts": [],
+      "event": {
+        "country": "JP",
+        "english_name": "山の日",
+        "event_date": "2027-08-11"
+      },
+      "first_seen": "2026-11-04",
+      "missed_reported_on": null,
+      "production_status": "unknown"
+    },
+    "JP:2027-09-20:敬老の日": {
+      "alerted_thresholds": [],
+      "alerts": [],
+      "event": {
+        "country": "JP",
+        "english_name": "敬老の日",
+        "event_date": "2027-09-20"
+      },
+      "first_seen": "2026-11-04",
+      "missed_reported_on": null,
+      "production_status": "unknown"
+    },
+    "JP:2027-09-23:秋分の日": {
+      "alerted_thresholds": [],
+      "alerts": [],
+      "event": {
+        "country": "JP",
+        "english_name": "秋分の日",
+        "event_date": "2027-09-23"
+      },
+      "first_seen": "2026-11-04",
+      "missed_reported_on": null,
+      "production_status": "unknown"
+    },
+    "JP:2027-10-11:スポーツの日": {
+      "alerted_thresholds": [],
+      "alerts": [],
+      "event": {
+        "country": "JP",
+        "english_name": "スポーツの日",
+        "event_date": "2027-10-11"
+      },
+      "first_seen": "2026-11-04",
+      "missed_reported_on": null,
+      "production_status": "unknown"
+    },
+    "JP:2027-11-03:文化の日": {
+      "alerted_thresholds": [],
+      "alerts": [],
+      "event": {
+        "country": "JP",
+        "english_name": "文化の日",
+        "event_date": "2027-11-03"
+      },
+      "first_seen": "2026-11-04",
+      "missed_reported_on": null,
+      "production_status": "unknown"
+    },
+    "KR:2026-12-25:기독탄신일": {
+      "alerted_thresholds": [
+        120,
+        90,
+        60
+      ],
+      "alerts": [
+        {
+          "catch_up": true,
+          "date": "2026-11-04",
+          "thresholds": [
+            120,
+            90,
+            60
+          ]
+        }
+      ],
+      "event": {
+        "country": "KR",
+        "english_name": "기독탄신일",
+        "event_date": "2026-12-25"
+      },
+      "first_seen": "2026-11-04",
+      "missed_reported_on": "2026-11-04",
+      "production_status": "unknown"
+    },
+    "KR:2027-01-01:신정연휴": {
+      "alerted_thresholds": [
+        120,
+        90,
+        60
+      ],
+      "alerts": [
+        {
+          "catch_up": true,
+          "date": "2026-11-04",
+          "thresholds": [
+            120,
+            90,
+            60
+          ]
+        }
+      ],
+      "event": {
+        "country": "KR",
+        "english_name": "신정연휴",
+        "event_date": "2027-01-01"
+      },
+      "first_seen": "2026-11-04",
+      "missed_reported_on": "2026-11-04",
+      "production_status": "unknown"
+    },
+    "KR:2027-02-06:설날 전날": {
+      "alerted_thresholds": [
+        120
+      ],
+      "alerts": [
+        {
+          "catch_up": true,
+          "date": "2026-11-04",
+          "thresholds": [
+            120
+          ]
+        }
+      ],
+      "event": {
+        "country": "KR",
+        "english_name": "설날 전날",
+        "event_date": "2027-02-06"
+      },
+      "first_seen": "2026-11-04",
+      "missed_reported_on": null,
+      "production_status": "unknown"
+    },
+    "KR:2027-02-07:설날": {
+      "alerted_thresholds": [
+        120
+      ],
+      "alerts": [
+        {
+          "catch_up": true,
+          "date": "2026-11-04",
+          "thresholds": [
+            120
+          ]
+        }
+      ],
+      "event": {
+        "country": "KR",
+        "english_name": "설날",
+        "event_date": "2027-02-07"
+      },
+      "first_seen": "2026-11-04",
+      "missed_reported_on": null,
+      "production_status": "unknown"
+    },
+    "KR:2027-02-08:설날 다음날": {
+      "alerted_thresholds": [
+        120
+      ],
+      "alerts": [
+        {
+          "catch_up": true,
+          "date": "2026-11-04",
+          "thresholds": [
+            120
+          ]
+        }
+      ],
+      "event": {
+        "country": "KR",
+        "english_name": "설날 다음날",
+        "event_date": "2027-02-08"
+      },
+      "first_seen": "2026-11-04",
+      "missed_reported_on": null,
+      "production_status": "unknown"
+    },
+    "KR:2027-02-09:설날 대체 휴일": {
+      "alerted_thresholds": [
+        120
+      ],
+      "alerts": [
+        {
+          "catch_up": true,
+          "date": "2026-11-04",
+          "thresholds": [
+            120
+          ]
+        }
+      ],
+      "event": {
+        "country": "KR",
+        "english_name": "설날 대체 휴일",
+        "event_date": "2027-02-09"
+      },
+      "first_seen": "2026-11-04",
+      "missed_reported_on": null,
+      "production_status": "unknown"
+    },
+    "KR:2027-03-01:삼일절": {
+      "alerted_thresholds": [
+        120
+      ],
+      "alerts": [
+        {
+          "catch_up": true,
+          "date": "2026-11-04",
+          "thresholds": [
+            120
+          ]
+        }
+      ],
+      "event": {
+        "country": "KR",
+        "english_name": "삼일절",
+        "event_date": "2027-03-01"
+      },
+      "first_seen": "2026-11-04",
+      "missed_reported_on": null,
+      "production_status": "unknown"
+    },
+    "KR:2027-05-01:노동절": {
+      "alerted_thresholds": [],
+      "alerts": [],
+      "event": {
+        "country": "KR",
+        "english_name": "노동절",
+        "event_date": "2027-05-01"
+      },
+      "first_seen": "2026-11-04",
+      "missed_reported_on": null,
+      "production_status": "unknown"
+    },
+    "KR:2027-05-03:노동절 대체 휴일": {
+      "alerted_thresholds": [],
+      "alerts": [],
+      "event": {
+        "country": "KR",
+        "english_name": "노동절 대체 휴일",
+        "event_date": "2027-05-03"
+      },
+      "first_seen": "2026-11-04",
+      "missed_reported_on": null,
+      "production_status": "unknown"
+    },
+    "KR:2027-05-05:어린이날": {
+      "alerted_thresholds": [],
+      "alerts": [],
+      "event": {
+        "country": "KR",
+        "english_name": "어린이날",
+        "event_date": "2027-05-05"
+      },
+      "first_seen": "2026-11-04",
+      "missed_reported_on": null,
+      "production_status": "unknown"
+    },
+    "KR:2027-05-13:부처님오신날": {
+      "alerted_thresholds": [],
+      "alerts": [],
+      "event": {
+        "country": "KR",
+        "english_name": "부처님오신날",
+        "event_date": "2027-05-13"
+      },
+      "first_seen": "2026-11-04",
+      "missed_reported_on": null,
+      "production_status": "unknown"
+    },
+    "KR:2027-06-06:현충일": {
+      "alerted_thresholds": [],
+      "alerts": [],
+      "event": {
+        "country": "KR",
+        "english_name": "현충일",
+        "event_date": "2027-06-06"
+      },
+      "first_seen": "2026-11-04",
+      "missed_reported_on": null,
+      "production_status": "unknown"
+    },
+    "KR:2027-07-17:제헌절": {
+      "alerted_thresholds": [],
+      "alerts": [],
+      "event": {
+        "country": "KR",
+        "english_name": "제헌절",
+        "event_date": "2027-07-17"
+      },
+      "first_seen": "2026-11-04",
+      "missed_reported_on": null,
+      "production_status": "unknown"
+    },
+    "KR:2027-07-19:제헌절 대체 휴일": {
+      "alerted_thresholds": [],
+      "alerts": [],
+      "event": {
+        "country": "KR",
+        "english_name": "제헌절 대체 휴일",
+        "event_date": "2027-07-19"
+      },
+      "first_seen": "2026-11-04",
+      "missed_reported_on": null,
+      "production_status": "unknown"
+    },
+    "KR:2027-08-15:광복절": {
+      "alerted_thresholds": [],
+      "alerts": [],
+      "event": {
+        "country": "KR",
+        "english_name": "광복절",
+        "event_date": "2027-08-15"
+      },
+      "first_seen": "2026-11-04",
+      "missed_reported_on": null,
+      "production_status": "unknown"
+    },
+    "KR:2027-08-16:광복절 대체 휴일": {
+      "alerted_thresholds": [],
+      "alerts": [],
+      "event": {
+        "country": "KR",
+        "english_name": "광복절 대체 휴일",
+        "event_date": "2027-08-16"
+      },
+      "first_seen": "2026-11-04",
+      "missed_reported_on": null,
+      "production_status": "unknown"
+    },
+    "KR:2027-09-14:추석 전날": {
+      "alerted_thresholds": [],
+      "alerts": [],
+      "event": {
+        "country": "KR",
+        "english_name": "추석 전날",
+        "event_date": "2027-09-14"
+      },
+      "first_seen": "2026-11-04",
+      "missed_reported_on": null,
+      "production_status": "unknown"
+    },
+    "KR:2027-09-15:추석": {
+      "alerted_thresholds": [],
+      "alerts": [],
+      "event": {
+        "country": "KR",
+        "english_name": "추석",
+        "event_date": "2027-09-15"
+      },
+      "first_seen": "2026-11-04",
+      "missed_reported_on": null,
+      "production_status": "unknown"
+    },
+    "KR:2027-09-16:추석 다음날": {
+      "alerted_thresholds": [],
+      "alerts": [],
+      "event": {
+        "country": "KR",
+        "english_name": "추석 다음날",
+        "event_date": "2027-09-16"
+      },
+      "first_seen": "2026-11-04",
+      "missed_reported_on": null,
+      "production_status": "unknown"
+    },
+    "KR:2027-10-03:개천절": {
+      "alerted_thresholds": [],
+      "alerts": [],
+      "event": {
+        "country": "KR",
+        "english_name": "개천절",
+        "event_date": "2027-10-03"
+      },
+      "first_seen": "2026-11-04",
+      "missed_reported_on": null,
+      "production_status": "unknown"
+    },
+    "KR:2027-10-04:개천절 대체 휴일": {
+      "alerted_thresholds": [],
+      "alerts": [],
+      "event": {
+        "country": "KR",
+        "english_name": "개천절 대체 휴일",
+        "event_date": "2027-10-04"
+      },
+      "first_seen": "2026-11-04",
+      "missed_reported_on": null,
+      "production_status": "unknown"
+    },
+    "KR:2027-10-09:한글날": {
+      "alerted_thresholds": [],
+      "alerts": [],
+      "event": {
+        "country": "KR",
+        "english_name": "한글날",
+        "event_date": "2027-10-09"
+      },
+      "first_seen": "2026-11-04",
+      "missed_reported_on": null,
+      "production_status": "unknown"
+    },
+    "KR:2027-10-11:한글날 대체 휴일": {
+      "alerted_thresholds": [],
+      "alerts": [],
+      "event": {
+        "country": "KR",
+        "english_name": "한글날 대체 휴일",
+        "event_date": "2027-10-11"
+      },
+      "first_seen": "2026-11-04",
+      "missed_reported_on": null,
+      "production_status": "unknown"
+    },
+    "MX:2026-11-16:día de la revolución": {
+      "alerted_thresholds": [
+        120,
+        90,
+        60,
+        30
+      ],
+      "alerts": [
+        {
+          "catch_up": true,
+          "date": "2026-11-04",
+          "thresholds": [
+            120,
+            90,
+            60,
+            30
+          ]
+        }
+      ],
+      "event": {
+        "country": "MX",
+        "english_name": "Día de la Revolución",
+        "event_date": "2026-11-16"
+      },
+      "first_seen": "2026-11-04",
+      "missed_reported_on": "2026-11-04",
+      "production_status": "unknown"
+    },
+    "MX:2026-12-25:navidad": {
+      "alerted_thresholds": [
+        120,
+        90,
+        60
+      ],
+      "alerts": [
+        {
+          "catch_up": true,
+          "date": "2026-11-04",
+          "thresholds": [
+            120,
+            90,
+            60
+          ]
+        }
+      ],
+      "event": {
+        "country": "MX",
+        "english_name": "Navidad",
+        "event_date": "2026-12-25"
+      },
+      "first_seen": "2026-11-04",
+      "missed_reported_on": "2026-11-04",
+      "production_status": "unknown"
+    },
+    "MX:2027-01-01:año nuevo": {
+      "alerted_thresholds": [
+        120,
+        90,
+        60
+      ],
+      "alerts": [
+        {
+          "catch_up": true,
+          "date": "2026-11-04",
+          "thresholds": [
+            120,
+            90,
+            60
+          ]
+        }
+      ],
+      "event": {
+        "country": "MX",
+        "english_name": "Año Nuevo",
+        "event_date": "2027-01-01"
+      },
+      "first_seen": "2026-11-04",
+      "missed_reported_on": "2026-11-04",
+      "production_status": "unknown"
+    },
+    "MX:2027-02-01:día de la constitución": {
+      "alerted_thresholds": [
+        120,
+        90
+      ],
+      "alerts": [
+        {
+          "catch_up": true,
+          "date": "2026-11-04",
+          "thresholds": [
+            120,
+            90
+          ]
+        }
+      ],
+      "event": {
+        "country": "MX",
+        "english_name": "Día de la Constitución",
+        "event_date": "2027-02-01"
+      },
+      "first_seen": "2026-11-04",
+      "missed_reported_on": null,
+      "production_status": "unknown"
+    },
+    "MX:2027-03-15:natalicio de benito juárez": {
+      "alerted_thresholds": [],
+      "alerts": [],
+      "event": {
+        "country": "MX",
+        "english_name": "Natalicio de Benito Juárez",
+        "event_date": "2027-03-15"
+      },
+      "first_seen": "2026-11-04",
+      "missed_reported_on": null,
+      "production_status": "unknown"
+    },
+    "MX:2027-05-01:día del trabajo": {
+      "alerted_thresholds": [],
+      "alerts": [],
+      "event": {
+        "country": "MX",
+        "english_name": "Día del Trabajo",
+        "event_date": "2027-05-01"
+      },
+      "first_seen": "2026-11-04",
+      "missed_reported_on": null,
+      "production_status": "unknown"
+    },
+    "MX:2027-09-16:día de la independencia": {
+      "alerted_thresholds": [],
+      "alerts": [],
+      "event": {
+        "country": "MX",
+        "english_name": "Día de la Independencia",
+        "event_date": "2027-09-16"
+      },
+      "first_seen": "2026-11-04",
+      "missed_reported_on": null,
+      "production_status": "unknown"
+    },
+    "NG:2026-12-25:christmas day": {
+      "alerted_thresholds": [
+        120,
+        90,
+        60
+      ],
+      "alerts": [
+        {
+          "catch_up": true,
+          "date": "2026-11-04",
+          "thresholds": [
+            120,
+            90,
+            60
+          ]
+        }
+      ],
+      "event": {
+        "country": "NG",
+        "english_name": "Christmas Day",
+        "event_date": "2026-12-25"
+      },
+      "first_seen": "2026-11-04",
+      "missed_reported_on": "2026-11-04",
+      "production_status": "unknown"
+    },
+    "NG:2026-12-26:boxing day": {
+      "alerted_thresholds": [
+        120,
+        90,
+        60
+      ],
+      "alerts": [
+        {
+          "catch_up": true,
+          "date": "2026-11-04",
+          "thresholds": [
+            120,
+            90,
+            60
+          ]
+        }
+      ],
+      "event": {
+        "country": "NG",
+        "english_name": "Boxing Day",
+        "event_date": "2026-12-26"
+      },
+      "first_seen": "2026-11-04",
+      "missed_reported_on": "2026-11-04",
+      "production_status": "unknown"
+    },
+    "NG:2026-12-28:boxing day (observed)": {
+      "alerted_thresholds": [
+        120,
+        90,
+        60
+      ],
+      "alerts": [
+        {
+          "catch_up": true,
+          "date": "2026-11-04",
+          "thresholds": [
+            120,
+            90,
+            60
+          ]
+        }
+      ],
+      "event": {
+        "country": "NG",
+        "english_name": "Boxing Day (observed)",
+        "event_date": "2026-12-28"
+      },
+      "first_seen": "2026-11-04",
+      "missed_reported_on": "2026-11-04",
+      "production_status": "unknown"
+    },
+    "NG:2027-01-01:new year's day": {
+      "alerted_thresholds": [
+        120,
+        90,
+        60
+      ],
+      "alerts": [
+        {
+          "catch_up": true,
+          "date": "2026-11-04",
+          "thresholds": [
+            120,
+            90,
+            60
+          ]
+        }
+      ],
+      "event": {
+        "country": "NG",
+        "english_name": "New Year's Day",
+        "event_date": "2027-01-01"
+      },
+      "first_seen": "2026-11-04",
+      "missed_reported_on": "2026-11-04",
+      "production_status": "unknown"
+    },
+    "NG:2027-03-10:id el fitr (estimated)": {
+      "alerted_thresholds": [],
+      "alerts": [],
+      "event": {
+        "country": "NG",
+        "english_name": "Id el Fitr (estimated)",
+        "event_date": "2027-03-10"
+      },
+      "first_seen": "2026-11-04",
+      "missed_reported_on": null,
+      "production_status": "unknown"
+    },
+    "NG:2027-03-11:id el fitr holiday (estimated)": {
+      "alerted_thresholds": [],
+      "alerts": [],
+      "event": {
+        "country": "NG",
+        "english_name": "Id el Fitr Holiday (estimated)",
+        "event_date": "2027-03-11"
+      },
+      "first_seen": "2026-11-04",
+      "missed_reported_on": null,
+      "production_status": "unknown"
+    },
+    "NG:2027-03-26:good friday": {
+      "alerted_thresholds": [],
+      "alerts": [],
+      "event": {
+        "country": "NG",
+        "english_name": "Good Friday",
+        "event_date": "2027-03-26"
+      },
+      "first_seen": "2026-11-04",
+      "missed_reported_on": null,
+      "production_status": "unknown"
+    },
+    "NG:2027-03-29:easter monday": {
+      "alerted_thresholds": [],
+      "alerts": [],
+      "event": {
+        "country": "NG",
+        "english_name": "Easter Monday",
+        "event_date": "2027-03-29"
+      },
+      "first_seen": "2026-11-04",
+      "missed_reported_on": null,
+      "production_status": "unknown"
+    },
+    "NG:2027-05-01:workers' day": {
+      "alerted_thresholds": [],
+      "alerts": [],
+      "event": {
+        "country": "NG",
+        "english_name": "Workers' Day",
+        "event_date": "2027-05-01"
+      },
+      "first_seen": "2026-11-04",
+      "missed_reported_on": null,
+      "production_status": "unknown"
+    },
+    "NG:2027-05-03:workers' day (observed)": {
+      "alerted_thresholds": [],
+      "alerts": [],
+      "event": {
+        "country": "NG",
+        "english_name": "Workers' Day (observed)",
+        "event_date": "2027-05-03"
+      },
+      "first_seen": "2026-11-04",
+      "missed_reported_on": null,
+      "production_status": "unknown"
+    },
+    "NG:2027-05-17:id el kabir (estimated)": {
+      "alerted_thresholds": [],
+      "alerts": [],
+      "event": {
+        "country": "NG",
+        "english_name": "Id el Kabir (estimated)",
+        "event_date": "2027-05-17"
+      },
+      "first_seen": "2026-11-04",
+      "missed_reported_on": null,
+      "production_status": "unknown"
+    },
+    "NG:2027-05-18:id el kabir holiday (estimated)": {
+      "alerted_thresholds": [],
+      "alerts": [],
+      "event": {
+        "country": "NG",
+        "english_name": "Id el Kabir Holiday (estimated)",
+        "event_date": "2027-05-18"
+      },
+      "first_seen": "2026-11-04",
+      "missed_reported_on": null,
+      "production_status": "unknown"
+    },
+    "NG:2027-05-29:presidential inauguration day": {
+      "alerted_thresholds": [],
+      "alerts": [],
+      "event": {
+        "country": "NG",
+        "english_name": "Presidential Inauguration Day",
+        "event_date": "2027-05-29"
+      },
+      "first_seen": "2026-11-04",
+      "missed_reported_on": null,
+      "production_status": "unknown"
+    },
+    "NG:2027-06-12:democracy day": {
+      "alerted_thresholds": [],
+      "alerts": [],
+      "event": {
+        "country": "NG",
+        "english_name": "Democracy Day",
+        "event_date": "2027-06-12"
+      },
+      "first_seen": "2026-11-04",
+      "missed_reported_on": null,
+      "production_status": "unknown"
+    },
+    "NG:2027-06-14:democracy day (observed)": {
+      "alerted_thresholds": [],
+      "alerts": [],
+      "event": {
+        "country": "NG",
+        "english_name": "Democracy Day (observed)",
+        "event_date": "2027-06-14"
+      },
+      "first_seen": "2026-11-04",
+      "missed_reported_on": null,
+      "production_status": "unknown"
+    },
+    "NG:2027-08-15:id el maulud (estimated)": {
+      "alerted_thresholds": [],
+      "alerts": [],
+      "event": {
+        "country": "NG",
+        "english_name": "Id el Maulud (estimated)",
+        "event_date": "2027-08-15"
+      },
+      "first_seen": "2026-11-04",
+      "missed_reported_on": null,
+      "production_status": "unknown"
+    },
+    "NG:2027-08-16:id el maulud (observed, estimated)": {
+      "alerted_thresholds": [],
+      "alerts": [],
+      "event": {
+        "country": "NG",
+        "english_name": "Id el Maulud (observed, estimated)",
+        "event_date": "2027-08-16"
+      },
+      "first_seen": "2026-11-04",
+      "missed_reported_on": null,
+      "production_status": "unknown"
+    },
+    "NG:2027-10-01:national day": {
+      "alerted_thresholds": [],
+      "alerts": [],
+      "event": {
+        "country": "NG",
+        "english_name": "National Day",
+        "event_date": "2027-10-01"
+      },
+      "first_seen": "2026-11-04",
+      "missed_reported_on": null,
+      "production_status": "unknown"
+    },
+    "NZ:2026-12-25:christmas day": {
+      "alerted_thresholds": [
+        120,
+        90,
+        60
+      ],
+      "alerts": [
+        {
+          "catch_up": true,
+          "date": "2026-11-04",
+          "thresholds": [
+            120,
+            90,
+            60
+          ]
+        }
+      ],
+      "event": {
+        "country": "NZ",
+        "english_name": "Christmas Day",
+        "event_date": "2026-12-25"
+      },
+      "first_seen": "2026-11-04",
+      "missed_reported_on": "2026-11-04",
+      "production_status": "unknown"
+    },
+    "NZ:2026-12-26:boxing day": {
+      "alerted_thresholds": [
+        120,
+        90,
+        60
+      ],
+      "alerts": [
+        {
+          "catch_up": true,
+          "date": "2026-11-04",
+          "thresholds": [
+            120,
+            90,
+            60
+          ]
+        }
+      ],
+      "event": {
+        "country": "NZ",
+        "english_name": "Boxing Day",
+        "event_date": "2026-12-26"
+      },
+      "first_seen": "2026-11-04",
+      "missed_reported_on": "2026-11-04",
+      "production_status": "unknown"
+    },
+    "NZ:2026-12-28:boxing day (observed)": {
+      "alerted_thresholds": [
+        120,
+        90,
+        60
+      ],
+      "alerts": [
+        {
+          "catch_up": true,
+          "date": "2026-11-04",
+          "thresholds": [
+            120,
+            90,
+            60
+          ]
+        }
+      ],
+      "event": {
+        "country": "NZ",
+        "english_name": "Boxing Day (observed)",
+        "event_date": "2026-12-28"
+      },
+      "first_seen": "2026-11-04",
+      "missed_reported_on": "2026-11-04",
+      "production_status": "unknown"
+    },
+    "NZ:2027-01-01:new year's day": {
+      "alerted_thresholds": [
+        120,
+        90,
+        60
+      ],
+      "alerts": [
+        {
+          "catch_up": true,
+          "date": "2026-11-04",
+          "thresholds": [
+            120,
+            90,
+            60
+          ]
+        }
+      ],
+      "event": {
+        "country": "NZ",
+        "english_name": "New Year's Day",
+        "event_date": "2027-01-01"
+      },
+      "first_seen": "2026-11-04",
+      "missed_reported_on": "2026-11-04",
+      "production_status": "unknown"
+    },
+    "NZ:2027-01-02:day after new year's day": {
+      "alerted_thresholds": [
+        120,
+        90,
+        60
+      ],
+      "alerts": [
+        {
+          "catch_up": true,
+          "date": "2026-11-04",
+          "thresholds": [
+            120,
+            90,
+            60
+          ]
+        }
+      ],
+      "event": {
+        "country": "NZ",
+        "english_name": "Day after New Year's Day",
+        "event_date": "2027-01-02"
+      },
+      "first_seen": "2026-11-04",
+      "missed_reported_on": "2026-11-04",
+      "production_status": "unknown"
+    },
+    "NZ:2027-01-04:day after new year's day (observed)": {
+      "alerted_thresholds": [
+        120,
+        90
+      ],
+      "alerts": [
+        {
+          "catch_up": true,
+          "date": "2026-11-04",
+          "thresholds": [
+            120,
+            90
+          ]
+        }
+      ],
+      "event": {
+        "country": "NZ",
+        "english_name": "Day after New Year's Day (observed)",
+        "event_date": "2027-01-04"
+      },
+      "first_seen": "2026-11-04",
+      "missed_reported_on": "2026-11-04",
+      "production_status": "unknown"
+    },
+    "NZ:2027-02-06:waitangi day": {
+      "alerted_thresholds": [
+        120
+      ],
+      "alerts": [
+        {
+          "catch_up": true,
+          "date": "2026-11-04",
+          "thresholds": [
+            120
+          ]
+        }
+      ],
+      "event": {
+        "country": "NZ",
+        "english_name": "Waitangi Day",
+        "event_date": "2027-02-06"
+      },
+      "first_seen": "2026-11-04",
+      "missed_reported_on": null,
+      "production_status": "unknown"
+    },
+    "NZ:2027-02-08:waitangi day (observed)": {
+      "alerted_thresholds": [
+        120
+      ],
+      "alerts": [
+        {
+          "catch_up": true,
+          "date": "2026-11-04",
+          "thresholds": [
+            120
+          ]
+        }
+      ],
+      "event": {
+        "country": "NZ",
+        "english_name": "Waitangi Day (observed)",
+        "event_date": "2027-02-08"
+      },
+      "first_seen": "2026-11-04",
+      "missed_reported_on": null,
+      "production_status": "unknown"
+    },
+    "NZ:2027-03-26:good friday": {
+      "alerted_thresholds": [],
+      "alerts": [],
+      "event": {
+        "country": "NZ",
+        "english_name": "Good Friday",
+        "event_date": "2027-03-26"
+      },
+      "first_seen": "2026-11-04",
+      "missed_reported_on": null,
+      "production_status": "unknown"
+    },
+    "NZ:2027-03-29:easter monday": {
+      "alerted_thresholds": [],
+      "alerts": [],
+      "event": {
+        "country": "NZ",
+        "english_name": "Easter Monday",
+        "event_date": "2027-03-29"
+      },
+      "first_seen": "2026-11-04",
+      "missed_reported_on": null,
+      "production_status": "unknown"
+    },
+    "NZ:2027-04-25:anzac day": {
+      "alerted_thresholds": [],
+      "alerts": [],
+      "event": {
+        "country": "NZ",
+        "english_name": "Anzac Day",
+        "event_date": "2027-04-25"
+      },
+      "first_seen": "2026-11-04",
+      "missed_reported_on": null,
+      "production_status": "unknown"
+    },
+    "NZ:2027-04-26:anzac day (observed)": {
+      "alerted_thresholds": [],
+      "alerts": [],
+      "event": {
+        "country": "NZ",
+        "english_name": "Anzac Day (observed)",
+        "event_date": "2027-04-26"
+      },
+      "first_seen": "2026-11-04",
+      "missed_reported_on": null,
+      "production_status": "unknown"
+    },
+    "NZ:2027-06-07:king's birthday": {
+      "alerted_thresholds": [],
+      "alerts": [],
+      "event": {
+        "country": "NZ",
+        "english_name": "King's Birthday",
+        "event_date": "2027-06-07"
+      },
+      "first_seen": "2026-11-04",
+      "missed_reported_on": null,
+      "production_status": "unknown"
+    },
+    "NZ:2027-06-25:matariki": {
+      "alerted_thresholds": [],
+      "alerts": [],
+      "event": {
+        "country": "NZ",
+        "english_name": "Matariki",
+        "event_date": "2027-06-25"
+      },
+      "first_seen": "2026-11-04",
+      "missed_reported_on": null,
+      "production_status": "unknown"
+    },
+    "NZ:2027-10-25:labour day": {
+      "alerted_thresholds": [],
+      "alerts": [],
+      "event": {
+        "country": "NZ",
+        "english_name": "Labour Day",
+        "event_date": "2027-10-25"
+      },
+      "first_seen": "2026-11-04",
+      "missed_reported_on": null,
+      "production_status": "unknown"
+    },
+    "SA:2027-02-22:يوم التأسيس": {
+      "alerted_thresholds": [
+        120
+      ],
+      "alerts": [
+        {
+          "catch_up": true,
+          "date": "2026-11-04",
+          "thresholds": [
+            120
+          ]
+        }
+      ],
+      "event": {
+        "country": "SA",
+        "english_name": "يوم التأسيس",
+        "event_date": "2027-02-22"
+      },
+      "first_seen": "2026-11-04",
+      "missed_reported_on": null,
+      "production_status": "unknown"
+    },
+    "SA:2027-03-09:عطلة عيد الفطر": {
+      "alerted_thresholds": [],
+      "alerts": [],
+      "event": {
+        "country": "SA",
+        "english_name": "عطلة عيد الفطر",
+        "event_date": "2027-03-09"
+      },
+      "first_seen": "2026-11-04",
+      "missed_reported_on": null,
+      "production_status": "unknown"
+    },
+    "SA:2027-03-10:عطلة عيد الفطر": {
+      "alerted_thresholds": [],
+      "alerts": [],
+      "event": {
+        "country": "SA",
+        "english_name": "عطلة عيد الفطر",
+        "event_date": "2027-03-10"
+      },
+      "first_seen": "2026-11-04",
+      "missed_reported_on": null,
+      "production_status": "unknown"
+    },
+    "SA:2027-03-11:عطلة عيد الفطر": {
+      "alerted_thresholds": [],
+      "alerts": [],
+      "event": {
+        "country": "SA",
+        "english_name": "عطلة عيد الفطر",
+        "event_date": "2027-03-11"
+      },
+      "first_seen": "2026-11-04",
+      "missed_reported_on": null,
+      "production_status": "unknown"
+    },
+    "SA:2027-03-12:عطلة عيد الفطر": {
+      "alerted_thresholds": [],
+      "alerts": [],
+      "event": {
+        "country": "SA",
+        "english_name": "عطلة عيد الفطر",
+        "event_date": "2027-03-12"
+      },
+      "first_seen": "2026-11-04",
+      "missed_reported_on": null,
+      "production_status": "unknown"
+    },
+    "SA:2027-03-14:عطلة عيد الفطر (يوم تعويضي)": {
+      "alerted_thresholds": [],
+      "alerts": [],
+      "event": {
+        "country": "SA",
+        "english_name": "عطلة عيد الفطر (يوم تعويضي)",
+        "event_date": "2027-03-14"
+      },
+      "first_seen": "2026-11-04",
+      "missed_reported_on": null,
+      "production_status": "unknown"
+    },
+    "SA:2027-05-15:يوم عرفة": {
+      "alerted_thresholds": [],
+      "alerts": [],
+      "event": {
+        "country": "SA",
+        "english_name": "يوم عرفة",
+        "event_date": "2027-05-15"
+      },
+      "first_seen": "2026-11-04",
+      "missed_reported_on": null,
+      "production_status": "unknown"
+    },
+    "SA:2027-05-16:عطلة عيد الأضحى": {
+      "alerted_thresholds": [],
+      "alerts": [],
+      "event": {
+        "country": "SA",
+        "english_name": "عطلة عيد الأضحى",
+        "event_date": "2027-05-16"
+      },
+      "first_seen": "2026-11-04",
+      "missed_reported_on": null,
+      "production_status": "unknown"
+    },
+    "SA:2027-05-17:عطلة عيد الأضحى": {
+      "alerted_thresholds": [],
+      "alerts": [],
+      "event": {
+        "country": "SA",
+        "english_name": "عطلة عيد الأضحى",
+        "event_date": "2027-05-17"
+      },
+      "first_seen": "2026-11-04",
+      "missed_reported_on": null,
+      "production_status": "unknown"
+    },
+    "SA:2027-05-18:عطلة عيد الأضحى": {
+      "alerted_thresholds": [],
+      "alerts": [],
+      "event": {
+        "country": "SA",
+        "english_name": "عطلة عيد الأضحى",
+        "event_date": "2027-05-18"
+      },
+      "first_seen": "2026-11-04",
+      "missed_reported_on": null,
+      "production_status": "unknown"
+    },
+    "SA:2027-05-19:عطلة عيد الأضحى (يوم تعويضي)": {
+      "alerted_thresholds": [],
+      "alerts": [],
+      "event": {
+        "country": "SA",
+        "english_name": "عطلة عيد الأضحى (يوم تعويضي)",
+        "event_date": "2027-05-19"
+      },
+      "first_seen": "2026-11-04",
+      "missed_reported_on": null,
+      "production_status": "unknown"
+    },
+    "SA:2027-09-23:اليوم الوطني": {
+      "alerted_thresholds": [],
+      "alerts": [],
+      "event": {
+        "country": "SA",
+        "english_name": "اليوم الوطني",
+        "event_date": "2027-09-23"
+      },
+      "first_seen": "2026-11-04",
+      "missed_reported_on": null,
+      "production_status": "unknown"
+    },
+    "TH:2026-12-05:วันคล้ายวันเฉลิมพระชนมพรรษาพระบาทสมเด็จพระบรมชนกาธิเบศร มหาภูมิพลอดุลยเดชมหาราช บรมนาถบพิตร; วันชาติ; วันพ่อแห่งชาติ": {
+      "alerted_thresholds": [
+        120,
+        90,
+        60
+      ],
+      "alerts": [
+        {
+          "catch_up": true,
+          "date": "2026-11-04",
+          "thresholds": [
+            120,
+            90,
+            60
+          ]
+        }
+      ],
+      "event": {
+        "country": "TH",
+        "english_name": "วันคล้ายวันเฉลิมพระชนมพรรษาพระบาทสมเด็จพระบรมชนกาธิเบศร มหาภูมิพลอดุลยเดชมหาราช บรมนาถบพิตร; วันชาติ; วันพ่อแห่งชาติ",
+        "event_date": "2026-12-05"
+      },
+      "first_seen": "2026-11-04",
+      "missed_reported_on": "2026-11-04",
+      "production_status": "unknown"
+    },
+    "TH:2026-12-07:ชดเชยวันคล้ายวันเฉลิมพระชนมพรรษาพระบาทสมเด็จพระบรมชนกาธิเบศร มหาภูมิพลอดุลยเดชมหาราช บรมนาถบพิตร; ชดเชยวันชาติ; ชดเชยวันพ่อแห่งชาติ": {
+      "alerted_thresholds": [
+        120,
+        90,
+        60
+      ],
+      "alerts": [
+        {
+          "catch_up": true,
+          "date": "2026-11-04",
+          "thresholds": [
+            120,
+            90,
+            60
+          ]
+        }
+      ],
+      "event": {
+        "country": "TH",
+        "english_name": "ชดเชยวันคล้ายวันเฉลิมพระชนมพรรษาพระบาทสมเด็จพระบรมชนกาธิเบศร มหาภูมิพลอดุลยเดชมหาราช บรมนาถบพิตร; ชดเชยวันชาติ; ชดเชยวันพ่อแห่งชาติ",
+        "event_date": "2026-12-07"
+      },
+      "first_seen": "2026-11-04",
+      "missed_reported_on": "2026-11-04",
+      "production_status": "unknown"
+    },
+    "TH:2026-12-10:วันรัฐธรรมนูญ": {
+      "alerted_thresholds": [
+        120,
+        90,
+        60
+      ],
+      "alerts": [
+        {
+          "catch_up": true,
+          "date": "2026-11-04",
+          "thresholds": [
+            120,
+            90,
+            60
+          ]
+        }
+      ],
+      "event": {
+        "country": "TH",
+        "english_name": "วันรัฐธรรมนูญ",
+        "event_date": "2026-12-10"
+      },
+      "first_seen": "2026-11-04",
+      "missed_reported_on": "2026-11-04",
+      "production_status": "unknown"
+    },
+    "TH:2026-12-31:วันสิ้นปี": {
+      "alerted_thresholds": [
+        120,
+        90,
+        60
+      ],
+      "alerts": [
+        {
+          "catch_up": true,
+          "date": "2026-11-04",
+          "thresholds": [
+            120,
+            90,
+            60
+          ]
+        }
+      ],
+      "event": {
+        "country": "TH",
+        "english_name": "วันสิ้นปี",
+        "event_date": "2026-12-31"
+      },
+      "first_seen": "2026-11-04",
+      "missed_reported_on": "2026-11-04",
+      "production_status": "unknown"
+    },
+    "TH:2027-01-01:วันขึ้นปีใหม่": {
+      "alerted_thresholds": [
+        120,
+        90,
+        60
+      ],
+      "alerts": [
+        {
+          "catch_up": true,
+          "date": "2026-11-04",
+          "thresholds": [
+            120,
+            90,
+            60
+          ]
+        }
+      ],
+      "event": {
+        "country": "TH",
+        "english_name": "วันขึ้นปีใหม่",
+        "event_date": "2027-01-01"
+      },
+      "first_seen": "2026-11-04",
+      "missed_reported_on": "2026-11-04",
+      "production_status": "unknown"
+    },
+    "TH:2027-01-09:วันเด็กแห่งชาติ": {
+      "alerted_thresholds": [
+        120,
+        90
+      ],
+      "alerts": [
+        {
+          "catch_up": true,
+          "date": "2026-11-04",
+          "thresholds": [
+            120,
+            90
+          ]
+        }
+      ],
+      "event": {
+        "country": "TH",
+        "english_name": "วันเด็กแห่งชาติ",
+        "event_date": "2027-01-09"
+      },
+      "first_seen": "2026-11-04",
+      "missed_reported_on": "2026-11-04",
+      "production_status": "unknown"
+    },
+    "TH:2027-02-21:วันมาฆบูชา": {
+      "alerted_thresholds": [
+        120
+      ],
+      "alerts": [
+        {
+          "catch_up": true,
+          "date": "2026-11-04",
+          "thresholds": [
+            120
+          ]
+        }
+      ],
+      "event": {
+        "country": "TH",
+        "english_name": "วันมาฆบูชา",
+        "event_date": "2027-02-21"
+      },
+      "first_seen": "2026-11-04",
+      "missed_reported_on": null,
+      "production_status": "unknown"
+    },
+    "TH:2027-02-22:ชดเชยวันมาฆบูชา": {
+      "alerted_thresholds": [
+        120
+      ],
+      "alerts": [
+        {
+          "catch_up": true,
+          "date": "2026-11-04",
+          "thresholds": [
+            120
+          ]
+        }
+      ],
+      "event": {
+        "country": "TH",
+        "english_name": "ชดเชยวันมาฆบูชา",
+        "event_date": "2027-02-22"
+      },
+      "first_seen": "2026-11-04",
+      "missed_reported_on": null,
+      "production_status": "unknown"
+    },
+    "TH:2027-04-06:วันพระบาทสมเด็จพระพุทธยอดฟ้าจุฬาโลกมหาราช และวันที่ระลึกมหาจักรีบรมราชวงศ์": {
+      "alerted_thresholds": [],
+      "alerts": [],
+      "event": {
+        "country": "TH",
+        "english_name": "วันพระบาทสมเด็จพระพุทธยอดฟ้าจุฬาโลกมหาราช และวันที่ระลึกมหาจักรีบรมราชวงศ์",
+        "event_date": "2027-04-06"
+      },
+      "first_seen": "2026-11-04",
+      "missed_reported_on": null,
+      "production_status": "unknown"
+    },
+    "TH:2027-04-13:วันสงกรานต์": {
+      "alerted_thresholds": [],
+      "alerts": [],
+      "event": {
+        "country": "TH",
+        "english_name": "วันสงกรานต์",
+        "event_date": "2027-04-13"
+      },
+      "first_seen": "2026-11-04",
+      "missed_reported_on": null,
+      "production_status": "unknown"
+    },
+    "TH:2027-04-14:วันสงกรานต์": {
+      "alerted_thresholds": [],
+      "alerts": [],
+      "event": {
+        "country": "TH",
+        "english_name": "วันสงกรานต์",
+        "event_date": "2027-04-14"
+      },
+      "first_seen": "2026-11-04",
+      "missed_reported_on": null,
+      "production_status": "unknown"
+    },
+    "TH:2027-04-15:วันสงกรานต์": {
+      "alerted_thresholds": [],
+      "alerts": [],
+      "event": {
+        "country": "TH",
+        "english_name": "วันสงกรานต์",
+        "event_date": "2027-04-15"
+      },
+      "first_seen": "2026-11-04",
+      "missed_reported_on": null,
+      "production_status": "unknown"
+    },
+    "TH:2027-05-01:วันแรงงานแห่งชาติ": {
+      "alerted_thresholds": [],
+      "alerts": [],
+      "event": {
+        "country": "TH",
+        "english_name": "วันแรงงานแห่งชาติ",
+        "event_date": "2027-05-01"
+      },
+      "first_seen": "2026-11-04",
+      "missed_reported_on": null,
+      "production_status": "unknown"
+    },
+    "TH:2027-05-03:ชดเชยวันแรงงานแห่งชาติ": {
+      "alerted_thresholds": [],
+      "alerts": [],
+      "event": {
+        "country": "TH",
+        "english_name": "ชดเชยวันแรงงานแห่งชาติ",
+        "event_date": "2027-05-03"
+      },
+      "first_seen": "2026-11-04",
+      "missed_reported_on": null,
+      "production_status": "unknown"
+    },
+    "TH:2027-05-04:วันฉัตรมงคล": {
+      "alerted_thresholds": [],
+      "alerts": [],
+      "event": {
+        "country": "TH",
+        "english_name": "วันฉัตรมงคล",
+        "event_date": "2027-05-04"
+      },
+      "first_seen": "2026-11-04",
+      "missed_reported_on": null,
+      "production_status": "unknown"
+    },
+    "TH:2027-05-20:วันวิสาขบูชา": {
+      "alerted_thresholds": [],
+      "alerts": [],
+      "event": {
+        "country": "TH",
+        "english_name": "วันวิสาขบูชา",
+        "event_date": "2027-05-20"
+      },
+      "first_seen": "2026-11-04",
+      "missed_reported_on": null,
+      "production_status": "unknown"
+    },
+    "TH:2027-06-03:วันเฉลิมพระชนมพรรษาสมเด็จพระนางเจ้าสุทิดา พัชรสุธาพิมลลักษณ พระบรมราชินี": {
+      "alerted_thresholds": [],
+      "alerts": [],
+      "event": {
+        "country": "TH",
+        "english_name": "วันเฉลิมพระชนมพรรษาสมเด็จพระนางเจ้าสุทิดา พัชรสุธาพิมลลักษณ พระบรมราชินี",
+        "event_date": "2027-06-03"
+      },
+      "first_seen": "2026-11-04",
+      "missed_reported_on": null,
+      "production_status": "unknown"
+    },
+    "TH:2027-07-18:วันอาสาฬหบูชา": {
+      "alerted_thresholds": [],
+      "alerts": [],
+      "event": {
+        "country": "TH",
+        "english_name": "วันอาสาฬหบูชา",
+        "event_date": "2027-07-18"
+      },
+      "first_seen": "2026-11-04",
+      "missed_reported_on": null,
+      "production_status": "unknown"
+    },
+    "TH:2027-07-19:วันเข้าพรรษา": {
+      "alerted_thresholds": [],
+      "alerts": [],
+      "event": {
+        "country": "TH",
+        "english_name": "วันเข้าพรรษา",
+        "event_date": "2027-07-19"
+      },
+      "first_seen": "2026-11-04",
+      "missed_reported_on": null,
+      "production_status": "unknown"
+    },
+    "TH:2027-07-20:ชดเชยวันอาสาฬหบูชา": {
+      "alerted_thresholds": [],
+      "alerts": [],
+      "event": {
+        "country": "TH",
+        "english_name": "ชดเชยวันอาสาฬหบูชา",
+        "event_date": "2027-07-20"
+      },
+      "first_seen": "2026-11-04",
+      "missed_reported_on": null,
+      "production_status": "unknown"
+    },
+    "TH:2027-07-28:วันเฉลิมพระชนมพรรษาพระบาทสมเด็จพระปรเมนทรรามาธิบดีศรีสินทรมหาวชิราลงกรณ พระวชิรเกล้าเจ้าอยู่หัว": {
+      "alerted_thresholds": [],
+      "alerts": [],
+      "event": {
+        "country": "TH",
+        "english_name": "วันเฉลิมพระชนมพรรษาพระบาทสมเด็จพระปรเมนทรรามาธิบดีศรีสินทรมหาวชิราลงกรณ พระวชิรเกล้าเจ้าอยู่หัว",
+        "event_date": "2027-07-28"
+      },
+      "first_seen": "2026-11-04",
+      "missed_reported_on": null,
+      "production_status": "unknown"
+    },
+    "TH:2027-08-12:วันเฉลิมพระชนมพรรษาสมเด็จพระบรมราชชนนีพันปีหลวง; วันแม่แห่งชาติ": {
+      "alerted_thresholds": [],
+      "alerts": [],
+      "event": {
+        "country": "TH",
+        "english_name": "วันเฉลิมพระชนมพรรษาสมเด็จพระบรมราชชนนีพันปีหลวง; วันแม่แห่งชาติ",
+        "event_date": "2027-08-12"
+      },
+      "first_seen": "2026-11-04",
+      "missed_reported_on": null,
+      "production_status": "unknown"
+    },
+    "TH:2027-10-13:วันนวมินทรมหาราช": {
+      "alerted_thresholds": [],
+      "alerts": [],
+      "event": {
+        "country": "TH",
+        "english_name": "วันนวมินทรมหาราช",
+        "event_date": "2027-10-13"
+      },
+      "first_seen": "2026-11-04",
+      "missed_reported_on": null,
+      "production_status": "unknown"
+    },
+    "TH:2027-10-23:วันปิยมหาราช": {
+      "alerted_thresholds": [],
+      "alerts": [],
+      "event": {
+        "country": "TH",
+        "english_name": "วันปิยมหาราช",
+        "event_date": "2027-10-23"
+      },
+      "first_seen": "2026-11-04",
+      "missed_reported_on": null,
+      "production_status": "unknown"
+    },
+    "TH:2027-10-25:ชดเชยวันปิยมหาราช": {
+      "alerted_thresholds": [],
+      "alerts": [],
+      "event": {
+        "country": "TH",
+        "english_name": "ชดเชยวันปิยมหาราช",
+        "event_date": "2027-10-25"
+      },
+      "first_seen": "2026-11-04",
+      "missed_reported_on": null,
+      "production_status": "unknown"
+    },
+    "TR:2027-01-01:yılbaşı": {
+      "alerted_thresholds": [
+        120,
+        90,
+        60
+      ],
+      "alerts": [
+        {
+          "catch_up": true,
+          "date": "2026-11-04",
+          "thresholds": [
+            120,
+            90,
+            60
+          ]
+        }
+      ],
+      "event": {
+        "country": "TR",
+        "english_name": "Yılbaşı",
+        "event_date": "2027-01-01"
+      },
+      "first_seen": "2026-11-04",
+      "missed_reported_on": "2026-11-04",
+      "production_status": "unknown"
+    },
+    "TR:2027-03-09:ramazan bayramı": {
+      "alerted_thresholds": [],
+      "alerts": [],
+      "event": {
+        "country": "TR",
+        "english_name": "Ramazan Bayramı",
+        "event_date": "2027-03-09"
+      },
+      "first_seen": "2026-11-04",
+      "missed_reported_on": null,
+      "production_status": "unknown"
+    },
+    "TR:2027-03-10:ramazan bayramı": {
+      "alerted_thresholds": [],
+      "alerts": [],
+      "event": {
+        "country": "TR",
+        "english_name": "Ramazan Bayramı",
+        "event_date": "2027-03-10"
+      },
+      "first_seen": "2026-11-04",
+      "missed_reported_on": null,
+      "production_status": "unknown"
+    },
+    "TR:2027-03-11:ramazan bayramı": {
+      "alerted_thresholds": [],
+      "alerts": [],
+      "event": {
+        "country": "TR",
+        "english_name": "Ramazan Bayramı",
+        "event_date": "2027-03-11"
+      },
+      "first_seen": "2026-11-04",
+      "missed_reported_on": null,
+      "production_status": "unknown"
+    },
+    "TR:2027-04-23:ulusal egemenlik ve çocuk bayramı": {
+      "alerted_thresholds": [],
+      "alerts": [],
+      "event": {
+        "country": "TR",
+        "english_name": "Ulusal Egemenlik ve Çocuk Bayramı",
+        "event_date": "2027-04-23"
+      },
+      "first_seen": "2026-11-04",
+      "missed_reported_on": null,
+      "production_status": "unknown"
+    },
+    "TR:2027-05-01:emek ve dayanışma günü": {
+      "alerted_thresholds": [],
+      "alerts": [],
+      "event": {
+        "country": "TR",
+        "english_name": "Emek ve Dayanışma Günü",
+        "event_date": "2027-05-01"
+      },
+      "first_seen": "2026-11-04",
+      "missed_reported_on": null,
+      "production_status": "unknown"
+    },
+    "TR:2027-05-16:kurban bayramı": {
+      "alerted_thresholds": [],
+      "alerts": [],
+      "event": {
+        "country": "TR",
+        "english_name": "Kurban Bayramı",
+        "event_date": "2027-05-16"
+      },
+      "first_seen": "2026-11-04",
+      "missed_reported_on": null,
+      "production_status": "unknown"
+    },
+    "TR:2027-05-17:kurban bayramı": {
+      "alerted_thresholds": [],
+      "alerts": [],
+      "event": {
+        "country": "TR",
+        "english_name": "Kurban Bayramı",
+        "event_date": "2027-05-17"
+      },
+      "first_seen": "2026-11-04",
+      "missed_reported_on": null,
+      "production_status": "unknown"
+    },
+    "TR:2027-05-18:kurban bayramı": {
+      "alerted_thresholds": [],
+      "alerts": [],
+      "event": {
+        "country": "TR",
+        "english_name": "Kurban Bayramı",
+        "event_date": "2027-05-18"
+      },
+      "first_seen": "2026-11-04",
+      "missed_reported_on": null,
+      "production_status": "unknown"
+    },
+    "TR:2027-05-19:atatürk'ü anma, gençlik ve spor bayramı; kurban bayramı": {
+      "alerted_thresholds": [],
+      "alerts": [],
+      "event": {
+        "country": "TR",
+        "english_name": "Atatürk'ü Anma, Gençlik ve Spor Bayramı; Kurban Bayramı",
+        "event_date": "2027-05-19"
+      },
+      "first_seen": "2026-11-04",
+      "missed_reported_on": null,
+      "production_status": "unknown"
+    },
+    "TR:2027-07-15:demokrasi ve millî birlik günü": {
+      "alerted_thresholds": [],
+      "alerts": [],
+      "event": {
+        "country": "TR",
+        "english_name": "Demokrasi ve Millî Birlik Günü",
+        "event_date": "2027-07-15"
+      },
+      "first_seen": "2026-11-04",
+      "missed_reported_on": null,
+      "production_status": "unknown"
+    },
+    "TR:2027-08-30:zafer bayramı": {
+      "alerted_thresholds": [],
+      "alerts": [],
+      "event": {
+        "country": "TR",
+        "english_name": "Zafer Bayramı",
+        "event_date": "2027-08-30"
+      },
+      "first_seen": "2026-11-04",
+      "missed_reported_on": null,
+      "production_status": "unknown"
+    },
+    "TR:2027-10-29:cumhuriyet bayramı": {
+      "alerted_thresholds": [],
+      "alerts": [],
+      "event": {
+        "country": "TR",
+        "english_name": "Cumhuriyet Bayramı",
+        "event_date": "2027-10-29"
+      },
+      "first_seen": "2026-11-04",
+      "missed_reported_on": null,
+      "production_status": "unknown"
+    },
+    "US:2026-11-11:veterans day": {
+      "alerted_thresholds": [
+        120,
+        90,
+        60,
+        30
+      ],
+      "alerts": [
+        {
+          "catch_up": true,
+          "date": "2026-11-04",
+          "thresholds": [
+            120,
+            90,
+            60,
+            30
+          ]
+        }
+      ],
+      "event": {
+        "country": "US",
+        "english_name": "Veterans Day",
+        "event_date": "2026-11-11"
+      },
+      "first_seen": "2026-11-04",
+      "missed_reported_on": "2026-11-04",
+      "production_status": "unknown"
+    },
+    "US:2026-11-26:thanksgiving day": {
+      "alerted_thresholds": [
+        120,
+        90,
+        60,
+        30
+      ],
+      "alerts": [
+        {
+          "catch_up": true,
+          "date": "2026-11-04",
+          "thresholds": [
+            120,
+            90,
+            60,
+            30
+          ]
+        }
+      ],
+      "event": {
+        "country": "US",
+        "english_name": "Thanksgiving Day",
+        "event_date": "2026-11-26"
+      },
+      "first_seen": "2026-11-04",
+      "missed_reported_on": "2026-11-04",
+      "production_status": "unknown"
+    },
+    "US:2026-11-27:black friday": {
+      "alerted_thresholds": [
+        120,
+        90,
+        60,
+        30
+      ],
+      "alerts": [
+        {
+          "catch_up": true,
+          "date": "2026-11-04",
+          "thresholds": [
+            120,
+            90,
+            60,
+            30
+          ]
+        }
+      ],
+      "event": {
+        "country": "US",
+        "english_name": "Black Friday",
+        "event_date": "2026-11-27"
+      },
+      "first_seen": "2026-11-04",
+      "missed_reported_on": "2026-11-04",
+      "production_status": "unknown"
+    },
+    "US:2026-11-30:cyber monday": {
+      "alerted_thresholds": [
+        120,
+        90,
+        60,
+        30
+      ],
+      "alerts": [
+        {
+          "catch_up": true,
+          "date": "2026-11-04",
+          "thresholds": [
+            120,
+            90,
+            60,
+            30
+          ]
+        }
+      ],
+      "event": {
+        "country": "US",
+        "english_name": "Cyber Monday",
+        "event_date": "2026-11-30"
+      },
+      "first_seen": "2026-11-04",
+      "missed_reported_on": "2026-11-04",
+      "production_status": "unknown"
+    },
+    "US:2026-12-25:christmas day": {
+      "alerted_thresholds": [
+        120,
+        90,
+        60
+      ],
+      "alerts": [
+        {
+          "catch_up": true,
+          "date": "2026-11-04",
+          "thresholds": [
+            120,
+            90,
+            60
+          ]
+        }
+      ],
+      "event": {
+        "country": "US",
+        "english_name": "Christmas Day",
+        "event_date": "2026-12-25"
+      },
+      "first_seen": "2026-11-04",
+      "missed_reported_on": "2026-11-04",
+      "production_status": "unknown"
+    },
+    "US:2027-01-01:new year's day": {
+      "alerted_thresholds": [
+        120,
+        90,
+        60
+      ],
+      "alerts": [
+        {
+          "catch_up": true,
+          "date": "2026-11-04",
+          "thresholds": [
+            120,
+            90,
+            60
+          ]
+        }
+      ],
+      "event": {
+        "country": "US",
+        "english_name": "New Year's Day",
+        "event_date": "2027-01-01"
+      },
+      "first_seen": "2026-11-04",
+      "missed_reported_on": "2026-11-04",
+      "production_status": "unknown"
+    },
+    "US:2027-01-18:martin luther king jr. day": {
+      "alerted_thresholds": [
+        120,
+        90
+      ],
+      "alerts": [
+        {
+          "catch_up": true,
+          "date": "2026-11-04",
+          "thresholds": [
+            120,
+            90
+          ]
+        }
+      ],
+      "event": {
+        "country": "US",
+        "english_name": "Martin Luther King Jr. Day",
+        "event_date": "2027-01-18"
+      },
+      "first_seen": "2026-11-04",
+      "missed_reported_on": null,
+      "production_status": "unknown"
+    },
+    "US:2027-02-15:washington's birthday": {
+      "alerted_thresholds": [
+        120
+      ],
+      "alerts": [
+        {
+          "catch_up": true,
+          "date": "2026-11-04",
+          "thresholds": [
+            120
+          ]
+        }
+      ],
+      "event": {
+        "country": "US",
+        "english_name": "Washington's Birthday",
+        "event_date": "2027-02-15"
+      },
+      "first_seen": "2026-11-04",
+      "missed_reported_on": null,
+      "production_status": "unknown"
+    },
+    "US:2027-05-31:memorial day": {
+      "alerted_thresholds": [],
+      "alerts": [],
+      "event": {
+        "country": "US",
+        "english_name": "Memorial Day",
+        "event_date": "2027-05-31"
+      },
+      "first_seen": "2026-11-04",
+      "missed_reported_on": null,
+      "production_status": "unknown"
+    },
+    "US:2027-06-18:juneteenth national independence day (observed)": {
+      "alerted_thresholds": [],
+      "alerts": [],
+      "event": {
+        "country": "US",
+        "english_name": "Juneteenth National Independence Day (observed)",
+        "event_date": "2027-06-18"
+      },
+      "first_seen": "2026-11-04",
+      "missed_reported_on": null,
+      "production_status": "unknown"
+    },
+    "US:2027-06-19:juneteenth national independence day": {
+      "alerted_thresholds": [],
+      "alerts": [],
+      "event": {
+        "country": "US",
+        "english_name": "Juneteenth National Independence Day",
+        "event_date": "2027-06-19"
+      },
+      "first_seen": "2026-11-04",
+      "missed_reported_on": null,
+      "production_status": "unknown"
+    },
+    "US:2027-07-04:independence day": {
+      "alerted_thresholds": [],
+      "alerts": [],
+      "event": {
+        "country": "US",
+        "english_name": "Independence Day",
+        "event_date": "2027-07-04"
+      },
+      "first_seen": "2026-11-04",
+      "missed_reported_on": null,
+      "production_status": "unknown"
+    },
+    "US:2027-07-05:independence day (observed)": {
+      "alerted_thresholds": [],
+      "alerts": [],
+      "event": {
+        "country": "US",
+        "english_name": "Independence Day (observed)",
+        "event_date": "2027-07-05"
+      },
+      "first_seen": "2026-11-04",
+      "missed_reported_on": null,
+      "production_status": "unknown"
+    },
+    "US:2027-09-06:labor day": {
+      "alerted_thresholds": [],
+      "alerts": [],
+      "event": {
+        "country": "US",
+        "english_name": "Labor Day",
+        "event_date": "2027-09-06"
+      },
+      "first_seen": "2026-11-04",
+      "missed_reported_on": null,
+      "production_status": "unknown"
+    },
+    "US:2027-10-11:columbus day": {
+      "alerted_thresholds": [],
+      "alerts": [],
+      "event": {
+        "country": "US",
+        "english_name": "Columbus Day",
+        "event_date": "2027-10-11"
+      },
+      "first_seen": "2026-11-04",
+      "missed_reported_on": null,
+      "production_status": "unknown"
+    },
+    "ZA:2026-11-04:local government elections": {
+      "alerted_thresholds": [
+        120,
+        90,
+        60,
+        30
+      ],
+      "alerts": [
+        {
+          "catch_up": true,
+          "date": "2026-11-04",
+          "thresholds": [
+            120,
+            90,
+            60,
+            30
+          ]
+        }
+      ],
+      "event": {
+        "country": "ZA",
+        "english_name": "Local Government Elections",
+        "event_date": "2026-11-04"
+      },
+      "first_seen": "2026-11-04",
+      "missed_reported_on": "2026-11-04",
+      "production_status": "unknown"
+    },
+    "ZA:2026-12-16:day of reconciliation": {
+      "alerted_thresholds": [
+        120,
+        90,
+        60
+      ],
+      "alerts": [
+        {
+          "catch_up": true,
+          "date": "2026-11-04",
+          "thresholds": [
+            120,
+            90,
+            60
+          ]
+        }
+      ],
+      "event": {
+        "country": "ZA",
+        "english_name": "Day of Reconciliation",
+        "event_date": "2026-12-16"
+      },
+      "first_seen": "2026-11-04",
+      "missed_reported_on": "2026-11-04",
+      "production_status": "unknown"
+    },
+    "ZA:2026-12-25:christmas day": {
+      "alerted_thresholds": [
+        120,
+        90,
+        60
+      ],
+      "alerts": [
+        {
+          "catch_up": true,
+          "date": "2026-11-04",
+          "thresholds": [
+            120,
+            90,
+            60
+          ]
+        }
+      ],
+      "event": {
+        "country": "ZA",
+        "english_name": "Christmas Day",
+        "event_date": "2026-12-25"
+      },
+      "first_seen": "2026-11-04",
+      "missed_reported_on": "2026-11-04",
+      "production_status": "unknown"
+    },
+    "ZA:2026-12-26:day of goodwill": {
+      "alerted_thresholds": [
+        120,
+        90,
+        60
+      ],
+      "alerts": [
+        {
+          "catch_up": true,
+          "date": "2026-11-04",
+          "thresholds": [
+            120,
+            90,
+            60
+          ]
+        }
+      ],
+      "event": {
+        "country": "ZA",
+        "english_name": "Day of Goodwill",
+        "event_date": "2026-12-26"
+      },
+      "first_seen": "2026-11-04",
+      "missed_reported_on": "2026-11-04",
+      "production_status": "unknown"
+    },
+    "ZA:2027-01-01:new year's day": {
+      "alerted_thresholds": [
+        120,
+        90,
+        60
+      ],
+      "alerts": [
+        {
+          "catch_up": true,
+          "date": "2026-11-04",
+          "thresholds": [
+            120,
+            90,
+            60
+          ]
+        }
+      ],
+      "event": {
+        "country": "ZA",
+        "english_name": "New Year's Day",
+        "event_date": "2027-01-01"
+      },
+      "first_seen": "2026-11-04",
+      "missed_reported_on": "2026-11-04",
+      "production_status": "unknown"
+    },
+    "ZA:2027-03-21:human rights day": {
+      "alerted_thresholds": [],
+      "alerts": [],
+      "event": {
+        "country": "ZA",
+        "english_name": "Human Rights Day",
+        "event_date": "2027-03-21"
+      },
+      "first_seen": "2026-11-04",
+      "missed_reported_on": null,
+      "production_status": "unknown"
+    },
+    "ZA:2027-03-22:human rights day (observed)": {
+      "alerted_thresholds": [],
+      "alerts": [],
+      "event": {
+        "country": "ZA",
+        "english_name": "Human Rights Day (observed)",
+        "event_date": "2027-03-22"
+      },
+      "first_seen": "2026-11-04",
+      "missed_reported_on": null,
+      "production_status": "unknown"
+    },
+    "ZA:2027-03-26:good friday": {
+      "alerted_thresholds": [],
+      "alerts": [],
+      "event": {
+        "country": "ZA",
+        "english_name": "Good Friday",
+        "event_date": "2027-03-26"
+      },
+      "first_seen": "2026-11-04",
+      "missed_reported_on": null,
+      "production_status": "unknown"
+    },
+    "ZA:2027-03-29:family day": {
+      "alerted_thresholds": [],
+      "alerts": [],
+      "event": {
+        "country": "ZA",
+        "english_name": "Family Day",
+        "event_date": "2027-03-29"
+      },
+      "first_seen": "2026-11-04",
+      "missed_reported_on": null,
+      "production_status": "unknown"
+    },
+    "ZA:2027-04-27:freedom day": {
+      "alerted_thresholds": [],
+      "alerts": [],
+      "event": {
+        "country": "ZA",
+        "english_name": "Freedom Day",
+        "event_date": "2027-04-27"
+      },
+      "first_seen": "2026-11-04",
+      "missed_reported_on": null,
+      "production_status": "unknown"
+    },
+    "ZA:2027-05-01:workers' day": {
+      "alerted_thresholds": [],
+      "alerts": [],
+      "event": {
+        "country": "ZA",
+        "english_name": "Workers' Day",
+        "event_date": "2027-05-01"
+      },
+      "first_seen": "2026-11-04",
+      "missed_reported_on": null,
+      "production_status": "unknown"
+    },
+    "ZA:2027-06-16:youth day": {
+      "alerted_thresholds": [],
+      "alerts": [],
+      "event": {
+        "country": "ZA",
+        "english_name": "Youth Day",
+        "event_date": "2027-06-16"
+      },
+      "first_seen": "2026-11-04",
+      "missed_reported_on": null,
+      "production_status": "unknown"
+    },
+    "ZA:2027-08-09:national women's day": {
+      "alerted_thresholds": [],
+      "alerts": [],
+      "event": {
+        "country": "ZA",
+        "english_name": "National Women's Day",
+        "event_date": "2027-08-09"
+      },
+      "first_seen": "2026-11-04",
+      "missed_reported_on": null,
+      "production_status": "unknown"
+    },
+    "ZA:2027-09-24:heritage day": {
+      "alerted_thresholds": [],
+      "alerts": [],
+      "event": {
+        "country": "ZA",
+        "english_name": "Heritage Day",
+        "event_date": "2027-09-24"
+      },
+      "first_seen": "2026-11-04",
+      "missed_reported_on": null,
+      "production_status": "unknown"
+    }
+  },
+  "last_successful_scan_date": "2026-11-04",
+  "previous_scan_date": "2026-11-04",
+  "schema_version": 1
+}
