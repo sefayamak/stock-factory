@@ -92,11 +92,8 @@ def _latest_fresh_snapshot() -> trend_import.Snapshot | None:
     if not history:
         return None
     latest = history[-1]
-    imported_at = datetime.fromisoformat(latest.imported_at)
-    age_days = (datetime.now(timezone.utc) - imported_at).total_seconds() / 86400
-    if age_days > config.TREND_STALE_AFTER_DAYS:
-        return None
-    return latest
+    # Shared staleness policy (also used by the Magnific trend-intelligence adapter).
+    return latest if trend_import.snapshot_is_fresh(latest) else None
 
 
 def _trend_priority_terms(snapshot: trend_import.Snapshot) -> list[trend_import.TrendTerm]:

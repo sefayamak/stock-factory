@@ -8,7 +8,8 @@ weight so a human can audit why an event ranked where it did.
 
 Four distinct evidence categories feed this module (see
 adapters/base.py's SIGNAL_* constants) and must stay distinct:
-  - verified_search_demand          -- real search/interest signal
+  - verified_search_interest        -- real search-interest signal (Google/Magnific
+                                       search ranks): NOT download/purchase demand
   - catalog_supply                  -- existing-content/competition count
   - calendar_predicted_demand       -- calendar heuristic, no live signal
   - historical_download_performance -- past acceptance/download record
@@ -24,7 +25,7 @@ from .events import Event
 from . import deadlines
 from .. import acceptance_learning
 from .adapters.base import (
-    SIGNAL_SEARCH_DEMAND, SIGNAL_CATALOG_SUPPLY,
+    SIGNAL_SEARCH_INTEREST, SIGNAL_CATALOG_SUPPLY,
     SIGNAL_CALENDAR_PREDICTED_DEMAND, SIGNAL_HISTORICAL_DOWNLOAD_PERFORMANCE,
 )
 
@@ -89,7 +90,7 @@ class Score:
 
 def _demand_evidence(event: Event, verified_demand_terms: set[str] | None) -> tuple[float, str]:
     """Returns (value, label). `verified_demand_terms` must already be
-    filtered to SIGNAL_SEARCH_DEMAND-only terms by the caller (feed.py) --
+    filtered to fresh SIGNAL_SEARCH_INTEREST-only terms by the caller (feed.py) --
     this function has no way to re-check that itself, so it trusts the
     contract and never treats a catalog-supply or historical-performance
     term as demand. Falls back to a calendar-based heuristic, clearly
@@ -97,7 +98,7 @@ def _demand_evidence(event: Event, verified_demand_terms: set[str] | None) -> tu
     if verified_demand_terms:
         name_low = event.english_name.lower()
         if any(t in name_low or name_low in t for t in verified_demand_terms):
-            return 0.9, SIGNAL_SEARCH_DEMAND
+            return 0.9, SIGNAL_SEARCH_INTEREST
     name_low = event.english_name.lower()
     if any(m in name_low for m in _HIGH_DEMAND_MARKERS):
         return 0.8, SIGNAL_CALENDAR_PREDICTED_DEMAND

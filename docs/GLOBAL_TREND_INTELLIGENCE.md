@@ -65,7 +65,7 @@ terms; v2's never can).
 | Feed -> `trends.py` queue integration, with cross-tier dedup | **VERIFIED_WORKING** -- dry run + tests show Black Friday/Cyber Monday/Thanksgiving Day ranking ahead of the static topic bank, with no duplicate named candidates. |
 | **Cloud feed handoff (`intelligence-feed` branch, fetch + verify in daily.yml)** | **VERIFIED_WORKING** -- real cross-workflow GitHub Actions run, see "Cloud feed handoff" below. |
 | Adobe Stock Search API adapter (`catalog_supply` signal only) | **IMPLEMENTED_NOT_TESTED against the real API** -- gated on `ADOBE_STOCK_API_KEY`, not set in this repo/CI. Supply/demand separation itself is unit-tested with a fake adapter. |
-| Google Trends via BigQuery public dataset (`verified_search_demand` signal) | **IMPLEMENTED_NOT_TESTED against real BigQuery** -- gated on `GOOGLE_CLOUD_PROJECT`. |
+| Google Trends via BigQuery public dataset (`verified_search_interest` signal -- search interest, NOT download demand) | **IMPLEMENTED_NOT_TESTED against real BigQuery** -- gated on `GOOGLE_CLOUD_PROJECT` + optional `google-cloud-bigquery`; NOT enabled in this repo. Query/freshness/status logic unit-tested against a fake BigQuery client only. See "Google Trends BigQuery: requirements and cost bound" below. |
 | Magnific trend signal | **BLOCKED** for any new programmatic path (confirmed login-gated SPA, no official export). Wrapped the existing manual-import adapter in the common adapter interface. |
 
 ## Why Adobe/Google Trends/Magnific aren't "real data today"
@@ -81,6 +81,39 @@ it's live:
   (official, scrape-free, US/weekly top-rising terms) is implemented,
   gated on a configured GCP project.
 - **Magnific**: still confirmed blocked; no new finding changes that.
+
+### Google Trends BigQuery: requirements and cost bound (documented, not enabled)
+
+- **Auth**: Application Default Credentials for a GCP project with the
+  BigQuery API enabled (`GOOGLE_APPLICATION_CREDENTIALS` service-account
+  key, `gcloud auth application-default login`, or workload identity),
+  plus `GOOGLE_CLOUD_PROJECT`. Query bytes are billed to that project.
+- **Optional dependency**: `google-cloud-bigquery` is deliberately *not* in
+  `requirements.txt`; without it the adapter reports
+  `configured=true, dependency_ready=false` and contributes nothing.
+- **Cost bound**: one query per scan for all candidate terms, restricted to
+  the last `GOOGLE_TRENDS_REFRESH_LOOKBACK_DAYS` (7) of the `refresh_date`
+  partition, a hard `maximum_bytes_billed` cap (`GOOGLE_TRENDS_MAX_BYTES_BILLED`,
+  default 2 GiB -- BigQuery fails the job instead of billing more) and
+  `LIMIT GOOGLE_TRENDS_MAX_ROWS` (1000). Not run in CI; no paid source is
+  enabled by this PR.
+- **Semantics**: the value is a weekly top-rising *search-interest* rank for
+  US DMAs. Each signal keeps `observation_date` (the source's week) separate
+  from `fetched_at`; observations older than
+  `GOOGLE_TRENDS_MAX_OBSERVATION_AGE_DAYS` (14) are `fresh=false` and are not
+  scored as current interest.
+
+### Adapter status fields
+
+`feed.json`'s `adapter_status.<platform>` reports, separately: `configured`,
+`dependency_ready`, `auth_ready` (null = not checkable before a real call),
+`fetch_attempted`, `fetch_succeeded`, `fresh`, `signal_count`, `error`, and a
+derived `available` (true only if all of those are good). A caught adapter
+exception is reported as `available=false` with `error` set -- never as a
+silent success. The Magnific manual-snapshot adapter applies the existing
+`config.TREND_STALE_AFTER_DAYS` policy (the same one `trends.py` uses via
+`trend_import.snapshot_is_fresh`): a stale snapshot is `fresh=false` and
+contributes no signal.
 
 ## Cloud feed handoff (real cross-workflow test, this update)
 

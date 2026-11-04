@@ -2,6 +2,7 @@
 `trends.py` (stage 1) reads to influence concept selection."""
 from __future__ import annotations
 import hashlib
+import inspect
 import json
 import os
 import subprocess
@@ -11,7 +12,7 @@ from pathlib import Path
 
 from .. import config
 from . import calendar_sources, early_warning, scoring, briefs, deadlines, alert_history
-from .adapters.base import SIGNAL_SEARCH_DEMAND, SIGNAL_CATALOG_SUPPLY
+from .adapters.base import SIGNAL_SEARCH_INTEREST, SIGNAL_CATALOG_SUPPLY, AdapterStatus
 from .adapters.adobe_stock_adapter import AdobeStockSearchAdapter
 from .adapters.google_trends_adapter import GoogleTrendsBigQueryAdapter
 from .adapters.magnific_adapter import MagnificManualImportAdapter
@@ -53,51 +54,88 @@ def _checksum_path() -> Path:
     return _feed_dir() / 'feed.sha256'
 
 
-def _collect_signals(candidate_terms: list[str]) -> tuple[set[str], dict[str, float]]:
-    """Queries every adapter that reports itself available and splits its
-    signals STRICTLY by `signal_type`:
-      - demand_terms: term is in a SIGNAL_SEARCH_DEMAND signal only.
+def _adapters():
+    # Resolved at call time so tests can monkeypatch the module-level classes.
+    return (('adobe', AdobeStockSearchAdapter()), ('google_trends', GoogleTrendsBigQueryAdapter()),
+            ('magnific', MagnificManualImportAdapter()))
+
+
+def _collect_signals(candidate_terms: list[str], today: date | None = None
+                     ) -> tuple[set[str], dict[str, float], dict[str, dict]]:
+    """Queries every ready adapter and splits its signals STRICTLY by
+    `signal_type`:
+      - interest_terms: SIGNAL_SEARCH_INTEREST signals that are verified,
+        valued and FRESH (an old observation is never "current").
       - catalog_supply_by_term: term -> value, SIGNAL_CATALOG_SUPPLY only.
-    A term is never counted as demand just because some adapter call
-    succeeded ("verified=True") -- verified only means "this is a real
-    live/official value", not "this is demand". Adapter failures never
-    crash the scan -- an unavailable/erroring adapter just contributes
-    nothing to either set."""
-    demand_terms: set[str] = set()
+    Also returns a per-adapter status (AdapterStatus.to_dict) separating
+    configured / dependency / auth / fetch / freshness / signal count /
+    error. An adapter exception never crashes the scan -- it is recorded
+    as available=False with the error, not swallowed."""
+    interest_terms: set[str] = set()
     catalog_supply_by_term: dict[str, float] = {}
-    for adapter in (AdobeStockSearchAdapter(), GoogleTrendsBigQueryAdapter(), MagnificManualImportAdapter()):
+    statuses: dict[str, dict] = {}
+    for platform, adapter in _adapters():
         try:
-            if not adapter.available():
-                continue
-            for sig in adapter.fetch(candidate_terms):
-                if not sig.verified or sig.value is None:
-                    continue
-                key = sig.term.strip().lower()
-                if sig.signal_type == SIGNAL_SEARCH_DEMAND:
-                    demand_terms.add(key)
-                elif sig.signal_type == SIGNAL_CATALOG_SUPPLY:
-                    catalog_supply_by_term[key] = sig.value
-                # Any other signal_type (e.g. historical_download_performance)
-                # is intentionally not routed here -- it has its own factor.
-        except Exception:
+            st = adapter.readiness()
+        except Exception as exc:
+            st = AdapterStatus(adapter=getattr(adapter, 'name', platform), error=f'readiness check failed: {exc}')
+            statuses[platform] = st.to_dict()
             continue
-    return demand_terms, catalog_supply_by_term
+        if not st.configured or st.dependency_ready is False:
+            statuses[platform] = st.to_dict()
+            continue
+        st.fetch_attempted = True
+        try:
+            if 'today' in inspect.signature(adapter.fetch).parameters:
+                signals = adapter.fetch(candidate_terms, today=today)
+            else:
+                signals = adapter.fetch(candidate_terms)
+        except Exception as exc:
+            st.error = f'{type(exc).__name__}: {exc}'
+            statuses[platform] = st.to_dict()
+            continue
+        verified = [s for s in signals if s.verified and s.value is not None]
+        errored = [s for s in signals if not s.verified]
+        if signals and not verified:
+            st.error = f'all {len(signals)} per-term fetches failed, e.g. {errored[0].note}'
+        else:
+            st.fetch_succeeded = True
+        freshness = [s.fresh for s in verified if s.fresh is not None]
+        fresh_fn = getattr(adapter, 'freshness', None)
+        if freshness:
+            st.fresh = any(freshness)
+        elif callable(fresh_fn):
+            st.fresh = fresh_fn()
+        counted = 0
+        for sig in verified:
+            key = sig.term.strip().lower()
+            if sig.signal_type == SIGNAL_SEARCH_INTEREST:
+                if sig.fresh is False:
+                    continue  # old observation: not current interest, however recently fetched
+                interest_terms.add(key)
+                counted += 1
+            elif sig.signal_type == SIGNAL_CATALOG_SUPPLY:
+                catalog_supply_by_term[key] = sig.value
+                counted += 1
+            # Any other signal_type (e.g. historical_download_performance)
+            # is intentionally not routed here -- it has its own factor.
+        st.signal_count = counted
+        if errored and verified:
+            st.notes = (st.notes + '; ' if st.notes else '') + f'{len(errored)} per-term fetch error(s)'
+        statuses[platform] = st.to_dict()
+    return interest_terms, catalog_supply_by_term, statuses
 
 
 def adapter_status() -> dict[str, dict]:
+    """Pre-fetch readiness only (no network). The feed's `adapter_status`
+    is the richer post-fetch status from _collect_signals."""
     statuses = {}
-    for adapter, platform in (
-        (AdobeStockSearchAdapter(), 'adobe'),
-        (GoogleTrendsBigQueryAdapter(), 'google_trends'),
-        (MagnificManualImportAdapter(), 'magnific'),
-    ):
+    for platform, adapter in _adapters():
         try:
-            available = adapter.available()
+            statuses[platform] = adapter.readiness().to_dict()
         except Exception as exc:
-            available = False
-            statuses[platform] = {'adapter': adapter.name, 'available': False, 'error': str(exc)}
-            continue
-        statuses[platform] = {'adapter': adapter.name, 'available': available}
+            statuses[platform] = AdapterStatus(adapter=getattr(adapter, 'name', platform),
+                                               error=str(exc)).to_dict()
     return statuses
 
 
@@ -134,11 +172,11 @@ def run_scan(today: date | None = None, year: int | None = None, persist_history
     duplicate_groups = calendar_sources.find_duplicate_groups(events)
 
     candidate_terms = list({e.english_name for e in events})
-    demand_terms, catalog_supply_by_term = _collect_signals(candidate_terms)
+    interest_terms, catalog_supply_by_term, statuses = _collect_signals(candidate_terms, today=today)
 
     scores = scoring.score_events(
         events, today,
-        verified_demand_terms=demand_terms,
+        verified_demand_terms=interest_terms,
         catalog_supply_by_term=catalog_supply_by_term,
     )
     windows = early_warning.windowed_events(events, today)
@@ -176,10 +214,11 @@ def run_scan(today: date | None = None, year: int | None = None, persist_history
         'countries_covered': sorted(calendar_sources.SUPPORTED_COUNTRIES.keys()),
         'events_indexed': len(events),
         'duplicate_event_groups': len(duplicate_groups),
-        'adapter_status': adapter_status(),
+        'adapter_status': statuses,
         # Four distinct evidence categories -- see scoring.py module docstring.
-        # Never merge verified_demand_terms and catalog_supply_terms.
-        'verified_demand_terms': sorted(demand_terms),
+        # Never merge search-interest terms and catalog_supply_terms. Search
+        # interest (Google/Magnific search ranks) is NOT download demand.
+        'verified_search_interest_terms': sorted(interest_terms),
         'catalog_supply_terms': {k: v for k, v in sorted(catalog_supply_by_term.items())},
         'historical_download_performance_basis': 'portfolio_wide_magnific_baseline_acceptance_rate',
         'window_counts': {str(k): len(v) for k, v in windows.items()},
