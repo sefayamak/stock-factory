@@ -68,14 +68,13 @@ jobs:
           python - <<'PY'
           import sys
           from stock_factory.trend_intelligence import feed as feed_mod
-          f = feed_mod.load_feed()
-          if feed_mod.is_feed_stale(f):
-              print('::error::trend-intelligence feed is missing or stale right after this run')
+          # Same shared validator the consumer (trends.py) and verify_feed.py use.
+          result = feed_mod.validate_feed()
+          if not result.ok:
+              for p in result.problems:
+                  print(f'::error::trend-intelligence feed failed validation right after this run: {p}')
               sys.exit(1)
-          ok, msg = feed_mod.verify_integrity()
-          if not ok:
-              print(f'::error::trend-intelligence feed failed its own integrity check: {msg}')
-              sys.exit(1)
+          f = result.feed
           print(f"feed OK: scan_date={f['scan_date']} events_indexed={f['events_indexed']}")
           PY
 

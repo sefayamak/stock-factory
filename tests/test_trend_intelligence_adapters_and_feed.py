@@ -129,10 +129,23 @@ def test_no_duplicate_production_candidates_across_tiers(tmp_path, monkeypatch):
     calendar_opportunity tier on the same day, the final concept list must
     not contain it twice."""
     monkeypatch.setattr(config, 'STATE_DIR', tmp_path / 'state')
-    feed = feed_mod.run_scan(today=_dt.date(2026, 11, 6), year=2026)
+    # Previously this used a hard-coded scan_date of 2026-11-06 -- which
+    # only "worked" because the consumer accepted future-dated feeds (review
+    # finding 4) and would have silently gone vacuous once that date aged
+    # past the staleness limit. Use today's date plus one real brief whose
+    # production window covers today, so the assertion below is never vacuous.
+    from stock_factory.trend_intelligence import scoring, briefs
+    from stock_factory.trend_intelligence.events import Event
+    today = _dt.date.today()
+    feed = feed_mod.run_scan(today=today)
+    ev = Event(country='US', event_date=today + _dt.timedelta(days=60), local_name='Synthetic Day',
+               english_name='Synthetic Day', category='national_holiday', source='test', verified_at='')
+    b = briefs.build_brief(scoring.score_event(ev, today), 'PHOTO_JPG').to_dict()
+    feed['creative_briefs'] = [b, dict(b)] + feed['creative_briefs']  # same brief twice in the feed
+    feed['provenance']['git_sha'] = 'deadbeef'
     feed_mod.write_feed(feed)
 
-    concepts = trends.select_concepts_detailed('2026-11-06', 60)
+    concepts = trends.select_concepts_detailed(today.isoformat(), 60)
     # The static topic bank intentionally repeats its small pool of generic
     # topics to fill remaining daily volume -- that is not a "duplicate
     # production candidate" in the sense this gate cares about. Only named
