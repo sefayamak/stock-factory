@@ -21,39 +21,27 @@ def main() -> int:
     parser.add_argument('--fail-soft', action='store_true',
                          help='Always exit 0 (log-only); use when the caller wants to '
                               'continue the pipeline without the feed rather than abort.')
-    parser.add_argument('--max-age-days', type=int, default=2)
+    parser.add_argument('--max-age-days', type=int, default=feed_mod.FEED_MAX_AGE_DAYS)
     args = parser.parse_args()
 
-    feed = feed_mod.load_feed()
-    problems: list[str] = []
+    # The SAME validator trends.py uses before consuming the feed -- a feed
+    # rejected here can never contribute calendar candidates downstream.
+    result = feed_mod.validate_feed(max_age_days=args.max_age_days)
 
-    if feed is None:
-        problems.append('FEED_MISSING: no state/intelligence/feed.json present after fetch')
-    else:
-        integrity_ok, integrity_msg = feed_mod.verify_integrity()
-        if not integrity_ok:
-            problems.append(f'FEED_INTEGRITY_FAILED: {integrity_msg}')
-        if feed_mod.is_feed_stale(feed, max_age_days=args.max_age_days):
-            problems.append(f'FEED_STALE: scan_date={feed.get("scan_date")} '
-                             f'(older than {args.max_age_days} day(s))')
-        provenance = feed.get('provenance', {})
-        if not provenance.get('git_sha'):
-            problems.append('FEED_SOURCE_UNIDENTIFIED: provenance.git_sha is empty -- '
-                             'feed was not produced by a traceable workflow run')
-        else:
-            print(f'[feed-verify] source identified: git_sha={provenance.get("git_sha")} '
-                  f'run_id={provenance.get("workflow_run_id")} workflow={provenance.get("workflow")}')
-
-    if problems:
-        for p in problems:
+    if not result.ok:
+        for p in result.problems:
             print(f'::warning::[feed-verify] {p}', file=sys.stderr)
         print('[feed-verify] FAIL-SAFE FALLBACK: production will proceed using the static '
               'topic bank / any fresh trend_snapshot only -- calendar-based opportunity '
               'concepts are skipped for this run.', file=sys.stderr)
         return 0 if args.fail_soft else 1
 
+    feed = result.feed
+    provenance = feed['provenance']
+    print(f'[feed-verify] source identified: git_sha={provenance.get("git_sha")} '
+          f'run_id={provenance.get("workflow_run_id")} workflow={provenance.get("workflow")}')
     print(f'[feed-verify] PASS: feed is fresh (scan_date={feed["scan_date"]}), '
-          f'integrity-verified, and source-identified. '
+          f'schema-valid (v{feed["schema_version"]}), integrity-verified, and source-identified. '
           f'events_indexed={feed["events_indexed"]} briefs={len(feed["creative_briefs"])}')
     return 0
 

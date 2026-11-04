@@ -4,6 +4,8 @@ from __future__ import annotations
 import hashlib
 import json
 import os
+import subprocess
+from dataclasses import dataclass, field
 from datetime import datetime, date, timedelta, timezone
 from pathlib import Path
 
@@ -15,6 +17,28 @@ from .adapters.google_trends_adapter import GoogleTrendsBigQueryAdapter
 from .adapters.magnific_adapter import MagnificManualImportAdapter
 
 FEED_SCHEMA_VERSION = 3  # v2: separated catalog_supply from demand; v3: shared deadline model in briefs (no production_window_*)
+
+
+# Shared validation policy (used by BOTH verify_feed.py and trends.py).
+SUPPORTED_SCHEMA_VERSIONS = (FEED_SCHEMA_VERSION,)
+FEED_MAX_AGE_DAYS = 2
+# A feed's scan_date may be at most this many days AFTER the validating
+# machine's date (UTC vs local-midnight skew); anything further in the
+# future is a bad clock or a forged feed, never "fresh".
+FEED_MAX_FUTURE_SKEW_DAYS = 1
+
+
+def _local_git_sha() -> str:
+    """Commit of the code producing a locally-run scan, so a local feed is
+    as traceable as a CI one. '' if git is unavailable (the feed then
+    fails validation as FEED_SOURCE_UNIDENTIFIED, by design)."""
+    try:
+        out = subprocess.run(['git', 'rev-parse', 'HEAD'], capture_output=True, text=True,
+                             timeout=5, cwd=Path(__file__).resolve().parent)
+        sha = out.stdout.strip()
+        return sha if out.returncode == 0 and len(sha) == 40 else ''
+    except (OSError, subprocess.SubprocessError):
+        return ''
 
 
 def _feed_dir() -> Path:
@@ -138,9 +162,9 @@ def run_scan(today: date | None = None, year: int | None = None) -> dict:
         # cloud-generated one even if the clock looks right.
         'provenance': {
             'generator': 'stock_factory.trend_intelligence.scan',
-            'git_sha': os.getenv('GITHUB_SHA', ''),
+            'git_sha': os.getenv('GITHUB_SHA', '') or _local_git_sha(),
             'workflow_run_id': os.getenv('GITHUB_RUN_ID', ''),
-            'workflow': os.getenv('GITHUB_WORKFLOW', ''),
+            'workflow': os.getenv('GITHUB_WORKFLOW', '') or 'local',
         },
         'countries_covered': sorted(calendar_sources.SUPPORTED_COUNTRIES.keys()),
         'events_indexed': len(events),
@@ -211,12 +235,155 @@ def verify_integrity() -> tuple[bool, str]:
     return True, 'ok'
 
 
-def is_feed_stale(feed: dict | None, today: date | None = None, max_age_days: int = 2) -> bool:
-    if feed is None:
+def is_feed_stale(feed: dict | None, today: date | None = None, max_age_days: int = FEED_MAX_AGE_DAYS) -> bool:
+    """True if the feed is missing, undated, older than max_age_days, or
+    dated further in the future than FEED_MAX_FUTURE_SKEW_DAYS (a future
+    scan_date is never "fresh"). Prefer validate_feed(), which applies this
+    plus every structural/integrity/provenance check."""
+    if not isinstance(feed, dict):
         return True
     today = today or datetime.now(timezone.utc).date()
     try:
         scan_date = date.fromisoformat(feed['scan_date'])
-    except (KeyError, ValueError):
+    except (KeyError, ValueError, TypeError):
         return True
-    return (today - scan_date).days > max_age_days
+    age = (today - scan_date).days
+    return age > max_age_days or -age > FEED_MAX_FUTURE_SKEW_DAYS
+
+
+# --- Shared feed validation ---------------------------------------------
+
+_REQUIRED_TOP_LEVEL: dict[str, type | tuple] = {
+    'schema_version': int,
+    'generated_at': str,
+    'scan_date': str,
+    'horizon': dict,
+    'provenance': dict,
+    'countries_covered': list,
+    'events_indexed': int,
+    'top_opportunities': list,
+    'alerts': list,
+    'creative_briefs': list,
+}
+_REQUIRED_PROVENANCE = ('generator', 'git_sha')
+_REQUIRED_BRIEF: dict[str, type | tuple] = {
+    'event_country': str,
+    'event_name': str,
+    'event_date': str,
+    'format': str,
+    'production_start': str,
+    'production_deadline': str,
+    'submission_deadline': str,
+    'schedule_status': str,
+    'creative_concept': str,
+    'opportunity_score': (int, float),
+}
+_BRIEF_DATE_FIELDS = ('event_date', 'production_start', 'production_deadline', 'submission_deadline')
+
+
+@dataclass
+class FeedValidation:
+    ok: bool
+    problems: list[str] = field(default_factory=list)
+    feed: dict | None = None  # only set when ok -- callers must not use a rejected feed
+
+
+def _type_ok(value, expected) -> bool:
+    if isinstance(value, bool):  # bool is an int subclass; never a valid count/version/score
+        return False
+    return isinstance(value, expected)
+
+
+def _iso_date_ok(value) -> bool:
+    try:
+        date.fromisoformat(value)
+        return True
+    except (TypeError, ValueError):
+        return False
+
+
+def validate_feed(today: date | None = None, max_age_days: int = FEED_MAX_AGE_DAYS,
+                  max_future_days: int = FEED_MAX_FUTURE_SKEW_DAYS) -> FeedValidation:
+    """THE feed validator -- verify_feed.py (CLI) and trends.py (consumer)
+    both call this, so a feed the CLI rejects can never be consumed.
+
+    Never raises: every failure mode becomes a named problem string.
+    Checks, in order: file present; parses as JSON; top level is an object;
+    supported schema_version; required fields present with correct types;
+    brief structure; well-formed dates; sha256 checksum; age within
+    max_age_days; scan_date not more than max_future_days in the future;
+    non-empty provenance (generator, git_sha)."""
+    today = today or datetime.now(timezone.utc).date()
+    path = _feed_path()
+    try:
+        if not path.exists():
+            return FeedValidation(False, ['FEED_MISSING: no state/intelligence/feed.json present'])
+        raw = path.read_text()
+    except OSError as exc:
+        return FeedValidation(False, [f'FEED_UNREADABLE: {exc}'])
+    try:
+        data = json.loads(raw)
+    except (json.JSONDecodeError, ValueError) as exc:
+        return FeedValidation(False, [f'FEED_MALFORMED_JSON: {exc}'])
+    if not isinstance(data, dict):
+        return FeedValidation(False, [f'FEED_NOT_OBJECT: top-level JSON is {type(data).__name__}, expected object'])
+
+    problems: list[str] = []
+    version = data.get('schema_version')
+    if not _type_ok(version, int) or version not in SUPPORTED_SCHEMA_VERSIONS:
+        problems.append(f'FEED_SCHEMA_UNSUPPORTED: schema_version={version!r}, '
+                        f'supported={list(SUPPORTED_SCHEMA_VERSIONS)}')
+    for key, expected in _REQUIRED_TOP_LEVEL.items():
+        if key not in data:
+            problems.append(f'FEED_FIELD_MISSING: {key}')
+        elif key != 'schema_version' and not _type_ok(data[key], expected):
+            problems.append(f'FEED_FIELD_TYPE: {key} is {type(data[key]).__name__}')
+
+    if isinstance(data.get('creative_briefs'), list):
+        for i, b in enumerate(data['creative_briefs']):
+            if not isinstance(b, dict):
+                problems.append(f'FEED_BRIEF_INVALID: creative_briefs[{i}] is {type(b).__name__}')
+                continue
+            for key, expected in _REQUIRED_BRIEF.items():
+                if key not in b:
+                    problems.append(f'FEED_BRIEF_INVALID: creative_briefs[{i}] missing {key}')
+                elif not _type_ok(b[key], expected):
+                    problems.append(f'FEED_BRIEF_INVALID: creative_briefs[{i}].{key} is {type(b[key]).__name__}')
+            for key in _BRIEF_DATE_FIELDS:
+                if isinstance(b.get(key), str) and not _iso_date_ok(b[key]):
+                    problems.append(f'FEED_BAD_DATE: creative_briefs[{i}].{key}={b[key]!r}')
+
+    scan_date = None
+    if isinstance(data.get('scan_date'), str):
+        if _iso_date_ok(data['scan_date']):
+            scan_date = date.fromisoformat(data['scan_date'])
+        else:
+            problems.append(f'FEED_BAD_DATE: scan_date={data["scan_date"]!r}')
+    if isinstance(data.get('generated_at'), str):
+        try:
+            datetime.fromisoformat(data['generated_at'])
+        except ValueError:
+            problems.append(f'FEED_BAD_DATE: generated_at={data["generated_at"]!r}')
+    if scan_date is not None:
+        age = (today - scan_date).days
+        if age > max_age_days:
+            problems.append(f'FEED_STALE: scan_date={scan_date} is {age} day(s) old (max {max_age_days})')
+        if -age > max_future_days:
+            problems.append(f'FEED_FUTURE_DATED: scan_date={scan_date} is {-age} day(s) in the future '
+                            f'(max skew {max_future_days})')
+
+    provenance = data.get('provenance')
+    if isinstance(provenance, dict):
+        for key in _REQUIRED_PROVENANCE:
+            value = provenance.get(key)
+            if not isinstance(value, str) or not value.strip():
+                problems.append(f'FEED_SOURCE_UNIDENTIFIED: provenance.{key} missing/empty -- '
+                                'feed was not produced by a traceable run')
+
+    integrity_ok, integrity_msg = verify_integrity()
+    if not integrity_ok:
+        problems.append(f'FEED_INTEGRITY_FAILED: {integrity_msg}')
+
+    if problems:
+        return FeedValidation(False, problems)
+    return FeedValidation(True, [], data)

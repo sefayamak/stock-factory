@@ -27,6 +27,7 @@ a crash -- same stale-data philosophy as the Magnific snapshot above.
 from __future__ import annotations
 import random
 import re
+import sys
 from dataclasses import dataclass, field
 from datetime import date, datetime, timezone
 
@@ -245,12 +246,21 @@ def _calendar_opportunity_concepts(day: str) -> list[Concept]:
     except ImportError:
         return []
 
-    feed = feed_mod.load_feed()
-    if feed_mod.is_feed_stale(feed):
-        return []  # fail-safe fallback: missing/stale feed contributes nothing, never a crash
-    integrity_ok, _ = feed_mod.verify_integrity()
-    if not integrity_ok:
-        return []  # fail-safe fallback: a corrupt/tampered feed is treated as absent
+    # Same shared validator as the verify_feed CLI: a feed that fails ANY
+    # check (malformed, wrong types, unsupported schema, bad checksum,
+    # stale, future-dated, unidentified source) contributes zero calendar
+    # candidates. Never raises.
+    try:
+        result = feed_mod.validate_feed()
+    except Exception as exc:  # defensive: validation itself must never crash production
+        print(f'[trends] WARNING: feed validation raised {type(exc).__name__}: {exc} -- '
+              'calendar candidates skipped', file=sys.stderr)
+        return []
+    if not result.ok:
+        print('[trends] WARNING: trend-intelligence feed rejected -- calendar candidates skipped: '
+              + '; '.join(result.problems[:5]), file=sys.stderr)
+        return []
+    feed = result.feed
 
     try:
         day_date = date.fromisoformat(day)
