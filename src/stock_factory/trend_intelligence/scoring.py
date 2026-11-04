@@ -21,6 +21,7 @@ from dataclasses import dataclass, field
 import math
 
 from .events import Event
+from . import deadlines
 from .. import acceptance_learning
 from .adapters.base import (
     SIGNAL_SEARCH_DEMAND, SIGNAL_CATALOG_SUPPLY,
@@ -65,6 +66,8 @@ class Score:
     factors: dict[str, float] = field(default_factory=dict)
     demand_label: str = SIGNAL_CALENDAR_PREDICTED_DEMAND  # one of the four SIGNAL_* constants
     competition_label: str = 'no_supply_data_available'   # SIGNAL_CATALOG_SUPPLY or this default
+    schedule: deadlines.Schedule | None = None  # the shared date model (deadlines.py)
+    schedule_status: str = deadlines.ON_TIME     # ON_TIME | COMPRESSED | LATE as of the scan date
 
     def explain(self) -> list[str]:
         lines = [f'{k}: value={v:.2f} weight={WEIGHTS[k]:.2f} contrib={v * WEIGHTS[k]:.3f}'
@@ -78,6 +81,7 @@ class Score:
             'total_score': round(self.total, 4),
             'demand_basis': self.demand_label,
             'competition_basis': self.competition_label,
+            'schedule': {**(self.schedule.to_dict() if self.schedule else {}), 'status': self.schedule_status},
             'factors': {k: round(v, 4) for k, v in self.factors.items()},
             'explanation': self.explain(),
         }
@@ -132,16 +136,22 @@ def _competition_gap(event: Event, catalog_supply_by_term: dict[str, float] | No
     return 0.5, 'no_supply_data_available'
 
 
-def _seasonal_urgency(days_out: int) -> float:
-    if days_out < 0:
+def _seasonal_urgency(schedule: deadlines.Schedule, today) -> float:
+    """Urgency from the SAME date model briefs use: how soon production
+    has to start (not how soon the event is). A LATE opportunity
+    (submission deadline passed) has no urgency at all -- it is bucketed
+    separately by the feed, never ranked as an on-time candidate."""
+    status = schedule.status(today)
+    if status == deadlines.LATE:
         return 0.0
-    if days_out <= 30:
+    if status == deadlines.COMPRESSED:
         return 1.0
-    if days_out <= 60:
+    days_to_start = (schedule.production_start - today).days
+    if days_to_start <= 30:
         return 0.8
-    if days_out <= 90:
+    if days_to_start <= 60:
         return 0.6
-    if days_out <= 120:
+    if days_to_start <= 90:
         return 0.4
     return 0.2
 
@@ -175,10 +185,11 @@ def score_event(
     existing_topics: set[str] | None = None,
     catalog_supply_by_term: dict[str, float] | None = None,
 ) -> Score:
-    days_out = (event.event_date - today).days
+    schedule = deadlines.schedule_for(event.event_date)
+    schedule_status = schedule.status(today)
     market_size = _MARKET_SIZE_BY_COUNTRY.get(event.country, 0.3)
     demand, demand_label = _demand_evidence(event, verified_demand_terms)
-    seasonal_urgency = _seasonal_urgency(days_out)
+    seasonal_urgency = _seasonal_urgency(schedule, today)
     competition_gap, competition_label = _competition_gap(event, catalog_supply_by_term)
     buyer_intent = 0.9 if event.category == 'retail_campaign' else (
         0.7 if event.category in ('national_holiday', 'religious_cultural') else 0.4
@@ -204,7 +215,8 @@ def score_event(
     }
     total = sum(factors[k] * WEIGHTS[k] for k in WEIGHTS)
     return Score(event=event, total=total, factors=factors,
-                 demand_label=demand_label, competition_label=competition_label)
+                 demand_label=demand_label, competition_label=competition_label,
+                 schedule=schedule, schedule_status=schedule_status)
 
 
 def score_events(
