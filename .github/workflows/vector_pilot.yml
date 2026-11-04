@@ -1,0 +1,32 @@
+name: Stock Factory - vector pilot (manual, non-production)
+on:
+  workflow_dispatch: {}
+permissions:
+  contents: read
+jobs:
+  pilot:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    env:
+      GOOGLE_OAUTH_CLIENT_ID: ${{ secrets.GOOGLE_OAUTH_CLIENT_ID }}
+      GOOGLE_OAUTH_CLIENT_SECRET: ${{ secrets.GOOGLE_OAUTH_CLIENT_SECRET }}
+      GOOGLE_OAUTH_REFRESH_TOKEN: ${{ secrets.GOOGLE_OAUTH_REFRESH_TOKEN }}
+      DRIVE_MAGNIFIC_FOLDER_ID: ${{ vars.DRIVE_MAGNIFIC_FOLDER_ID }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+          cache: 'pip'
+      - run: pip install -r requirements.txt
+      - name: Generate + QC + upload 10 genuine vector pilot assets
+        shell: bash
+        env:
+          PYTHONPATH: src
+        run: python3 scripts/run_vector_pilot.py --upload
+      - name: Show manifest
+        run: cat output/vector_pilot/manifest.json
+      - uses: actions/upload-artifact@v4
+        with:
+          name: vector-pilot-manifest
+          path: output/vector_pilot/

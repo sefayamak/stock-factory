@@ -311,3 +311,12 @@ def test_verify_token_refresh_is_durable_builds_credentials_twice_mocked(monkeyp
     result = drive_archive.verify_token_refresh_is_durable()
     assert result == {'verified': True, 'attempts': 2}
     assert build_calls['n'] == 2
+
+
+def test_guess_mimetype_by_extension():
+    from pathlib import Path
+    from stock_factory.drive_archive import _guess_mimetype
+    assert _guess_mimetype(Path('x.jpg')) == 'image/jpeg'
+    assert _guess_mimetype(Path('x.svg')) == 'image/svg+xml'
+    assert _guess_mimetype(Path('x.eps')) == 'application/postscript'
+    assert _guess_mimetype(Path('x.unknownext')) == 'application/octet-stream'
