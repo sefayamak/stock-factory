@@ -4,7 +4,7 @@ from __future__ import annotations
 import hashlib
 import json
 import os
-from datetime import datetime, date, timezone
+from datetime import datetime, date, timedelta, timezone
 from pathlib import Path
 
 from .. import config
@@ -77,14 +77,31 @@ def adapter_status() -> dict[str, dict]:
     return statuses
 
 
+def horizon_bounds(today: date) -> tuple[date, date]:
+    """Inclusive [start, end] of the rolling scan horizon."""
+    return today, today + timedelta(days=early_warning.HORIZON_DAYS)
+
+
+def collect_horizon_events(today: date, countries: list[str] | None = None) -> list:
+    """Every calendar event dated within [today, today + HORIZON_DAYS].
+
+    Generates events for EVERY calendar year the horizon touches (normally
+    two: the scan year and the next one), then filters strictly to the
+    horizon, so e.g. an Aug 1 scan sees next year's Jan-Jul events and
+    never sees this year's already-past Jan-Jul events."""
+    start, end = horizon_bounds(today)
+    events = []
+    for year in range(start.year, end.year + 1):
+        events += calendar_sources.all_events(year, countries=countries)
+    return [e for e in events if start <= e.event_date <= end]
+
+
 def run_scan(today: date | None = None, year: int | None = None) -> dict:
+    """`year` is accepted for backward compatibility only and ignored:
+    the horizon is always derived from `today` (see collect_horizon_events)."""
     today = today or datetime.now(timezone.utc).date()
-    year = year or today.year
-    events = calendar_sources.all_events(year, countries=None)
-    # Also pull in next year's events near year-end so the 365-day horizon
-    # doesn't fall off a cliff on Dec 31.
-    if (date(year, 12, 31) - today).days < 90:
-        events += calendar_sources.all_events(year + 1, countries=None)
+    horizon_start, horizon_end = horizon_bounds(today)
+    events = collect_horizon_events(today)
 
     duplicate_groups = calendar_sources.find_duplicate_groups(events)
 
@@ -105,6 +122,12 @@ def run_scan(today: date | None = None, year: int | None = None) -> dict:
         'schema_version': FEED_SCHEMA_VERSION,
         'generated_at': datetime.now(timezone.utc).isoformat(),
         'scan_date': today.isoformat(),
+        'horizon': {
+            'start': horizon_start.isoformat(),
+            'end': horizon_end.isoformat(),
+            'days': early_warning.HORIZON_DAYS,
+            'calendar_years_generated': list(range(horizon_start.year, horizon_end.year + 1)),
+        },
         # Source identification: which code/run produced this feed, so a
         # consuming workflow can tell a stale local file from a fresh
         # cloud-generated one even if the clock looks right.
