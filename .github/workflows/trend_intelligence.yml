@@ -1,0 +1,154 @@
+name: Stock Factory - global trend intelligence scan
+on:
+  schedule:
+    # Runs daily, ahead of the main production workflow (07:23 UTC) so a
+    # fresh feed.json is always available to trends.py by the time it runs.
+    - cron: '5 6 * * *'
+  workflow_dispatch: {}
+permissions:
+  contents: write  # needed to publish the feed to the intelligence-feed branch (see "Publish feed" step)
+concurrency:
+  group: stock-factory-trend-intelligence
+  cancel-in-progress: false
+jobs:
+  scan:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    env:
+      # Real adapters only activate when these are set; both are OPTIONAL.
+      # Unset = adapter reports unavailable, scan falls back to
+      # calendar-based predicted demand (never fabricates a number).
+      ADOBE_STOCK_API_KEY: ${{ secrets.ADOBE_STOCK_API_KEY }}
+      GOOGLE_CLOUD_PROJECT: ${{ vars.GOOGLE_CLOUD_PROJECT }}
+    steps:
+      - uses: actions/checkout@v4
+
+      # Incremental/cached state: restore the previous run's feed + trend
+      # history so staleness checks and trend-change scoring (new/rising
+      # vs stable) have something to diff against, instead of starting
+      # cold every day.
+      - name: Restore prior intelligence state
+        uses: actions/cache@v4
+        with:
+          path: |
+            state/intelligence
+            state/trend_history
+          key: trend-intelligence-state-${{ github.run_id }}
+          restore-keys: |
+            trend-intelligence-state-
+
+      # Alert history (state/intelligence/alert_history.json) must survive
+      # across runs or every scan would believe no alert was ever sent. The
+      # cache above is best-effort (evicted after 7 days unused), so if it
+      # missed, restore the copy published to the intelligence-feed branch.
+      - name: Restore alert history from intelligence-feed branch (if cache missed)
+        shell: bash
+        run: |
+          if [ -f state/intelligence/alert_history.json ]; then
+            echo "alert history restored from cache"
+          elif git ls-remote --exit-code --heads origin intelligence-feed > /dev/null 2>&1; then
+            git fetch --depth 1 origin intelligence-feed
+            mkdir -p state/intelligence
+            if git show FETCH_HEAD:state/intelligence/alert_history.json > /tmp/alert_history.json 2>/dev/null \
+               && [ -s /tmp/alert_history.json ]; then
+              mv /tmp/alert_history.json state/intelligence/alert_history.json
+              echo "alert history restored from intelligence-feed branch"
+            else
+              echo "::warning::no alert history on intelligence-feed branch -- starting a new history"
+            fi
+          else
+            echo "::warning::intelligence-feed branch missing -- starting a new alert history"
+          fi
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+          cache: 'pip'
+      - run: pip install -r requirements.txt
+
+      - name: Run global trend-intelligence scan
+        shell: bash
+        env:
+          PYTHONPATH: src
+        run: |
+          set -e
+          attempt=0
+          until python -m stock_factory.trend_intelligence.scan; do
+            attempt=$((attempt+1))
+            if [ "$attempt" -ge 3 ]; then
+              echo "::error::trend-intelligence scan failed after 3 attempts"
+              exit 1
+            fi
+            echo "scan attempt $attempt failed, retrying in 10s..."
+            sleep 10
+          done
+
+      - name: Stale-feed and integrity guard (this run's own output)
+        shell: bash
+        env:
+          PYTHONPATH: src
+        run: |
+          python - <<'PY'
+          import sys
+          from stock_factory.trend_intelligence import feed as feed_mod
+          # Same shared validator the consumer (trends.py) and verify_feed.py use.
+          result = feed_mod.validate_feed()
+          if not result.ok:
+              for p in result.problems:
+                  print(f'::error::trend-intelligence feed failed validation right after this run: {p}')
+              sys.exit(1)
+          f = result.feed
+          print(f"feed OK: scan_date={f['scan_date']} events_indexed={f['events_indexed']}")
+          PY
+
+      # --- Cloud feed handoff -------------------------------------------
+      # The main production workflow (daily.yml) does not share this job's
+      # filesystem or artifact store directly, so the feed is published to
+      # a dedicated, persistent `intelligence-feed` branch: every run adds
+      # one commit (versioned history, each tagged with the producing
+      # run's SHA/run id via the feed's own `provenance` block), which
+      # daily.yml fetches before it runs stage 1. This is the real,
+      # cross-workflow-visible handoff -- the uploaded artifact below
+      # remains only for human debugging/audit of a specific run.
+      - name: Publish feed to intelligence-feed branch
+        shell: bash
+        run: |
+          set -e
+          git config user.name 'stock-factory-trend-intelligence-bot'
+          git config user.email 'actions@users.noreply.github.com'
+
+          rm -rf /tmp/feed-branch
+          if git ls-remote --exit-code --heads origin intelligence-feed > /dev/null 2>&1; then
+            git clone --depth 1 --branch intelligence-feed "https://x-access-token:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git" /tmp/feed-branch
+          else
+            mkdir -p /tmp/feed-branch
+            (cd /tmp/feed-branch && git init -q -b intelligence-feed && \
+             git remote add origin "https://x-access-token:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git")
+          fi
+
+          mkdir -p /tmp/feed-branch/state/intelligence
+          cp state/intelligence/feed.json state/intelligence/feed.sha256 /tmp/feed-branch/state/intelligence/
+          cp state/intelligence/alert_history.json /tmp/feed-branch/state/intelligence/
+
+          cd /tmp/feed-branch
+          git config user.name 'stock-factory-trend-intelligence-bot'
+          git config user.email 'actions@users.noreply.github.com'
+          git add state/intelligence/feed.json state/intelligence/feed.sha256 state/intelligence/alert_history.json
+          if git diff --cached --quiet; then
+            echo "no change in feed content -- nothing to publish"
+          else
+            scan_date=$(python3 -c "import json; print(json.load(open('state/intelligence/feed.json'))['scan_date'])")
+            git commit -q -m "feed: scan_date=${scan_date} run=${GITHUB_RUN_ID} sha=${GITHUB_SHA}"
+            git push -q origin intelligence-feed
+            echo "published feed for scan_date=${scan_date} to intelligence-feed branch"
+          fi
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_REPOSITORY: ${{ github.repository }}
+
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: trend-intelligence-feed-${{ github.run_id }}
+          path: state/intelligence/
+          retention-days: 30

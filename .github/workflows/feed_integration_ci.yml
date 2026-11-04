@@ -1,0 +1,38 @@
+name: Stock Factory - trend-intelligence feed integration CI
+on:
+  pull_request:
+    paths:
+      - 'src/stock_factory/trend_intelligence/**'
+      - 'src/stock_factory/trends.py'
+      - 'src/stock_factory/prompts.py'
+      - 'tests/test_ti_*.py'
+      - 'tests/test_trend_intelligence*.py'
+      - 'requirements.txt'
+      - '.github/workflows/feed_integration_ci.yml'
+  push:
+    branches: [main]
+permissions:
+  contents: read
+jobs:
+  test-and-validate-feed:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+          cache: 'pip'
+      - run: pip install -r requirements.txt
+      - name: Unit tests + regression checks
+        shell: bash
+        env:
+          PYTHONPATH: src
+        run: python3 -m pytest -q
+      - name: Produce a feed locally (producer) and validate it (consumer contract)
+        shell: bash
+        env:
+          PYTHONPATH: src
+        run: |
+          python3 -m stock_factory.trend_intelligence.scan
+          python3 -m stock_factory.trend_intelligence.verify_feed
