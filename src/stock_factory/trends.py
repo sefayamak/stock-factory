@@ -26,7 +26,8 @@ a crash -- same stale-data philosophy as the Magnific snapshot above.
 """
 from __future__ import annotations
 import random
-from dataclasses import dataclass
+import re
+from dataclasses import dataclass, field
 from datetime import date, datetime, timezone
 
 from . import config, trend_import
@@ -57,6 +58,18 @@ class Concept:
     trend_snapshot_imported_at: str | None = None
     opportunity_score: float | None = None
     event_country: str | None = None
+    event_date: str | None = None      # ISO date of the calendar event (identity, with country + topic)
+    topic: str | None = None           # normalize_topic() of the trend term / event name
+    merged_sources: list[str] = field(default_factory=list)  # every source tier that proposed this candidate
+
+    def __post_init__(self):
+        if not self.merged_sources:
+            self.merged_sources = [self.source]
+        if self.topic is None:
+            raw = self.trend_term if self.trend_term is not None else (
+                self.category.split(':', 1)[1] if self.category.startswith('calendar:') else None)
+            if raw is not None:
+                self.topic = normalize_topic(raw)
 
 
 def select_concepts(day: str, n: int) -> list[tuple[str, str]]:
@@ -113,17 +126,31 @@ def _scene_for_trend_term(term: trend_import.TrendTerm) -> str:
     )
 
 
+def normalize_topic(text: str) -> str:
+    """Source-independent topic identity: case-, punctuation- and
+    whitespace-insensitive ("Black  Friday!" == "black friday")."""
+    return ' '.join(re.sub(r"[^\w]+", ' ', text.lower(), flags=re.UNICODE).split())
+
+
+def _topic_of(concept: Concept) -> str | None:
+    return concept.topic
+
+
 def _dedup_key(concept: Concept) -> str:
-    """One key per concept used to prevent the same production candidate
-    being queued twice across tiers (e.g. a term appearing in both the
-    Magnific trend snapshot and the calendar-opportunity feed on the same
-    day). Event-backed concepts dedup on (country, event name); everything
-    else dedups on its scene text, which is what actually drives the
-    generated image."""
-    if concept.event_country is not None:
-        return f'event:{concept.event_country}:{concept.category}'.strip().lower()
-    if concept.trend_term is not None:
-        return f'trend:{concept.trend_term}'.strip().lower()
+    """Source-independent identity of a production candidate.
+
+    Calendar-backed candidates are identified by (normalized topic,
+    country/region, event date) -- so the same holiday in two countries,
+    on two dates, or in two different years stays distinct. A trend term
+    with no event attached is identified by its normalized topic alone.
+    The source tier is deliberately NOT part of the key (previously
+    'trend:black friday' vs 'event:us:calendar:black friday' never
+    collided, so one topic was double-booked). Concepts with neither fall
+    back to their scene text."""
+    if concept.topic and concept.event_country is not None and concept.event_date:
+        return f'event:{concept.topic}|{concept.event_country.lower()}|{concept.event_date}'
+    if concept.topic:
+        return f'topic:{concept.topic}'
     return f'scene:{concept.scene}'.strip().lower()
 
 
@@ -159,10 +186,35 @@ def select_concepts_detailed(day: str, n: int) -> list[Concept]:
             if _add(candidate):
                 trend_added += 1
 
-    for candidate in _calendar_opportunity_concepts(day, n - len(concepts)):
-        if len(concepts) >= n:
+    # Calendar tier. A calendar candidate whose topic equals a trend-tier
+    # concept's topic is the SAME production candidate seen by two
+    # sources -- but only when that attribution is unambiguous: exactly one
+    # calendar candidate (one country, one date) carries that topic today.
+    # If several do (e.g. Mother's Day GB vs US), the bare trend term can't
+    # be attributed to either, so nothing is merged (err toward separate).
+    calendar = _calendar_opportunity_concepts(day)
+    calendar_topic_counts: dict[str, int] = {}
+    for c in calendar:
+        if c.topic:
+            calendar_topic_counts[c.topic] = calendar_topic_counts.get(c.topic, 0) + 1
+    trend_by_topic = {c.topic: c for c in concepts if c.source == 'trend_snapshot' and c.topic}
+    calendar_slots = min(max(n - len(concepts), 0), config.CALENDAR_OPPORTUNITY_SLOTS_MAX)
+    calendar_added = 0
+    for candidate in calendar:
+        if len(concepts) >= n or calendar_added >= calendar_slots:
             break
-        _add(candidate)
+        trend_twin = trend_by_topic.get(candidate.topic)
+        if (trend_twin is not None and calendar_topic_counts.get(candidate.topic) == 1
+                and trend_twin.event_country is None):
+            seen.discard(_dedup_key(trend_twin))
+            trend_twin.event_country = candidate.event_country
+            trend_twin.event_date = candidate.event_date
+            trend_twin.opportunity_score = candidate.opportunity_score
+            trend_twin.merged_sources = trend_twin.merged_sources + ['calendar_opportunity']
+            seen.add(_dedup_key(trend_twin))
+            continue
+        if _add(candidate):
+            calendar_added += 1
 
     # The static topic bank deliberately repeats its ~12 topics to fill the
     # remaining daily volume (target is 100-150/day; the bank is much
@@ -181,14 +233,13 @@ def select_concepts_detailed(day: str, n: int) -> list[Concept]:
     return concepts[:n]
 
 
-def _calendar_opportunity_concepts(day: str, remaining_slots: int) -> list[Concept]:
-    """Pulls briefs from the trend_intelligence feed whose production
-    window covers `day`, highest opportunity_score first, up to
-    config.CALENDAR_OPPORTUNITY_SLOTS_MAX. Import is local/lazy so this
-    module (and the rest of the pipeline) still works if the
-    trend_intelligence package or its feed is absent."""
-    if remaining_slots <= 0:
-        return []
+def _calendar_opportunity_concepts(day: str) -> list[Concept]:
+    """All feed briefs whose production window covers `day`, one per
+    (topic, country, event date), highest opportunity_score first. The
+    caller applies config.CALENDAR_OPPORTUNITY_SLOTS_MAX after cross-tier
+    dedup. Import is local/lazy so this module (and the rest of the
+    pipeline) still works if the trend_intelligence package or its feed is
+    absent."""
     try:
         from .trend_intelligence import feed as feed_mod
     except ImportError:
@@ -223,21 +274,20 @@ def _calendar_opportunity_concepts(day: str, remaining_slots: int) -> list[Conce
         candidates.append(b)
     candidates.sort(key=lambda b: b.get('opportunity_score', 0), reverse=True)
 
-    slots = min(remaining_slots, config.CALENDAR_OPPORTUNITY_SLOTS_MAX)
     seen_events: set[str] = set()
     concepts = []
     for b in candidates:
-        if len(concepts) >= slots:
-            break
-        ev_key = f'{b.get("event_country")}:{b.get("event_name")}'
-        if ev_key in seen_events:
-            continue
-        seen_events.add(ev_key)
-        concepts.append(Concept(
+        c = Concept(
             category=f'calendar:{b.get("event_name", "")}',
             scene=b.get('creative_concept', b.get('event_name', '')),
             source='calendar_opportunity',
             opportunity_score=b.get('opportunity_score'),
             event_country=b.get('event_country'),
-        ))
+            event_date=b.get('event_date'),
+        )
+        key = _dedup_key(c)  # same identity as cross-tier dedup: topic + country + date
+        if key in seen_events:
+            continue
+        seen_events.add(key)
+        concepts.append(c)
     return concepts
