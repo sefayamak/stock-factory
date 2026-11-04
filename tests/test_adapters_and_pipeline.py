@@ -5,7 +5,8 @@ from PIL import Image
 from stock_factory.adapters.manual_inbox_adapter import ManualInboxAdapter
 from stock_factory.adapters.flow_adapter import FlowAdapter
 from stock_factory import drive_archive
-from stock_factory.pipeline import run as run_pipeline
+from stock_factory.pipeline import run as run_pipeline, _select_queue
+from stock_factory.tracking import RunTracker
 
 
 def make_jpeg(w=2100, h=2100, noisy=False):
@@ -75,3 +76,20 @@ def test_pipeline_execute_ingests_from_manual_inbox(tmp_path, monkeypatch):
     assert summary['counts']['qc_rejected'] == 1
     assert summary['counts']['archive_skipped'] == 1
     assert len(list((tmp_path / 'out').glob('*.jpg'))) == 1
+
+
+def test_select_queue_defaults_to_magnific_only(monkeypatch):
+    monkeypatch.setattr('stock_factory.pipeline.config.ADOBE_MARKETPLACE_ACTIVE', False)
+    tracker = RunTracker()
+    for _ in range(5):
+        tracker.record('qc_passed')
+        assert _select_queue(tracker) == 'magnific'
+
+
+def test_select_queue_alternates_when_adobe_reactivated(monkeypatch):
+    monkeypatch.setattr('stock_factory.pipeline.config.ADOBE_MARKETPLACE_ACTIVE', True)
+    tracker = RunTracker()
+    tracker.record('qc_passed')
+    assert _select_queue(tracker) == 'adobe'
+    tracker.record('qc_passed')
+    assert _select_queue(tracker) == 'magnific'

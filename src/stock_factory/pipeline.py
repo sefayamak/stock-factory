@@ -15,6 +15,12 @@ from .tracking import RunTracker
 from . import drive_archive
 
 
+def _select_queue(tracker: RunTracker) -> str:
+    if not config.ADOBE_MARKETPLACE_ACTIVE:
+        return 'magnific'
+    return 'adobe' if (tracker.counts['qc_passed'] % 2 == 1) else 'magnific'
+
+
 def build_adapters(queue_prompts: list[str]) -> list[Adapter]:
     adapters: list[Adapter] = []
     for name in config.ENABLED_ADAPTERS:
@@ -91,7 +97,7 @@ def run(day: str, target: int, dry_run: bool) -> dict:
                 out_path.write_bytes(jpeg)
                 tracker.record('qc_passed')
 
-                queue_name = 'adobe' if (tracker.counts['qc_passed'] % 2 == 1) else 'magnific'
+                queue_name = _select_queue(tracker)
                 archive_result = drive_archive.archive(out_path, queue_name)
                 if archive_result.get('archived'):
                     tracker.record('archived')
