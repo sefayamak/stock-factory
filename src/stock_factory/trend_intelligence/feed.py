@@ -10,14 +10,15 @@ from dataclasses import dataclass, field
 from datetime import datetime, date, timedelta, timezone
 from pathlib import Path
 
-from .. import config
+from .. import config, acceptance_learning
 from . import calendar_sources, early_warning, scoring, briefs, deadlines, alert_history
 from .adapters.base import SIGNAL_SEARCH_INTEREST, SIGNAL_CATALOG_SUPPLY, AdapterStatus
 from .adapters.adobe_stock_adapter import AdobeStockSearchAdapter
 from .adapters.google_trends_adapter import GoogleTrendsBigQueryAdapter
 from .adapters.magnific_adapter import MagnificManualImportAdapter
 
-FEED_SCHEMA_VERSION = 3  # v2: separated catalog_supply from demand; v3: shared deadline model in briefs (no production_window_*)
+FEED_SCHEMA_VERSION = 4  # v2: catalog_supply != demand; v3: shared deadline model in briefs; v4: honest labels
+# (verified_search_interest_terms, unavailable/not_computed factors, pipeline status, coverage, source_verification)
 
 
 # Shared validation policy (used by BOTH verify_feed.py and trends.py).
@@ -120,6 +121,10 @@ def _collect_signals(candidate_terms: list[str], today: date | None = None
             # Any other signal_type (e.g. historical_download_performance)
             # is intentionally not routed here -- it has its own factor.
         st.signal_count = counted
+        if verified:
+            st.last_fetched_at = max((x.fetched_at for x in verified if x.fetched_at), default=None)
+            st.latest_observation_date = max((x.observation_date for x in verified if x.observation_date),
+                                             default=None)
         if errored and verified:
             st.notes = (st.notes + '; ' if st.notes else '') + f'{len(errored)} per-term fetch error(s)'
         statuses[platform] = st.to_dict()
@@ -192,9 +197,10 @@ def run_scan(today: date | None = None, year: int | None = None, persist_history
     late_scores = [s for s in scores if s.schedule_status == deadlines.LATE]
     briefs_list = briefs.qualifying_briefs(on_time_scores)
 
+    generated_at = datetime.now(timezone.utc).isoformat()
     feed = {
         'schema_version': FEED_SCHEMA_VERSION,
-        'generated_at': datetime.now(timezone.utc).isoformat(),
+        'generated_at': generated_at,
         'scan_date': today.isoformat(),
         'horizon': {
             'start': horizon_start.isoformat(),
@@ -220,7 +226,41 @@ def run_scan(today: date | None = None, year: int | None = None, persist_history
         # interest (Google/Magnific search ranks) is NOT download demand.
         'verified_search_interest_terms': sorted(interest_terms),
         'catalog_supply_terms': {k: v for k, v in sorted(catalog_supply_by_term.items())},
-        'historical_download_performance_basis': 'portfolio_wide_magnific_baseline_acceptance_rate',
+        # No download data exists in this repo: reported as unavailable,
+        # never substituted by the (differently-measured) acceptance rate.
+        'historical_download_performance': {
+            'status': 'unavailable',
+            'reason': 'no per-asset or per-topic download/sales data is collected anywhere in this repo',
+        },
+        'portfolio_acceptance_rate': {
+            'value': acceptance_learning.MAGNIFIC_BASELINE['acceptance_rate'],
+            'source': acceptance_learning.MAGNIFIC_BASELINE['source'],
+            'scope': 'portfolio-wide Magnific review acceptance (published/submitted), not per-topic, '
+                     'not downloads; not used as a per-event scoring factor',
+        },
+        'portfolio_coverage': {
+            'status': 'not_computed',
+            'reason': 'no portfolio/topic inventory is passed to scoring; factor excluded from totals',
+        },
+        'calendar_coverage': calendar_sources.coverage_report(),
+        'source_verification': {
+            'calendar_generated_on': today.isoformat(),
+            'feed_generated_at': generated_at,
+            'holidays_library': {
+                'version': _holidays_version(),
+                'method': 'offline rule-based computation at scan time',
+                'last_verified_against_official_source': None,
+            },
+            'un_observances': {
+                'list_last_verified_on': calendar_sources.UN_LIST_VERIFIED_ON,
+                'source': 'https://www.un.org/en/observances/list-days-weeks',
+            },
+            'astronomical_seasons': {'method': 'Meeus low-precision approximation (~1 day)',
+                                     'last_verified_against_official_source': None},
+            'retail_campaigns': {'method': 'derived from computed US Thanksgiving date',
+                                 'last_verified_against_official_source': None},
+            'trend_adapters': 'see adapter_status.<platform>.last_fetched_at / latest_observation_date',
+        },
         'window_counts': {str(k): len(v) for k, v in windows.items()},
         'alerts': [a.to_dict() for a in alerts],
         'alert_state': {
@@ -239,10 +279,26 @@ def run_scan(today: date | None = None, year: int | None = None, persist_history
         'late_opportunities': [s.to_dict() for s in late_scores[:50]],
         'late_opportunities_total': len(late_scores),
         'creative_briefs': [b.to_dict() for b in briefs_list],
+        'brief_counts_by_pipeline_status': _count_by(b.production_pipeline_status for b in briefs_list),
     }
     if persist_history:
         alert_history.save_history(history)
     return feed
+
+
+def _count_by(values) -> dict[str, int]:
+    out: dict[str, int] = {}
+    for v in values:
+        out[v] = out.get(v, 0) + 1
+    return out
+
+
+def _holidays_version() -> str:
+    try:
+        import holidays
+        return holidays.__version__
+    except Exception:
+        return 'unknown'
 
 
 def _sha256_of(text: str) -> str:

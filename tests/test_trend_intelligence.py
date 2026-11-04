@@ -169,7 +169,10 @@ def test_historical_download_performance_is_its_own_factor():
     )
     score = scoring.score_event(event, today=_dt.date(2026, 8, 1))
     assert 'historical_download_performance' in score.factors
-    assert 0.0 <= score.factors['historical_download_performance'] <= 1.0
+    # No download data exists in this repo: the factor is explicitly
+    # unavailable (review finding 7), not filled with the acceptance rate.
+    assert score.factors['historical_download_performance'] is None
+    assert score.to_dict()['factors']['historical_download_performance'] == 'unavailable'
 
 
 def test_production_lead_time_math_missed_opportunity_detector():
