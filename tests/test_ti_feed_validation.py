@@ -153,7 +153,8 @@ def test_small_clock_skew_is_tolerated(state):
 
 
 def test_local_scan_records_a_traceable_git_sha(state, monkeypatch):
-    monkeypatch.delenv('GITHUB_SHA', raising=False)
+    for var in ('GITHUB_SHA', 'GITHUB_WORKFLOW', 'GITHUB_RUN_ID'):
+        monkeypatch.delenv(var, raising=False)  # simulate a local (non-Actions) run, also when run in CI
     feed = feed_mod.run_scan(today=TODAY)
     sha = feed['provenance']['git_sha']
     assert sha and len(sha) == 40 and all(ch in '0123456789abcdef' for ch in sha)
