@@ -113,8 +113,8 @@ def test_missing_trend_data_falls_back_to_calendar_prediction():
         country='US', event_date=_dt.date(2026, 11, 26), local_name='Thanksgiving Day',
         english_name='Thanksgiving Day', category='national_holiday', source='test', verified_at='2026-01-01',
     )
-    score = scoring.score_event(event, today=_dt.date(2026, 8, 1), verified_trend_terms=None)
-    assert score.demand_label == 'calendar_based_predicted_demand'
+    score = scoring.score_event(event, today=_dt.date(2026, 8, 1), verified_demand_terms=None)
+    assert score.demand_label == 'calendar_predicted_demand'
     assert 0.0 < score.total <= 1.0
 
 
@@ -123,11 +123,53 @@ def test_verified_trend_term_is_labeled_separately_from_predicted():
         country='US', event_date=_dt.date(2026, 11, 26), local_name='Thanksgiving Day',
         english_name='Thanksgiving Day', category='national_holiday', source='test', verified_at='2026-01-01',
     )
-    verified_score = scoring.score_event(event, today=_dt.date(2026, 8, 1), verified_trend_terms={'thanksgiving day'})
-    predicted_score = scoring.score_event(event, today=_dt.date(2026, 8, 1), verified_trend_terms=None)
+    verified_score = scoring.score_event(event, today=_dt.date(2026, 8, 1), verified_demand_terms={'thanksgiving day'})
+    predicted_score = scoring.score_event(event, today=_dt.date(2026, 8, 1), verified_demand_terms=None)
     assert verified_score.demand_label == 'verified_search_demand'
-    assert predicted_score.demand_label == 'calendar_based_predicted_demand'
+    assert predicted_score.demand_label == 'calendar_predicted_demand'
     assert verified_score.total >= predicted_score.total
+
+
+def test_catalog_supply_is_never_treated_as_demand():
+    """Regression test for PR #1 review finding: Adobe Stock nb_results is
+    a SUPPLY/competition signal, not search demand. A term appearing only
+    in catalog_supply_by_term must not flip demand_label to
+    verified_search_demand, and must not appear in verified_demand_terms
+    in the feed (covered in test_trend_intelligence_adapters_and_feed.py)."""
+    event = Event(
+        country='US', event_date=_dt.date(2026, 11, 26), local_name='Thanksgiving Day',
+        english_name='Thanksgiving Day', category='national_holiday', source='test', verified_at='2026-01-01',
+    )
+    score = scoring.score_event(
+        event, today=_dt.date(2026, 8, 1),
+        verified_demand_terms=None,
+        catalog_supply_by_term={'thanksgiving day': 500_000.0},
+    )
+    assert score.demand_label == 'calendar_predicted_demand'
+    assert score.competition_label == 'catalog_supply'
+    # High existing supply (500k results) should pull the competition_gap
+    # factor down (less room/gap), not up.
+    assert score.factors['competition_gap'] < 0.5
+
+
+def test_competition_gap_defaults_safely_without_supply_data():
+    event = Event(
+        country='US', event_date=_dt.date(2026, 11, 26), local_name='Thanksgiving Day',
+        english_name='Thanksgiving Day', category='national_holiday', source='test', verified_at='2026-01-01',
+    )
+    score = scoring.score_event(event, today=_dt.date(2026, 8, 1))
+    assert score.competition_label == 'no_supply_data_available'
+    assert score.factors['competition_gap'] == 0.5
+
+
+def test_historical_download_performance_is_its_own_factor():
+    event = Event(
+        country='US', event_date=_dt.date(2026, 11, 26), local_name='Thanksgiving Day',
+        english_name='Thanksgiving Day', category='national_holiday', source='test', verified_at='2026-01-01',
+    )
+    score = scoring.score_event(event, today=_dt.date(2026, 8, 1))
+    assert 'historical_download_performance' in score.factors
+    assert 0.0 <= score.factors['historical_download_performance'] <= 1.0
 
 
 def test_production_lead_time_math_missed_opportunity_detector():

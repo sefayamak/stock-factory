@@ -22,7 +22,7 @@ import urllib.request
 import urllib.parse
 from datetime import datetime, timezone
 
-from .base import TrendAdapter, TrendSignal
+from .base import TrendAdapter, TrendSignal, SIGNAL_CATALOG_SUPPLY
 
 API_URL = 'https://stock.adobe.io/Rest/Media/1/Search/Files'
 
@@ -48,13 +48,17 @@ class AdobeStockSearchAdapter(TrendAdapter):
             except Exception as exc:  # network/auth/API errors never crash the scan
                 signals.append(TrendSignal(
                     term=term, source=self.name, verified=False, value=None,
+                    signal_type=SIGNAL_CATALOG_SUPPLY,
                     fetched_at=fetched_at, note=f'adobe_stock_search_api_error: {exc}',
                 ))
                 continue
             signals.append(TrendSignal(
                 term=term, source=self.name, verified=True, value=float(nb_results),
+                signal_type=SIGNAL_CATALOG_SUPPLY,
                 unit='catalog_result_count', fetched_at=fetched_at,
-                note='Adobe Stock public Search API nb_results -- supply/competition signal, not sales data.',
+                note='Adobe Stock public Search API nb_results is EXISTING CATALOG SUPPLY '
+                     '(competition), not search demand -- must never be promoted into a '
+                     'verified_search_demand term.',
             ))
         return signals
 

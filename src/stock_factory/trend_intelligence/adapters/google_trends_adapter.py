@@ -30,7 +30,7 @@ from __future__ import annotations
 import os
 from datetime import datetime, timezone
 
-from .base import TrendAdapter, TrendSignal
+from .base import TrendAdapter, TrendSignal, SIGNAL_SEARCH_DEMAND
 
 
 class GoogleTrendsBigQueryAdapter(TrendAdapter):
@@ -71,18 +71,21 @@ class GoogleTrendsBigQueryAdapter(TrendAdapter):
             except Exception as exc:
                 signals.append(TrendSignal(
                     term=term, source=self.name, verified=False, fetched_at=fetched_at,
+                    signal_type=SIGNAL_SEARCH_DEMAND,
                     note=f'bigquery_error: {exc}',
                 ))
                 continue
             if not rows:
                 signals.append(TrendSignal(
                     term=term, source=self.name, verified=True, value=None,
+                    signal_type=SIGNAL_SEARCH_DEMAND,
                     fetched_at=fetched_at, note='no matching row in top_rising_terms (US/weekly coverage only)',
                 ))
                 continue
             row = rows[0]
             signals.append(TrendSignal(
                 term=term, source=self.name, verified=True, value=float(row.rank),
+                signal_type=SIGNAL_SEARCH_DEMAND,
                 unit='weekly_top_rising_rank', fetched_at=fetched_at,
                 note=f'bigquery-public-data.google_trends.top_rising_terms, week={row.week}',
             ))
