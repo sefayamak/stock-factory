@@ -118,6 +118,26 @@ def load_history() -> list[Snapshot]:
     return snapshots
 
 
+def snapshot_age_days(snapshot: 'Snapshot', now: datetime | None = None) -> float | None:
+    """Age in days of a snapshot's imported_at (None if unparseable)."""
+    now = now or datetime.now(timezone.utc)
+    try:
+        imported_at = datetime.fromisoformat(snapshot.imported_at)
+    except (TypeError, ValueError):
+        return None
+    if imported_at.tzinfo is None:
+        imported_at = imported_at.replace(tzinfo=timezone.utc)
+    return (now - imported_at).total_seconds() / 86400
+
+
+def snapshot_is_fresh(snapshot: 'Snapshot', now: datetime | None = None) -> bool:
+    """THE project staleness policy for manual trend snapshots
+    (config.TREND_STALE_AFTER_DAYS) -- used by both trends.py and the
+    Magnific trend-intelligence adapter, so the two can never disagree."""
+    age = snapshot_age_days(snapshot, now)
+    return age is not None and age <= config.TREND_STALE_AFTER_DAYS
+
+
 def import_snapshot(path: Path) -> dict:
     """Ingest one manually-provided trend snapshot file. Returns a status
     dict. A byte-identical re-import of the same snapshot is recorded as a

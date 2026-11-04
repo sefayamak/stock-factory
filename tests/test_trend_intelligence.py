@@ -125,7 +125,7 @@ def test_verified_trend_term_is_labeled_separately_from_predicted():
     )
     verified_score = scoring.score_event(event, today=_dt.date(2026, 8, 1), verified_demand_terms={'thanksgiving day'})
     predicted_score = scoring.score_event(event, today=_dt.date(2026, 8, 1), verified_demand_terms=None)
-    assert verified_score.demand_label == 'verified_search_demand'
+    assert verified_score.demand_label == 'verified_search_interest'
     assert predicted_score.demand_label == 'calendar_predicted_demand'
     assert verified_score.total >= predicted_score.total
 
@@ -134,7 +134,7 @@ def test_catalog_supply_is_never_treated_as_demand():
     """Regression test for PR #1 review finding: Adobe Stock nb_results is
     a SUPPLY/competition signal, not search demand. A term appearing only
     in catalog_supply_by_term must not flip demand_label to
-    verified_search_demand, and must not appear in verified_demand_terms
+    verified_search_interest, and must not appear in verified_search_interest_terms
     in the feed (covered in test_trend_intelligence_adapters_and_feed.py)."""
     event = Event(
         country='US', event_date=_dt.date(2026, 11, 26), local_name='Thanksgiving Day',
