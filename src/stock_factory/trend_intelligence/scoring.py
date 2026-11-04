@@ -30,7 +30,10 @@ from .adapters.base import (
 )
 
 # Weights sum to 1.0. Chosen to prioritize evidence-backed and
-# high-urgency opportunities over broad-but-generic ones.
+# high-urgency opportunities over broad-but-generic ones. A factor whose
+# input data does not exist is NOT given a stand-in value: it is recorded
+# as None ("not_computed" / "unavailable") and excluded, and the total is
+# the weighted mean over the factors that WERE computed.
 WEIGHTS = {
     'market_size': 0.12,
     'demand_evidence': 0.25,
@@ -60,6 +63,13 @@ _HIGH_DEMAND_MARKERS = (
 )
 
 
+# Factors that are None for lack of data, and how to label them.
+_MISSING_LABEL = {
+    'historical_download_performance': 'unavailable',  # no download data exists in this repo
+    'portfolio_coverage': 'not_computed',               # no portfolio/topic inventory supplied
+}
+
+
 @dataclass
 class Score:
     event: Event
@@ -71,8 +81,12 @@ class Score:
     schedule_status: str = deadlines.ON_TIME     # ON_TIME | COMPRESSED | LATE as of the scan date
 
     def explain(self) -> list[str]:
-        lines = [f'{k}: value={v:.2f} weight={WEIGHTS[k]:.2f} contrib={v * WEIGHTS[k]:.3f}'
-                  for k, v in self.factors.items()]
+        lines = []
+        for k, v in self.factors.items():
+            if v is None:
+                lines.append(f'{k}: {_MISSING_LABEL.get(k, "not_computed")} (excluded from total)')
+            else:
+                lines.append(f'{k}: value={v:.2f} weight={WEIGHTS[k]:.2f}')
         lines.append(f'TOTAL = {self.total:.3f} (demand basis: {self.demand_label})')
         return lines
 
@@ -83,7 +97,8 @@ class Score:
             'demand_basis': self.demand_label,
             'competition_basis': self.competition_label,
             'schedule': {**(self.schedule.to_dict() if self.schedule else {}), 'status': self.schedule_status},
-            'factors': {k: round(v, 4) for k, v in self.factors.items()},
+            'factors': {k: (round(v, 4) if v is not None else _MISSING_LABEL.get(k, 'not_computed'))
+                        for k, v in self.factors.items()},
             'explanation': self.explain(),
         }
 
@@ -170,11 +185,13 @@ def _cultural_accuracy_risk(event: Event) -> float:
     return 0.3
 
 
-def _portfolio_coverage(event: Event, existing_topics: set[str] | None) -> float:
+def _portfolio_coverage(event: Event, existing_topics: set[str] | None) -> float | None:
     """0 = not covered yet (good, room for differentiated new content),
-    1 = already heavily covered by the static topic bank / prior runs."""
-    if not existing_topics:
-        return 0.0
+    1 = already heavily covered by the static topic bank / prior runs.
+    None = not computed: no topic inventory was supplied, so coverage is
+    unknown (previously this returned 0.0, i.e. a fake "not covered")."""
+    if existing_topics is None:
+        return None
     name_low = event.english_name.lower()
     return 1.0 if any(t in name_low or name_low in t for t in existing_topics) else 0.0
 
@@ -197,12 +214,12 @@ def score_event(
     )
     cultural_risk = _cultural_accuracy_risk(event)
     portfolio_coverage = _portfolio_coverage(event, existing_topics)
-    # Historical download/acceptance performance: the only real record this
-    # repo has is the portfolio-wide Magnific baseline acceptance rate
-    # (acceptance_learning.MAGNIFIC_BASELINE) -- NOT per-topic history,
-    # which isn't tracked anywhere yet (documented gap). Kept as its own
-    # factor so it is never mistaken for a competition/supply measurement.
-    historical_performance = round(acceptance_learning.MAGNIFIC_BASELINE['acceptance_rate'], 2)
+    # Historical DOWNLOAD performance: no download data exists anywhere in
+    # this repo, so this factor is unavailable (None) -- NOT filled with the
+    # portfolio-wide Magnific acceptance rate, which measures review
+    # acceptance, not downloads, and is identical for every event. That
+    # rate is reported separately in the feed as portfolio_acceptance_rate.
+    historical_performance = None
 
     factors = {
         'market_size': market_size,
@@ -211,10 +228,11 @@ def score_event(
         'competition_gap': competition_gap,
         'buyer_intent': buyer_intent,
         'cultural_accuracy_risk': 1.0 - cultural_risk,
-        'portfolio_coverage': 1.0 - portfolio_coverage,
+        'portfolio_coverage': None if portfolio_coverage is None else 1.0 - portfolio_coverage,
         'historical_download_performance': historical_performance,
     }
-    total = sum(factors[k] * WEIGHTS[k] for k in WEIGHTS)
+    computed = [k for k in WEIGHTS if factors[k] is not None]
+    total = sum(factors[k] * WEIGHTS[k] for k in computed) / sum(WEIGHTS[k] for k in computed)
     return Score(event=event, total=total, factors=factors,
                  demand_label=demand_label, competition_label=competition_label,
                  schedule=schedule, schedule_status=schedule_status)

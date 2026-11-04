@@ -1,4 +1,5 @@
-"""Global trend intelligence: worldwide event calendar, early-warning scan,
+"""Global trend intelligence: multi-country (NOT worldwide -- see
+calendar_sources.coverage_report) event calendar, early-warning scan,
 explainable opportunity scoring, and the versioned production-intelligence
 feed consumed by the existing scheduler (stage 1, `trends.py`).
 

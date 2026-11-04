@@ -13,6 +13,20 @@ from . import deadlines
 # docs/GLOBAL_TREND_INTELLIGENCE.md for the gap list).
 SUPPORTED_FORMATS = ('PHOTO_JPG', 'VECTOR_EPS')
 
+# What actually happens to a brief of each format. Only PHOTO_JPG briefs
+# are consumed by trends.py and turned into production jobs. VECTOR_EPS
+# briefs are planning output only: creative vector illustration is BLOCKED
+# (vector/procedural_vector.BLOCKED_CREATIVE_VECTOR_REASON -- only
+# procedural geometric icons/patterns produce real vectors, and nothing
+# consumes VECTOR_EPS briefs), so they must never be read as a working EPS
+# production pipeline.
+FORMAT_PIPELINE_STATUS = {'PHOTO_JPG': 'active', 'VECTOR_EPS': 'planned_blocked'}
+FORMAT_PIPELINE_NOTE = {
+    'PHOTO_JPG': 'consumed by trends.py -> photo generation pipeline',
+    'VECTOR_EPS': 'planning only: no pipeline consumes VECTOR_EPS briefs; creative vector '
+                  'generation is blocked (procedural icons/patterns only)',
+}
+
 
 @dataclass
 class CreativeBrief:
@@ -36,7 +50,8 @@ class CreativeBrief:
     keywords: list[str]
     target_platform: str
     opportunity_score: float
-
+    production_pipeline_status: str = 'active'   # FORMAT_PIPELINE_STATUS[format]
+    production_pipeline_note: str = ''
     def to_dict(self) -> dict:
         return asdict(self)
 
@@ -88,6 +103,8 @@ def build_brief(score: Score, fmt: str) -> CreativeBrief:
         keywords=keywords,
         target_platform='adobe_and_magnific',
         opportunity_score=round(score.total, 4),
+        production_pipeline_status=FORMAT_PIPELINE_STATUS.get(fmt, 'planned_blocked'),
+        production_pipeline_note=FORMAT_PIPELINE_NOTE.get(fmt, 'no production pipeline for this format'),
     )
 
 
