@@ -14,6 +14,8 @@ class QueueItem:
     trend_term: str | None = None
     trend_status: str | None = None
     trend_snapshot_imported_at: str | None = None
+    opportunity_score: float | None = None
+    event_country: str | None = None
 
 
 def make_prompt(scene: str) -> str:
@@ -37,5 +39,6 @@ def build_queue(day: str, count: int) -> list[QueueItem]:
             job_id=job_id, category=c.category, scene=c.scene, prompt=make_prompt(c.scene),
             source=c.source, trend_term=c.trend_term, trend_status=c.trend_status,
             trend_snapshot_imported_at=c.trend_snapshot_imported_at,
+            opportunity_score=c.opportunity_score, event_country=c.event_country,
         ))
     return queue

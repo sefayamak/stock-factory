@@ -34,6 +34,13 @@ TREND_STALE_AFTER_DAYS = int(os.getenv('TREND_STALE_AFTER_DAYS', '14'))
 # the rest always comes from the deterministic static topic bank.
 TREND_PRIORITY_SLOTS_MAX = int(os.getenv('TREND_PRIORITY_SLOTS_MAX', '20'))
 
+# At most this many queue slots per day are filled from the global
+# trend-intelligence feed's calendar-backed opportunities (see
+# trend_intelligence/feed.py), after trend-snapshot slots and before the
+# static topic bank. A missing/stale feed (same staleness policy as the
+# trend snapshot above) contributes zero slots.
+CALENDAR_OPPORTUNITY_SLOTS_MAX = int(os.getenv('CALENDAR_OPPORTUNITY_SLOTS_MAX', '15'))
+
 # Google Drive archival (requirement 6). The target Drive folder is in a
 # personal My Drive account -- a service account cannot own/write files
 # there even with folder Editor access, so OAuth 2.0 user credentials
