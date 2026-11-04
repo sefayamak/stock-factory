@@ -48,18 +48,19 @@ jobs:
         shell: bash
         env:
           PYTHONPATH: src
-        run: python3 -c '
-import json
-with open("/tmp/cloudflare_flux_metadata.json", "r") as f:
-    metadata = json.load(f)
-    print("=== CLOUDFLARE FLUX TEST RESULTS ===")
-    print(f"Image size: {metadata[\"file_size\"]:,} bytes")
-    print(f"Dimensions: {metadata[\"dimensions\"][0]}×{metadata[\"dimensions\"][1]}")
-    print(f"QC Status: {\"PASS\" if metadata[\"qc_pass\"] else \"FAIL\"}")
-    print(f"QC Reason: {metadata[\"qc_reason\"]}")
-    print(f"Drive Archived: {metadata.get(\"drive_archived\", False)}")
-    if metadata.get("drive_file_id"):
-        print(f"Drive File ID: {metadata[\"drive_file_id\"]}")
-    print(f"SHA256: {metadata[\"sha256\"]}")
-    print("====================================")
-'
+        run: |
+          python3 << 'EOF'
+          import json
+          with open("/tmp/cloudflare_flux_metadata.json", "r") as f:
+              metadata = json.load(f)
+              print("=== CLOUDFLARE FLUX TEST RESULTS ===")
+              print(f"Image size: {metadata[\"file_size\"]:,} bytes")
+              print(f"Dimensions: {metadata[\"dimensions\"][0]}x{metadata[\"dimensions\"][1]}")
+              print(f"QC Status: {\"PASS\" if metadata[\"qc_pass\"] else \"FAIL\"}")
+              print(f"QC Reason: {metadata[\"qc_reason\"]}")
+              print(f"Drive Archived: {metadata.get(\"drive_archived\", False)}")
+              if metadata.get("drive_file_id"):
+                  print(f"Drive File ID: {metadata[\"drive_file_id\"]}")
+              print(f"SHA256: {metadata[\"sha256\"]}")
+              print("====================================")
+          EOF
