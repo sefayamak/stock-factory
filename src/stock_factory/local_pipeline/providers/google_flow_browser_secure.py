@@ -85,26 +85,60 @@ class GoogleFlowBrowserSecure(ProviderAdapter):
                 # Step 5: Wait for page to fully load
                 page.wait_for_timeout(2000)
 
-                # Step 6: Find and fill prompt input
+                # Step 6: Find and fill prompt input (with iframe/dynamic content handling)
                 print('  → Submitting prompt to Google Flow...')
                 try:
-                    prompt_box = page.locator(
-                        'textarea, input[placeholder*="create"], input[placeholder*="prompt"], [role="textbox"]'
-                    ).first
+                    # Wait longer for dynamic content and iframes to load
+                    page.wait_for_timeout(3000)
 
-                    if not prompt_box.is_visible(timeout=5000):
-                        raise ProviderUnavailable('Could not find prompt input field')
+                    # Try multiple selectors (Flow uses iframes and dynamic rendering)
+                    selectors = [
+                        'textarea',
+                        'input[type="text"]',
+                        '[contenteditable="true"]',
+                        'input[placeholder*="create"]',
+                        'input[placeholder*="prompt"]',
+                        'input[placeholder*="what"]',
+                        '[role="textbox"]'
+                    ]
+
+                    prompt_box = None
+                    for selector in selectors:
+                        try:
+                            box = page.locator(selector).first
+                            if box.is_visible(timeout=2000):
+                                prompt_box = box
+                                break
+                        except:
+                            pass
+
+                    if not prompt_box:
+                        raise ProviderUnavailable('Could not find prompt input field (iframe or dynamic loading issue)')
 
                     prompt_box.fill(prompt)
                     page.wait_for_timeout(500)
 
-                    # Click generate button
-                    generate_btn = page.locator(
-                        'button[aria-label*="generate"], button:has-text("Generate"), [role="button"]'
-                    ).first
+                    # Click generate button (try multiple selectors for robustness)
+                    gen_selectors = [
+                        'button:has-text("Generate")',
+                        'button[aria-label*="generate"]',
+                        'button[aria-label*="Generate"]',
+                        'svg + button',  # Icon + button pattern
+                        'button:right-of(textarea)',  # Button after textarea
+                    ]
 
-                    if not generate_btn.is_enabled(timeout=3000):
-                        raise ProviderUnavailable('Generate button not ready')
+                    generate_btn = None
+                    for selector in gen_selectors:
+                        try:
+                            btn = page.locator(selector).first
+                            if btn.is_visible(timeout=1500):
+                                generate_btn = btn
+                                break
+                        except:
+                            pass
+
+                    if not generate_btn:
+                        raise ProviderUnavailable('Generate button not found')
 
                     generate_btn.click()
                     print('  ✓ Prompt submitted')
