@@ -1,0 +1,73 @@
+{
+  "pilot_session": {
+    "start_time": "2026-11-05T00:00:00Z",
+    "phase": "3.2",
+    "title": "Stock Factory — 10 Photo Production Pilot",
+    "commit": "3567f5e",
+    "branch": "local-pipeline"
+  },
+  "prerequisites": {
+    "commit_pushed": true,
+    "commit_sha": "3567f5e321d46071d6aaa79431f1c8f9ba1917d7",
+    "phase_3_1_archived": true,
+    "phase_3_1_sha256": "5cf81bb937966ad677066fe95bd866089f20d5a305438ec9ca0d1ca49dd57b0a",
+    "oauth_credentials": "loaded from Keychain",
+    "drive_folder": "STOCK_FACTORY_MAGNIFIC_OUTPUT"
+  },
+  "pilot_configuration": {
+    "concepts": 10,
+    "provider": "Google Flow (Nano Banana 2.1)",
+    "qc_threshold_short_edge_px": 2048,
+    "qc_threshold_megapixels": 4,
+    "upscaling": "PIL Lanczos (2×)",
+    "archive_destination": "Google Drive",
+    "visual_approval_required": true,
+    "auto_magnific_disabled": true,
+    "adobe_disabled": true,
+    "200_day_production_disabled": true
+  },
+  "concepts": [
+    {"id": 1, "name": "Remote team collaboration in modern office", "category": "Business"},
+    {"id": 2, "name": "Sustainable packaging and eco-conscious product", "category": "Sustainability"},
+    {"id": 3, "name": "Healthcare professional with patient", "category": "Healthcare"},
+    {"id": 4, "name": "Tech startup founder at desk", "category": "Technology"},
+    {"id": 5, "name": "Hands working with digital interface", "category": "Technology"},
+    {"id": 6, "name": "Multigenerational family moment", "category": "Lifestyle"},
+    {"id": 7, "name": "Professional woman in leadership role", "category": "Business"},
+    {"id": 8, "name": "Urban food entrepreneurship", "category": "Food"},
+    {"id": 9, "name": "Financial planning consultation", "category": "Finance"},
+    {"id": 10, "name": "Student with educational technology", "category": "Education"}
+  ],
+  "execution_plan": {
+    "step_1": "Ensure Chrome browser running with CDP debugging on port 9222",
+    "step_2": "Ensure authenticated Google Flow session (https://flow.google.com)",
+    "step_3": "Run: eval \"$(python3 scripts/load_drive_credentials.py)\" && python3 scripts/run_production_pilot.py",
+    "step_4": "Monitor pilot execution (approximately 15-20 minutes for 10 concepts)",
+    "step_5": "Review generated images and Drive archives",
+    "step_6": "Record results and proceed to next phase"
+  },
+  "success_criteria": {
+    "generated": "≥8/10",
+    "qc_pass": "≥6/10",
+    "archived": "≥5/10",
+    "duplicates": 0,
+    "errors": 0,
+    "visual_approval": "PENDING_HUMAN (operator review required)"
+  },
+  "safety_guardrails": {
+    "no_terraform_apply": true,
+    "no_production_deployment": true,
+    "no_auto_magnific": true,
+    "no_bulk_200_day": true,
+    "strict_qc_enforcement": true,
+    "no_lowered_thresholds": true,
+    "resume_dedup_enabled": true
+  },
+  "checkpoint_status": {
+    "phase_3_1": "COMPLETE",
+    "pilot_runner": "READY",
+    "environment": "VERIFIED",
+    "credentials": "LOADED",
+    "next_action": "AWAITING_HUMAN_TRIGGER_FOR_GENERATION"
+  }
+}
