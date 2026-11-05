@@ -116,14 +116,23 @@ jobs:
           import json
           with open("/tmp/upscale_pipeline_metadata.json", "r") as f:
               m = json.load(f)
+              ma = m.get('magnific_acceptance', {})
               print("=== RESOLUTION FIX REPORT ===")
               print(f"ORIGINAL={m['original']['dimensions'][0]}x{m['original']['dimensions'][1]}" if m['original']['dimensions'] else "ORIGINAL=")
               print(f"UPSCALE_METHOD={m['upscale_method']}")
               print(f"OUTPUT_DIMENSIONS={m['upscaled']['dimensions'][0]}x{m['upscaled']['dimensions'][1]}" if m['upscaled']['dimensions'] else "OUTPUT_DIMENSIONS=")
               print(f"OUTPUT_FILE_SIZE={m['upscaled']['file_size']}")
-              print(f"TECHNICAL_QC={'PASS' if m['technical_qc']['pass'] else 'FAIL'} ({m['technical_qc']['reason']})")
+              print(f"DIMENSION_PRESCREEN={'PASS' if m['technical_qc']['pass'] else 'FAIL'} ({m['technical_qc']['reason']}) -- NOT submission readiness")
+              print(f"MAGNIFIC_READY={'YES' if ma.get('pass') else 'NO'} ({ma.get('reason')})")
               print(f"DUPLICATE_DETECTED={m['duplicate_detected']}")
+              print(f"VISUAL_REVIEW={m.get('visual_review')}")
               print(f"DRIVE_ARCHIVE={'YES' if m['drive_archived'] else 'NO'} ({m['drive_archive_reason']})")
               print(f"NEURONS_USED={m['neurons_used']}")
               print(f"ERROR={m['error']}")
+
+              if not ma.get('pass'):
+                  print("")
+                  print("NOT MAGNIFIC_READY -- the upscaled file in this run's artifacts")
+                  print("(upscale-pipeline-outputs: upscale_pipeline_upscaled.jpg) requires")
+                  print("human visual review regardless; technical rejection does not skip it.")
           EOF

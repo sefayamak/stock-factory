@@ -31,8 +31,16 @@ def main():
         'original': {'dimensions': None, 'file_size': 0, 'sha256': None},
         'upscale_method': 'pillow_lanczos_2x',
         'upscaled': {'dimensions': None, 'file_size': 0, 'sha256': None},
+        # Dimension/megapixel pre-screen only. NOT submission readiness --
+        # see magnific_acceptance below, and the qc.py module docstring.
         'technical_qc': {'pass': False, 'reason': None},
+        # The complete Magnific acceptance contract (dims, megapixels,
+        # min bytes, format, GPS-metadata, duplicate), run on the FINAL
+        # encoded upscaled file. This is the only field that may ever be
+        # reported as MAGNIFIC_READY.
+        'magnific_acceptance': {'pass': False, 'reason': None, 'details': None},
         'duplicate_detected': False,
+        'visual_review': 'pending_human_review',
         'drive_archived': False,
         'drive_archive_reason': 'visual_qc_pending_human_review',
         'neurons_used': 0,
@@ -79,24 +87,41 @@ def main():
         print(f'OK Upscaled: {up_w}x{up_h}, {len(upscaled_bytes):,} bytes, '
               f'sha256={metadata["upscaled"]["sha256"][:16]}...')
 
+        # Gate 1: cheap dimension/megapixel pre-screen. Historically this
+        # was the only gate the script reported, and that was the bug --
+        # it says nothing about file size, format, or duplicates.
         qc_pass, qc_reason, (qc_w, qc_h) = qc.validate_image(upscaled_bytes)
         metadata['technical_qc']['pass'] = qc_pass
         metadata['technical_qc']['reason'] = qc_reason
-        print(f'\nTechnical QC on upscaled image: {"PASS" if qc_pass else "FAIL"} ({qc_reason})')
+        print(f'\n[1/2] Dimension pre-screen on upscaled image: {"PASS" if qc_pass else "FAIL"} ({qc_reason})')
         print(f'  MIN_SHORT_EDGE={config.MIN_SHORT_EDGE}  MIN_MEGAPIXELS={config.MIN_MEGAPIXELS:,}  '
-              f'MAX_LONG_EDGE={config.MAX_LONG_EDGE}  MIN_BYTES={config.MIN_BYTES:,}')
+              f'MAX_LONG_EDGE={config.MAX_LONG_EDGE}')
 
         ledger = DuplicateLedger(config.STATE_DIR)
-        metadata['duplicate_detected'] = ledger.is_duplicate(metadata['upscaled']['sha256'])
-        print(f'Duplicate check: {"DUPLICATE" if metadata["duplicate_detected"] else "unique"} '
-              f'(ledger has {len(ledger.seen)} prior hashes)')
-        # Intentionally not recording into the ledger: this is a pipeline
-        # verification run, not a production ingest.
+        digest = metadata['upscaled']['sha256']
+
+        # Gate 2: the full Magnific acceptance contract, on the FINAL
+        # encoded file. This is the only gate allowed to declare
+        # MAGNIFIC_READY. It deliberately includes MIN_BYTES -- Lanczos
+        # upscaling does not invent photographic detail, so a native
+        # 1024x1024 generation upscaled 2x will very often resize-pass
+        # Gate 1 while still being too low in actual encoded detail to
+        # pass Gate 2's MIN_BYTES floor. That contradiction is the point:
+        # it is Gate 2's job to catch what Gate 1 cannot.
+        ready, ready_reason, details = qc.check_magnific_acceptance(upscaled_bytes, digest=digest, ledger=ledger)
+        metadata['magnific_acceptance'] = {'pass': ready, 'reason': ready_reason, 'details': details}
+        metadata['duplicate_detected'] = (ready_reason == 'duplicate')
+        print(f'[2/2] Magnific acceptance contract: {"READY" if ready else "NOT READY"} ({ready_reason})')
+        print(f'  MIN_BYTES={config.MIN_BYTES:,}  actual={len(upscaled_bytes):,} bytes  '
+              f'format={details.get("format")}')
+        print(f'  (ledger has {len(ledger.seen)} prior hashes; not recording this run -- '
+              f'verification only, not a production ingest)')
 
         print('\nDrive archival: SKIPPED by design.')
-        print('  Technical QC passing does not imply visual approval (composition,')
-        print('  artifacts, IP risk). This script does not perform mass production')
-        print('  and does not archive -- that requires an explicit human visual-QC step.')
+        print('  Passing the acceptance contract is a technical/platform gate, not visual')
+        print('  approval (composition, aesthetics, anatomy, IP risk). Even a MAGNIFIC_READY')
+        print('  file still requires an explicit human visual-QC step before archival,')
+        print('  submission, or mass production -- none of which this script performs.')
 
         neurons_estimate = 4.80 + (9.60 * 4)
         metadata['neurons_used'] = neurons_estimate
@@ -119,9 +144,13 @@ def main():
             print(f'Upscaled:  {metadata["upscaled"]["dimensions"][0]}x{metadata["upscaled"]["dimensions"][1]}'
                   f'  {metadata["upscaled"]["file_size"]:,} bytes')
         print(f'Method:    {metadata["upscale_method"]}')
-        print(f'Technical QC: {"PASS" if metadata["technical_qc"]["pass"] else "FAIL"} '
+        print(f'Dimension pre-screen (Gate 1, NOT readiness): '
+              f'{"PASS" if metadata["technical_qc"]["pass"] else "FAIL"} '
               f'({metadata["technical_qc"]["reason"]})')
+        ma = metadata['magnific_acceptance']
+        print(f'MAGNIFIC_READY (Gate 2, full contract): {"YES" if ma["pass"] else "NO"} ({ma["reason"]})')
         print(f'Duplicate: {metadata["duplicate_detected"]}')
+        print(f'Visual review: {metadata["visual_review"]}')
         print(f'Drive Archived: {"YES" if metadata["drive_archived"] else "NO"} '
               f'({metadata["drive_archive_reason"]})')
         print(f'Actual cost: ~{metadata["neurons_used"]:.0f} Neurons (free tier), $0 upscale (local Pillow)')

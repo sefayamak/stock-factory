@@ -88,13 +88,12 @@ def run(day: str, target: int, dry_run: bool) -> dict:
                     rows.append({'job_id': asset.origin_name, 'status': 'REJECTED_QC', 'reason': reason, 'source': asset.source})
                     continue
                 jpeg = convert_jpeg(asset.data)
-                if len(jpeg) < config.MIN_BYTES:
-                    tracker.record_rejection(asset.origin_name, 'filesize_below_min', 'qc')
-                    rows.append({'job_id': asset.origin_name, 'status': 'REJECTED_QC', 'reason': 'filesize_below_min', 'source': asset.source})
-                    continue
                 digest = sha256_hex(jpeg)
-                if ledger.is_duplicate(digest):
-                    tracker.record_rejection(asset.origin_name, 'duplicate_jpeg', 'duplicate')
+                ready, reason, _details = qc.check_magnific_acceptance(jpeg, digest=digest, ledger=ledger)
+                if not ready:
+                    kind = 'duplicate' if reason == 'duplicate' else 'qc'
+                    tracker.record_rejection(asset.origin_name, reason, kind)
+                    rows.append({'job_id': asset.origin_name, 'status': 'REJECTED_QC', 'reason': reason, 'source': asset.source})
                     continue
                 ledger.record(digest_raw)
                 ledger.record(digest)
