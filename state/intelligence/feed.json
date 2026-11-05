@@ -1,10 +1,10 @@
 {
   "schema_version": 4,
-  "generated_at": "2026-11-04T14:34:58.874026+00:00",
-  "scan_date": "2026-11-04",
+  "generated_at": "2026-11-05T14:32:33.455423+00:00",
+  "scan_date": "2026-11-05",
   "horizon": {
-    "start": "2026-11-04",
-    "end": "2027-11-04",
+    "start": "2026-11-05",
+    "end": "2027-11-05",
     "days": 365,
     "calendar_years_generated": [
       2026,
@@ -13,9 +13,9 @@
   },
   "provenance": {
     "generator": "stock_factory.trend_intelligence.scan",
-    "git_sha": "7e8705e868e520b949fbab32f835a2ee1a4c3be8",
-    "workflow_run_id": "",
-    "workflow": "local"
+    "git_sha": "24c600c4e14fe8e1bd4dd2e6fe4c2ecfa4fef8c7",
+    "workflow_run_id": "42045930589",
+    "workflow": "Stock Factory - global trend intelligence scan"
   },
   "countries_covered": [
     "AR",
@@ -44,7 +44,7 @@
     "US",
     "ZA"
   ],
-  "events_indexed": 414,
+  "events_indexed": 413,
   "duplicate_event_groups": 12,
   "adapter_status": {
     "adobe": {
@@ -629,8 +629,8 @@
     "note": "25 countries out of 501 the holidays library supports (and ~195 countries worldwide); plus GLOBAL UN observances and astronomical seasons."
   },
   "source_verification": {
-    "calendar_generated_on": "2026-11-04",
-    "feed_generated_at": "2026-11-04T14:34:58.874026+00:00",
+    "calendar_generated_on": "2026-11-05",
+    "feed_generated_at": "2026-11-05T14:32:33.455423+00:00",
     "holidays_library": {
       "version": "0.108",
       "method": "offline rule-based computation at scan time",
@@ -651,20 +651,84 @@
     "trend_adapters": "see adapter_status.<platform>.last_fetched_at / latest_observation_date"
   },
   "window_counts": {
-    "7": 6,
-    "30": 19,
+    "7": 5,
+    "30": 20,
     "60": 88,
-    "90": 103,
-    "180": 243,
-    "365": 414
+    "90": 102,
+    "180": 245,
+    "365": 413
   },
-  "alerts": [],
+  "alerts": [
+    {
+      "country": "IL",
+      "event_date": "2026-12-05",
+      "local_name": "חנוכה",
+      "english_name": "חנוכה",
+      "category": "national_holiday",
+      "source": "holidays library (python \"holidays\" package 0.108) country_holidays('IL', 2026)",
+      "verified_at": "",
+      "region": "",
+      "timezone": "Asia/Jerusalem",
+      "cultural_context": "Jewish festival of lights; menorah, candles, dreidels, fried foods.",
+      "commercial_relevance": "Commercial relevance not pre-rated; scored per-event by the opportunity engine.",
+      "hemisphere": "N",
+      "days_out": 30,
+      "threshold_days": 30,
+      "urgency": "late",
+      "thresholds_crossed": [
+        30
+      ],
+      "catch_up": false
+    },
+    {
+      "country": "TH",
+      "event_date": "2026-12-05",
+      "local_name": "วันคล้ายวันเฉลิมพระชนมพรรษาพระบาทสมเด็จพระบรมชนกาธิเบศร มหาภูมิพลอดุลยเดชมหาราช บรมนาถบพิตร; วันชาติ; วันพ่อแห่งชาติ",
+      "english_name": "วันคล้ายวันเฉลิมพระชนมพรรษาพระบาทสมเด็จพระบรมชนกาธิเบศร มหาภูมิพลอดุลยเดชมหาราช บรมนาถบพิตร; วันชาติ; วันพ่อแห่งชาติ",
+      "category": "national_holiday",
+      "source": "holidays library (python \"holidays\" package 0.108) country_holidays('TH', 2026)",
+      "verified_at": "",
+      "region": "",
+      "timezone": "Asia/Bangkok",
+      "cultural_context": "",
+      "commercial_relevance": "Commercial relevance not pre-rated; scored per-event by the opportunity engine.",
+      "hemisphere": "N",
+      "days_out": 30,
+      "threshold_days": 30,
+      "urgency": "late",
+      "thresholds_crossed": [
+        30
+      ],
+      "catch_up": false
+    },
+    {
+      "country": "NZ",
+      "event_date": "2027-01-04",
+      "local_name": "Day after New Year's Day (observed)",
+      "english_name": "Day after New Year's Day (observed)",
+      "category": "national_holiday",
+      "source": "holidays library (python \"holidays\" package 0.108) country_holidays('NZ', 2027)",
+      "verified_at": "",
+      "region": "",
+      "timezone": "Pacific/Auckland",
+      "cultural_context": "",
+      "commercial_relevance": "Commercial relevance not pre-rated; scored per-event by the opportunity engine.",
+      "hemisphere": "S",
+      "days_out": 60,
+      "threshold_days": 60,
+      "urgency": "urgent",
+      "thresholds_crossed": [
+        60
+      ],
+      "catch_up": false
+    }
+  ],
   "alert_state": {
     "history_file": "state/intelligence/alert_history.json",
     "history_load_status": "loaded",
-    "last_successful_scan_date": "2026-11-04",
+    "last_successful_scan_date": "2026-11-05",
     "previous_scan_date": "2026-11-04",
-    "scan_gap_days": 0,
+    "scan_gap_days": 1,
     "events_tracked": 414,
     "production_status_source": "none wired -- every event reports production_status=\"unknown\" unless alert_history.set_production_status() recorded one"
   },
@@ -798,6 +862,54 @@
         "submission_deadline": "2026-11-23",
         "production_deadline": "2026-11-21",
         "production_start": "2026-11-07",
+        "status": "on_time"
+      },
+      "factors": {
+        "market_size": 1.0,
+        "demand_evidence": 0.6,
+        "seasonal_urgency": 0.8,
+        "competition_gap": 0.5,
+        "buyer_intent": 0.7,
+        "cultural_accuracy_risk": 0.7,
+        "portfolio_coverage": "not_computed",
+        "historical_download_performance": "unavailable"
+      },
+      "explanation": [
+        "market_size: value=1.00 weight=0.12",
+        "demand_evidence: value=0.60 weight=0.25",
+        "seasonal_urgency: value=0.80 weight=0.15",
+        "competition_gap: value=0.50 weight=0.13",
+        "buyer_intent: value=0.70 weight=0.12",
+        "cultural_accuracy_risk: value=0.70 weight=0.08",
+        "portfolio_coverage: not_computed (excluded from total)",
+        "historical_download_performance: unavailable (excluded from total)",
+        "TOTAL = 0.700 (demand basis: calendar_predicted_demand)"
+      ]
+    },
+    {
+      "event": {
+        "country": "US",
+        "event_date": "2027-02-15",
+        "local_name": "Washington's Birthday",
+        "english_name": "Washington's Birthday",
+        "category": "national_holiday",
+        "source": "holidays library (python \"holidays\" package 0.108) country_holidays('US', 2027)",
+        "verified_at": "",
+        "region": "",
+        "timezone": "America/New_York",
+        "cultural_context": "",
+        "commercial_relevance": "Commercial relevance not pre-rated; scored per-event by the opportunity engine.",
+        "hemisphere": "N"
+      },
+      "total_score": 0.7,
+      "demand_basis": "calendar_predicted_demand",
+      "competition_basis": "no_supply_data_available",
+      "schedule": {
+        "event_date": "2027-02-15",
+        "buyer_ready_date": "2027-01-25",
+        "submission_deadline": "2026-12-21",
+        "production_deadline": "2026-12-19",
+        "production_start": "2026-12-05",
         "status": "on_time"
       },
       "factors": {
@@ -1396,54 +1508,6 @@
         "portfolio_coverage: not_computed (excluded from total)",
         "historical_download_performance: unavailable (excluded from total)",
         "TOTAL = 0.672 (demand basis: calendar_predicted_demand)"
-      ]
-    },
-    {
-      "event": {
-        "country": "US",
-        "event_date": "2027-02-15",
-        "local_name": "Washington's Birthday",
-        "english_name": "Washington's Birthday",
-        "category": "national_holiday",
-        "source": "holidays library (python \"holidays\" package 0.108) country_holidays('US', 2027)",
-        "verified_at": "",
-        "region": "",
-        "timezone": "America/New_York",
-        "cultural_context": "",
-        "commercial_relevance": "Commercial relevance not pre-rated; scored per-event by the opportunity engine.",
-        "hemisphere": "N"
-      },
-      "total_score": 0.6647,
-      "demand_basis": "calendar_predicted_demand",
-      "competition_basis": "no_supply_data_available",
-      "schedule": {
-        "event_date": "2027-02-15",
-        "buyer_ready_date": "2027-01-25",
-        "submission_deadline": "2026-12-21",
-        "production_deadline": "2026-12-19",
-        "production_start": "2026-12-05",
-        "status": "on_time"
-      },
-      "factors": {
-        "market_size": 1.0,
-        "demand_evidence": 0.6,
-        "seasonal_urgency": 0.6,
-        "competition_gap": 0.5,
-        "buyer_intent": 0.7,
-        "cultural_accuracy_risk": 0.7,
-        "portfolio_coverage": "not_computed",
-        "historical_download_performance": "unavailable"
-      },
-      "explanation": [
-        "market_size: value=1.00 weight=0.12",
-        "demand_evidence: value=0.60 weight=0.25",
-        "seasonal_urgency: value=0.60 weight=0.15",
-        "competition_gap: value=0.50 weight=0.13",
-        "buyer_intent: value=0.70 weight=0.12",
-        "cultural_accuracy_risk: value=0.70 weight=0.08",
-        "portfolio_coverage: not_computed (excluded from total)",
-        "historical_download_performance: unavailable (excluded from total)",
-        "TOTAL = 0.665 (demand basis: calendar_predicted_demand)"
       ]
     },
     {
@@ -5050,54 +5114,6 @@
     },
     {
       "event": {
-        "country": "ZA",
-        "event_date": "2026-11-04",
-        "local_name": "Local Government Elections",
-        "english_name": "Local Government Elections",
-        "category": "national_holiday",
-        "source": "holidays library (python \"holidays\" package 0.108) country_holidays('ZA', 2026)",
-        "verified_at": "",
-        "region": "",
-        "timezone": "Africa/Johannesburg",
-        "cultural_context": "",
-        "commercial_relevance": "Commercial relevance not pre-rated; scored per-event by the opportunity engine.",
-        "hemisphere": "S"
-      },
-      "total_score": 0.4529,
-      "demand_basis": "calendar_predicted_demand",
-      "competition_basis": "no_supply_data_available",
-      "schedule": {
-        "event_date": "2026-11-04",
-        "buyer_ready_date": "2026-10-14",
-        "submission_deadline": "2026-09-09",
-        "production_deadline": "2026-09-07",
-        "production_start": "2026-08-24",
-        "status": "late"
-      },
-      "factors": {
-        "market_size": 0.25,
-        "demand_evidence": 0.6,
-        "seasonal_urgency": 0.0,
-        "competition_gap": 0.5,
-        "buyer_intent": 0.7,
-        "cultural_accuracy_risk": 0.7,
-        "portfolio_coverage": "not_computed",
-        "historical_download_performance": "unavailable"
-      },
-      "explanation": [
-        "market_size: value=0.25 weight=0.12",
-        "demand_evidence: value=0.60 weight=0.25",
-        "seasonal_urgency: value=0.00 weight=0.15",
-        "competition_gap: value=0.50 weight=0.13",
-        "buyer_intent: value=0.70 weight=0.12",
-        "cultural_accuracy_risk: value=0.70 weight=0.08",
-        "portfolio_coverage: not_computed (excluded from total)",
-        "historical_download_performance: unavailable (excluded from total)",
-        "TOTAL = 0.453 (demand basis: calendar_predicted_demand)"
-      ]
-    },
-    {
-      "event": {
         "country": "AR",
         "event_date": "2026-11-23",
         "local_name": "Día de la Soberanía Nacional",
@@ -5479,9 +5495,57 @@
         "historical_download_performance: unavailable (excluded from total)",
         "TOTAL = 0.446 (demand basis: calendar_predicted_demand)"
       ]
+    },
+    {
+      "event": {
+        "country": "IL",
+        "event_date": "2026-12-07",
+        "local_name": "חנוכה",
+        "english_name": "חנוכה",
+        "category": "national_holiday",
+        "source": "holidays library (python \"holidays\" package 0.108) country_holidays('IL', 2026)",
+        "verified_at": "",
+        "region": "",
+        "timezone": "Asia/Jerusalem",
+        "cultural_context": "Jewish festival of lights; menorah, candles, dreidels, fried foods.",
+        "commercial_relevance": "Commercial relevance not pre-rated; scored per-event by the opportunity engine.",
+        "hemisphere": "N"
+      },
+      "total_score": 0.4459,
+      "demand_basis": "calendar_predicted_demand",
+      "competition_basis": "no_supply_data_available",
+      "schedule": {
+        "event_date": "2026-12-07",
+        "buyer_ready_date": "2026-11-16",
+        "submission_deadline": "2026-10-12",
+        "production_deadline": "2026-10-10",
+        "production_start": "2026-09-26",
+        "status": "late"
+      },
+      "factors": {
+        "market_size": 0.2,
+        "demand_evidence": 0.6,
+        "seasonal_urgency": 0.0,
+        "competition_gap": 0.5,
+        "buyer_intent": 0.7,
+        "cultural_accuracy_risk": 0.7,
+        "portfolio_coverage": "not_computed",
+        "historical_download_performance": "unavailable"
+      },
+      "explanation": [
+        "market_size: value=0.20 weight=0.12",
+        "demand_evidence: value=0.60 weight=0.25",
+        "seasonal_urgency: value=0.00 weight=0.15",
+        "competition_gap: value=0.50 weight=0.13",
+        "buyer_intent: value=0.70 weight=0.12",
+        "cultural_accuracy_risk: value=0.70 weight=0.08",
+        "portfolio_coverage: not_computed (excluded from total)",
+        "historical_download_performance: unavailable (excluded from total)",
+        "TOTAL = 0.446 (demand basis: calendar_predicted_demand)"
+      ]
     }
   ],
-  "late_opportunities_total": 66,
+  "late_opportunities_total": 65,
   "creative_briefs": [
     {
       "event_country": "US",
@@ -5642,6 +5706,60 @@
         "king",
         "jr.",
         "day",
+        "national holiday"
+      ],
+      "target_platform": "adobe_and_magnific",
+      "opportunity_score": 0.7,
+      "production_pipeline_status": "planned_blocked",
+      "production_pipeline_note": "planning only: no pipeline consumes VECTOR_EPS briefs; creative vector generation is blocked (procedural icons/patterns only)"
+    },
+    {
+      "event_country": "US",
+      "event_name": "Washington's Birthday",
+      "event_date": "2027-02-15",
+      "format": "PHOTO_JPG",
+      "demand_evidence": "calendar_predicted_demand (score 0.70/1.0, see factors)",
+      "demand_source": "holidays library (python \"holidays\" package 0.108) country_holidays('US', 2027)",
+      "buyer_ready_date": "2027-01-25",
+      "submission_deadline": "2026-12-21",
+      "production_start": "2026-12-05",
+      "production_deadline": "2026-12-19",
+      "schedule_status": "on_time",
+      "creative_concept": "Documentary-style photograph capturing: Scene built around Washington's Birthday. Natural light, authentic unposed moment, no readable text/logos.",
+      "differentiation_strategy": "Specific, culturally-accurate scene (named local custom/detail) rather than a generic/stock-looking holiday scene; avoid duplicating the static topic bank.",
+      "quantity_recommendation": 6,
+      "qc_ip_risk_notes": "Standard IP/QC checklist applies (no logos/text/brand references).",
+      "title": "Washington's Birthday themed photograph",
+      "keywords": [
+        "washington's",
+        "birthday",
+        "national holiday"
+      ],
+      "target_platform": "adobe_and_magnific",
+      "opportunity_score": 0.7,
+      "production_pipeline_status": "active",
+      "production_pipeline_note": "consumed by trends.py -> photo generation pipeline"
+    },
+    {
+      "event_country": "US",
+      "event_name": "Washington's Birthday",
+      "event_date": "2027-02-15",
+      "format": "VECTOR_EPS",
+      "demand_evidence": "calendar_predicted_demand (score 0.70/1.0, see factors)",
+      "demand_source": "holidays library (python \"holidays\" package 0.108) country_holidays('US', 2027)",
+      "buyer_ready_date": "2027-01-25",
+      "submission_deadline": "2026-12-21",
+      "production_start": "2026-12-05",
+      "production_deadline": "2026-12-19",
+      "schedule_status": "on_time",
+      "creative_concept": "Flat/vector illustration capturing: Scene built around Washington's Birthday. Clean editable paths, no raster embeds, no live-traced photo.",
+      "differentiation_strategy": "Specific, culturally-accurate scene (named local custom/detail) rather than a generic/stock-looking holiday scene; avoid duplicating the static topic bank.",
+      "quantity_recommendation": 6,
+      "qc_ip_risk_notes": "Standard IP/QC checklist applies (no logos/text/brand references).",
+      "title": "Washington's Birthday themed vector illustration",
+      "keywords": [
+        "washington's",
+        "birthday",
         "national holiday"
       ],
       "target_platform": "adobe_and_magnific",
@@ -6270,60 +6388,6 @@
       ],
       "target_platform": "adobe_and_magnific",
       "opportunity_score": 0.6718,
-      "production_pipeline_status": "planned_blocked",
-      "production_pipeline_note": "planning only: no pipeline consumes VECTOR_EPS briefs; creative vector generation is blocked (procedural icons/patterns only)"
-    },
-    {
-      "event_country": "US",
-      "event_name": "Washington's Birthday",
-      "event_date": "2027-02-15",
-      "format": "PHOTO_JPG",
-      "demand_evidence": "calendar_predicted_demand (score 0.66/1.0, see factors)",
-      "demand_source": "holidays library (python \"holidays\" package 0.108) country_holidays('US', 2027)",
-      "buyer_ready_date": "2027-01-25",
-      "submission_deadline": "2026-12-21",
-      "production_start": "2026-12-05",
-      "production_deadline": "2026-12-19",
-      "schedule_status": "on_time",
-      "creative_concept": "Documentary-style photograph capturing: Scene built around Washington's Birthday. Natural light, authentic unposed moment, no readable text/logos.",
-      "differentiation_strategy": "Specific, culturally-accurate scene (named local custom/detail) rather than a generic/stock-looking holiday scene; avoid duplicating the static topic bank.",
-      "quantity_recommendation": 6,
-      "qc_ip_risk_notes": "Standard IP/QC checklist applies (no logos/text/brand references).",
-      "title": "Washington's Birthday themed photograph",
-      "keywords": [
-        "washington's",
-        "birthday",
-        "national holiday"
-      ],
-      "target_platform": "adobe_and_magnific",
-      "opportunity_score": 0.6647,
-      "production_pipeline_status": "active",
-      "production_pipeline_note": "consumed by trends.py -> photo generation pipeline"
-    },
-    {
-      "event_country": "US",
-      "event_name": "Washington's Birthday",
-      "event_date": "2027-02-15",
-      "format": "VECTOR_EPS",
-      "demand_evidence": "calendar_predicted_demand (score 0.66/1.0, see factors)",
-      "demand_source": "holidays library (python \"holidays\" package 0.108) country_holidays('US', 2027)",
-      "buyer_ready_date": "2027-01-25",
-      "submission_deadline": "2026-12-21",
-      "production_start": "2026-12-05",
-      "production_deadline": "2026-12-19",
-      "schedule_status": "on_time",
-      "creative_concept": "Flat/vector illustration capturing: Scene built around Washington's Birthday. Clean editable paths, no raster embeds, no live-traced photo.",
-      "differentiation_strategy": "Specific, culturally-accurate scene (named local custom/detail) rather than a generic/stock-looking holiday scene; avoid duplicating the static topic bank.",
-      "quantity_recommendation": 6,
-      "qc_ip_risk_notes": "Standard IP/QC checklist applies (no logos/text/brand references).",
-      "title": "Washington's Birthday themed vector illustration",
-      "keywords": [
-        "washington's",
-        "birthday",
-        "national holiday"
-      ],
-      "target_platform": "adobe_and_magnific",
-      "opportunity_score": 0.6647,
       "production_pipeline_status": "planned_blocked",
       "production_pipeline_note": "planning only: no pipeline consumes VECTOR_EPS briefs; creative vector generation is blocked (procedural icons/patterns only)"
     },

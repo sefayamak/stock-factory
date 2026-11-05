@@ -2670,7 +2670,8 @@
       "alerted_thresholds": [
         120,
         90,
-        60
+        60,
+        30
       ],
       "alerts": [
         {
@@ -2680,6 +2681,13 @@
             120,
             90,
             60
+          ]
+        },
+        {
+          "catch_up": false,
+          "date": "2026-11-05",
+          "thresholds": [
+            30
           ]
         }
       ],
@@ -5259,7 +5267,8 @@
     "NZ:2027-01-04:day after new year's day (observed)": {
       "alerted_thresholds": [
         120,
-        90
+        90,
+        60
       ],
       "alerts": [
         {
@@ -5268,6 +5277,13 @@
           "thresholds": [
             120,
             90
+          ]
+        },
+        {
+          "catch_up": false,
+          "date": "2026-11-05",
+          "thresholds": [
+            60
           ]
         }
       ],
@@ -5566,7 +5582,8 @@
       "alerted_thresholds": [
         120,
         90,
-        60
+        60,
+        30
       ],
       "alerts": [
         {
@@ -5576,6 +5593,13 @@
             120,
             90,
             60
+          ]
+        },
+        {
+          "catch_up": false,
+          "date": "2026-11-05",
+          "thresholds": [
+            30
           ]
         }
       ],
@@ -6669,7 +6693,7 @@
       "production_status": "unknown"
     }
   },
-  "last_successful_scan_date": "2026-11-04",
+  "last_successful_scan_date": "2026-11-05",
   "previous_scan_date": "2026-11-04",
   "schema_version": 1
 }
