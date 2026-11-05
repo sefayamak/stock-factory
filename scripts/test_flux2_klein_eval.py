@@ -169,7 +169,7 @@ def main():
                 # Per-tile Neuron pricing: $0.000059/input 512x512 tile (5.37
                 # Neurons), $0.000287/output 512x512 tile (26.05 Neurons).
                 # 1920x1920 output = ceil(1920/512)^2 = 16 output tiles.
-                tiles = -(-NATIVE_MAX_DIM // 512) ** 2
+                tiles = (-(-NATIVE_MAX_DIM // 512)) ** 2
                 neurons = tiles * 26.05
                 entry['neurons_estimate'] = neurons
                 report['total_neurons_estimate'] += neurons
