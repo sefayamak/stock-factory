@@ -64,3 +64,66 @@ jobs:
               print(f"SHA256: {metadata['sha256']}")
               print("====================================")
           EOF
+
+  upscale-pipeline-test:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    env:
+      CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+      CLOUDFLARE_ACCOUNT_ID: ${{ vars.CLOUDFLARE_ACCOUNT_ID }}
+      CLOUDFLARE_TIMEOUT: 60
+      CLOUDFLARE_MAX_RETRIES: 3
+      CLOUDFLARE_RETRY_DELAY: 2
+      CLOUDFLARE_DAILY_GENERATION_CAP: 50
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+          cache: 'pip'
+
+      - run: pip install -r requirements.txt
+
+      - name: Run unit tests for upscale module
+        shell: bash
+        env:
+          PYTHONPATH: src
+        run: python3 -m pytest tests/test_upscale.py -v
+
+      - name: Generate, preserve original, upscale 2x, validate
+        shell: bash
+        env:
+          PYTHONPATH: src
+        run: python3 scripts/test_upscale_pipeline.py
+
+      - name: Upload original + upscaled images as artifacts
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: upscale-pipeline-outputs
+          path: |
+            /tmp/upscale_pipeline_original.jpg
+            /tmp/upscale_pipeline_upscaled.jpg
+            /tmp/upscale_pipeline_metadata.json
+          retention-days: 7
+
+      - name: Print pipeline report
+        if: always()
+        shell: bash
+        run: |
+          python3 << 'EOF'
+          import json
+          with open("/tmp/upscale_pipeline_metadata.json", "r") as f:
+              m = json.load(f)
+              print("=== RESOLUTION FIX REPORT ===")
+              print(f"ORIGINAL={m['original']['dimensions'][0]}x{m['original']['dimensions'][1]}" if m['original']['dimensions'] else "ORIGINAL=")
+              print(f"UPSCALE_METHOD={m['upscale_method']}")
+              print(f"OUTPUT_DIMENSIONS={m['upscaled']['dimensions'][0]}x{m['upscaled']['dimensions'][1]}" if m['upscaled']['dimensions'] else "OUTPUT_DIMENSIONS=")
+              print(f"OUTPUT_FILE_SIZE={m['upscaled']['file_size']}")
+              print(f"TECHNICAL_QC={'PASS' if m['technical_qc']['pass'] else 'FAIL'} ({m['technical_qc']['reason']})")
+              print(f"DUPLICATE_DETECTED={m['duplicate_detected']}")
+              print(f"DRIVE_ARCHIVE={'YES' if m['drive_archived'] else 'NO'} ({m['drive_archive_reason']})")
+              print(f"NEURONS_USED={m['neurons_used']}")
+              print(f"ERROR={m['error']}")
+          EOF
