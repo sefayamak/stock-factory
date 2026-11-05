@@ -136,3 +136,67 @@ jobs:
                   print("(upscale-pipeline-outputs: upscale_pipeline_upscaled.jpg) requires")
                   print("human visual review regardless; technical rejection does not skip it.")
           EOF
+
+  flux2-klein-4b-eval:
+    # Evaluation only: @cf/black-forest-labs/flux-2-klein-4b as a candidate
+    # replacement for flux-1-schnell (rejected on visual QC). Reuses the
+    # repo's existing Cloudflare secrets/vars -- no new tokens requested.
+    # Never archives, never touches Drive, never affects production
+    # (ENABLED_ADAPTERS/ADOBE_MARKETPLACE_ACTIVE are untouched defaults).
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    env:
+      CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+      CLOUDFLARE_ACCOUNT_ID: ${{ vars.CLOUDFLARE_ACCOUNT_ID }}
+      CLOUDFLARE_TIMEOUT: 60
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+          cache: 'pip'
+
+      - run: pip install -r requirements.txt
+
+      - name: Generate 3 evaluation images from flux-2-klein-4b
+        shell: bash
+        env:
+          PYTHONPATH: src
+        run: python3 scripts/test_flux2_klein_eval.py
+
+      - name: Upload evaluation images as artifacts
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: flux2-klein-4b-eval-outputs
+          path: |
+            /tmp/flux2_klein_workplace_documentary.jpg
+            /tmp/flux2_klein_outdoor_lifestyle.jpg
+            /tmp/flux2_klein_product_still_life.jpg
+            /tmp/flux2_klein_eval_metadata.json
+          retention-days: 7
+
+      - name: Print evaluation report
+        if: always()
+        shell: bash
+        run: |
+          python3 << 'EOF'
+          import json
+          with open("/tmp/flux2_klein_eval_metadata.json", "r") as f:
+              m = json.load(f)
+          print("=== FLUX.2 [klein] 4B EVALUATION REPORT ===")
+          print(f"MODEL={m['model']}")
+          print(f"LICENSE={m['license']}")
+          print(f"FREE_TIER={m['free_tier']}")
+          print(f"NATIVE_RESOLUTION={m['native_resolution_requested']} ({m['native_resolution_note']})")
+          for img in m['images']:
+              dims = f"{img['dimensions'][0]}x{img['dimensions'][1]}" if img['dimensions'] else "N/A"
+              print(f"IMAGE[{img['key']}]: dims={dims} bytes={img['file_size']} "
+                    f"technical_qc={img['technical_qc']['pass']}({img['technical_qc']['reason']}) "
+                    f"magnific_ready={img['magnific_acceptance']['pass']}({img['magnific_acceptance']['reason']}) "
+                    f"drive_archived=False error={img['error']}")
+          print(f"TOTAL_NEURONS_ESTIMATE={m['total_neurons_estimate']}")
+          print("VISUAL_QC=PENDING_HUMAN for all three images")
+          print(f"ERROR={m['error']}")
+          EOF
