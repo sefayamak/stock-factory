@@ -78,3 +78,22 @@ MIN_BYTES = 1_500_000
 MIN_SHORT_EDGE = 2048
 MAX_LONG_EDGE = 10000
 MIN_MEGAPIXELS = 4_000_000
+
+# Local-PC-driven production pipeline (stock_factory/local_pipeline/).
+# Separate from DAILY_TARGET_* above, which govern the older GitHub-Actions
+# manual-inbox pipeline. 200/150/50 is the explicit business target, not
+# derived from DAILY_TARGET_STRETCH.
+DAILY_TOTAL_TARGET = int(os.getenv('DAILY_TOTAL_TARGET', '200'))
+DAILY_PHOTO_TARGET = int(os.getenv('DAILY_PHOTO_TARGET', '150'))
+DAILY_ILLUSTRATION_TARGET = int(os.getenv('DAILY_ILLUSTRATION_TARGET', '50'))
+
+# Provider routing. Browser-automation providers only function when this
+# process runs on a machine with an authenticated browser session for
+# that provider -- see local_pipeline/providers/*.py docstrings.
+PROVIDER_PHOTO_PRIMARY = os.getenv('PROVIDER_PHOTO_PRIMARY', 'google_flow')
+PROVIDER_ILLUSTRATION_PRIMARY = os.getenv('PROVIDER_ILLUSTRATION_PRIMARY', 'midjourney')
+PROVIDER_FALLBACK = os.getenv('PROVIDER_FALLBACK', 'manual_inbox')
+
+LOCAL_PIPELINE_MAX_RETRIES = int(os.getenv('LOCAL_PIPELINE_MAX_RETRIES', '2'))
+LOCAL_PIPELINE_STATE_DIR = Path(os.getenv('LOCAL_PIPELINE_STATE_DIR', 'state'))
+LOCAL_PIPELINE_OUTPUT_DIR = Path(os.getenv('LOCAL_PIPELINE_OUTPUT_DIR', 'output'))
