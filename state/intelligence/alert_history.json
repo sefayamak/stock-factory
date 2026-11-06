@@ -2439,7 +2439,8 @@
     "ID:2027-01-05:isra mikraj nabi muhammad": {
       "alerted_thresholds": [
         120,
-        90
+        90,
+        60
       ],
       "alerts": [
         {
@@ -2448,6 +2449,13 @@
           "thresholds": [
             120,
             90
+          ]
+        },
+        {
+          "catch_up": false,
+          "date": "2026-11-06",
+          "thresholds": [
+            60
           ]
         }
       ],
@@ -2704,7 +2712,8 @@
       "alerted_thresholds": [
         120,
         90,
-        60
+        60,
+        30
       ],
       "alerts": [
         {
@@ -2714,6 +2723,13 @@
             120,
             90,
             60
+          ]
+        },
+        {
+          "catch_up": false,
+          "date": "2026-11-06",
+          "thresholds": [
+            30
           ]
         }
       ],
@@ -3289,8 +3305,18 @@
       "production_status": "unknown"
     },
     "IN:2027-03-06:maha shivaratri": {
-      "alerted_thresholds": [],
-      "alerts": [],
+      "alerted_thresholds": [
+        120
+      ],
+      "alerts": [
+        {
+          "catch_up": false,
+          "date": "2026-11-06",
+          "thresholds": [
+            120
+          ]
+        }
+      ],
       "event": {
         "country": "IN",
         "english_name": "Maha Shivaratri",
@@ -6693,7 +6719,7 @@
       "production_status": "unknown"
     }
   },
-  "last_successful_scan_date": "2026-11-05",
-  "previous_scan_date": "2026-11-04",
+  "last_successful_scan_date": "2026-11-06",
+  "previous_scan_date": "2026-11-05",
   "schema_version": 1
 }
