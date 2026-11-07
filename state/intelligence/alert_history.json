@@ -60,7 +60,8 @@
       "alerted_thresholds": [
         120,
         90,
-        60
+        60,
+        30
       ],
       "alerts": [
         {
@@ -70,6 +71,13 @@
             120,
             90,
             60
+          ]
+        },
+        {
+          "catch_up": false,
+          "date": "2026-11-07",
+          "thresholds": [
+            30
           ]
         }
       ],
@@ -770,7 +778,8 @@
     },
     "CN:2027-02-05:农历除夕": {
       "alerted_thresholds": [
-        120
+        120,
+        90
       ],
       "alerts": [
         {
@@ -778,6 +787,13 @@
           "date": "2026-11-04",
           "thresholds": [
             120
+          ]
+        },
+        {
+          "catch_up": false,
+          "date": "2026-11-07",
+          "thresholds": [
+            90
           ]
         }
       ],
@@ -1491,7 +1507,8 @@
     "ES:2027-01-06:epifanía del señor": {
       "alerted_thresholds": [
         120,
-        90
+        90,
+        60
       ],
       "alerts": [
         {
@@ -1500,6 +1517,13 @@
           "thresholds": [
             120,
             90
+          ]
+        },
+        {
+          "catch_up": false,
+          "date": "2026-11-07",
+          "thresholds": [
+            60
           ]
         }
       ],
@@ -2746,7 +2770,8 @@
       "alerted_thresholds": [
         120,
         90,
-        60
+        60,
+        30
       ],
       "alerts": [
         {
@@ -2756,6 +2781,13 @@
             120,
             90,
             60
+          ]
+        },
+        {
+          "catch_up": false,
+          "date": "2026-11-07",
+          "thresholds": [
+            30
           ]
         }
       ],
@@ -3551,7 +3583,8 @@
     "IR:2027-01-06:مبعث رسول اکرم (ص) (تخمینی)": {
       "alerted_thresholds": [
         120,
-        90
+        90,
+        60
       ],
       "alerts": [
         {
@@ -3560,6 +3593,13 @@
           "thresholds": [
             120,
             90
+          ]
+        },
+        {
+          "catch_up": false,
+          "date": "2026-11-07",
+          "thresholds": [
+            60
           ]
         }
       ],
@@ -4011,7 +4051,8 @@
     "IT:2027-01-06:epifania": {
       "alerted_thresholds": [
         120,
-        90
+        90,
+        60
       ],
       "alerts": [
         {
@@ -4020,6 +4061,13 @@
           "thresholds": [
             120,
             90
+          ]
+        },
+        {
+          "catch_up": false,
+          "date": "2026-11-07",
+          "thresholds": [
+            60
           ]
         }
       ],
@@ -4125,6 +4173,18 @@
         "event_date": "2027-11-01"
       },
       "first_seen": "2026-11-04",
+      "missed_reported_on": null,
+      "production_status": "unknown"
+    },
+    "IT:2027-11-07:giorno dell'unità nazionale": {
+      "alerted_thresholds": [],
+      "alerts": [],
+      "event": {
+        "country": "IT",
+        "english_name": "Giorno dell'unità nazionale",
+        "event_date": "2027-11-07"
+      },
+      "first_seen": "2026-11-07",
       "missed_reported_on": null,
       "production_status": "unknown"
     },
@@ -5642,7 +5702,8 @@
       "alerted_thresholds": [
         120,
         90,
-        60
+        60,
+        30
       ],
       "alerts": [
         {
@@ -5652,6 +5713,13 @@
             120,
             90,
             60
+          ]
+        },
+        {
+          "catch_up": false,
+          "date": "2026-11-07",
+          "thresholds": [
+            30
           ]
         }
       ],
@@ -6719,7 +6787,7 @@
       "production_status": "unknown"
     }
   },
-  "last_successful_scan_date": "2026-11-06",
-  "previous_scan_date": "2026-11-05",
+  "last_successful_scan_date": "2026-11-07",
+  "previous_scan_date": "2026-11-06",
   "schema_version": 1
 }
