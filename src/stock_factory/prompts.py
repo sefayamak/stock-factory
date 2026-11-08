@@ -15,6 +15,7 @@ class QueueItem:
     trend_status: str | None = None
     trend_snapshot_imported_at: str | None = None
     opportunity_score: float | None = None
+    market_source_url: str | None = None
     event_country: str | None = None
 
 
@@ -40,5 +41,6 @@ def build_queue(day: str, count: int) -> list[QueueItem]:
             source=c.source, trend_term=c.trend_term, trend_status=c.trend_status,
             trend_snapshot_imported_at=c.trend_snapshot_imported_at,
             opportunity_score=c.opportunity_score, event_country=c.event_country,
+            market_source_url=c.market_source_url,
         ))
     return queue
