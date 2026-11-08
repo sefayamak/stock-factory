@@ -214,19 +214,12 @@ def select_concepts_detailed(day: str, n: int) -> list[Concept]:
         if _add(candidate):
             calendar_added += 1
 
-    # The static topic bank deliberately repeats its ~12 topics to fill the
-    # remaining daily volume (target is 100-150/day; the bank is much
-    # smaller) -- that repetition is pre-existing, intended behavior, not
-    # a "duplicate production candidate". The dedup guard above only
-    # applies to named trend/calendar opportunities, where the same event
-    # or trending term appearing twice in one day's queue would be a real
-    # defect (same concept double-booked).
-    pool = _static_pool(day)
-    i = 0
-    while len(concepts) < n and pool:
-        cat, scene = pool[i % len(pool)]
-        concepts.append(Concept(category=cat, scene=scene, source='static_topic_bank'))
-        i += 1
+    # Static topics are a limited fallback, not an unlimited queue filler.
+    # A short queue is safer than repeating the same scenes to meet a quota.
+    for cat, scene in _static_pool(day):
+        if len(concepts) >= n:
+            break
+        _add(Concept(category=cat, scene=scene, source='static_topic_bank'))
 
     return concepts[:n]
 
