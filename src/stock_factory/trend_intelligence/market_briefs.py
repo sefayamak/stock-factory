@@ -20,7 +20,11 @@ VALID_SIGNALS = {"verified_search_interest", "catalog_supply_gap", "observed_dow
 def load_market_briefs(day: str, platform: str = "magnific", media: str = "photo",
                        path: Path | None = None) -> tuple[list[dict], dict]:
     """Return approved, dated, unique briefs; never use unknown/stale signals."""
-    path = path if path is not None else config.STATE_DIR / "intelligence" / "market_briefs.json"
+    # A checked-in research snapshot is available only while fresh; it is
+    # not a live market feed and must never override a real scout export.
+    if path is None:
+        live_path = config.STATE_DIR / "intelligence" / "market_briefs.json"
+        path = live_path if live_path.exists() else Path(__file__).with_name("public_market_seed.json")
     if platform not in VALID_PLATFORMS or media not in VALID_MEDIA:
         raise ValueError("unknown platform or media")
     if not path.exists():
