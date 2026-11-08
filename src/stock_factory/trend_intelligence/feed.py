@@ -11,7 +11,7 @@ from datetime import datetime, date, timedelta, timezone
 from pathlib import Path
 
 from .. import config, acceptance_learning
-from . import calendar_sources, early_warning, scoring, briefs, deadlines, alert_history
+from . import calendar_sources, early_warning, scoring, briefs, deadlines, alert_history, performance_signals
 from .adapters.base import SIGNAL_SEARCH_INTEREST, SIGNAL_CATALOG_SUPPLY, AdapterStatus
 from .adapters.adobe_stock_adapter import AdobeStockSearchAdapter
 from .adapters.google_trends_adapter import GoogleTrendsBigQueryAdapter
@@ -178,11 +178,13 @@ def run_scan(today: date | None = None, year: int | None = None, persist_history
 
     candidate_terms = list({e.english_name for e in events})
     interest_terms, catalog_supply_by_term, statuses = _collect_signals(candidate_terms, today=today)
+    historical_by_topic, historical_status = performance_signals.load_topic_performance(today)
 
     scores = scoring.score_events(
         events, today,
         verified_demand_terms=interest_terms,
         catalog_supply_by_term=catalog_supply_by_term,
+        historical_download_by_topic=historical_by_topic,
     )
     windows = early_warning.windowed_events(events, today)
     history = alert_history.load_history()
@@ -226,12 +228,9 @@ def run_scan(today: date | None = None, year: int | None = None, persist_history
         # interest (Google/Magnific search ranks) is NOT download demand.
         'verified_search_interest_terms': sorted(interest_terms),
         'catalog_supply_terms': {k: v for k, v in sorted(catalog_supply_by_term.items())},
-        # No download data exists in this repo: reported as unavailable,
-        # never substituted by the (differently-measured) acceptance rate.
-        'historical_download_performance': {
-            'status': 'unavailable',
-            'reason': 'no per-asset or per-topic download/sales data is collected anywhere in this repo',
-        },
+        # Measured topic performance is optional. Absent/invalid files
+        # contribute no score; never substitute global acceptance totals.
+        'historical_download_performance': historical_status,
         'portfolio_acceptance_rate': {
             'value': acceptance_learning.MAGNIFIC_BASELINE['acceptance_rate'],
             'source': acceptance_learning.MAGNIFIC_BASELINE['source'],
