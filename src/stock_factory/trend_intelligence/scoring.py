@@ -202,6 +202,7 @@ def score_event(
     verified_demand_terms: set[str] | None = None,
     existing_topics: set[str] | None = None,
     catalog_supply_by_term: dict[str, float] | None = None,
+    historical_download_by_topic: dict[str, float] | None = None,
 ) -> Score:
     schedule = deadlines.schedule_for(event.event_date)
     schedule_status = schedule.status(today)
@@ -214,12 +215,8 @@ def score_event(
     )
     cultural_risk = _cultural_accuracy_risk(event)
     portfolio_coverage = _portfolio_coverage(event, existing_topics)
-    # Historical DOWNLOAD performance: no download data exists anywhere in
-    # this repo, so this factor is unavailable (None) -- NOT filled with the
-    # portfolio-wide Magnific acceptance rate, which measures review
-    # acceptance, not downloads, and is identical for every event. That
-    # rate is reported separately in the feed as portfolio_acceptance_rate.
-    historical_performance = None
+    # Only measured, topic-specific downloads contribute. Unknown != zero.
+    historical_performance = (historical_download_by_topic or {}).get(event.english_name.casefold())
 
     factors = {
         'market_size': market_size,
@@ -244,9 +241,11 @@ def score_events(
     verified_demand_terms: set[str] | None = None,
     existing_topics: set[str] | None = None,
     catalog_supply_by_term: dict[str, float] | None = None,
+    historical_download_by_topic: dict[str, float] | None = None,
 ) -> list[Score]:
     scored = [
-        score_event(e, today, verified_demand_terms, existing_topics, catalog_supply_by_term)
+        score_event(e, today, verified_demand_terms, existing_topics, catalog_supply_by_term,
+                    historical_download_by_topic)
         for e in events
     ]
     return sorted(scored, key=lambda s: s.total, reverse=True)
