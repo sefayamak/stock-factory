@@ -1,0 +1,135 @@
+{
+  "schema_version": 1,
+  "research_scope": "public stock search-interest, catalog counts and published editorial collections; NOT sales or per-image downloads",
+  "researched_on": "2026-11-08",
+  "briefs": [
+    {
+      "category": "data center cooling",
+      "scene": "Industrial cooling engineers inspecting a liquid cooling manifold beside racks of servers in a modern data center, realistic metal pipes, unbranded equipment, documentary commercial composition",
+      "signal_type": "verified_search_interest",
+      "source_url": "https://www.shutterstock.com/trends",
+      "evidence": {
+        "growth_percent": 197,
+        "catalog_results": 7772,
+        "demand_label": "Low"
+      },
+      "observed_on": "2026-11-08",
+      "platform": "magnific",
+      "media": "photo"
+    },
+    {
+      "category": "social media stress",
+      "scene": "An adult sitting alone at a kitchen table in evening window light, phone face down, visibly overwhelmed but authentic expression, contemporary digital wellbeing commercial image with negative space",
+      "signal_type": "verified_search_interest",
+      "source_url": "https://www.shutterstock.com/trends",
+      "evidence": {
+        "growth_percent": 163,
+        "catalog_results": 30851,
+        "demand_label": "Low"
+      },
+      "observed_on": "2026-11-08",
+      "platform": "magnific",
+      "media": "photo"
+    },
+    {
+      "category": "damaged package",
+      "scene": "A logistics worker assessing a crushed cardboard shipping box on an unbranded warehouse inspection table, close documentary framing with realistic torn corrugation",
+      "signal_type": "verified_search_interest",
+      "source_url": "https://www.shutterstock.com/trends",
+      "evidence": {
+        "growth_percent": 113,
+        "catalog_results": 49438,
+        "demand_label": "Low"
+      },
+      "observed_on": "2026-11-08",
+      "platform": "magnific",
+      "media": "photo"
+    },
+    {
+      "category": "Christmas 2026 background",
+      "scene": "Warm minimalist still life of unbranded wrapped Christmas gifts, natural pine branches, recycled paper, restrained red accents and generous uncluttered copy space, no legible typography",
+      "signal_type": "verified_search_interest",
+      "source_url": "https://www.shutterstock.com/trends",
+      "evidence": {
+        "growth_percent": 353,
+        "catalog_results": 80665,
+        "demand_label": "Low"
+      },
+      "observed_on": "2026-11-08",
+      "platform": "magnific",
+      "media": "photo"
+    },
+    {
+      "category": "analog low tech hobbies",
+      "scene": "Two adults sharing a quiet evening assembling a wooden puzzle beside a rain-speckled window, tactile wood grain, natural candid photography, no labels or brands",
+      "signal_type": "editorial_hypothesis",
+      "source_url": "https://stock.adobe.com/collections",
+      "evidence": {
+        "editorial_theme": "Analog and low-tech activities"
+      },
+      "observed_on": "2026-11-08",
+      "platform": "magnific",
+      "media": "photo"
+    },
+    {
+      "category": "sensory skincare textures",
+      "scene": "Macro commercial still life of clear serum droplets gliding across textured natural stone beside an unlabeled frosted glass cosmetic bottle, tactile surface and daylight",
+      "signal_type": "editorial_hypothesis",
+      "source_url": "https://business.adobe.com/resources/creative-trends-report.html",
+      "evidence": {
+        "editorial_theme": "All the Feels"
+      },
+      "observed_on": "2026-11-08",
+      "platform": "magnific",
+      "media": "photo"
+    },
+    {
+      "category": "women wellness longevity",
+      "scene": "An active midlife woman returning from a morning outdoor fitness class with a friend, candid genuine laughter and varied skin texture, park setting, unbranded sportswear",
+      "signal_type": "editorial_hypothesis",
+      "source_url": "https://stock.adobe.com/collections",
+      "evidence": {
+        "editorial_theme": "Women, wellness, and longevity"
+      },
+      "observed_on": "2026-11-08",
+      "platform": "magnific",
+      "media": "photo"
+    },
+    {
+      "category": "accessible workplace",
+      "scene": "An employee using an adjustable height workstation with an accessible office layout in natural daylight, equipment ergonomics physically plausible, unbranded commercial documentary photograph",
+      "signal_type": "editorial_hypothesis",
+      "source_url": "https://stock.adobe.com/collections",
+      "evidence": {
+        "editorial_theme": "Disability and accessibility"
+      },
+      "observed_on": "2026-11-08",
+      "platform": "magnific",
+      "media": "photo"
+    },
+    {
+      "category": "authentic multigenerational connection",
+      "scene": "A grandparent and adult grandchild preparing a handwritten recipe together in a modest home kitchen, gestures and expressions authentic, handwritten page turned away from camera, documentary commercial photo",
+      "signal_type": "editorial_hypothesis",
+      "source_url": "https://stock.adobe.com/collections",
+      "evidence": {
+        "editorial_theme": "Multigenerational messaging"
+      },
+      "observed_on": "2026-11-08",
+      "platform": "magnific",
+      "media": "photo"
+    },
+    {
+      "category": "reusable packaging textures",
+      "scene": "Studio flat lay of simple unbranded reusable food containers and plain kraft packaging on a naturally textured background, realistic materials and clean negative space",
+      "signal_type": "editorial_hypothesis",
+      "source_url": "https://www.123rf.com/explore/",
+      "evidence": {
+        "editorial_theme": "Backgrounds Textures / Visual Graphic Arts"
+      },
+      "observed_on": "2026-11-08",
+      "platform": "magnific",
+      "media": "photo"
+    }
+  ]
+}
