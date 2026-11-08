@@ -58,6 +58,7 @@ class Concept:
     trend_status: str | None = None
     trend_snapshot_imported_at: str | None = None
     opportunity_score: float | None = None
+    market_source_url: str | None = None
     event_country: str | None = None
     event_date: str | None = None      # ISO date of the calendar event (identity, with country + topic)
     topic: str | None = None           # normalize_topic() of the trend term / event name
@@ -224,7 +225,8 @@ def select_concepts_detailed(day: str, n: int) -> list[Concept]:
         if len(concepts) >= n:
             break
         _add(Concept(category='market:' + row['category'], scene=row['scene'],
-                     source='market_brief', trend_term=row['category']))
+                     source='market_brief', trend_term=row['category'],
+                     market_source_url=row['source_url']))
 
     # Static topics are a limited fallback, not an unlimited queue filler.
     # A short queue is safer than repeating the same scenes to meet a quota.
