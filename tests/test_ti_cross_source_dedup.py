@@ -53,6 +53,10 @@ def _write_snapshot(state_dir, terms):
 @pytest.fixture
 def state(tmp_path, monkeypatch):
     monkeypatch.setattr(config, 'STATE_DIR', tmp_path / 'state')
+    # This suite validates cross-tier calendar/trend identity only.
+    monkeypatch.setattr(
+        'stock_factory.trend_intelligence.market_briefs.load_market_briefs',
+        lambda *args, **kwargs: ([], {'status': 'unavailable'}))
     monkeypatch.delenv('ADOBE_STOCK_API_KEY', raising=False)
     monkeypatch.delenv('GOOGLE_CLOUD_PROJECT', raising=False)
     return tmp_path / 'state'
