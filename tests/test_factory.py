@@ -24,10 +24,14 @@ def test_deterministic_concepts():
     assert select_concepts('2026-11-04', 10) == select_concepts('2026-11-04', 10)
 
 
-def test_queue_size_matches_target():
+def test_queue_size_reflects_unique_available_opportunities(tmp_path, monkeypatch):
+    monkeypatch.setattr('stock_factory.config.STATE_DIR', tmp_path / 'state')
     queue = build_queue('2026-11-04', 120)
-    assert len(queue) == 120
-    assert len({q.job_id for q in queue}) == 120
+    # No trend feed or snapshot: the 12 evergreen topics can be used once each.
+    # Never fake a 120-item diversified queue by repeating identical scenes.
+    assert len(queue) == 12
+    assert len({q.job_id for q in queue}) == len(queue)
+    assert len({q.scene for q in queue}) == len(queue)
 
 
 def test_dry_run_builds_queue_without_fetching(tmp_path, monkeypatch):
