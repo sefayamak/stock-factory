@@ -214,6 +214,18 @@ def select_concepts_detailed(day: str, n: int) -> list[Concept]:
         if _add(candidate):
             calendar_added += 1
 
+    # Verified market briefs may contribute new sector scenes before the
+    # evergreen fallback. Their absence does not change existing behavior.
+    # The current photo queue belongs to Magnific; other platforms maintain
+    # separate future queues and must never inherit these briefs.
+    from .trend_intelligence.market_briefs import load_market_briefs
+    market_rows, _market_status = load_market_briefs(day, platform='magnific', media='photo')
+    for row in market_rows:
+        if len(concepts) >= n:
+            break
+        _add(Concept(category='market:' + row['category'], scene=row['scene'],
+                     source='market_brief', trend_term=row['category']))
+
     # Static topics are a limited fallback, not an unlimited queue filler.
     # A short queue is safer than repeating the same scenes to meet a quota.
     for cat, scene in _static_pool(day):
