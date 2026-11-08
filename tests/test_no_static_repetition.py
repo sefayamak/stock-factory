@@ -1,6 +1,16 @@
 """A short opportunity queue must never be padded with repeated scenes."""
+import pytest
 from stock_factory import trends
 from stock_factory.prompts import build_queue
+
+
+@pytest.fixture(autouse=True)
+def isolate_market_research(monkeypatch):
+    # This legacy regression covers static fallback when *no* external
+    # research is present. Public research is tested in its own suite.
+    monkeypatch.setattr(
+        "stock_factory.trend_intelligence.market_briefs.load_market_briefs",
+        lambda *args, **kwargs: ([], {"status": "unavailable"}))
 
 
 def test_static_fallback_does_not_repeat_scenes(tmp_path, monkeypatch):
