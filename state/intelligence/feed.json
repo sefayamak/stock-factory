@@ -1,10 +1,10 @@
 {
   "schema_version": 4,
-  "generated_at": "2026-11-07T12:52:41.052648+00:00",
-  "scan_date": "2026-11-07",
+  "generated_at": "2026-11-08T13:15:04.701952+00:00",
+  "scan_date": "2026-11-08",
   "horizon": {
-    "start": "2026-11-07",
-    "end": "2027-11-07",
+    "start": "2026-11-08",
+    "end": "2027-11-08",
     "days": 365,
     "calendar_years_generated": [
       2026,
@@ -13,8 +13,8 @@
   },
   "provenance": {
     "generator": "stock_factory.trend_intelligence.scan",
-    "git_sha": "24c600c4e14fe8e1bd4dd2e6fe4c2ecfa4fef8c7",
-    "workflow_run_id": "42374385822",
+    "git_sha": "ba4962cf5d05ed9eb28a64e599a2b6d4a6bf2cff",
+    "workflow_run_id": "42484020435",
     "workflow": "Stock Factory - global trend intelligence scan"
   },
   "countries_covered": [
@@ -97,7 +97,7 @@
   "catalog_supply_terms": {},
   "historical_download_performance": {
     "status": "unavailable",
-    "reason": "no per-asset or per-topic download/sales data is collected anywhere in this repo"
+    "reason": "topic_performance.json missing"
   },
   "portfolio_acceptance_rate": {
     "value": 0.698,
@@ -629,8 +629,8 @@
     "note": "25 countries out of 501 the holidays library supports (and ~195 countries worldwide); plus GLOBAL UN observances and astronomical seasons."
   },
   "source_verification": {
-    "calendar_generated_on": "2026-11-07",
-    "feed_generated_at": "2026-11-07T12:52:41.052648+00:00",
+    "calendar_generated_on": "2026-11-08",
+    "feed_generated_at": "2026-11-08T13:15:04.701952+00:00",
     "holidays_library": {
       "version": "0.108",
       "method": "offline rule-based computation at scan time",
@@ -651,17 +651,17 @@
     "trend_adapters": "see adapter_status.<platform>.last_fetched_at / latest_observation_date"
   },
   "window_counts": {
-    "7": 6,
-    "30": 24,
-    "60": 92,
-    "90": 103,
+    "7": 7,
+    "30": 28,
+    "60": 93,
+    "90": 107,
     "180": 250,
     "365": 414
   },
   "alerts": [
     {
       "country": "IL",
-      "event_date": "2026-12-07",
+      "event_date": "2026-12-08",
       "local_name": "חנוכה",
       "english_name": "חנוכה",
       "category": "national_holiday",
@@ -682,9 +682,9 @@
     },
     {
       "country": "AR",
-      "event_date": "2026-12-07",
-      "local_name": "Feriado con fines turísticos",
-      "english_name": "Feriado con fines turísticos",
+      "event_date": "2026-12-08",
+      "local_name": "Inmaculada Concepción de María",
+      "english_name": "Inmaculada Concepción de María",
       "category": "national_holiday",
       "source": "holidays library (python \"holidays\" package 0.108) country_holidays('AR', 2026)",
       "verified_at": "",
@@ -702,15 +702,36 @@
       "catch_up": false
     },
     {
-      "country": "TH",
-      "event_date": "2026-12-07",
-      "local_name": "ชดเชยวันคล้ายวันเฉลิมพระชนมพรรษาพระบาทสมเด็จพระบรมชนกาธิเบศร มหาภูมิพลอดุลยเดชมหาราช บรมนาถบพิตร; ชดเชยวันชาติ; ชดเชยวันพ่อแห่งชาติ",
-      "english_name": "ชดเชยวันคล้ายวันเฉลิมพระชนมพรรษาพระบาทสมเด็จพระบรมชนกาธิเบศร มหาภูมิพลอดุลยเดชมหาราช บรมนาถบพิตร; ชดเชยวันชาติ; ชดเชยวันพ่อแห่งชาติ",
+      "country": "ES",
+      "event_date": "2026-12-08",
+      "local_name": "Inmaculada Concepción",
+      "english_name": "Inmaculada Concepción",
       "category": "national_holiday",
-      "source": "holidays library (python \"holidays\" package 0.108) country_holidays('TH', 2026)",
+      "source": "holidays library (python \"holidays\" package 0.108) country_holidays('ES', 2026)",
       "verified_at": "",
       "region": "",
-      "timezone": "Asia/Bangkok",
+      "timezone": "Europe/Madrid",
+      "cultural_context": "",
+      "commercial_relevance": "Commercial relevance not pre-rated; scored per-event by the opportunity engine.",
+      "hemisphere": "N",
+      "days_out": 30,
+      "threshold_days": 30,
+      "urgency": "late",
+      "thresholds_crossed": [
+        30
+      ],
+      "catch_up": false
+    },
+    {
+      "country": "IT",
+      "event_date": "2026-12-08",
+      "local_name": "Immacolata Concezione",
+      "english_name": "Immacolata Concezione",
+      "category": "national_holiday",
+      "source": "holidays library (python \"holidays\" package 0.108) country_holidays('IT', 2026)",
+      "verified_at": "",
+      "region": "",
+      "timezone": "Europe/Rome",
       "cultural_context": "",
       "commercial_relevance": "Commercial relevance not pre-rated; scored per-event by the opportunity engine.",
       "hemisphere": "N",
@@ -724,9 +745,9 @@
     },
     {
       "country": "CN",
-      "event_date": "2027-02-05",
-      "local_name": "农历除夕",
-      "english_name": "农历除夕",
+      "event_date": "2027-02-06",
+      "local_name": "春节",
+      "english_name": "春节",
       "category": "national_holiday",
       "source": "holidays library (python \"holidays\" package 0.108) country_holidays('CN', 2027)",
       "verified_at": "",
@@ -744,15 +765,57 @@
       "catch_up": false
     },
     {
-      "country": "IR",
-      "event_date": "2027-01-06",
-      "local_name": "مبعث رسول اکرم (ص) (تخمینی)",
-      "english_name": "مبعث رسول اکرم (ص) (تخمینی)",
+      "country": "ID",
+      "event_date": "2027-03-08",
+      "local_name": "Hari Suci Nyepi",
+      "english_name": "Hari Suci Nyepi",
       "category": "national_holiday",
-      "source": "holidays library (python \"holidays\" package 0.108) country_holidays('IR', 2027)",
+      "source": "holidays library (python \"holidays\" package 0.108) country_holidays('ID', 2027)",
       "verified_at": "",
       "region": "",
-      "timezone": "Asia/Tehran",
+      "timezone": "Asia/Jakarta",
+      "cultural_context": "",
+      "commercial_relevance": "Commercial relevance not pre-rated; scored per-event by the opportunity engine.",
+      "hemisphere": "S",
+      "days_out": 120,
+      "threshold_days": 120,
+      "urgency": "ok",
+      "thresholds_crossed": [
+        120
+      ],
+      "catch_up": false
+    },
+    {
+      "country": "ID",
+      "event_date": "2027-02-06",
+      "local_name": "Tahun Baru Imlek",
+      "english_name": "Tahun Baru Imlek",
+      "category": "national_holiday",
+      "source": "holidays library (python \"holidays\" package 0.108) country_holidays('ID', 2027)",
+      "verified_at": "",
+      "region": "",
+      "timezone": "Asia/Jakarta",
+      "cultural_context": "",
+      "commercial_relevance": "Commercial relevance not pre-rated; scored per-event by the opportunity engine.",
+      "hemisphere": "S",
+      "days_out": 90,
+      "threshold_days": 90,
+      "urgency": "ok",
+      "thresholds_crossed": [
+        90
+      ],
+      "catch_up": false
+    },
+    {
+      "country": "EG",
+      "event_date": "2027-01-07",
+      "local_name": "عيد الميلاد المجيد",
+      "english_name": "عيد الميلاد المجيد",
+      "category": "national_holiday",
+      "source": "holidays library (python \"holidays\" package 0.108) country_holidays('EG', 2027)",
+      "verified_at": "",
+      "region": "",
+      "timezone": "Africa/Cairo",
       "cultural_context": "",
       "commercial_relevance": "Commercial relevance not pre-rated; scored per-event by the opportunity engine.",
       "hemisphere": "N",
@@ -765,44 +828,65 @@
       "catch_up": false
     },
     {
-      "country": "ES",
-      "event_date": "2027-01-06",
-      "local_name": "Epifanía del Señor",
-      "english_name": "Epifanía del Señor",
+      "country": "KR",
+      "event_date": "2027-02-06",
+      "local_name": "설날 전날",
+      "english_name": "설날 전날",
       "category": "national_holiday",
-      "source": "holidays library (python \"holidays\" package 0.108) country_holidays('ES', 2027)",
+      "source": "holidays library (python \"holidays\" package 0.108) country_holidays('KR', 2027)",
       "verified_at": "",
       "region": "",
-      "timezone": "Europe/Madrid",
+      "timezone": "Asia/Seoul",
       "cultural_context": "",
       "commercial_relevance": "Commercial relevance not pre-rated; scored per-event by the opportunity engine.",
       "hemisphere": "N",
-      "days_out": 60,
-      "threshold_days": 60,
-      "urgency": "urgent",
+      "days_out": 90,
+      "threshold_days": 90,
+      "urgency": "ok",
       "thresholds_crossed": [
-        60
+        90
       ],
       "catch_up": false
     },
     {
-      "country": "IT",
-      "event_date": "2027-01-06",
-      "local_name": "Epifania",
-      "english_name": "Epifania",
+      "country": "NZ",
+      "event_date": "2027-02-06",
+      "local_name": "Waitangi Day",
+      "english_name": "Waitangi Day",
       "category": "national_holiday",
-      "source": "holidays library (python \"holidays\" package 0.108) country_holidays('IT', 2027)",
+      "source": "holidays library (python \"holidays\" package 0.108) country_holidays('NZ', 2027)",
       "verified_at": "",
       "region": "",
-      "timezone": "Europe/Rome",
+      "timezone": "Pacific/Auckland",
       "cultural_context": "",
       "commercial_relevance": "Commercial relevance not pre-rated; scored per-event by the opportunity engine.",
-      "hemisphere": "N",
-      "days_out": 60,
-      "threshold_days": 60,
-      "urgency": "urgent",
+      "hemisphere": "S",
+      "days_out": 90,
+      "threshold_days": 90,
+      "urgency": "ok",
       "thresholds_crossed": [
-        60
+        90
+      ],
+      "catch_up": false
+    },
+    {
+      "country": "GLOBAL",
+      "event_date": "2027-03-08",
+      "local_name": "International Women's Day",
+      "english_name": "International Women's Day",
+      "category": "un_observance",
+      "source": "UN International Days (fixed annual date), https://www.un.org/en/observances/list-days-weeks",
+      "verified_at": "2026-11-04",
+      "region": "",
+      "timezone": "",
+      "cultural_context": "Globally observed; framing should avoid country-specific assumptions.",
+      "commercial_relevance": "Women in work/leadership/community; strong retail and editorial demand.",
+      "hemisphere": "",
+      "days_out": 120,
+      "threshold_days": 120,
+      "urgency": "ok",
+      "thresholds_crossed": [
+        120
       ],
       "catch_up": false
     }
@@ -810,8 +894,8 @@
   "alert_state": {
     "history_file": "state/intelligence/alert_history.json",
     "history_load_status": "loaded",
-    "last_successful_scan_date": "2026-11-07",
-    "previous_scan_date": "2026-11-06",
+    "last_successful_scan_date": "2026-11-08",
+    "previous_scan_date": "2026-11-07",
     "scan_gap_days": 1,
     "events_tracked": 415,
     "production_status_source": "none wired -- every event reports production_status=\"unknown\" unless alert_history.set_production_status() recorded one"
@@ -841,7 +925,7 @@
         "commercial_relevance": "Commercial relevance not pre-rated; scored per-event by the opportunity engine.",
         "hemisphere": "N"
       },
-      "total_score": 0.7,
+      "total_score": 0.7353,
       "demand_basis": "calendar_predicted_demand",
       "competition_basis": "no_supply_data_available",
       "schedule": {
@@ -850,12 +934,12 @@
         "submission_deadline": "2026-11-23",
         "production_deadline": "2026-11-21",
         "production_start": "2026-11-07",
-        "status": "on_time"
+        "status": "compressed"
       },
       "factors": {
         "market_size": 1.0,
         "demand_evidence": 0.6,
-        "seasonal_urgency": 0.8,
+        "seasonal_urgency": 1.0,
         "competition_gap": 0.5,
         "buyer_intent": 0.7,
         "cultural_accuracy_risk": 0.7,
@@ -865,13 +949,13 @@
       "explanation": [
         "market_size: value=1.00 weight=0.12",
         "demand_evidence: value=0.60 weight=0.25",
-        "seasonal_urgency: value=0.80 weight=0.15",
+        "seasonal_urgency: value=1.00 weight=0.15",
         "competition_gap: value=0.50 weight=0.13",
         "buyer_intent: value=0.70 weight=0.12",
         "cultural_accuracy_risk: value=0.70 weight=0.08",
         "portfolio_coverage: not_computed (excluded from total)",
         "historical_download_performance: unavailable (excluded from total)",
-        "TOTAL = 0.700 (demand basis: calendar_predicted_demand)"
+        "TOTAL = 0.735 (demand basis: calendar_predicted_demand)"
       ]
     },
     {
@@ -1762,54 +1846,6 @@
         "submission_deadline": "2026-11-11",
         "production_deadline": "2026-11-09",
         "production_start": "2026-10-26",
-        "status": "compressed"
-      },
-      "factors": {
-        "market_size": 0.2,
-        "demand_evidence": 0.6,
-        "seasonal_urgency": 1.0,
-        "competition_gap": 0.5,
-        "buyer_intent": 0.7,
-        "cultural_accuracy_risk": 0.7,
-        "portfolio_coverage": "not_computed",
-        "historical_download_performance": "unavailable"
-      },
-      "explanation": [
-        "market_size: value=0.20 weight=0.12",
-        "demand_evidence: value=0.60 weight=0.25",
-        "seasonal_urgency: value=1.00 weight=0.15",
-        "competition_gap: value=0.50 weight=0.13",
-        "buyer_intent: value=0.70 weight=0.12",
-        "cultural_accuracy_risk: value=0.70 weight=0.08",
-        "portfolio_coverage: not_computed (excluded from total)",
-        "historical_download_performance: unavailable (excluded from total)",
-        "TOTAL = 0.622 (demand basis: calendar_predicted_demand)"
-      ]
-    },
-    {
-      "event": {
-        "country": "NZ",
-        "event_date": "2027-01-02",
-        "local_name": "Day after New Year's Day",
-        "english_name": "Day after New Year's Day",
-        "category": "national_holiday",
-        "source": "holidays library (python \"holidays\" package 0.108) country_holidays('NZ', 2027)",
-        "verified_at": "",
-        "region": "",
-        "timezone": "Pacific/Auckland",
-        "cultural_context": "",
-        "commercial_relevance": "Commercial relevance not pre-rated; scored per-event by the opportunity engine.",
-        "hemisphere": "S"
-      },
-      "total_score": 0.6224,
-      "demand_basis": "calendar_predicted_demand",
-      "competition_basis": "no_supply_data_available",
-      "schedule": {
-        "event_date": "2027-01-02",
-        "buyer_ready_date": "2026-12-12",
-        "submission_deadline": "2026-11-07",
-        "production_deadline": "2026-11-05",
-        "production_start": "2026-10-22",
         "status": "compressed"
       },
       "factors": {
@@ -3224,6 +3260,54 @@
         "portfolio_coverage: not_computed (excluded from total)",
         "historical_download_performance: unavailable (excluded from total)",
         "TOTAL = 0.585 (demand basis: calendar_predicted_demand)"
+      ]
+    },
+    {
+      "event": {
+        "country": "CN",
+        "event_date": "2027-05-01",
+        "local_name": "劳动节",
+        "english_name": "劳动节",
+        "category": "national_holiday",
+        "source": "holidays library (python \"holidays\" package 0.108) country_holidays('CN', 2027)",
+        "verified_at": "",
+        "region": "",
+        "timezone": "Asia/Shanghai",
+        "cultural_context": "",
+        "commercial_relevance": "Commercial relevance not pre-rated; scored per-event by the opportunity engine.",
+        "hemisphere": "N"
+      },
+      "total_score": 0.58,
+      "demand_basis": "calendar_predicted_demand",
+      "competition_basis": "no_supply_data_available",
+      "schedule": {
+        "event_date": "2027-05-01",
+        "buyer_ready_date": "2027-04-10",
+        "submission_deadline": "2027-03-06",
+        "production_deadline": "2027-03-04",
+        "production_start": "2027-02-18",
+        "status": "on_time"
+      },
+      "factors": {
+        "market_size": 0.9,
+        "demand_evidence": 0.6,
+        "seasonal_urgency": 0.2,
+        "competition_gap": 0.5,
+        "buyer_intent": 0.7,
+        "cultural_accuracy_risk": 0.7,
+        "portfolio_coverage": "not_computed",
+        "historical_download_performance": "unavailable"
+      },
+      "explanation": [
+        "market_size: value=0.90 weight=0.12",
+        "demand_evidence: value=0.60 weight=0.25",
+        "seasonal_urgency: value=0.20 weight=0.15",
+        "competition_gap: value=0.50 weight=0.13",
+        "buyer_intent: value=0.70 weight=0.12",
+        "cultural_accuracy_risk: value=0.70 weight=0.08",
+        "portfolio_coverage: not_computed (excluded from total)",
+        "historical_download_performance: unavailable (excluded from total)",
+        "TOTAL = 0.580 (demand basis: calendar_predicted_demand)"
       ]
     }
   ],
@@ -5629,20 +5713,20 @@
       ]
     }
   ],
-  "late_opportunities_total": 86,
+  "late_opportunities_total": 87,
   "creative_briefs": [
     {
       "event_country": "US",
       "event_name": "Martin Luther King Jr. Day",
       "event_date": "2027-01-18",
       "format": "PHOTO_JPG",
-      "demand_evidence": "calendar_predicted_demand (score 0.70/1.0, see factors)",
+      "demand_evidence": "calendar_predicted_demand (score 0.74/1.0, see factors)",
       "demand_source": "holidays library (python \"holidays\" package 0.108) country_holidays('US', 2027)",
       "buyer_ready_date": "2026-12-28",
       "submission_deadline": "2026-11-23",
       "production_start": "2026-11-07",
       "production_deadline": "2026-11-21",
-      "schedule_status": "on_time",
+      "schedule_status": "compressed",
       "creative_concept": "Documentary-style photograph capturing: Scene built around Martin Luther King Jr. Day. Natural light, authentic unposed moment, no readable text/logos.",
       "differentiation_strategy": "Specific, culturally-accurate scene (named local custom/detail) rather than a generic/stock-looking holiday scene; avoid duplicating the static topic bank.",
       "quantity_recommendation": 6,
@@ -5657,7 +5741,7 @@
         "national holiday"
       ],
       "target_platform": "adobe_and_magnific",
-      "opportunity_score": 0.7,
+      "opportunity_score": 0.7353,
       "production_pipeline_status": "active",
       "production_pipeline_note": "consumed by trends.py -> photo generation pipeline"
     },
@@ -5666,13 +5750,13 @@
       "event_name": "Martin Luther King Jr. Day",
       "event_date": "2027-01-18",
       "format": "VECTOR_EPS",
-      "demand_evidence": "calendar_predicted_demand (score 0.70/1.0, see factors)",
+      "demand_evidence": "calendar_predicted_demand (score 0.74/1.0, see factors)",
       "demand_source": "holidays library (python \"holidays\" package 0.108) country_holidays('US', 2027)",
       "buyer_ready_date": "2026-12-28",
       "submission_deadline": "2026-11-23",
       "production_start": "2026-11-07",
       "production_deadline": "2026-11-21",
-      "schedule_status": "on_time",
+      "schedule_status": "compressed",
       "creative_concept": "Flat/vector illustration capturing: Scene built around Martin Luther King Jr. Day. Clean editable paths, no raster embeds, no live-traced photo.",
       "differentiation_strategy": "Specific, culturally-accurate scene (named local custom/detail) rather than a generic/stock-looking holiday scene; avoid duplicating the static topic bank.",
       "quantity_recommendation": 6,
@@ -5687,7 +5771,7 @@
         "national holiday"
       ],
       "target_platform": "adobe_and_magnific",
-      "opportunity_score": 0.7,
+      "opportunity_score": 0.7353,
       "production_pipeline_status": "planned_blocked",
       "production_pipeline_note": "planning only: no pipeline consumes VECTOR_EPS briefs; creative vector generation is blocked (procedural icons/patterns only)"
     },
@@ -6707,64 +6791,6 @@
     },
     {
       "event_country": "NZ",
-      "event_name": "Day after New Year's Day",
-      "event_date": "2027-01-02",
-      "format": "PHOTO_JPG",
-      "demand_evidence": "calendar_predicted_demand (score 0.62/1.0, see factors)",
-      "demand_source": "holidays library (python \"holidays\" package 0.108) country_holidays('NZ', 2027)",
-      "buyer_ready_date": "2026-12-12",
-      "submission_deadline": "2026-11-07",
-      "production_start": "2026-10-22",
-      "production_deadline": "2026-11-05",
-      "schedule_status": "compressed",
-      "creative_concept": "Documentary-style photograph capturing: Scene built around Day after New Year's Day. Natural light, authentic unposed moment, no readable text/logos.",
-      "differentiation_strategy": "Specific, culturally-accurate scene (named local custom/detail) rather than a generic/stock-looking holiday scene; avoid duplicating the static topic bank.",
-      "quantity_recommendation": 6,
-      "qc_ip_risk_notes": "Standard IP/QC checklist applies (no logos/text/brand references).",
-      "title": "Day after New Year's Day themed photograph",
-      "keywords": [
-        "day",
-        "after",
-        "new",
-        "year's",
-        "national holiday"
-      ],
-      "target_platform": "adobe_and_magnific",
-      "opportunity_score": 0.6224,
-      "production_pipeline_status": "active",
-      "production_pipeline_note": "consumed by trends.py -> photo generation pipeline"
-    },
-    {
-      "event_country": "NZ",
-      "event_name": "Day after New Year's Day",
-      "event_date": "2027-01-02",
-      "format": "VECTOR_EPS",
-      "demand_evidence": "calendar_predicted_demand (score 0.62/1.0, see factors)",
-      "demand_source": "holidays library (python \"holidays\" package 0.108) country_holidays('NZ', 2027)",
-      "buyer_ready_date": "2026-12-12",
-      "submission_deadline": "2026-11-07",
-      "production_start": "2026-10-22",
-      "production_deadline": "2026-11-05",
-      "schedule_status": "compressed",
-      "creative_concept": "Flat/vector illustration capturing: Scene built around Day after New Year's Day. Clean editable paths, no raster embeds, no live-traced photo.",
-      "differentiation_strategy": "Specific, culturally-accurate scene (named local custom/detail) rather than a generic/stock-looking holiday scene; avoid duplicating the static topic bank.",
-      "quantity_recommendation": 6,
-      "qc_ip_risk_notes": "Standard IP/QC checklist applies (no logos/text/brand references).",
-      "title": "Day after New Year's Day themed vector illustration",
-      "keywords": [
-        "day",
-        "after",
-        "new",
-        "year's",
-        "national holiday"
-      ],
-      "target_platform": "adobe_and_magnific",
-      "opportunity_score": 0.6224,
-      "production_pipeline_status": "planned_blocked",
-      "production_pipeline_note": "planning only: no pipeline consumes VECTOR_EPS briefs; creative vector generation is blocked (procedural icons/patterns only)"
-    },
-    {
-      "event_country": "NZ",
       "event_name": "Day after New Year's Day (observed)",
       "event_date": "2027-01-04",
       "format": "PHOTO_JPG",
@@ -6982,6 +7008,60 @@
       ],
       "target_platform": "adobe_and_magnific",
       "opportunity_score": 0.6153,
+      "production_pipeline_status": "planned_blocked",
+      "production_pipeline_note": "planning only: no pipeline consumes VECTOR_EPS briefs; creative vector generation is blocked (procedural icons/patterns only)"
+    },
+    {
+      "event_country": "IN",
+      "event_name": "Good Friday",
+      "event_date": "2027-03-26",
+      "format": "PHOTO_JPG",
+      "demand_evidence": "calendar_predicted_demand (score 0.61/1.0, see factors)",
+      "demand_source": "holidays library (python \"holidays\" package 0.108) country_holidays('IN', 2027)",
+      "buyer_ready_date": "2027-03-05",
+      "submission_deadline": "2027-01-29",
+      "production_start": "2027-01-13",
+      "production_deadline": "2027-01-27",
+      "schedule_status": "on_time",
+      "creative_concept": "Documentary-style photograph capturing: Scene built around Good Friday. Natural light, authentic unposed moment, no readable text/logos.",
+      "differentiation_strategy": "Specific, culturally-accurate scene (named local custom/detail) rather than a generic/stock-looking holiday scene; avoid duplicating the static topic bank.",
+      "quantity_recommendation": 6,
+      "qc_ip_risk_notes": "Standard IP/QC checklist applies (no logos/text/brand references).",
+      "title": "Good Friday themed photograph",
+      "keywords": [
+        "good",
+        "friday",
+        "national holiday"
+      ],
+      "target_platform": "adobe_and_magnific",
+      "opportunity_score": 0.6082,
+      "production_pipeline_status": "active",
+      "production_pipeline_note": "consumed by trends.py -> photo generation pipeline"
+    },
+    {
+      "event_country": "IN",
+      "event_name": "Good Friday",
+      "event_date": "2027-03-26",
+      "format": "VECTOR_EPS",
+      "demand_evidence": "calendar_predicted_demand (score 0.61/1.0, see factors)",
+      "demand_source": "holidays library (python \"holidays\" package 0.108) country_holidays('IN', 2027)",
+      "buyer_ready_date": "2027-03-05",
+      "submission_deadline": "2027-01-29",
+      "production_start": "2027-01-13",
+      "production_deadline": "2027-01-27",
+      "schedule_status": "on_time",
+      "creative_concept": "Flat/vector illustration capturing: Scene built around Good Friday. Clean editable paths, no raster embeds, no live-traced photo.",
+      "differentiation_strategy": "Specific, culturally-accurate scene (named local custom/detail) rather than a generic/stock-looking holiday scene; avoid duplicating the static topic bank.",
+      "quantity_recommendation": 6,
+      "qc_ip_risk_notes": "Standard IP/QC checklist applies (no logos/text/brand references).",
+      "title": "Good Friday themed vector illustration",
+      "keywords": [
+        "good",
+        "friday",
+        "national holiday"
+      ],
+      "target_platform": "adobe_and_magnific",
+      "opportunity_score": 0.6082,
       "production_pipeline_status": "planned_blocked",
       "production_pipeline_note": "planning only: no pipeline consumes VECTOR_EPS briefs; creative vector generation is blocked (procedural icons/patterns only)"
     }
