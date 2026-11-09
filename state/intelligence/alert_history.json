@@ -846,7 +846,8 @@
     },
     "CN:2027-02-07:春节": {
       "alerted_thresholds": [
-        120
+        120,
+        90
       ],
       "alerts": [
         {
@@ -854,6 +855,13 @@
           "date": "2026-11-04",
           "thresholds": [
             120
+          ]
+        },
+        {
+          "catch_up": false,
+          "date": "2026-11-09",
+          "thresholds": [
+            90
           ]
         }
       ],
@@ -1283,8 +1291,18 @@
       "production_status": "unknown"
     },
     "EG:2027-03-09:عيد الفطر المبارك (تقديري)": {
-      "alerted_thresholds": [],
-      "alerts": [],
+      "alerted_thresholds": [
+        120
+      ],
+      "alerts": [
+        {
+          "catch_up": false,
+          "date": "2026-11-09",
+          "thresholds": [
+            120
+          ]
+        }
+      ],
       "event": {
         "country": "EG",
         "english_name": "عيد الفطر المبارك (تقديري)",
@@ -2898,7 +2916,8 @@
       "alerted_thresholds": [
         120,
         90,
-        60
+        60,
+        30
       ],
       "alerts": [
         {
@@ -2908,6 +2927,13 @@
             120,
             90,
             60
+          ]
+        },
+        {
+          "catch_up": false,
+          "date": "2026-11-09",
+          "thresholds": [
+            30
           ]
         }
       ],
@@ -4614,7 +4640,8 @@
     },
     "KR:2027-02-07:설날": {
       "alerted_thresholds": [
-        120
+        120,
+        90
       ],
       "alerts": [
         {
@@ -4622,6 +4649,13 @@
           "date": "2026-11-04",
           "thresholds": [
             120
+          ]
+        },
+        {
+          "catch_up": false,
+          "date": "2026-11-09",
+          "thresholds": [
+            90
           ]
         }
       ],
@@ -5625,8 +5659,18 @@
       "production_status": "unknown"
     },
     "SA:2027-03-09:عطلة عيد الفطر": {
-      "alerted_thresholds": [],
-      "alerts": [],
+      "alerted_thresholds": [
+        120
+      ],
+      "alerts": [
+        {
+          "catch_up": false,
+          "date": "2026-11-09",
+          "thresholds": [
+            120
+          ]
+        }
+      ],
       "event": {
         "country": "SA",
         "english_name": "عطلة عيد الفطر",
@@ -6201,8 +6245,18 @@
       "production_status": "unknown"
     },
     "TR:2027-03-09:ramazan bayramı": {
-      "alerted_thresholds": [],
-      "alerts": [],
+      "alerted_thresholds": [
+        120
+      ],
+      "alerts": [
+        {
+          "catch_up": false,
+          "date": "2026-11-09",
+          "thresholds": [
+            120
+          ]
+        }
+      ],
       "event": {
         "country": "TR",
         "english_name": "Ramazan Bayramı",
@@ -6879,7 +6933,7 @@
       "production_status": "unknown"
     }
   },
-  "last_successful_scan_date": "2026-11-08",
-  "previous_scan_date": "2026-11-07",
+  "last_successful_scan_date": "2026-11-09",
+  "previous_scan_date": "2026-11-08",
   "schema_version": 1
 }

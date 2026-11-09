@@ -1,10 +1,10 @@
 {
   "schema_version": 4,
-  "generated_at": "2026-11-08T13:15:04.701952+00:00",
-  "scan_date": "2026-11-08",
+  "generated_at": "2026-11-09T16:04:14.823458+00:00",
+  "scan_date": "2026-11-09",
   "horizon": {
-    "start": "2026-11-08",
-    "end": "2027-11-08",
+    "start": "2026-11-09",
+    "end": "2027-11-09",
     "days": 365,
     "calendar_years_generated": [
       2026,
@@ -14,7 +14,7 @@
   "provenance": {
     "generator": "stock_factory.trend_intelligence.scan",
     "git_sha": "ba4962cf5d05ed9eb28a64e599a2b6d4a6bf2cff",
-    "workflow_run_id": "42484020435",
+    "workflow_run_id": "42650939294",
     "workflow": "Stock Factory - global trend intelligence scan"
   },
   "countries_covered": [
@@ -44,7 +44,7 @@
     "US",
     "ZA"
   ],
-  "events_indexed": 414,
+  "events_indexed": 413,
   "duplicate_event_groups": 12,
   "adapter_status": {
     "adobe": {
@@ -629,8 +629,8 @@
     "note": "25 countries out of 501 the holidays library supports (and ~195 countries worldwide); plus GLOBAL UN observances and astronomical seasons."
   },
   "source_verification": {
-    "calendar_generated_on": "2026-11-08",
-    "feed_generated_at": "2026-11-08T13:15:04.701952+00:00",
+    "calendar_generated_on": "2026-11-09",
+    "feed_generated_at": "2026-11-09T16:04:14.823458+00:00",
     "holidays_library": {
       "version": "0.108",
       "method": "offline rule-based computation at scan time",
@@ -653,15 +653,15 @@
   "window_counts": {
     "7": 7,
     "30": 28,
-    "60": 93,
-    "90": 107,
+    "60": 92,
+    "90": 108,
     "180": 250,
-    "365": 414
+    "365": 413
   },
   "alerts": [
     {
       "country": "IL",
-      "event_date": "2026-12-08",
+      "event_date": "2026-12-09",
       "local_name": "חנוכה",
       "english_name": "חנוכה",
       "category": "national_holiday",
@@ -681,71 +681,29 @@
       "catch_up": false
     },
     {
-      "country": "AR",
-      "event_date": "2026-12-08",
-      "local_name": "Inmaculada Concepción de María",
-      "english_name": "Inmaculada Concepción de María",
+      "country": "TR",
+      "event_date": "2027-03-09",
+      "local_name": "Ramazan Bayramı",
+      "english_name": "Ramazan Bayramı",
       "category": "national_holiday",
-      "source": "holidays library (python \"holidays\" package 0.108) country_holidays('AR', 2026)",
+      "source": "holidays library (python \"holidays\" package 0.108) country_holidays('TR', 2027)",
       "verified_at": "",
       "region": "",
-      "timezone": "America/Argentina/Buenos_Aires",
-      "cultural_context": "",
-      "commercial_relevance": "Commercial relevance not pre-rated; scored per-event by the opportunity engine.",
-      "hemisphere": "S",
-      "days_out": 30,
-      "threshold_days": 30,
-      "urgency": "late",
-      "thresholds_crossed": [
-        30
-      ],
-      "catch_up": false
-    },
-    {
-      "country": "ES",
-      "event_date": "2026-12-08",
-      "local_name": "Inmaculada Concepción",
-      "english_name": "Inmaculada Concepción",
-      "category": "national_holiday",
-      "source": "holidays library (python \"holidays\" package 0.108) country_holidays('ES', 2026)",
-      "verified_at": "",
-      "region": "",
-      "timezone": "Europe/Madrid",
+      "timezone": "Europe/Istanbul",
       "cultural_context": "",
       "commercial_relevance": "Commercial relevance not pre-rated; scored per-event by the opportunity engine.",
       "hemisphere": "N",
-      "days_out": 30,
-      "threshold_days": 30,
-      "urgency": "late",
+      "days_out": 120,
+      "threshold_days": 120,
+      "urgency": "ok",
       "thresholds_crossed": [
-        30
-      ],
-      "catch_up": false
-    },
-    {
-      "country": "IT",
-      "event_date": "2026-12-08",
-      "local_name": "Immacolata Concezione",
-      "english_name": "Immacolata Concezione",
-      "category": "national_holiday",
-      "source": "holidays library (python \"holidays\" package 0.108) country_holidays('IT', 2026)",
-      "verified_at": "",
-      "region": "",
-      "timezone": "Europe/Rome",
-      "cultural_context": "",
-      "commercial_relevance": "Commercial relevance not pre-rated; scored per-event by the opportunity engine.",
-      "hemisphere": "N",
-      "days_out": 30,
-      "threshold_days": 30,
-      "urgency": "late",
-      "thresholds_crossed": [
-        30
+        120
       ],
       "catch_up": false
     },
     {
       "country": "CN",
-      "event_date": "2027-02-06",
+      "event_date": "2027-02-07",
       "local_name": "春节",
       "english_name": "春节",
       "category": "national_holiday",
@@ -765,18 +723,18 @@
       "catch_up": false
     },
     {
-      "country": "ID",
-      "event_date": "2027-03-08",
-      "local_name": "Hari Suci Nyepi",
-      "english_name": "Hari Suci Nyepi",
+      "country": "SA",
+      "event_date": "2027-03-09",
+      "local_name": "عطلة عيد الفطر",
+      "english_name": "عطلة عيد الفطر",
       "category": "national_holiday",
-      "source": "holidays library (python \"holidays\" package 0.108) country_holidays('ID', 2027)",
+      "source": "holidays library (python \"holidays\" package 0.108) country_holidays('SA', 2027)",
       "verified_at": "",
       "region": "",
-      "timezone": "Asia/Jakarta",
+      "timezone": "Asia/Riyadh",
       "cultural_context": "",
       "commercial_relevance": "Commercial relevance not pre-rated; scored per-event by the opportunity engine.",
-      "hemisphere": "S",
+      "hemisphere": "N",
       "days_out": 120,
       "threshold_days": 120,
       "urgency": "ok",
@@ -786,31 +744,10 @@
       "catch_up": false
     },
     {
-      "country": "ID",
-      "event_date": "2027-02-06",
-      "local_name": "Tahun Baru Imlek",
-      "english_name": "Tahun Baru Imlek",
-      "category": "national_holiday",
-      "source": "holidays library (python \"holidays\" package 0.108) country_holidays('ID', 2027)",
-      "verified_at": "",
-      "region": "",
-      "timezone": "Asia/Jakarta",
-      "cultural_context": "",
-      "commercial_relevance": "Commercial relevance not pre-rated; scored per-event by the opportunity engine.",
-      "hemisphere": "S",
-      "days_out": 90,
-      "threshold_days": 90,
-      "urgency": "ok",
-      "thresholds_crossed": [
-        90
-      ],
-      "catch_up": false
-    },
-    {
       "country": "EG",
-      "event_date": "2027-01-07",
-      "local_name": "عيد الميلاد المجيد",
-      "english_name": "عيد الميلاد المجيد",
+      "event_date": "2027-03-09",
+      "local_name": "عيد الفطر المبارك (تقديري)",
+      "english_name": "عيد الفطر المبارك (تقديري)",
       "category": "national_holiday",
       "source": "holidays library (python \"holidays\" package 0.108) country_holidays('EG', 2027)",
       "verified_at": "",
@@ -819,19 +756,19 @@
       "cultural_context": "",
       "commercial_relevance": "Commercial relevance not pre-rated; scored per-event by the opportunity engine.",
       "hemisphere": "N",
-      "days_out": 60,
-      "threshold_days": 60,
-      "urgency": "urgent",
+      "days_out": 120,
+      "threshold_days": 120,
+      "urgency": "ok",
       "thresholds_crossed": [
-        60
+        120
       ],
       "catch_up": false
     },
     {
       "country": "KR",
-      "event_date": "2027-02-06",
-      "local_name": "설날 전날",
-      "english_name": "설날 전날",
+      "event_date": "2027-02-07",
+      "local_name": "설날",
+      "english_name": "설날",
       "category": "national_holiday",
       "source": "holidays library (python \"holidays\" package 0.108) country_holidays('KR', 2027)",
       "verified_at": "",
@@ -847,55 +784,13 @@
         90
       ],
       "catch_up": false
-    },
-    {
-      "country": "NZ",
-      "event_date": "2027-02-06",
-      "local_name": "Waitangi Day",
-      "english_name": "Waitangi Day",
-      "category": "national_holiday",
-      "source": "holidays library (python \"holidays\" package 0.108) country_holidays('NZ', 2027)",
-      "verified_at": "",
-      "region": "",
-      "timezone": "Pacific/Auckland",
-      "cultural_context": "",
-      "commercial_relevance": "Commercial relevance not pre-rated; scored per-event by the opportunity engine.",
-      "hemisphere": "S",
-      "days_out": 90,
-      "threshold_days": 90,
-      "urgency": "ok",
-      "thresholds_crossed": [
-        90
-      ],
-      "catch_up": false
-    },
-    {
-      "country": "GLOBAL",
-      "event_date": "2027-03-08",
-      "local_name": "International Women's Day",
-      "english_name": "International Women's Day",
-      "category": "un_observance",
-      "source": "UN International Days (fixed annual date), https://www.un.org/en/observances/list-days-weeks",
-      "verified_at": "2026-11-04",
-      "region": "",
-      "timezone": "",
-      "cultural_context": "Globally observed; framing should avoid country-specific assumptions.",
-      "commercial_relevance": "Women in work/leadership/community; strong retail and editorial demand.",
-      "hemisphere": "",
-      "days_out": 120,
-      "threshold_days": 120,
-      "urgency": "ok",
-      "thresholds_crossed": [
-        120
-      ],
-      "catch_up": false
     }
   ],
   "alert_state": {
     "history_file": "state/intelligence/alert_history.json",
     "history_load_status": "loaded",
-    "last_successful_scan_date": "2026-11-08",
-    "previous_scan_date": "2026-11-07",
+    "last_successful_scan_date": "2026-11-09",
+    "previous_scan_date": "2026-11-08",
     "scan_gap_days": 1,
     "events_tracked": 415,
     "production_status_source": "none wired -- every event reports production_status=\"unknown\" unless alert_history.set_production_status() recorded one"
@@ -2544,6 +2439,54 @@
     },
     {
       "event": {
+        "country": "JP",
+        "event_date": "2027-03-21",
+        "local_name": "春分の日",
+        "english_name": "春分の日",
+        "category": "national_holiday",
+        "source": "holidays library (python \"holidays\" package 0.108) country_holidays('JP', 2027)",
+        "verified_at": "",
+        "region": "",
+        "timezone": "Asia/Tokyo",
+        "cultural_context": "",
+        "commercial_relevance": "Commercial relevance not pre-rated; scored per-event by the opportunity engine.",
+        "hemisphere": "N"
+      },
+      "total_score": 0.6012,
+      "demand_basis": "calendar_predicted_demand",
+      "competition_basis": "no_supply_data_available",
+      "schedule": {
+        "event_date": "2027-03-21",
+        "buyer_ready_date": "2027-02-28",
+        "submission_deadline": "2027-01-24",
+        "production_deadline": "2027-01-22",
+        "production_start": "2027-01-08",
+        "status": "on_time"
+      },
+      "factors": {
+        "market_size": 0.55,
+        "demand_evidence": 0.6,
+        "seasonal_urgency": 0.6,
+        "competition_gap": 0.5,
+        "buyer_intent": 0.7,
+        "cultural_accuracy_risk": 0.7,
+        "portfolio_coverage": "not_computed",
+        "historical_download_performance": "unavailable"
+      },
+      "explanation": [
+        "market_size: value=0.55 weight=0.12",
+        "demand_evidence: value=0.60 weight=0.25",
+        "seasonal_urgency: value=0.60 weight=0.15",
+        "competition_gap: value=0.50 weight=0.13",
+        "buyer_intent: value=0.70 weight=0.12",
+        "cultural_accuracy_risk: value=0.70 weight=0.08",
+        "portfolio_coverage: not_computed (excluded from total)",
+        "historical_download_performance: unavailable (excluded from total)",
+        "TOTAL = 0.601 (demand basis: calendar_predicted_demand)"
+      ]
+    },
+    {
+      "event": {
         "country": "EG",
         "event_date": "2027-01-28",
         "local_name": "ثورة ٢٥ يناير وعيد الشرطة (يوم تعويضي)",
@@ -3261,54 +3204,6 @@
         "historical_download_performance: unavailable (excluded from total)",
         "TOTAL = 0.585 (demand basis: calendar_predicted_demand)"
       ]
-    },
-    {
-      "event": {
-        "country": "CN",
-        "event_date": "2027-05-01",
-        "local_name": "劳动节",
-        "english_name": "劳动节",
-        "category": "national_holiday",
-        "source": "holidays library (python \"holidays\" package 0.108) country_holidays('CN', 2027)",
-        "verified_at": "",
-        "region": "",
-        "timezone": "Asia/Shanghai",
-        "cultural_context": "",
-        "commercial_relevance": "Commercial relevance not pre-rated; scored per-event by the opportunity engine.",
-        "hemisphere": "N"
-      },
-      "total_score": 0.58,
-      "demand_basis": "calendar_predicted_demand",
-      "competition_basis": "no_supply_data_available",
-      "schedule": {
-        "event_date": "2027-05-01",
-        "buyer_ready_date": "2027-04-10",
-        "submission_deadline": "2027-03-06",
-        "production_deadline": "2027-03-04",
-        "production_start": "2027-02-18",
-        "status": "on_time"
-      },
-      "factors": {
-        "market_size": 0.9,
-        "demand_evidence": 0.6,
-        "seasonal_urgency": 0.2,
-        "competition_gap": 0.5,
-        "buyer_intent": 0.7,
-        "cultural_accuracy_risk": 0.7,
-        "portfolio_coverage": "not_computed",
-        "historical_download_performance": "unavailable"
-      },
-      "explanation": [
-        "market_size: value=0.90 weight=0.12",
-        "demand_evidence: value=0.60 weight=0.25",
-        "seasonal_urgency: value=0.20 weight=0.15",
-        "competition_gap: value=0.50 weight=0.13",
-        "buyer_intent: value=0.70 weight=0.12",
-        "cultural_accuracy_risk: value=0.70 weight=0.08",
-        "portfolio_coverage: not_computed (excluded from total)",
-        "historical_download_performance: unavailable (excluded from total)",
-        "TOTAL = 0.580 (demand basis: calendar_predicted_demand)"
-      ]
     }
   ],
   "late_opportunities": [
@@ -3624,54 +3519,6 @@
         "submission_deadline": "2026-10-30",
         "production_deadline": "2026-10-28",
         "production_start": "2026-10-14",
-        "status": "late"
-      },
-      "factors": {
-        "market_size": 0.85,
-        "demand_evidence": 0.8,
-        "seasonal_urgency": 0.0,
-        "competition_gap": 0.5,
-        "buyer_intent": 0.7,
-        "cultural_accuracy_risk": 0.2,
-        "portfolio_coverage": "not_computed",
-        "historical_download_performance": "unavailable"
-      },
-      "explanation": [
-        "market_size: value=0.85 weight=0.12",
-        "demand_evidence: value=0.80 weight=0.25",
-        "seasonal_urgency: value=0.00 weight=0.15",
-        "competition_gap: value=0.50 weight=0.13",
-        "buyer_intent: value=0.70 weight=0.12",
-        "cultural_accuracy_risk: value=0.20 weight=0.08",
-        "portfolio_coverage: not_computed (excluded from total)",
-        "historical_download_performance: unavailable (excluded from total)",
-        "TOTAL = 0.549 (demand basis: calendar_predicted_demand)"
-      ]
-    },
-    {
-      "event": {
-        "country": "IN",
-        "event_date": "2026-11-08",
-        "local_name": "Diwali (Deepavali)",
-        "english_name": "Diwali (Deepavali)",
-        "category": "religious_cultural",
-        "source": "holidays library (python \"holidays\" package 0.108) country_holidays('IN', 2026)",
-        "verified_at": "",
-        "region": "",
-        "timezone": "Asia/Kolkata",
-        "cultural_context": "Hindu/Jain/Sikh festival of lights; lamps, rangoli, fireworks, sweets, gifting.",
-        "commercial_relevance": "High historical commercial relevance for stock photo/vector demand (gifting, retail, food, family themes).",
-        "hemisphere": "N"
-      },
-      "total_score": 0.5494,
-      "demand_basis": "calendar_predicted_demand",
-      "competition_basis": "no_supply_data_available",
-      "schedule": {
-        "event_date": "2026-11-08",
-        "buyer_ready_date": "2026-10-18",
-        "submission_deadline": "2026-09-13",
-        "production_deadline": "2026-09-11",
-        "production_start": "2026-08-28",
         "status": "late"
       },
       "factors": {
@@ -5711,9 +5558,57 @@
         "historical_download_performance: unavailable (excluded from total)",
         "TOTAL = 0.460 (demand basis: calendar_predicted_demand)"
       ]
+    },
+    {
+      "event": {
+        "country": "TH",
+        "event_date": "2026-12-05",
+        "local_name": "วันคล้ายวันเฉลิมพระชนมพรรษาพระบาทสมเด็จพระบรมชนกาธิเบศร มหาภูมิพลอดุลยเดชมหาราช บรมนาถบพิตร; วันชาติ; วันพ่อแห่งชาติ",
+        "english_name": "วันคล้ายวันเฉลิมพระชนมพรรษาพระบาทสมเด็จพระบรมชนกาธิเบศร มหาภูมิพลอดุลยเดชมหาราช บรมนาถบพิตร; วันชาติ; วันพ่อแห่งชาติ",
+        "category": "national_holiday",
+        "source": "holidays library (python \"holidays\" package 0.108) country_holidays('TH', 2026)",
+        "verified_at": "",
+        "region": "",
+        "timezone": "Asia/Bangkok",
+        "cultural_context": "",
+        "commercial_relevance": "Commercial relevance not pre-rated; scored per-event by the opportunity engine.",
+        "hemisphere": "N"
+      },
+      "total_score": 0.46,
+      "demand_basis": "calendar_predicted_demand",
+      "competition_basis": "no_supply_data_available",
+      "schedule": {
+        "event_date": "2026-12-05",
+        "buyer_ready_date": "2026-11-14",
+        "submission_deadline": "2026-10-10",
+        "production_deadline": "2026-10-08",
+        "production_start": "2026-09-24",
+        "status": "late"
+      },
+      "factors": {
+        "market_size": 0.3,
+        "demand_evidence": 0.6,
+        "seasonal_urgency": 0.0,
+        "competition_gap": 0.5,
+        "buyer_intent": 0.7,
+        "cultural_accuracy_risk": 0.7,
+        "portfolio_coverage": "not_computed",
+        "historical_download_performance": "unavailable"
+      },
+      "explanation": [
+        "market_size: value=0.30 weight=0.12",
+        "demand_evidence: value=0.60 weight=0.25",
+        "seasonal_urgency: value=0.00 weight=0.15",
+        "competition_gap: value=0.50 weight=0.13",
+        "buyer_intent: value=0.70 weight=0.12",
+        "cultural_accuracy_risk: value=0.70 weight=0.08",
+        "portfolio_coverage: not_computed (excluded from total)",
+        "historical_download_performance: unavailable (excluded from total)",
+        "TOTAL = 0.460 (demand basis: calendar_predicted_demand)"
+      ]
     }
   ],
-  "late_opportunities_total": 87,
+  "late_opportunities_total": 86,
   "creative_briefs": [
     {
       "event_country": "US",
