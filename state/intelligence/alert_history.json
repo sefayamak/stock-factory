@@ -178,7 +178,8 @@
     },
     "AR:2027-02-08:lunes de carnaval": {
       "alerted_thresholds": [
-        120
+        120,
+        90
       ],
       "alerts": [
         {
@@ -186,6 +187,13 @@
           "date": "2026-11-04",
           "thresholds": [
             120
+          ]
+        },
+        {
+          "catch_up": false,
+          "date": "2026-11-10",
+          "thresholds": [
+            90
           ]
         }
       ],
@@ -876,7 +884,8 @@
     },
     "CN:2027-02-08:春节": {
       "alerted_thresholds": [
-        120
+        120,
+        90
       ],
       "alerts": [
         {
@@ -884,6 +893,13 @@
           "date": "2026-11-04",
           "thresholds": [
             120
+          ]
+        },
+        {
+          "catch_up": false,
+          "date": "2026-11-10",
+          "thresholds": [
+            90
           ]
         }
       ],
@@ -1313,8 +1329,18 @@
       "production_status": "unknown"
     },
     "EG:2027-03-10:عيد الفطر المبارك (تقديري)": {
-      "alerted_thresholds": [],
-      "alerts": [],
+      "alerted_thresholds": [
+        120
+      ],
+      "alerts": [
+        {
+          "catch_up": false,
+          "date": "2026-11-10",
+          "thresholds": [
+            120
+          ]
+        }
+      ],
       "event": {
         "country": "EG",
         "english_name": "عيد الفطر المبارك (تقديري)",
@@ -2038,7 +2064,8 @@
       "alerted_thresholds": [
         120,
         90,
-        60
+        60,
+        30
       ],
       "alerts": [
         {
@@ -2048,6 +2075,13 @@
             120,
             90,
             60
+          ]
+        },
+        {
+          "catch_up": false,
+          "date": "2026-11-10",
+          "thresholds": [
+            30
           ]
         }
       ],
@@ -2605,8 +2639,18 @@
       "production_status": "unknown"
     },
     "ID:2027-03-10:hari raya idul fitri (perkiraan)": {
-      "alerted_thresholds": [],
-      "alerts": [],
+      "alerted_thresholds": [
+        120
+      ],
+      "alerts": [
+        {
+          "catch_up": false,
+          "date": "2026-11-10",
+          "thresholds": [
+            120
+          ]
+        }
+      ],
       "event": {
         "country": "ID",
         "english_name": "Hari Raya Idul Fitri (perkiraan)",
@@ -2950,7 +2994,8 @@
       "alerted_thresholds": [
         120,
         90,
-        60
+        60,
+        30
       ],
       "alerts": [
         {
@@ -2960,6 +3005,13 @@
             120,
             90,
             60
+          ]
+        },
+        {
+          "catch_up": false,
+          "date": "2026-11-10",
+          "thresholds": [
+            30
           ]
         }
       ],
@@ -3453,8 +3505,18 @@
       "production_status": "unknown"
     },
     "IN:2027-03-10:id-ul-fitr (estimated)": {
-      "alerted_thresholds": [],
-      "alerts": [],
+      "alerted_thresholds": [
+        120
+      ],
+      "alerts": [
+        {
+          "catch_up": false,
+          "date": "2026-11-10",
+          "thresholds": [
+            120
+          ]
+        }
+      ],
       "event": {
         "country": "IN",
         "english_name": "Id-ul-Fitr (estimated)",
@@ -3775,8 +3837,18 @@
       "production_status": "unknown"
     },
     "IR:2027-03-10:عید سعید فطر (تخمینی)": {
-      "alerted_thresholds": [],
-      "alerts": [],
+      "alerted_thresholds": [
+        120
+      ],
+      "alerts": [
+        {
+          "catch_up": false,
+          "date": "2026-11-10",
+          "thresholds": [
+            120
+          ]
+        }
+      ],
       "event": {
         "country": "IR",
         "english_name": "عید سعید فطر (تخمینی)",
@@ -4670,7 +4742,8 @@
     },
     "KR:2027-02-08:설날 다음날": {
       "alerted_thresholds": [
-        120
+        120,
+        90
       ],
       "alerts": [
         {
@@ -4678,6 +4751,13 @@
           "date": "2026-11-04",
           "thresholds": [
             120
+          ]
+        },
+        {
+          "catch_up": false,
+          "date": "2026-11-10",
+          "thresholds": [
+            90
           ]
         }
       ],
@@ -5171,8 +5251,18 @@
       "production_status": "unknown"
     },
     "NG:2027-03-10:id el fitr (estimated)": {
-      "alerted_thresholds": [],
-      "alerts": [],
+      "alerted_thresholds": [
+        120
+      ],
+      "alerts": [
+        {
+          "catch_up": false,
+          "date": "2026-11-10",
+          "thresholds": [
+            120
+          ]
+        }
+      ],
       "event": {
         "country": "NG",
         "english_name": "Id el Fitr (estimated)",
@@ -5532,7 +5622,8 @@
     },
     "NZ:2027-02-08:waitangi day (observed)": {
       "alerted_thresholds": [
-        120
+        120,
+        90
       ],
       "alerts": [
         {
@@ -5540,6 +5631,13 @@
           "date": "2026-11-04",
           "thresholds": [
             120
+          ]
+        },
+        {
+          "catch_up": false,
+          "date": "2026-11-10",
+          "thresholds": [
+            90
           ]
         }
       ],
@@ -5681,8 +5779,18 @@
       "production_status": "unknown"
     },
     "SA:2027-03-10:عطلة عيد الفطر": {
-      "alerted_thresholds": [],
-      "alerts": [],
+      "alerted_thresholds": [
+        120
+      ],
+      "alerts": [
+        {
+          "catch_up": false,
+          "date": "2026-11-10",
+          "thresholds": [
+            120
+          ]
+        }
+      ],
       "event": {
         "country": "SA",
         "english_name": "عطلة عيد الفطر",
@@ -5872,7 +5980,8 @@
       "alerted_thresholds": [
         120,
         90,
-        60
+        60,
+        30
       ],
       "alerts": [
         {
@@ -5882,6 +5991,13 @@
             120,
             90,
             60
+          ]
+        },
+        {
+          "catch_up": false,
+          "date": "2026-11-10",
+          "thresholds": [
+            30
           ]
         }
       ],
@@ -5949,7 +6065,8 @@
     "TH:2027-01-09:วันเด็กแห่งชาติ": {
       "alerted_thresholds": [
         120,
-        90
+        90,
+        60
       ],
       "alerts": [
         {
@@ -5958,6 +6075,13 @@
           "thresholds": [
             120,
             90
+          ]
+        },
+        {
+          "catch_up": false,
+          "date": "2026-11-10",
+          "thresholds": [
+            60
           ]
         }
       ],
@@ -6267,8 +6391,18 @@
       "production_status": "unknown"
     },
     "TR:2027-03-10:ramazan bayramı": {
-      "alerted_thresholds": [],
-      "alerts": [],
+      "alerted_thresholds": [
+        120
+      ],
+      "alerts": [
+        {
+          "catch_up": false,
+          "date": "2026-11-10",
+          "thresholds": [
+            120
+          ]
+        }
+      ],
       "event": {
         "country": "TR",
         "english_name": "Ramazan Bayramı",
@@ -6933,7 +7067,7 @@
       "production_status": "unknown"
     }
   },
-  "last_successful_scan_date": "2026-11-09",
-  "previous_scan_date": "2026-11-08",
+  "last_successful_scan_date": "2026-11-10",
+  "previous_scan_date": "2026-11-09",
   "schema_version": 1
 }
