@@ -1,10 +1,10 @@
 {
   "schema_version": 4,
-  "generated_at": "2026-11-10T14:46:51.488879+00:00",
-  "scan_date": "2026-11-10",
+  "generated_at": "2026-11-11T14:06:26.409786+00:00",
+  "scan_date": "2026-11-11",
   "horizon": {
-    "start": "2026-11-10",
-    "end": "2027-11-10",
+    "start": "2026-11-11",
+    "end": "2027-11-11",
     "days": 365,
     "calendar_years_generated": [
       2026,
@@ -14,7 +14,7 @@
   "provenance": {
     "generator": "stock_factory.trend_intelligence.scan",
     "git_sha": "ba4962cf5d05ed9eb28a64e599a2b6d4a6bf2cff",
-    "workflow_run_id": "42837509867",
+    "workflow_run_id": "43035233331",
     "workflow": "Stock Factory - global trend intelligence scan"
   },
   "countries_covered": [
@@ -44,7 +44,7 @@
     "US",
     "ZA"
   ],
-  "events_indexed": 411,
+  "events_indexed": 413,
   "duplicate_event_groups": 12,
   "adapter_status": {
     "adobe": {
@@ -629,8 +629,8 @@
     "note": "25 countries out of 501 the holidays library supports (and ~195 countries worldwide); plus GLOBAL UN observances and astronomical seasons."
   },
   "source_verification": {
-    "calendar_generated_on": "2026-11-10",
-    "feed_generated_at": "2026-11-10T14:46:51.488879+00:00",
+    "calendar_generated_on": "2026-11-11",
+    "feed_generated_at": "2026-11-11T14:06:26.409786+00:00",
     "holidays_library": {
       "version": "0.108",
       "method": "offline rule-based computation at scan time",
@@ -652,16 +652,16 @@
   },
   "window_counts": {
     "7": 5,
-    "30": 29,
+    "30": 30,
     "60": 91,
-    "90": 110,
+    "90": 113,
     "180": 248,
-    "365": 411
+    "365": 413
   },
   "alerts": [
     {
       "country": "IL",
-      "event_date": "2026-12-10",
+      "event_date": "2026-12-11",
       "local_name": "חנוכה",
       "english_name": "חנוכה",
       "category": "national_holiday",
@@ -681,50 +681,8 @@
       "catch_up": false
     },
     {
-      "country": "TH",
-      "event_date": "2026-12-10",
-      "local_name": "วันรัฐธรรมนูญ",
-      "english_name": "วันรัฐธรรมนูญ",
-      "category": "national_holiday",
-      "source": "holidays library (python \"holidays\" package 0.108) country_holidays('TH', 2026)",
-      "verified_at": "",
-      "region": "",
-      "timezone": "Asia/Bangkok",
-      "cultural_context": "",
-      "commercial_relevance": "Commercial relevance not pre-rated; scored per-event by the opportunity engine.",
-      "hemisphere": "N",
-      "days_out": 30,
-      "threshold_days": 30,
-      "urgency": "late",
-      "thresholds_crossed": [
-        30
-      ],
-      "catch_up": false
-    },
-    {
-      "country": "GLOBAL",
-      "event_date": "2026-12-10",
-      "local_name": "Human Rights Day",
-      "english_name": "Human Rights Day",
-      "category": "un_observance",
-      "source": "UN International Days (fixed annual date), https://www.un.org/en/observances/list-days-weeks",
-      "verified_at": "2026-11-04",
-      "region": "",
-      "timezone": "",
-      "cultural_context": "Globally observed; framing should avoid country-specific assumptions.",
-      "commercial_relevance": "Advocacy, unity, community imagery.",
-      "hemisphere": "",
-      "days_out": 30,
-      "threshold_days": 30,
-      "urgency": "late",
-      "thresholds_crossed": [
-        30
-      ],
-      "catch_up": false
-    },
-    {
       "country": "TR",
-      "event_date": "2027-03-10",
+      "event_date": "2027-03-11",
       "local_name": "Ramazan Bayramı",
       "english_name": "Ramazan Bayramı",
       "category": "national_holiday",
@@ -744,31 +702,10 @@
       "catch_up": false
     },
     {
-      "country": "IN",
-      "event_date": "2027-03-10",
-      "local_name": "Id-ul-Fitr (estimated)",
-      "english_name": "Id-ul-Fitr (estimated)",
-      "category": "national_holiday",
-      "source": "holidays library (python \"holidays\" package 0.108) country_holidays('IN', 2027)",
-      "verified_at": "",
-      "region": "",
-      "timezone": "Asia/Kolkata",
-      "cultural_context": "",
-      "commercial_relevance": "Commercial relevance not pre-rated; scored per-event by the opportunity engine.",
-      "hemisphere": "N",
-      "days_out": 120,
-      "threshold_days": 120,
-      "urgency": "ok",
-      "thresholds_crossed": [
-        120
-      ],
-      "catch_up": false
-    },
-    {
       "country": "CN",
-      "event_date": "2027-02-08",
-      "local_name": "春节",
-      "english_name": "春节",
+      "event_date": "2027-02-09",
+      "local_name": "春节（补假）",
+      "english_name": "春节（补假）",
       "category": "national_holiday",
       "source": "holidays library (python \"holidays\" package 0.108) country_holidays('CN', 2027)",
       "verified_at": "",
@@ -787,7 +724,7 @@
     },
     {
       "country": "SA",
-      "event_date": "2027-03-10",
+      "event_date": "2027-03-11",
       "local_name": "عطلة عيد الفطر",
       "english_name": "عطلة عيد الفطر",
       "category": "national_holiday",
@@ -808,9 +745,9 @@
     },
     {
       "country": "ID",
-      "event_date": "2027-03-10",
-      "local_name": "Hari Raya Idul Fitri (perkiraan)",
-      "english_name": "Hari Raya Idul Fitri (perkiraan)",
+      "event_date": "2027-03-11",
+      "local_name": "Hari kedua dari Hari Raya Idul Fitri (perkiraan)",
+      "english_name": "Hari kedua dari Hari Raya Idul Fitri (perkiraan)",
       "category": "national_holiday",
       "source": "holidays library (python \"holidays\" package 0.108) country_holidays('ID', 2027)",
       "verified_at": "",
@@ -829,9 +766,9 @@
     },
     {
       "country": "IR",
-      "event_date": "2027-03-10",
-      "local_name": "عید سعید فطر (تخمینی)",
-      "english_name": "عید سعید فطر (تخمینی)",
+      "event_date": "2027-03-11",
+      "local_name": "تعطیل به مناسبت عید سعید فطر (تخمینی)",
+      "english_name": "تعطیل به مناسبت عید سعید فطر (تخمینی)",
       "category": "national_holiday",
       "source": "holidays library (python \"holidays\" package 0.108) country_holidays('IR', 2027)",
       "verified_at": "",
@@ -850,9 +787,9 @@
     },
     {
       "country": "AR",
-      "event_date": "2027-02-08",
-      "local_name": "Lunes de Carnaval",
-      "english_name": "Lunes de Carnaval",
+      "event_date": "2027-02-09",
+      "local_name": "Martes de Carnaval",
+      "english_name": "Martes de Carnaval",
       "category": "national_holiday",
       "source": "holidays library (python \"holidays\" package 0.108) country_holidays('AR', 2027)",
       "verified_at": "",
@@ -871,36 +808,15 @@
     },
     {
       "country": "NG",
-      "event_date": "2027-03-10",
-      "local_name": "Id el Fitr (estimated)",
-      "english_name": "Id el Fitr (estimated)",
-      "category": "national_holiday",
+      "event_date": "2027-03-11",
+      "local_name": "Id el Fitr Holiday (estimated)",
+      "english_name": "Id el Fitr Holiday (estimated)",
+      "category": "religious_cultural",
       "source": "holidays library (python \"holidays\" package 0.108) country_holidays('NG', 2027)",
       "verified_at": "",
       "region": "",
       "timezone": "Africa/Lagos",
-      "cultural_context": "",
-      "commercial_relevance": "Commercial relevance not pre-rated; scored per-event by the opportunity engine.",
-      "hemisphere": "N",
-      "days_out": 120,
-      "threshold_days": 120,
-      "urgency": "ok",
-      "thresholds_crossed": [
-        120
-      ],
-      "catch_up": false
-    },
-    {
-      "country": "EG",
-      "event_date": "2027-03-10",
-      "local_name": "عيد الفطر المبارك (تقديري)",
-      "english_name": "عيد الفطر المبارك (تقديري)",
-      "category": "national_holiday",
-      "source": "holidays library (python \"holidays\" package 0.108) country_holidays('EG', 2027)",
-      "verified_at": "",
-      "region": "",
-      "timezone": "Africa/Cairo",
-      "cultural_context": "",
+      "cultural_context": "Hindu festival of colors/spring; colored powder, water play, community gathering.",
       "commercial_relevance": "Commercial relevance not pre-rated; scored per-event by the opportunity engine.",
       "hemisphere": "N",
       "days_out": 120,
@@ -913,9 +829,9 @@
     },
     {
       "country": "KR",
-      "event_date": "2027-02-08",
-      "local_name": "설날 다음날",
-      "english_name": "설날 다음날",
+      "event_date": "2027-02-09",
+      "local_name": "설날 대체 휴일",
+      "english_name": "설날 대체 휴일",
       "category": "national_holiday",
       "source": "holidays library (python \"holidays\" package 0.108) country_holidays('KR', 2027)",
       "verified_at": "",
@@ -931,57 +847,15 @@
         90
       ],
       "catch_up": false
-    },
-    {
-      "country": "TH",
-      "event_date": "2027-01-09",
-      "local_name": "วันเด็กแห่งชาติ",
-      "english_name": "วันเด็กแห่งชาติ",
-      "category": "national_holiday",
-      "source": "holidays library (python \"holidays\" package 0.108) country_holidays('TH', 2027)",
-      "verified_at": "",
-      "region": "",
-      "timezone": "Asia/Bangkok",
-      "cultural_context": "",
-      "commercial_relevance": "Commercial relevance not pre-rated; scored per-event by the opportunity engine.",
-      "hemisphere": "N",
-      "days_out": 60,
-      "threshold_days": 60,
-      "urgency": "urgent",
-      "thresholds_crossed": [
-        60
-      ],
-      "catch_up": false
-    },
-    {
-      "country": "NZ",
-      "event_date": "2027-02-08",
-      "local_name": "Waitangi Day (observed)",
-      "english_name": "Waitangi Day (observed)",
-      "category": "national_holiday",
-      "source": "holidays library (python \"holidays\" package 0.108) country_holidays('NZ', 2027)",
-      "verified_at": "",
-      "region": "",
-      "timezone": "Pacific/Auckland",
-      "cultural_context": "",
-      "commercial_relevance": "Commercial relevance not pre-rated; scored per-event by the opportunity engine.",
-      "hemisphere": "S",
-      "days_out": 90,
-      "threshold_days": 90,
-      "urgency": "ok",
-      "thresholds_crossed": [
-        90
-      ],
-      "catch_up": false
     }
   ],
   "alert_state": {
     "history_file": "state/intelligence/alert_history.json",
     "history_load_status": "loaded",
-    "last_successful_scan_date": "2026-11-10",
-    "previous_scan_date": "2026-11-09",
+    "last_successful_scan_date": "2026-11-11",
+    "previous_scan_date": "2026-11-10",
     "scan_gap_days": 1,
-    "events_tracked": 415,
+    "events_tracked": 417,
     "production_status_source": "none wired -- every event reports production_status=\"unknown\" unless alert_history.set_production_status() recorded one"
   },
   "missed_opportunities": [],
@@ -1472,54 +1346,6 @@
         "portfolio_coverage: not_computed (excluded from total)",
         "historical_download_performance: unavailable (excluded from total)",
         "TOTAL = 0.672 (demand basis: calendar_predicted_demand)"
-      ]
-    },
-    {
-      "event": {
-        "country": "ID",
-        "event_date": "2027-01-05",
-        "local_name": "Isra Mikraj Nabi Muhammad",
-        "english_name": "Isra Mikraj Nabi Muhammad",
-        "category": "national_holiday",
-        "source": "holidays library (python \"holidays\" package 0.108) country_holidays('ID', 2027)",
-        "verified_at": "",
-        "region": "",
-        "timezone": "Asia/Jakarta",
-        "cultural_context": "",
-        "commercial_relevance": "Commercial relevance not pre-rated; scored per-event by the opportunity engine.",
-        "hemisphere": "S"
-      },
-      "total_score": 0.6506,
-      "demand_basis": "calendar_predicted_demand",
-      "competition_basis": "no_supply_data_available",
-      "schedule": {
-        "event_date": "2027-01-05",
-        "buyer_ready_date": "2026-12-15",
-        "submission_deadline": "2026-11-10",
-        "production_deadline": "2026-11-08",
-        "production_start": "2026-10-25",
-        "status": "compressed"
-      },
-      "factors": {
-        "market_size": 0.4,
-        "demand_evidence": 0.6,
-        "seasonal_urgency": 1.0,
-        "competition_gap": 0.5,
-        "buyer_intent": 0.7,
-        "cultural_accuracy_risk": 0.7,
-        "portfolio_coverage": "not_computed",
-        "historical_download_performance": "unavailable"
-      },
-      "explanation": [
-        "market_size: value=0.40 weight=0.12",
-        "demand_evidence: value=0.60 weight=0.25",
-        "seasonal_urgency: value=1.00 weight=0.15",
-        "competition_gap: value=0.50 weight=0.13",
-        "buyer_intent: value=0.70 weight=0.12",
-        "cultural_accuracy_risk: value=0.70 weight=0.08",
-        "portfolio_coverage: not_computed (excluded from total)",
-        "historical_download_performance: unavailable (excluded from total)",
-        "TOTAL = 0.651 (demand basis: calendar_predicted_demand)"
       ]
     },
     {
@@ -2772,6 +2598,54 @@
     },
     {
       "event": {
+        "country": "TH",
+        "event_date": "2027-02-21",
+        "local_name": "วันมาฆบูชา",
+        "english_name": "วันมาฆบูชา",
+        "category": "national_holiday",
+        "source": "holidays library (python \"holidays\" package 0.108) country_holidays('TH', 2027)",
+        "verified_at": "",
+        "region": "",
+        "timezone": "Asia/Bangkok",
+        "cultural_context": "",
+        "commercial_relevance": "Commercial relevance not pre-rated; scored per-event by the opportunity engine.",
+        "hemisphere": "N"
+      },
+      "total_score": 0.6012,
+      "demand_basis": "calendar_predicted_demand",
+      "competition_basis": "no_supply_data_available",
+      "schedule": {
+        "event_date": "2027-02-21",
+        "buyer_ready_date": "2027-01-31",
+        "submission_deadline": "2026-12-27",
+        "production_deadline": "2026-12-25",
+        "production_start": "2026-12-11",
+        "status": "on_time"
+      },
+      "factors": {
+        "market_size": 0.3,
+        "demand_evidence": 0.6,
+        "seasonal_urgency": 0.8,
+        "competition_gap": 0.5,
+        "buyer_intent": 0.7,
+        "cultural_accuracy_risk": 0.7,
+        "portfolio_coverage": "not_computed",
+        "historical_download_performance": "unavailable"
+      },
+      "explanation": [
+        "market_size: value=0.30 weight=0.12",
+        "demand_evidence: value=0.60 weight=0.25",
+        "seasonal_urgency: value=0.80 weight=0.15",
+        "competition_gap: value=0.50 weight=0.13",
+        "buyer_intent: value=0.70 weight=0.12",
+        "cultural_accuracy_risk: value=0.70 weight=0.08",
+        "portfolio_coverage: not_computed (excluded from total)",
+        "historical_download_performance: unavailable (excluded from total)",
+        "TOTAL = 0.601 (demand basis: calendar_predicted_demand)"
+      ]
+    },
+    {
+      "event": {
         "country": "US",
         "event_date": "2027-05-31",
         "local_name": "Memorial Day",
@@ -3108,6 +2982,54 @@
     },
     {
       "event": {
+        "country": "US",
+        "event_date": "2027-11-11",
+        "local_name": "Veterans Day",
+        "english_name": "Veterans Day",
+        "category": "national_holiday",
+        "source": "holidays library (python \"holidays\" package 0.108) country_holidays('US', 2027)",
+        "verified_at": "",
+        "region": "",
+        "timezone": "America/New_York",
+        "cultural_context": "",
+        "commercial_relevance": "Commercial relevance not pre-rated; scored per-event by the opportunity engine.",
+        "hemisphere": "N"
+      },
+      "total_score": 0.5941,
+      "demand_basis": "calendar_predicted_demand",
+      "competition_basis": "no_supply_data_available",
+      "schedule": {
+        "event_date": "2027-11-11",
+        "buyer_ready_date": "2027-10-21",
+        "submission_deadline": "2027-09-16",
+        "production_deadline": "2027-09-14",
+        "production_start": "2027-08-31",
+        "status": "on_time"
+      },
+      "factors": {
+        "market_size": 1.0,
+        "demand_evidence": 0.6,
+        "seasonal_urgency": 0.2,
+        "competition_gap": 0.5,
+        "buyer_intent": 0.7,
+        "cultural_accuracy_risk": 0.7,
+        "portfolio_coverage": "not_computed",
+        "historical_download_performance": "unavailable"
+      },
+      "explanation": [
+        "market_size: value=1.00 weight=0.12",
+        "demand_evidence: value=0.60 weight=0.25",
+        "seasonal_urgency: value=0.20 weight=0.15",
+        "competition_gap: value=0.50 weight=0.13",
+        "buyer_intent: value=0.70 weight=0.12",
+        "cultural_accuracy_risk: value=0.70 weight=0.08",
+        "portfolio_coverage: not_computed (excluded from total)",
+        "historical_download_performance: unavailable (excluded from total)",
+        "TOTAL = 0.594 (demand basis: calendar_predicted_demand)"
+      ]
+    },
+    {
+      "event": {
         "country": "AR",
         "event_date": "2027-02-08",
         "local_name": "Lunes de Carnaval",
@@ -3322,54 +3244,6 @@
         "submission_deadline": "2026-12-12",
         "production_deadline": "2026-12-10",
         "production_start": "2026-11-26",
-        "status": "on_time"
-      },
-      "factors": {
-        "market_size": 0.2,
-        "demand_evidence": 0.6,
-        "seasonal_urgency": 0.8,
-        "competition_gap": 0.5,
-        "buyer_intent": 0.7,
-        "cultural_accuracy_risk": 0.7,
-        "portfolio_coverage": "not_computed",
-        "historical_download_performance": "unavailable"
-      },
-      "explanation": [
-        "market_size: value=0.20 weight=0.12",
-        "demand_evidence: value=0.60 weight=0.25",
-        "seasonal_urgency: value=0.80 weight=0.15",
-        "competition_gap: value=0.50 weight=0.13",
-        "buyer_intent: value=0.70 weight=0.12",
-        "cultural_accuracy_risk: value=0.70 weight=0.08",
-        "portfolio_coverage: not_computed (excluded from total)",
-        "historical_download_performance: unavailable (excluded from total)",
-        "TOTAL = 0.587 (demand basis: calendar_predicted_demand)"
-      ]
-    },
-    {
-      "event": {
-        "country": "NZ",
-        "event_date": "2027-02-08",
-        "local_name": "Waitangi Day (observed)",
-        "english_name": "Waitangi Day (observed)",
-        "category": "national_holiday",
-        "source": "holidays library (python \"holidays\" package 0.108) country_holidays('NZ', 2027)",
-        "verified_at": "",
-        "region": "",
-        "timezone": "Pacific/Auckland",
-        "cultural_context": "",
-        "commercial_relevance": "Commercial relevance not pre-rated; scored per-event by the opportunity engine.",
-        "hemisphere": "S"
-      },
-      "total_score": 0.5871,
-      "demand_basis": "calendar_predicted_demand",
-      "competition_basis": "no_supply_data_available",
-      "schedule": {
-        "event_date": "2027-02-08",
-        "buyer_ready_date": "2027-01-18",
-        "submission_deadline": "2026-12-14",
-        "production_deadline": "2026-12-12",
-        "production_start": "2026-11-28",
         "status": "on_time"
       },
       "factors": {
@@ -4886,6 +4760,54 @@
     },
     {
       "event": {
+        "country": "ID",
+        "event_date": "2027-01-05",
+        "local_name": "Isra Mikraj Nabi Muhammad",
+        "english_name": "Isra Mikraj Nabi Muhammad",
+        "category": "national_holiday",
+        "source": "holidays library (python \"holidays\" package 0.108) country_holidays('ID', 2027)",
+        "verified_at": "",
+        "region": "",
+        "timezone": "Asia/Jakarta",
+        "cultural_context": "",
+        "commercial_relevance": "Commercial relevance not pre-rated; scored per-event by the opportunity engine.",
+        "hemisphere": "S"
+      },
+      "total_score": 0.4741,
+      "demand_basis": "calendar_predicted_demand",
+      "competition_basis": "no_supply_data_available",
+      "schedule": {
+        "event_date": "2027-01-05",
+        "buyer_ready_date": "2026-12-15",
+        "submission_deadline": "2026-11-10",
+        "production_deadline": "2026-11-08",
+        "production_start": "2026-10-25",
+        "status": "late"
+      },
+      "factors": {
+        "market_size": 0.4,
+        "demand_evidence": 0.6,
+        "seasonal_urgency": 0.0,
+        "competition_gap": 0.5,
+        "buyer_intent": 0.7,
+        "cultural_accuracy_risk": 0.7,
+        "portfolio_coverage": "not_computed",
+        "historical_download_performance": "unavailable"
+      },
+      "explanation": [
+        "market_size: value=0.40 weight=0.12",
+        "demand_evidence: value=0.60 weight=0.25",
+        "seasonal_urgency: value=0.00 weight=0.15",
+        "competition_gap: value=0.50 weight=0.13",
+        "buyer_intent: value=0.70 weight=0.12",
+        "cultural_accuracy_risk: value=0.70 weight=0.08",
+        "portfolio_coverage: not_computed (excluded from total)",
+        "historical_download_performance: unavailable (excluded from total)",
+        "TOTAL = 0.474 (demand basis: calendar_predicted_demand)"
+      ]
+    },
+    {
+      "event": {
         "country": "CA",
         "event_date": "2027-01-01",
         "local_name": "New Year's Day",
@@ -5747,57 +5669,9 @@
         "historical_download_performance: unavailable (excluded from total)",
         "TOTAL = 0.460 (demand basis: calendar_predicted_demand)"
       ]
-    },
-    {
-      "event": {
-        "country": "TH",
-        "event_date": "2026-12-05",
-        "local_name": "วันคล้ายวันเฉลิมพระชนมพรรษาพระบาทสมเด็จพระบรมชนกาธิเบศร มหาภูมิพลอดุลยเดชมหาราช บรมนาถบพิตร; วันชาติ; วันพ่อแห่งชาติ",
-        "english_name": "วันคล้ายวันเฉลิมพระชนมพรรษาพระบาทสมเด็จพระบรมชนกาธิเบศร มหาภูมิพลอดุลยเดชมหาราช บรมนาถบพิตร; วันชาติ; วันพ่อแห่งชาติ",
-        "category": "national_holiday",
-        "source": "holidays library (python \"holidays\" package 0.108) country_holidays('TH', 2026)",
-        "verified_at": "",
-        "region": "",
-        "timezone": "Asia/Bangkok",
-        "cultural_context": "",
-        "commercial_relevance": "Commercial relevance not pre-rated; scored per-event by the opportunity engine.",
-        "hemisphere": "N"
-      },
-      "total_score": 0.46,
-      "demand_basis": "calendar_predicted_demand",
-      "competition_basis": "no_supply_data_available",
-      "schedule": {
-        "event_date": "2026-12-05",
-        "buyer_ready_date": "2026-11-14",
-        "submission_deadline": "2026-10-10",
-        "production_deadline": "2026-10-08",
-        "production_start": "2026-09-24",
-        "status": "late"
-      },
-      "factors": {
-        "market_size": 0.3,
-        "demand_evidence": 0.6,
-        "seasonal_urgency": 0.0,
-        "competition_gap": 0.5,
-        "buyer_intent": 0.7,
-        "cultural_accuracy_risk": 0.7,
-        "portfolio_coverage": "not_computed",
-        "historical_download_performance": "unavailable"
-      },
-      "explanation": [
-        "market_size: value=0.30 weight=0.12",
-        "demand_evidence: value=0.60 weight=0.25",
-        "seasonal_urgency: value=0.00 weight=0.15",
-        "competition_gap: value=0.50 weight=0.13",
-        "buyer_intent: value=0.70 weight=0.12",
-        "cultural_accuracy_risk: value=0.70 weight=0.08",
-        "portfolio_coverage: not_computed (excluded from total)",
-        "historical_download_performance: unavailable (excluded from total)",
-        "TOTAL = 0.460 (demand basis: calendar_predicted_demand)"
-      ]
     }
   ],
-  "late_opportunities_total": 85,
+  "late_opportunities_total": 86,
   "creative_briefs": [
     {
       "event_country": "US",
@@ -6322,64 +6196,6 @@
       ],
       "target_platform": "adobe_and_magnific",
       "opportunity_score": 0.6718,
-      "production_pipeline_status": "planned_blocked",
-      "production_pipeline_note": "planning only: no pipeline consumes VECTOR_EPS briefs; creative vector generation is blocked (procedural icons/patterns only)"
-    },
-    {
-      "event_country": "ID",
-      "event_name": "Isra Mikraj Nabi Muhammad",
-      "event_date": "2027-01-05",
-      "format": "PHOTO_JPG",
-      "demand_evidence": "calendar_predicted_demand (score 0.65/1.0, see factors)",
-      "demand_source": "holidays library (python \"holidays\" package 0.108) country_holidays('ID', 2027)",
-      "buyer_ready_date": "2026-12-15",
-      "submission_deadline": "2026-11-10",
-      "production_start": "2026-10-25",
-      "production_deadline": "2026-11-08",
-      "schedule_status": "compressed",
-      "creative_concept": "Documentary-style photograph capturing: Scene built around Isra Mikraj Nabi Muhammad. Natural light, authentic unposed moment, no readable text/logos.",
-      "differentiation_strategy": "Specific, culturally-accurate scene (named local custom/detail) rather than a generic/stock-looking holiday scene; avoid duplicating the static topic bank.",
-      "quantity_recommendation": 6,
-      "qc_ip_risk_notes": "Standard IP/QC checklist applies (no logos/text/brand references).",
-      "title": "Isra Mikraj Nabi Muhammad themed photograph",
-      "keywords": [
-        "isra",
-        "mikraj",
-        "nabi",
-        "muhammad",
-        "national holiday"
-      ],
-      "target_platform": "adobe_and_magnific",
-      "opportunity_score": 0.6506,
-      "production_pipeline_status": "active",
-      "production_pipeline_note": "consumed by trends.py -> photo generation pipeline"
-    },
-    {
-      "event_country": "ID",
-      "event_name": "Isra Mikraj Nabi Muhammad",
-      "event_date": "2027-01-05",
-      "format": "VECTOR_EPS",
-      "demand_evidence": "calendar_predicted_demand (score 0.65/1.0, see factors)",
-      "demand_source": "holidays library (python \"holidays\" package 0.108) country_holidays('ID', 2027)",
-      "buyer_ready_date": "2026-12-15",
-      "submission_deadline": "2026-11-10",
-      "production_start": "2026-10-25",
-      "production_deadline": "2026-11-08",
-      "schedule_status": "compressed",
-      "creative_concept": "Flat/vector illustration capturing: Scene built around Isra Mikraj Nabi Muhammad. Clean editable paths, no raster embeds, no live-traced photo.",
-      "differentiation_strategy": "Specific, culturally-accurate scene (named local custom/detail) rather than a generic/stock-looking holiday scene; avoid duplicating the static topic bank.",
-      "quantity_recommendation": 6,
-      "qc_ip_risk_notes": "Standard IP/QC checklist applies (no logos/text/brand references).",
-      "title": "Isra Mikraj Nabi Muhammad themed vector illustration",
-      "keywords": [
-        "isra",
-        "mikraj",
-        "nabi",
-        "muhammad",
-        "national holiday"
-      ],
-      "target_platform": "adobe_and_magnific",
-      "opportunity_score": 0.6506,
       "production_pipeline_status": "planned_blocked",
       "production_pipeline_note": "planning only: no pipeline consumes VECTOR_EPS briefs; creative vector generation is blocked (procedural icons/patterns only)"
     },
@@ -7134,6 +6950,62 @@
       "keywords": [
         "good",
         "friday",
+        "national holiday"
+      ],
+      "target_platform": "adobe_and_magnific",
+      "opportunity_score": 0.6082,
+      "production_pipeline_status": "planned_blocked",
+      "production_pipeline_note": "planning only: no pipeline consumes VECTOR_EPS briefs; creative vector generation is blocked (procedural icons/patterns only)"
+    },
+    {
+      "event_country": "IN",
+      "event_name": "Dr. B. R. Ambedkar's Jayanti",
+      "event_date": "2027-04-14",
+      "format": "PHOTO_JPG",
+      "demand_evidence": "calendar_predicted_demand (score 0.61/1.0, see factors)",
+      "demand_source": "holidays library (python \"holidays\" package 0.108) country_holidays('IN', 2027)",
+      "buyer_ready_date": "2027-03-24",
+      "submission_deadline": "2027-02-17",
+      "production_start": "2027-02-01",
+      "production_deadline": "2027-02-15",
+      "schedule_status": "on_time",
+      "creative_concept": "Documentary-style photograph capturing: Scene built around Dr. B. R. Ambedkar's Jayanti. Natural light, authentic unposed moment, no readable text/logos.",
+      "differentiation_strategy": "Specific, culturally-accurate scene (named local custom/detail) rather than a generic/stock-looking holiday scene; avoid duplicating the static topic bank.",
+      "quantity_recommendation": 6,
+      "qc_ip_risk_notes": "Standard IP/QC checklist applies (no logos/text/brand references).",
+      "title": "Dr. B. R. Ambedkar's Jayanti themed photograph",
+      "keywords": [
+        "dr.",
+        "ambedkar's",
+        "jayanti",
+        "national holiday"
+      ],
+      "target_platform": "adobe_and_magnific",
+      "opportunity_score": 0.6082,
+      "production_pipeline_status": "active",
+      "production_pipeline_note": "consumed by trends.py -> photo generation pipeline"
+    },
+    {
+      "event_country": "IN",
+      "event_name": "Dr. B. R. Ambedkar's Jayanti",
+      "event_date": "2027-04-14",
+      "format": "VECTOR_EPS",
+      "demand_evidence": "calendar_predicted_demand (score 0.61/1.0, see factors)",
+      "demand_source": "holidays library (python \"holidays\" package 0.108) country_holidays('IN', 2027)",
+      "buyer_ready_date": "2027-03-24",
+      "submission_deadline": "2027-02-17",
+      "production_start": "2027-02-01",
+      "production_deadline": "2027-02-15",
+      "schedule_status": "on_time",
+      "creative_concept": "Flat/vector illustration capturing: Scene built around Dr. B. R. Ambedkar's Jayanti. Clean editable paths, no raster embeds, no live-traced photo.",
+      "differentiation_strategy": "Specific, culturally-accurate scene (named local custom/detail) rather than a generic/stock-looking holiday scene; avoid duplicating the static topic bank.",
+      "quantity_recommendation": 6,
+      "qc_ip_risk_notes": "Standard IP/QC checklist applies (no logos/text/brand references).",
+      "title": "Dr. B. R. Ambedkar's Jayanti themed vector illustration",
+      "keywords": [
+        "dr.",
+        "ambedkar's",
+        "jayanti",
         "national holiday"
       ],
       "target_platform": "adobe_and_magnific",

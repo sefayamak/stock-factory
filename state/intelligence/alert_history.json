@@ -208,7 +208,8 @@
     },
     "AR:2027-02-09:martes de carnaval": {
       "alerted_thresholds": [
-        120
+        120,
+        90
       ],
       "alerts": [
         {
@@ -216,6 +217,13 @@
           "date": "2026-11-04",
           "thresholds": [
             120
+          ]
+        },
+        {
+          "catch_up": false,
+          "date": "2026-11-11",
+          "thresholds": [
+            90
           ]
         }
       ],
@@ -914,7 +922,8 @@
     },
     "CN:2027-02-09:春节（补假）": {
       "alerted_thresholds": [
-        120
+        120,
+        90
       ],
       "alerts": [
         {
@@ -922,6 +931,13 @@
           "date": "2026-11-04",
           "thresholds": [
             120
+          ]
+        },
+        {
+          "catch_up": false,
+          "date": "2026-11-11",
+          "thresholds": [
+            90
           ]
         }
       ],
@@ -1836,6 +1852,18 @@
       "missed_reported_on": null,
       "production_status": "unknown"
     },
+    "FR:2027-11-11:armistice": {
+      "alerted_thresholds": [],
+      "alerts": [],
+      "event": {
+        "country": "FR",
+        "english_name": "Armistice",
+        "event_date": "2027-11-11"
+      },
+      "first_seen": "2026-11-11",
+      "missed_reported_on": null,
+      "production_status": "unknown"
+    },
     "GB:2026-12-25:christmas day": {
       "alerted_thresholds": [
         120,
@@ -2661,8 +2689,18 @@
       "production_status": "unknown"
     },
     "ID:2027-03-11:hari kedua dari hari raya idul fitri (perkiraan)": {
-      "alerted_thresholds": [],
-      "alerts": [],
+      "alerted_thresholds": [
+        120
+      ],
+      "alerts": [
+        {
+          "catch_up": false,
+          "date": "2026-11-11",
+          "thresholds": [
+            120
+          ]
+        }
+      ],
       "event": {
         "country": "ID",
         "english_name": "Hari kedua dari Hari Raya Idul Fitri (perkiraan)",
@@ -3028,7 +3066,8 @@
       "alerted_thresholds": [
         120,
         90,
-        60
+        60,
+        30
       ],
       "alerts": [
         {
@@ -3038,6 +3077,13 @@
             120,
             90,
             60
+          ]
+        },
+        {
+          "catch_up": false,
+          "date": "2026-11-11",
+          "thresholds": [
+            30
           ]
         }
       ],
@@ -3859,8 +3905,18 @@
       "production_status": "unknown"
     },
     "IR:2027-03-11:تعطیل به مناسبت عید سعید فطر (تخمینی)": {
-      "alerted_thresholds": [],
-      "alerts": [],
+      "alerted_thresholds": [
+        120
+      ],
+      "alerts": [
+        {
+          "catch_up": false,
+          "date": "2026-11-11",
+          "thresholds": [
+            120
+          ]
+        }
+      ],
       "event": {
         "country": "IR",
         "english_name": "تعطیل به مناسبت عید سعید فطر (تخمینی)",
@@ -4772,7 +4828,8 @@
     },
     "KR:2027-02-09:설날 대체 휴일": {
       "alerted_thresholds": [
-        120
+        120,
+        90
       ],
       "alerts": [
         {
@@ -4780,6 +4837,13 @@
           "date": "2026-11-04",
           "thresholds": [
             120
+          ]
+        },
+        {
+          "catch_up": false,
+          "date": "2026-11-11",
+          "thresholds": [
+            90
           ]
         }
       ],
@@ -5273,8 +5337,18 @@
       "production_status": "unknown"
     },
     "NG:2027-03-11:id el fitr holiday (estimated)": {
-      "alerted_thresholds": [],
-      "alerts": [],
+      "alerted_thresholds": [
+        120
+      ],
+      "alerts": [
+        {
+          "catch_up": false,
+          "date": "2026-11-11",
+          "thresholds": [
+            120
+          ]
+        }
+      ],
       "event": {
         "country": "NG",
         "english_name": "Id el Fitr Holiday (estimated)",
@@ -5801,8 +5875,18 @@
       "production_status": "unknown"
     },
     "SA:2027-03-11:عطلة عيد الفطر": {
-      "alerted_thresholds": [],
-      "alerts": [],
+      "alerted_thresholds": [
+        120
+      ],
+      "alerts": [
+        {
+          "catch_up": false,
+          "date": "2026-11-11",
+          "thresholds": [
+            120
+          ]
+        }
+      ],
       "event": {
         "country": "SA",
         "english_name": "عطلة عيد الفطر",
@@ -6413,8 +6497,18 @@
       "production_status": "unknown"
     },
     "TR:2027-03-11:ramazan bayramı": {
-      "alerted_thresholds": [],
-      "alerts": [],
+      "alerted_thresholds": [
+        120
+      ],
+      "alerts": [
+        {
+          "catch_up": false,
+          "date": "2026-11-11",
+          "thresholds": [
+            120
+          ]
+        }
+      ],
       "event": {
         "country": "TR",
         "english_name": "Ramazan Bayramı",
@@ -6826,6 +6920,18 @@
       "missed_reported_on": null,
       "production_status": "unknown"
     },
+    "US:2027-11-11:veterans day": {
+      "alerted_thresholds": [],
+      "alerts": [],
+      "event": {
+        "country": "US",
+        "english_name": "Veterans Day",
+        "event_date": "2027-11-11"
+      },
+      "first_seen": "2026-11-11",
+      "missed_reported_on": null,
+      "production_status": "unknown"
+    },
     "ZA:2026-11-04:local government elections": {
       "alerted_thresholds": [
         120,
@@ -7067,7 +7173,7 @@
       "production_status": "unknown"
     }
   },
-  "last_successful_scan_date": "2026-11-10",
-  "previous_scan_date": "2026-11-09",
+  "last_successful_scan_date": "2026-11-11",
+  "previous_scan_date": "2026-11-10",
   "schema_version": 1
 }
