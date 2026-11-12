@@ -952,7 +952,8 @@
     },
     "CN:2027-02-10:春节（补假）": {
       "alerted_thresholds": [
-        120
+        120,
+        90
       ],
       "alerts": [
         {
@@ -960,6 +961,13 @@
           "date": "2026-11-04",
           "thresholds": [
             120
+          ]
+        },
+        {
+          "catch_up": false,
+          "date": "2026-11-12",
+          "thresholds": [
+            90
           ]
         }
       ],
@@ -3100,7 +3108,8 @@
       "alerted_thresholds": [
         120,
         90,
-        60
+        60,
+        30
       ],
       "alerts": [
         {
@@ -3110,6 +3119,13 @@
             120,
             90,
             60
+          ]
+        },
+        {
+          "catch_up": false,
+          "date": "2026-11-12",
+          "thresholds": [
+            30
           ]
         }
       ],
@@ -4475,7 +4491,8 @@
     "JP:2027-01-11:成人の日": {
       "alerted_thresholds": [
         120,
-        90
+        90,
+        60
       ],
       "alerts": [
         {
@@ -4484,6 +4501,13 @@
           "thresholds": [
             120,
             90
+          ]
+        },
+        {
+          "catch_up": false,
+          "date": "2026-11-12",
+          "thresholds": [
+            60
           ]
         }
       ],
@@ -5897,8 +5921,18 @@
       "production_status": "unknown"
     },
     "SA:2027-03-12:عطلة عيد الفطر": {
-      "alerted_thresholds": [],
-      "alerts": [],
+      "alerted_thresholds": [
+        120
+      ],
+      "alerts": [
+        {
+          "catch_up": false,
+          "date": "2026-11-12",
+          "thresholds": [
+            120
+          ]
+        }
+      ],
       "event": {
         "country": "SA",
         "english_name": "عطلة عيد الفطر",
@@ -7173,7 +7207,7 @@
       "production_status": "unknown"
     }
   },
-  "last_successful_scan_date": "2026-11-11",
-  "previous_scan_date": "2026-11-10",
+  "last_successful_scan_date": "2026-11-12",
+  "previous_scan_date": "2026-11-11",
   "schema_version": 1
 }
