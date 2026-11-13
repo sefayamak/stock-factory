@@ -3856,7 +3856,8 @@
     },
     "IR:2027-02-11:پیروزی انقلاب اسلامی": {
       "alerted_thresholds": [
-        120
+        120,
+        90
       ],
       "alerts": [
         {
@@ -3864,6 +3865,13 @@
           "date": "2026-11-04",
           "thresholds": [
             120
+          ]
+        },
+        {
+          "catch_up": false,
+          "date": "2026-11-13",
+          "thresholds": [
+            90
           ]
         }
       ],
@@ -4522,7 +4530,8 @@
     },
     "JP:2027-02-11:建国記念の日": {
       "alerted_thresholds": [
-        120
+        120,
+        90
       ],
       "alerts": [
         {
@@ -4530,6 +4539,13 @@
           "date": "2026-11-04",
           "thresholds": [
             120
+          ]
+        },
+        {
+          "catch_up": false,
+          "date": "2026-11-13",
+          "thresholds": [
+            90
           ]
         }
       ],
@@ -7207,7 +7223,7 @@
       "production_status": "unknown"
     }
   },
-  "last_successful_scan_date": "2026-11-12",
-  "previous_scan_date": "2026-11-11",
+  "last_successful_scan_date": "2026-11-13",
+  "previous_scan_date": "2026-11-12",
   "schema_version": 1
 }
