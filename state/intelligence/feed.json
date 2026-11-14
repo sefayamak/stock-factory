@@ -1,10 +1,10 @@
 {
   "schema_version": 4,
-  "generated_at": "2026-11-13T14:28:55.024349+00:00",
-  "scan_date": "2026-11-13",
+  "generated_at": "2026-11-14T13:24:52.745576+00:00",
+  "scan_date": "2026-11-14",
   "horizon": {
-    "start": "2026-11-13",
-    "end": "2027-11-13",
+    "start": "2026-11-14",
+    "end": "2027-11-14",
     "days": 365,
     "calendar_years_generated": [
       2026,
@@ -14,7 +14,7 @@
   "provenance": {
     "generator": "stock_factory.trend_intelligence.scan",
     "git_sha": "ba4962cf5d05ed9eb28a64e599a2b6d4a6bf2cff",
-    "workflow_run_id": "43443032960",
+    "workflow_run_id": "43599613660",
     "workflow": "Stock Factory - global trend intelligence scan"
   },
   "countries_covered": [
@@ -629,8 +629,8 @@
     "note": "25 countries out of 501 the holidays library supports (and ~195 countries worldwide); plus GLOBAL UN observances and astronomical seasons."
   },
   "source_verification": {
-    "calendar_generated_on": "2026-11-13",
-    "feed_generated_at": "2026-11-13T14:28:55.024349+00:00",
+    "calendar_generated_on": "2026-11-14",
+    "feed_generated_at": "2026-11-14T13:24:52.745576+00:00",
     "holidays_library": {
       "version": "0.108",
       "method": "offline rule-based computation at scan time",
@@ -651,53 +651,32 @@
     "trend_adapters": "see adapter_status.<platform>.last_fetched_at / latest_observation_date"
   },
   "window_counts": {
-    "7": 5,
-    "30": 29,
-    "60": 90,
-    "90": 114,
+    "7": 4,
+    "30": 28,
+    "60": 89,
+    "90": 113,
     "180": 248,
     "365": 411
   },
   "alerts": [
     {
-      "country": "JP",
-      "event_date": "2027-02-11",
-      "local_name": "建国記念の日",
-      "english_name": "建国記念の日",
+      "country": "SA",
+      "event_date": "2027-03-14",
+      "local_name": "عطلة عيد الفطر (يوم تعويضي)",
+      "english_name": "عطلة عيد الفطر (يوم تعويضي)",
       "category": "national_holiday",
-      "source": "holidays library (python \"holidays\" package 0.108) country_holidays('JP', 2027)",
+      "source": "holidays library (python \"holidays\" package 0.108) country_holidays('SA', 2027)",
       "verified_at": "",
       "region": "",
-      "timezone": "Asia/Tokyo",
+      "timezone": "Asia/Riyadh",
       "cultural_context": "",
       "commercial_relevance": "Commercial relevance not pre-rated; scored per-event by the opportunity engine.",
       "hemisphere": "N",
-      "days_out": 90,
-      "threshold_days": 90,
+      "days_out": 120,
+      "threshold_days": 120,
       "urgency": "ok",
       "thresholds_crossed": [
-        90
-      ],
-      "catch_up": false
-    },
-    {
-      "country": "IR",
-      "event_date": "2027-02-11",
-      "local_name": "پیروزی انقلاب اسلامی",
-      "english_name": "پیروزی انقلاب اسلامی",
-      "category": "national_holiday",
-      "source": "holidays library (python \"holidays\" package 0.108) country_holidays('IR', 2027)",
-      "verified_at": "",
-      "region": "",
-      "timezone": "Asia/Tehran",
-      "cultural_context": "",
-      "commercial_relevance": "Commercial relevance not pre-rated; scored per-event by the opportunity engine.",
-      "hemisphere": "N",
-      "days_out": 90,
-      "threshold_days": 90,
-      "urgency": "ok",
-      "thresholds_crossed": [
-        90
+        120
       ],
       "catch_up": false
     }
@@ -705,10 +684,10 @@
   "alert_state": {
     "history_file": "state/intelligence/alert_history.json",
     "history_load_status": "loaded",
-    "last_successful_scan_date": "2026-11-13",
-    "previous_scan_date": "2026-11-12",
+    "last_successful_scan_date": "2026-11-14",
+    "previous_scan_date": "2026-11-13",
     "scan_gap_days": 1,
-    "events_tracked": 417,
+    "events_tracked": 418,
     "production_status_source": "none wired -- every event reports production_status=\"unknown\" unless alert_history.set_production_status() recorded one"
   },
   "missed_opportunities": [],
@@ -1204,6 +1183,54 @@
     {
       "event": {
         "country": "IN",
+        "event_date": "2027-03-26",
+        "local_name": "Good Friday",
+        "english_name": "Good Friday",
+        "category": "national_holiday",
+        "source": "holidays library (python \"holidays\" package 0.108) country_holidays('IN', 2027)",
+        "verified_at": "",
+        "region": "",
+        "timezone": "Asia/Kolkata",
+        "cultural_context": "",
+        "commercial_relevance": "Commercial relevance not pre-rated; scored per-event by the opportunity engine.",
+        "hemisphere": "N"
+      },
+      "total_score": 0.6435,
+      "demand_basis": "calendar_predicted_demand",
+      "competition_basis": "no_supply_data_available",
+      "schedule": {
+        "event_date": "2027-03-26",
+        "buyer_ready_date": "2027-03-05",
+        "submission_deadline": "2027-01-29",
+        "production_deadline": "2027-01-27",
+        "production_start": "2027-01-13",
+        "status": "on_time"
+      },
+      "factors": {
+        "market_size": 0.85,
+        "demand_evidence": 0.6,
+        "seasonal_urgency": 0.6,
+        "competition_gap": 0.5,
+        "buyer_intent": 0.7,
+        "cultural_accuracy_risk": 0.7,
+        "portfolio_coverage": "not_computed",
+        "historical_download_performance": "unavailable"
+      },
+      "explanation": [
+        "market_size: value=0.85 weight=0.12",
+        "demand_evidence: value=0.60 weight=0.25",
+        "seasonal_urgency: value=0.60 weight=0.15",
+        "competition_gap: value=0.50 weight=0.13",
+        "buyer_intent: value=0.70 weight=0.12",
+        "cultural_accuracy_risk: value=0.70 weight=0.08",
+        "portfolio_coverage: not_computed (excluded from total)",
+        "historical_download_performance: unavailable (excluded from total)",
+        "TOTAL = 0.644 (demand basis: calendar_predicted_demand)"
+      ]
+    },
+    {
+      "event": {
+        "country": "IN",
         "event_date": "2027-03-06",
         "local_name": "Maha Shivaratri",
         "english_name": "Maha Shivaratri",
@@ -1491,6 +1518,54 @@
     },
     {
       "event": {
+        "country": "IR",
+        "event_date": "2027-01-24",
+        "local_name": "ولادت حضرت قائم عجل الله تعالی فرجه و جشن نیمه شعبان (تخمینی)",
+        "english_name": "ولادت حضرت قائم عجل الله تعالی فرجه و جشن نیمه شعبان (تخمینی)",
+        "category": "national_holiday",
+        "source": "holidays library (python \"holidays\" package 0.108) country_holidays('IR', 2027)",
+        "verified_at": "",
+        "region": "",
+        "timezone": "Asia/Tehran",
+        "cultural_context": "",
+        "commercial_relevance": "Commercial relevance not pre-rated; scored per-event by the opportunity engine.",
+        "hemisphere": "N"
+      },
+      "total_score": 0.6224,
+      "demand_basis": "calendar_predicted_demand",
+      "competition_basis": "no_supply_data_available",
+      "schedule": {
+        "event_date": "2027-01-24",
+        "buyer_ready_date": "2027-01-03",
+        "submission_deadline": "2026-11-29",
+        "production_deadline": "2026-11-27",
+        "production_start": "2026-11-13",
+        "status": "compressed"
+      },
+      "factors": {
+        "market_size": 0.2,
+        "demand_evidence": 0.6,
+        "seasonal_urgency": 1.0,
+        "competition_gap": 0.5,
+        "buyer_intent": 0.7,
+        "cultural_accuracy_risk": 0.7,
+        "portfolio_coverage": "not_computed",
+        "historical_download_performance": "unavailable"
+      },
+      "explanation": [
+        "market_size: value=0.20 weight=0.12",
+        "demand_evidence: value=0.60 weight=0.25",
+        "seasonal_urgency: value=1.00 weight=0.15",
+        "competition_gap: value=0.50 weight=0.13",
+        "buyer_intent: value=0.70 weight=0.12",
+        "cultural_accuracy_risk: value=0.70 weight=0.08",
+        "portfolio_coverage: not_computed (excluded from total)",
+        "historical_download_performance: unavailable (excluded from total)",
+        "TOTAL = 0.622 (demand basis: calendar_predicted_demand)"
+      ]
+    },
+    {
+      "event": {
         "country": "CN",
         "event_date": "2027-04-05",
         "local_name": "清明节",
@@ -1679,54 +1754,6 @@
         "portfolio_coverage: not_computed (excluded from total)",
         "historical_download_performance: unavailable (excluded from total)",
         "TOTAL = 0.611 (demand basis: calendar_predicted_demand)"
-      ]
-    },
-    {
-      "event": {
-        "country": "IN",
-        "event_date": "2027-03-26",
-        "local_name": "Good Friday",
-        "english_name": "Good Friday",
-        "category": "national_holiday",
-        "source": "holidays library (python \"holidays\" package 0.108) country_holidays('IN', 2027)",
-        "verified_at": "",
-        "region": "",
-        "timezone": "Asia/Kolkata",
-        "cultural_context": "",
-        "commercial_relevance": "Commercial relevance not pre-rated; scored per-event by the opportunity engine.",
-        "hemisphere": "N"
-      },
-      "total_score": 0.6082,
-      "demand_basis": "calendar_predicted_demand",
-      "competition_basis": "no_supply_data_available",
-      "schedule": {
-        "event_date": "2027-03-26",
-        "buyer_ready_date": "2027-03-05",
-        "submission_deadline": "2027-01-29",
-        "production_deadline": "2027-01-27",
-        "production_start": "2027-01-13",
-        "status": "on_time"
-      },
-      "factors": {
-        "market_size": 0.85,
-        "demand_evidence": 0.6,
-        "seasonal_urgency": 0.4,
-        "competition_gap": 0.5,
-        "buyer_intent": 0.7,
-        "cultural_accuracy_risk": 0.7,
-        "portfolio_coverage": "not_computed",
-        "historical_download_performance": "unavailable"
-      },
-      "explanation": [
-        "market_size: value=0.85 weight=0.12",
-        "demand_evidence: value=0.60 weight=0.25",
-        "seasonal_urgency: value=0.40 weight=0.15",
-        "competition_gap: value=0.50 weight=0.13",
-        "buyer_intent: value=0.70 weight=0.12",
-        "cultural_accuracy_risk: value=0.70 weight=0.08",
-        "portfolio_coverage: not_computed (excluded from total)",
-        "historical_download_performance: unavailable (excluded from total)",
-        "TOTAL = 0.608 (demand basis: calendar_predicted_demand)"
       ]
     },
     {
@@ -2115,6 +2142,102 @@
     },
     {
       "event": {
+        "country": "GB",
+        "event_date": "2027-03-26",
+        "local_name": "Good Friday",
+        "english_name": "Good Friday",
+        "category": "national_holiday",
+        "source": "holidays library (python \"holidays\" package 0.108) country_holidays('GB', 2027)",
+        "verified_at": "",
+        "region": "",
+        "timezone": "Europe/London",
+        "cultural_context": "",
+        "commercial_relevance": "Commercial relevance not pre-rated; scored per-event by the opportunity engine.",
+        "hemisphere": "N"
+      },
+      "total_score": 0.6012,
+      "demand_basis": "calendar_predicted_demand",
+      "competition_basis": "no_supply_data_available",
+      "schedule": {
+        "event_date": "2027-03-26",
+        "buyer_ready_date": "2027-03-05",
+        "submission_deadline": "2027-01-29",
+        "production_deadline": "2027-01-27",
+        "production_start": "2027-01-13",
+        "status": "on_time"
+      },
+      "factors": {
+        "market_size": 0.55,
+        "demand_evidence": 0.6,
+        "seasonal_urgency": 0.6,
+        "competition_gap": 0.5,
+        "buyer_intent": 0.7,
+        "cultural_accuracy_risk": 0.7,
+        "portfolio_coverage": "not_computed",
+        "historical_download_performance": "unavailable"
+      },
+      "explanation": [
+        "market_size: value=0.55 weight=0.12",
+        "demand_evidence: value=0.60 weight=0.25",
+        "seasonal_urgency: value=0.60 weight=0.15",
+        "competition_gap: value=0.50 weight=0.13",
+        "buyer_intent: value=0.70 weight=0.12",
+        "cultural_accuracy_risk: value=0.70 weight=0.08",
+        "portfolio_coverage: not_computed (excluded from total)",
+        "historical_download_performance: unavailable (excluded from total)",
+        "TOTAL = 0.601 (demand basis: calendar_predicted_demand)"
+      ]
+    },
+    {
+      "event": {
+        "country": "DE",
+        "event_date": "2027-03-26",
+        "local_name": "Karfreitag",
+        "english_name": "Karfreitag",
+        "category": "national_holiday",
+        "source": "holidays library (python \"holidays\" package 0.108) country_holidays('DE', 2027)",
+        "verified_at": "",
+        "region": "",
+        "timezone": "Europe/Berlin",
+        "cultural_context": "",
+        "commercial_relevance": "Commercial relevance not pre-rated; scored per-event by the opportunity engine.",
+        "hemisphere": "N"
+      },
+      "total_score": 0.6012,
+      "demand_basis": "calendar_predicted_demand",
+      "competition_basis": "no_supply_data_available",
+      "schedule": {
+        "event_date": "2027-03-26",
+        "buyer_ready_date": "2027-03-05",
+        "submission_deadline": "2027-01-29",
+        "production_deadline": "2027-01-27",
+        "production_start": "2027-01-13",
+        "status": "on_time"
+      },
+      "factors": {
+        "market_size": 0.55,
+        "demand_evidence": 0.6,
+        "seasonal_urgency": 0.6,
+        "competition_gap": 0.5,
+        "buyer_intent": 0.7,
+        "cultural_accuracy_risk": 0.7,
+        "portfolio_coverage": "not_computed",
+        "historical_download_performance": "unavailable"
+      },
+      "explanation": [
+        "market_size: value=0.55 weight=0.12",
+        "demand_evidence: value=0.60 weight=0.25",
+        "seasonal_urgency: value=0.60 weight=0.15",
+        "competition_gap: value=0.50 weight=0.13",
+        "buyer_intent: value=0.70 weight=0.12",
+        "cultural_accuracy_risk: value=0.70 weight=0.08",
+        "portfolio_coverage: not_computed (excluded from total)",
+        "historical_download_performance: unavailable (excluded from total)",
+        "TOTAL = 0.601 (demand basis: calendar_predicted_demand)"
+      ]
+    },
+    {
+      "event": {
         "country": "JP",
         "event_date": "2027-03-21",
         "local_name": "春分の日",
@@ -2249,6 +2372,54 @@
         "market_size: value=0.30 weight=0.12",
         "demand_evidence: value=0.60 weight=0.25",
         "seasonal_urgency: value=0.80 weight=0.15",
+        "competition_gap: value=0.50 weight=0.13",
+        "buyer_intent: value=0.70 weight=0.12",
+        "cultural_accuracy_risk: value=0.70 weight=0.08",
+        "portfolio_coverage: not_computed (excluded from total)",
+        "historical_download_performance: unavailable (excluded from total)",
+        "TOTAL = 0.601 (demand basis: calendar_predicted_demand)"
+      ]
+    },
+    {
+      "event": {
+        "country": "BR",
+        "event_date": "2027-03-26",
+        "local_name": "Sexta-feira Santa",
+        "english_name": "Sexta-feira Santa",
+        "category": "national_holiday",
+        "source": "holidays library (python \"holidays\" package 0.108) country_holidays('BR', 2027)",
+        "verified_at": "",
+        "region": "",
+        "timezone": "America/Sao_Paulo",
+        "cultural_context": "",
+        "commercial_relevance": "Commercial relevance not pre-rated; scored per-event by the opportunity engine.",
+        "hemisphere": "S"
+      },
+      "total_score": 0.6012,
+      "demand_basis": "calendar_predicted_demand",
+      "competition_basis": "no_supply_data_available",
+      "schedule": {
+        "event_date": "2027-03-26",
+        "buyer_ready_date": "2027-03-05",
+        "submission_deadline": "2027-01-29",
+        "production_deadline": "2027-01-27",
+        "production_start": "2027-01-13",
+        "status": "on_time"
+      },
+      "factors": {
+        "market_size": 0.55,
+        "demand_evidence": 0.6,
+        "seasonal_urgency": 0.6,
+        "competition_gap": 0.5,
+        "buyer_intent": 0.7,
+        "cultural_accuracy_risk": 0.7,
+        "portfolio_coverage": "not_computed",
+        "historical_download_performance": "unavailable"
+      },
+      "explanation": [
+        "market_size: value=0.55 weight=0.12",
+        "demand_evidence: value=0.60 weight=0.25",
+        "seasonal_urgency: value=0.60 weight=0.15",
         "competition_gap: value=0.50 weight=0.13",
         "buyer_intent: value=0.70 weight=0.12",
         "cultural_accuracy_risk: value=0.70 weight=0.08",
@@ -2927,198 +3098,6 @@
         "portfolio_coverage: not_computed (excluded from total)",
         "historical_download_performance: unavailable (excluded from total)",
         "TOTAL = 0.587 (demand basis: calendar_predicted_demand)"
-      ]
-    },
-    {
-      "event": {
-        "country": "IR",
-        "event_date": "2027-01-24",
-        "local_name": "ولادت حضرت قائم عجل الله تعالی فرجه و جشن نیمه شعبان (تخمینی)",
-        "english_name": "ولادت حضرت قائم عجل الله تعالی فرجه و جشن نیمه شعبان (تخمینی)",
-        "category": "national_holiday",
-        "source": "holidays library (python \"holidays\" package 0.108) country_holidays('IR', 2027)",
-        "verified_at": "",
-        "region": "",
-        "timezone": "Asia/Tehran",
-        "cultural_context": "",
-        "commercial_relevance": "Commercial relevance not pre-rated; scored per-event by the opportunity engine.",
-        "hemisphere": "N"
-      },
-      "total_score": 0.5871,
-      "demand_basis": "calendar_predicted_demand",
-      "competition_basis": "no_supply_data_available",
-      "schedule": {
-        "event_date": "2027-01-24",
-        "buyer_ready_date": "2027-01-03",
-        "submission_deadline": "2026-11-29",
-        "production_deadline": "2026-11-27",
-        "production_start": "2026-11-13",
-        "status": "on_time"
-      },
-      "factors": {
-        "market_size": 0.2,
-        "demand_evidence": 0.6,
-        "seasonal_urgency": 0.8,
-        "competition_gap": 0.5,
-        "buyer_intent": 0.7,
-        "cultural_accuracy_risk": 0.7,
-        "portfolio_coverage": "not_computed",
-        "historical_download_performance": "unavailable"
-      },
-      "explanation": [
-        "market_size: value=0.20 weight=0.12",
-        "demand_evidence: value=0.60 weight=0.25",
-        "seasonal_urgency: value=0.80 weight=0.15",
-        "competition_gap: value=0.50 weight=0.13",
-        "buyer_intent: value=0.70 weight=0.12",
-        "cultural_accuracy_risk: value=0.70 weight=0.08",
-        "portfolio_coverage: not_computed (excluded from total)",
-        "historical_download_performance: unavailable (excluded from total)",
-        "TOTAL = 0.587 (demand basis: calendar_predicted_demand)"
-      ]
-    },
-    {
-      "event": {
-        "country": "NZ",
-        "event_date": "2027-02-06",
-        "local_name": "Waitangi Day",
-        "english_name": "Waitangi Day",
-        "category": "national_holiday",
-        "source": "holidays library (python \"holidays\" package 0.108) country_holidays('NZ', 2027)",
-        "verified_at": "",
-        "region": "",
-        "timezone": "Pacific/Auckland",
-        "cultural_context": "",
-        "commercial_relevance": "Commercial relevance not pre-rated; scored per-event by the opportunity engine.",
-        "hemisphere": "S"
-      },
-      "total_score": 0.5871,
-      "demand_basis": "calendar_predicted_demand",
-      "competition_basis": "no_supply_data_available",
-      "schedule": {
-        "event_date": "2027-02-06",
-        "buyer_ready_date": "2027-01-16",
-        "submission_deadline": "2026-12-12",
-        "production_deadline": "2026-12-10",
-        "production_start": "2026-11-26",
-        "status": "on_time"
-      },
-      "factors": {
-        "market_size": 0.2,
-        "demand_evidence": 0.6,
-        "seasonal_urgency": 0.8,
-        "competition_gap": 0.5,
-        "buyer_intent": 0.7,
-        "cultural_accuracy_risk": 0.7,
-        "portfolio_coverage": "not_computed",
-        "historical_download_performance": "unavailable"
-      },
-      "explanation": [
-        "market_size: value=0.20 weight=0.12",
-        "demand_evidence: value=0.60 weight=0.25",
-        "seasonal_urgency: value=0.80 weight=0.15",
-        "competition_gap: value=0.50 weight=0.13",
-        "buyer_intent: value=0.70 weight=0.12",
-        "cultural_accuracy_risk: value=0.70 weight=0.08",
-        "portfolio_coverage: not_computed (excluded from total)",
-        "historical_download_performance: unavailable (excluded from total)",
-        "TOTAL = 0.587 (demand basis: calendar_predicted_demand)"
-      ]
-    },
-    {
-      "event": {
-        "country": "NZ",
-        "event_date": "2027-02-08",
-        "local_name": "Waitangi Day (observed)",
-        "english_name": "Waitangi Day (observed)",
-        "category": "national_holiday",
-        "source": "holidays library (python \"holidays\" package 0.108) country_holidays('NZ', 2027)",
-        "verified_at": "",
-        "region": "",
-        "timezone": "Pacific/Auckland",
-        "cultural_context": "",
-        "commercial_relevance": "Commercial relevance not pre-rated; scored per-event by the opportunity engine.",
-        "hemisphere": "S"
-      },
-      "total_score": 0.5871,
-      "demand_basis": "calendar_predicted_demand",
-      "competition_basis": "no_supply_data_available",
-      "schedule": {
-        "event_date": "2027-02-08",
-        "buyer_ready_date": "2027-01-18",
-        "submission_deadline": "2026-12-14",
-        "production_deadline": "2026-12-12",
-        "production_start": "2026-11-28",
-        "status": "on_time"
-      },
-      "factors": {
-        "market_size": 0.2,
-        "demand_evidence": 0.6,
-        "seasonal_urgency": 0.8,
-        "competition_gap": 0.5,
-        "buyer_intent": 0.7,
-        "cultural_accuracy_risk": 0.7,
-        "portfolio_coverage": "not_computed",
-        "historical_download_performance": "unavailable"
-      },
-      "explanation": [
-        "market_size: value=0.20 weight=0.12",
-        "demand_evidence: value=0.60 weight=0.25",
-        "seasonal_urgency: value=0.80 weight=0.15",
-        "competition_gap: value=0.50 weight=0.13",
-        "buyer_intent: value=0.70 weight=0.12",
-        "cultural_accuracy_risk: value=0.70 weight=0.08",
-        "portfolio_coverage: not_computed (excluded from total)",
-        "historical_download_performance: unavailable (excluded from total)",
-        "TOTAL = 0.587 (demand basis: calendar_predicted_demand)"
-      ]
-    },
-    {
-      "event": {
-        "country": "IN",
-        "event_date": "2027-10-29",
-        "local_name": "Diwali (Deepavali)",
-        "english_name": "Diwali (Deepavali)",
-        "category": "religious_cultural",
-        "source": "holidays library (python \"holidays\" package 0.108) country_holidays('IN', 2027)",
-        "verified_at": "",
-        "region": "",
-        "timezone": "Asia/Kolkata",
-        "cultural_context": "Hindu/Jain/Sikh festival of lights; lamps, rangoli, fireworks, sweets, gifting.",
-        "commercial_relevance": "High historical commercial relevance for stock photo/vector demand (gifting, retail, food, family themes).",
-        "hemisphere": "N"
-      },
-      "total_score": 0.5847,
-      "demand_basis": "calendar_predicted_demand",
-      "competition_basis": "no_supply_data_available",
-      "schedule": {
-        "event_date": "2027-10-29",
-        "buyer_ready_date": "2027-10-08",
-        "submission_deadline": "2027-09-03",
-        "production_deadline": "2027-09-01",
-        "production_start": "2027-08-18",
-        "status": "on_time"
-      },
-      "factors": {
-        "market_size": 0.85,
-        "demand_evidence": 0.8,
-        "seasonal_urgency": 0.2,
-        "competition_gap": 0.5,
-        "buyer_intent": 0.7,
-        "cultural_accuracy_risk": 0.2,
-        "portfolio_coverage": "not_computed",
-        "historical_download_performance": "unavailable"
-      },
-      "explanation": [
-        "market_size: value=0.85 weight=0.12",
-        "demand_evidence: value=0.80 weight=0.25",
-        "seasonal_urgency: value=0.20 weight=0.15",
-        "competition_gap: value=0.50 weight=0.13",
-        "buyer_intent: value=0.70 weight=0.12",
-        "cultural_accuracy_risk: value=0.20 weight=0.08",
-        "portfolio_coverage: not_computed (excluded from total)",
-        "historical_download_performance: unavailable (excluded from total)",
-        "TOTAL = 0.585 (demand basis: calendar_predicted_demand)"
       ]
     }
   ],
@@ -5524,7 +5503,7 @@
       ]
     }
   ],
-  "late_opportunities_total": 88,
+  "late_opportunities_total": 87,
   "creative_briefs": [
     {
       "event_country": "US",
@@ -6054,6 +6033,60 @@
     },
     {
       "event_country": "IN",
+      "event_name": "Good Friday",
+      "event_date": "2027-03-26",
+      "format": "PHOTO_JPG",
+      "demand_evidence": "calendar_predicted_demand (score 0.64/1.0, see factors)",
+      "demand_source": "holidays library (python \"holidays\" package 0.108) country_holidays('IN', 2027)",
+      "buyer_ready_date": "2027-03-05",
+      "submission_deadline": "2027-01-29",
+      "production_start": "2027-01-13",
+      "production_deadline": "2027-01-27",
+      "schedule_status": "on_time",
+      "creative_concept": "Documentary-style photograph capturing: Scene built around Good Friday. Natural light, authentic unposed moment, no readable text/logos.",
+      "differentiation_strategy": "Specific, culturally-accurate scene (named local custom/detail) rather than a generic/stock-looking holiday scene; avoid duplicating the static topic bank.",
+      "quantity_recommendation": 6,
+      "qc_ip_risk_notes": "Standard IP/QC checklist applies (no logos/text/brand references).",
+      "title": "Good Friday themed photograph",
+      "keywords": [
+        "good",
+        "friday",
+        "national holiday"
+      ],
+      "target_platform": "adobe_and_magnific",
+      "opportunity_score": 0.6435,
+      "production_pipeline_status": "active",
+      "production_pipeline_note": "consumed by trends.py -> photo generation pipeline"
+    },
+    {
+      "event_country": "IN",
+      "event_name": "Good Friday",
+      "event_date": "2027-03-26",
+      "format": "VECTOR_EPS",
+      "demand_evidence": "calendar_predicted_demand (score 0.64/1.0, see factors)",
+      "demand_source": "holidays library (python \"holidays\" package 0.108) country_holidays('IN', 2027)",
+      "buyer_ready_date": "2027-03-05",
+      "submission_deadline": "2027-01-29",
+      "production_start": "2027-01-13",
+      "production_deadline": "2027-01-27",
+      "schedule_status": "on_time",
+      "creative_concept": "Flat/vector illustration capturing: Scene built around Good Friday. Clean editable paths, no raster embeds, no live-traced photo.",
+      "differentiation_strategy": "Specific, culturally-accurate scene (named local custom/detail) rather than a generic/stock-looking holiday scene; avoid duplicating the static topic bank.",
+      "quantity_recommendation": 6,
+      "qc_ip_risk_notes": "Standard IP/QC checklist applies (no logos/text/brand references).",
+      "title": "Good Friday themed vector illustration",
+      "keywords": [
+        "good",
+        "friday",
+        "national holiday"
+      ],
+      "target_platform": "adobe_and_magnific",
+      "opportunity_score": 0.6435,
+      "production_pipeline_status": "planned_blocked",
+      "production_pipeline_note": "planning only: no pipeline consumes VECTOR_EPS briefs; creative vector generation is blocked (procedural icons/patterns only)"
+    },
+    {
+      "event_country": "IN",
       "event_name": "Maha Shivaratri",
       "event_date": "2027-03-06",
       "format": "PHOTO_JPG",
@@ -6373,6 +6406,72 @@
       "production_pipeline_note": "planning only: no pipeline consumes VECTOR_EPS briefs; creative vector generation is blocked (procedural icons/patterns only)"
     },
     {
+      "event_country": "IR",
+      "event_name": "ولادت حضرت قائم عجل الله تعالی فرجه و جشن نیمه شعبان (تخمینی)",
+      "event_date": "2027-01-24",
+      "format": "PHOTO_JPG",
+      "demand_evidence": "calendar_predicted_demand (score 0.62/1.0, see factors)",
+      "demand_source": "holidays library (python \"holidays\" package 0.108) country_holidays('IR', 2027)",
+      "buyer_ready_date": "2027-01-03",
+      "submission_deadline": "2026-11-29",
+      "production_start": "2026-11-13",
+      "production_deadline": "2026-11-27",
+      "schedule_status": "compressed",
+      "creative_concept": "Documentary-style photograph capturing: Scene built around ولادت حضرت قائم عجل الله تعالی فرجه و جشن نیمه شعبان (تخمینی). Natural light, authentic unposed moment, no readable text/logos.",
+      "differentiation_strategy": "Specific, culturally-accurate scene (named local custom/detail) rather than a generic/stock-looking holiday scene; avoid duplicating the static topic bank.",
+      "quantity_recommendation": 6,
+      "qc_ip_risk_notes": "Standard IP/QC checklist applies (no logos/text/brand references).",
+      "title": "ولادت حضرت قائم عجل الله تعالی فرجه و جشن نیمه شعبان (تخمینی) themed photograph",
+      "keywords": [
+        "ولادت",
+        "حضرت",
+        "قائم",
+        "عجل",
+        "الله",
+        "تعالی",
+        "فرجه",
+        "جشن",
+        "national holiday"
+      ],
+      "target_platform": "adobe_and_magnific",
+      "opportunity_score": 0.6224,
+      "production_pipeline_status": "active",
+      "production_pipeline_note": "consumed by trends.py -> photo generation pipeline"
+    },
+    {
+      "event_country": "IR",
+      "event_name": "ولادت حضرت قائم عجل الله تعالی فرجه و جشن نیمه شعبان (تخمینی)",
+      "event_date": "2027-01-24",
+      "format": "VECTOR_EPS",
+      "demand_evidence": "calendar_predicted_demand (score 0.62/1.0, see factors)",
+      "demand_source": "holidays library (python \"holidays\" package 0.108) country_holidays('IR', 2027)",
+      "buyer_ready_date": "2027-01-03",
+      "submission_deadline": "2026-11-29",
+      "production_start": "2026-11-13",
+      "production_deadline": "2026-11-27",
+      "schedule_status": "compressed",
+      "creative_concept": "Flat/vector illustration capturing: Scene built around ولادت حضرت قائم عجل الله تعالی فرجه و جشن نیمه شعبان (تخمینی). Clean editable paths, no raster embeds, no live-traced photo.",
+      "differentiation_strategy": "Specific, culturally-accurate scene (named local custom/detail) rather than a generic/stock-looking holiday scene; avoid duplicating the static topic bank.",
+      "quantity_recommendation": 6,
+      "qc_ip_risk_notes": "Standard IP/QC checklist applies (no logos/text/brand references).",
+      "title": "ولادت حضرت قائم عجل الله تعالی فرجه و جشن نیمه شعبان (تخمینی) themed vector illustration",
+      "keywords": [
+        "ولادت",
+        "حضرت",
+        "قائم",
+        "عجل",
+        "الله",
+        "تعالی",
+        "فرجه",
+        "جشن",
+        "national holiday"
+      ],
+      "target_platform": "adobe_and_magnific",
+      "opportunity_score": 0.6224,
+      "production_pipeline_status": "planned_blocked",
+      "production_pipeline_note": "planning only: no pipeline consumes VECTOR_EPS briefs; creative vector generation is blocked (procedural icons/patterns only)"
+    },
+    {
       "event_country": "CN",
       "event_name": "清明节",
       "event_date": "2027-04-05",
@@ -6588,60 +6687,6 @@
     },
     {
       "event_country": "IN",
-      "event_name": "Good Friday",
-      "event_date": "2027-03-26",
-      "format": "PHOTO_JPG",
-      "demand_evidence": "calendar_predicted_demand (score 0.61/1.0, see factors)",
-      "demand_source": "holidays library (python \"holidays\" package 0.108) country_holidays('IN', 2027)",
-      "buyer_ready_date": "2027-03-05",
-      "submission_deadline": "2027-01-29",
-      "production_start": "2027-01-13",
-      "production_deadline": "2027-01-27",
-      "schedule_status": "on_time",
-      "creative_concept": "Documentary-style photograph capturing: Scene built around Good Friday. Natural light, authentic unposed moment, no readable text/logos.",
-      "differentiation_strategy": "Specific, culturally-accurate scene (named local custom/detail) rather than a generic/stock-looking holiday scene; avoid duplicating the static topic bank.",
-      "quantity_recommendation": 6,
-      "qc_ip_risk_notes": "Standard IP/QC checklist applies (no logos/text/brand references).",
-      "title": "Good Friday themed photograph",
-      "keywords": [
-        "good",
-        "friday",
-        "national holiday"
-      ],
-      "target_platform": "adobe_and_magnific",
-      "opportunity_score": 0.6082,
-      "production_pipeline_status": "active",
-      "production_pipeline_note": "consumed by trends.py -> photo generation pipeline"
-    },
-    {
-      "event_country": "IN",
-      "event_name": "Good Friday",
-      "event_date": "2027-03-26",
-      "format": "VECTOR_EPS",
-      "demand_evidence": "calendar_predicted_demand (score 0.61/1.0, see factors)",
-      "demand_source": "holidays library (python \"holidays\" package 0.108) country_holidays('IN', 2027)",
-      "buyer_ready_date": "2027-03-05",
-      "submission_deadline": "2027-01-29",
-      "production_start": "2027-01-13",
-      "production_deadline": "2027-01-27",
-      "schedule_status": "on_time",
-      "creative_concept": "Flat/vector illustration capturing: Scene built around Good Friday. Clean editable paths, no raster embeds, no live-traced photo.",
-      "differentiation_strategy": "Specific, culturally-accurate scene (named local custom/detail) rather than a generic/stock-looking holiday scene; avoid duplicating the static topic bank.",
-      "quantity_recommendation": 6,
-      "qc_ip_risk_notes": "Standard IP/QC checklist applies (no logos/text/brand references).",
-      "title": "Good Friday themed vector illustration",
-      "keywords": [
-        "good",
-        "friday",
-        "national holiday"
-      ],
-      "target_platform": "adobe_and_magnific",
-      "opportunity_score": 0.6082,
-      "production_pipeline_status": "planned_blocked",
-      "production_pipeline_note": "planning only: no pipeline consumes VECTOR_EPS briefs; creative vector generation is blocked (procedural icons/patterns only)"
-    },
-    {
-      "event_country": "IN",
       "event_name": "Dr. B. R. Ambedkar's Jayanti",
       "event_date": "2027-04-14",
       "format": "PHOTO_JPG",
@@ -6797,60 +6842,6 @@
       "keywords": [
         "mahavir",
         "jayanti",
-        "national holiday"
-      ],
-      "target_platform": "adobe_and_magnific",
-      "opportunity_score": 0.6082,
-      "production_pipeline_status": "planned_blocked",
-      "production_pipeline_note": "planning only: no pipeline consumes VECTOR_EPS briefs; creative vector generation is blocked (procedural icons/patterns only)"
-    },
-    {
-      "event_country": "AU",
-      "event_name": "Australia Day",
-      "event_date": "2027-01-26",
-      "format": "PHOTO_JPG",
-      "demand_evidence": "calendar_predicted_demand (score 0.61/1.0, see factors)",
-      "demand_source": "holidays library (python \"holidays\" package 0.108) country_holidays('AU', 2027)",
-      "buyer_ready_date": "2027-01-05",
-      "submission_deadline": "2026-12-01",
-      "production_start": "2026-11-15",
-      "production_deadline": "2026-11-29",
-      "schedule_status": "on_time",
-      "creative_concept": "Documentary-style photograph capturing: Scene built around Australia Day. Natural light, authentic unposed moment, no readable text/logos.",
-      "differentiation_strategy": "Specific, culturally-accurate scene (named local custom/detail) rather than a generic/stock-looking holiday scene; avoid duplicating the static topic bank.",
-      "quantity_recommendation": 6,
-      "qc_ip_risk_notes": "Standard IP/QC checklist applies (no logos/text/brand references).",
-      "title": "Australia Day themed photograph",
-      "keywords": [
-        "australia",
-        "day",
-        "national holiday"
-      ],
-      "target_platform": "adobe_and_magnific",
-      "opportunity_score": 0.6082,
-      "production_pipeline_status": "active",
-      "production_pipeline_note": "consumed by trends.py -> photo generation pipeline"
-    },
-    {
-      "event_country": "AU",
-      "event_name": "Australia Day",
-      "event_date": "2027-01-26",
-      "format": "VECTOR_EPS",
-      "demand_evidence": "calendar_predicted_demand (score 0.61/1.0, see factors)",
-      "demand_source": "holidays library (python \"holidays\" package 0.108) country_holidays('AU', 2027)",
-      "buyer_ready_date": "2027-01-05",
-      "submission_deadline": "2026-12-01",
-      "production_start": "2026-11-15",
-      "production_deadline": "2026-11-29",
-      "schedule_status": "on_time",
-      "creative_concept": "Flat/vector illustration capturing: Scene built around Australia Day. Clean editable paths, no raster embeds, no live-traced photo.",
-      "differentiation_strategy": "Specific, culturally-accurate scene (named local custom/detail) rather than a generic/stock-looking holiday scene; avoid duplicating the static topic bank.",
-      "quantity_recommendation": 6,
-      "qc_ip_risk_notes": "Standard IP/QC checklist applies (no logos/text/brand references).",
-      "title": "Australia Day themed vector illustration",
-      "keywords": [
-        "australia",
-        "day",
         "national holiday"
       ],
       "target_platform": "adobe_and_magnific",

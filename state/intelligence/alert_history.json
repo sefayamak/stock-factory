@@ -3744,6 +3744,18 @@
       "missed_reported_on": null,
       "production_status": "unknown"
     },
+    "IN:2027-11-14:guru nanak's jayanti": {
+      "alerted_thresholds": [],
+      "alerts": [],
+      "event": {
+        "country": "IN",
+        "english_name": "Guru Nanak's Jayanti",
+        "event_date": "2027-11-14"
+      },
+      "first_seen": "2026-11-14",
+      "missed_reported_on": null,
+      "production_status": "unknown"
+    },
     "IR:2026-11-13:شهادت حضرت فاطمه زهرا سلام الله علیها": {
       "alerted_thresholds": [
         120,
@@ -5959,8 +5971,18 @@
       "production_status": "unknown"
     },
     "SA:2027-03-14:عطلة عيد الفطر (يوم تعويضي)": {
-      "alerted_thresholds": [],
-      "alerts": [],
+      "alerted_thresholds": [
+        120
+      ],
+      "alerts": [
+        {
+          "catch_up": false,
+          "date": "2026-11-14",
+          "thresholds": [
+            120
+          ]
+        }
+      ],
       "event": {
         "country": "SA",
         "english_name": "عطلة عيد الفطر (يوم تعويضي)",
@@ -7223,7 +7245,7 @@
       "production_status": "unknown"
     }
   },
-  "last_successful_scan_date": "2026-11-13",
-  "previous_scan_date": "2026-11-12",
+  "last_successful_scan_date": "2026-11-14",
+  "previous_scan_date": "2026-11-13",
   "schema_version": 1
 }
