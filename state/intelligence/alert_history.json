@@ -686,6 +686,18 @@
       "missed_reported_on": null,
       "production_status": "unknown"
     },
+    "BR:2027-11-15:proclamação da república": {
+      "alerted_thresholds": [],
+      "alerts": [],
+      "event": {
+        "country": "BR",
+        "english_name": "Proclamação da República",
+        "event_date": "2027-11-15"
+      },
+      "first_seen": "2026-11-15",
+      "missed_reported_on": null,
+      "production_status": "unknown"
+    },
     "CA:2026-12-25:christmas day": {
       "alerted_thresholds": [
         120,
@@ -5227,8 +5239,18 @@
       "production_status": "unknown"
     },
     "MX:2027-03-15:natalicio de benito juárez": {
-      "alerted_thresholds": [],
-      "alerts": [],
+      "alerted_thresholds": [
+        120
+      ],
+      "alerts": [
+        {
+          "catch_up": false,
+          "date": "2026-11-15",
+          "thresholds": [
+            120
+          ]
+        }
+      ],
       "event": {
         "country": "MX",
         "english_name": "Natalicio de Benito Juárez",
@@ -5259,6 +5281,18 @@
         "event_date": "2027-09-16"
       },
       "first_seen": "2026-11-04",
+      "missed_reported_on": null,
+      "production_status": "unknown"
+    },
+    "MX:2027-11-15:día de la revolución": {
+      "alerted_thresholds": [],
+      "alerts": [],
+      "event": {
+        "country": "MX",
+        "english_name": "Día de la Revolución",
+        "event_date": "2027-11-15"
+      },
+      "first_seen": "2026-11-15",
       "missed_reported_on": null,
       "production_status": "unknown"
     },
@@ -7245,7 +7279,7 @@
       "production_status": "unknown"
     }
   },
-  "last_successful_scan_date": "2026-11-14",
-  "previous_scan_date": "2026-11-13",
+  "last_successful_scan_date": "2026-11-15",
+  "previous_scan_date": "2026-11-14",
   "schema_version": 1
 }

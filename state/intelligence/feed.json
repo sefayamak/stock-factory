@@ -1,10 +1,10 @@
 {
   "schema_version": 4,
-  "generated_at": "2026-11-14T13:24:52.745576+00:00",
-  "scan_date": "2026-11-14",
+  "generated_at": "2026-11-15T13:51:23.940241+00:00",
+  "scan_date": "2026-11-15",
   "horizon": {
-    "start": "2026-11-14",
-    "end": "2027-11-14",
+    "start": "2026-11-15",
+    "end": "2027-11-15",
     "days": 365,
     "calendar_years_generated": [
       2026,
@@ -14,7 +14,7 @@
   "provenance": {
     "generator": "stock_factory.trend_intelligence.scan",
     "git_sha": "ba4962cf5d05ed9eb28a64e599a2b6d4a6bf2cff",
-    "workflow_run_id": "43599613660",
+    "workflow_run_id": "43721159843",
     "workflow": "Stock Factory - global trend intelligence scan"
   },
   "countries_covered": [
@@ -44,7 +44,7 @@
     "US",
     "ZA"
   ],
-  "events_indexed": 411,
+  "events_indexed": 413,
   "duplicate_event_groups": 12,
   "adapter_status": {
     "adobe": {
@@ -629,8 +629,8 @@
     "note": "25 countries out of 501 the holidays library supports (and ~195 countries worldwide); plus GLOBAL UN observances and astronomical seasons."
   },
   "source_verification": {
-    "calendar_generated_on": "2026-11-14",
-    "feed_generated_at": "2026-11-14T13:24:52.745576+00:00",
+    "calendar_generated_on": "2026-11-15",
+    "feed_generated_at": "2026-11-15T13:51:23.940241+00:00",
     "holidays_library": {
       "version": "0.108",
       "method": "offline rule-based computation at scan time",
@@ -656,19 +656,19 @@
     "60": 89,
     "90": 113,
     "180": 248,
-    "365": 411
+    "365": 413
   },
   "alerts": [
     {
-      "country": "SA",
-      "event_date": "2027-03-14",
-      "local_name": "عطلة عيد الفطر (يوم تعويضي)",
-      "english_name": "عطلة عيد الفطر (يوم تعويضي)",
+      "country": "MX",
+      "event_date": "2027-03-15",
+      "local_name": "Natalicio de Benito Juárez",
+      "english_name": "Natalicio de Benito Juárez",
       "category": "national_holiday",
-      "source": "holidays library (python \"holidays\" package 0.108) country_holidays('SA', 2027)",
+      "source": "holidays library (python \"holidays\" package 0.108) country_holidays('MX', 2027)",
       "verified_at": "",
       "region": "",
-      "timezone": "Asia/Riyadh",
+      "timezone": "America/Mexico_City",
       "cultural_context": "",
       "commercial_relevance": "Commercial relevance not pre-rated; scored per-event by the opportunity engine.",
       "hemisphere": "N",
@@ -684,10 +684,10 @@
   "alert_state": {
     "history_file": "state/intelligence/alert_history.json",
     "history_load_status": "loaded",
-    "last_successful_scan_date": "2026-11-14",
-    "previous_scan_date": "2026-11-13",
+    "last_successful_scan_date": "2026-11-15",
+    "previous_scan_date": "2026-11-14",
     "scan_gap_days": 1,
-    "events_tracked": 418,
+    "events_tracked": 420,
     "production_status_source": "none wired -- every event reports production_status=\"unknown\" unless alert_history.set_production_status() recorded one"
   },
   "missed_opportunities": [],
@@ -1412,54 +1412,6 @@
         "market_size: value=0.55 weight=0.12",
         "demand_evidence: value=0.60 weight=0.25",
         "seasonal_urgency: value=0.80 weight=0.15",
-        "competition_gap: value=0.50 weight=0.13",
-        "buyer_intent: value=0.70 weight=0.12",
-        "cultural_accuracy_risk: value=0.70 weight=0.08",
-        "portfolio_coverage: not_computed (excluded from total)",
-        "historical_download_performance: unavailable (excluded from total)",
-        "TOTAL = 0.636 (demand basis: calendar_predicted_demand)"
-      ]
-    },
-    {
-      "event": {
-        "country": "TH",
-        "event_date": "2027-01-09",
-        "local_name": "วันเด็กแห่งชาติ",
-        "english_name": "วันเด็กแห่งชาติ",
-        "category": "national_holiday",
-        "source": "holidays library (python \"holidays\" package 0.108) country_holidays('TH', 2027)",
-        "verified_at": "",
-        "region": "",
-        "timezone": "Asia/Bangkok",
-        "cultural_context": "",
-        "commercial_relevance": "Commercial relevance not pre-rated; scored per-event by the opportunity engine.",
-        "hemisphere": "N"
-      },
-      "total_score": 0.6365,
-      "demand_basis": "calendar_predicted_demand",
-      "competition_basis": "no_supply_data_available",
-      "schedule": {
-        "event_date": "2027-01-09",
-        "buyer_ready_date": "2026-12-19",
-        "submission_deadline": "2026-11-14",
-        "production_deadline": "2026-11-12",
-        "production_start": "2026-10-29",
-        "status": "compressed"
-      },
-      "factors": {
-        "market_size": 0.3,
-        "demand_evidence": 0.6,
-        "seasonal_urgency": 1.0,
-        "competition_gap": 0.5,
-        "buyer_intent": 0.7,
-        "cultural_accuracy_risk": 0.7,
-        "portfolio_coverage": "not_computed",
-        "historical_download_performance": "unavailable"
-      },
-      "explanation": [
-        "market_size: value=0.30 weight=0.12",
-        "demand_evidence: value=0.60 weight=0.25",
-        "seasonal_urgency: value=1.00 weight=0.15",
         "competition_gap: value=0.50 weight=0.13",
         "buyer_intent: value=0.70 weight=0.12",
         "cultural_accuracy_risk: value=0.70 weight=0.08",
@@ -3076,6 +3028,54 @@
         "submission_deadline": "2026-12-17",
         "production_deadline": "2026-12-15",
         "production_start": "2026-12-01",
+        "status": "on_time"
+      },
+      "factors": {
+        "market_size": 0.2,
+        "demand_evidence": 0.6,
+        "seasonal_urgency": 0.8,
+        "competition_gap": 0.5,
+        "buyer_intent": 0.7,
+        "cultural_accuracy_risk": 0.7,
+        "portfolio_coverage": "not_computed",
+        "historical_download_performance": "unavailable"
+      },
+      "explanation": [
+        "market_size: value=0.20 weight=0.12",
+        "demand_evidence: value=0.60 weight=0.25",
+        "seasonal_urgency: value=0.80 weight=0.15",
+        "competition_gap: value=0.50 weight=0.13",
+        "buyer_intent: value=0.70 weight=0.12",
+        "cultural_accuracy_risk: value=0.70 weight=0.08",
+        "portfolio_coverage: not_computed (excluded from total)",
+        "historical_download_performance: unavailable (excluded from total)",
+        "TOTAL = 0.587 (demand basis: calendar_predicted_demand)"
+      ]
+    },
+    {
+      "event": {
+        "country": "NZ",
+        "event_date": "2027-02-06",
+        "local_name": "Waitangi Day",
+        "english_name": "Waitangi Day",
+        "category": "national_holiday",
+        "source": "holidays library (python \"holidays\" package 0.108) country_holidays('NZ', 2027)",
+        "verified_at": "",
+        "region": "",
+        "timezone": "Pacific/Auckland",
+        "cultural_context": "",
+        "commercial_relevance": "Commercial relevance not pre-rated; scored per-event by the opportunity engine.",
+        "hemisphere": "S"
+      },
+      "total_score": 0.5871,
+      "demand_basis": "calendar_predicted_demand",
+      "competition_basis": "no_supply_data_available",
+      "schedule": {
+        "event_date": "2027-02-06",
+        "buyer_ready_date": "2027-01-16",
+        "submission_deadline": "2026-12-12",
+        "production_deadline": "2026-12-10",
+        "production_start": "2026-11-26",
         "status": "on_time"
       },
       "factors": {
@@ -5503,7 +5503,7 @@
       ]
     }
   ],
-  "late_opportunities_total": 87,
+  "late_opportunities_total": 88,
   "creative_briefs": [
     {
       "event_country": "US",
@@ -6298,58 +6298,6 @@
       "production_pipeline_note": "planning only: no pipeline consumes VECTOR_EPS briefs; creative vector generation is blocked (procedural icons/patterns only)"
     },
     {
-      "event_country": "TH",
-      "event_name": "วันเด็กแห่งชาติ",
-      "event_date": "2027-01-09",
-      "format": "PHOTO_JPG",
-      "demand_evidence": "calendar_predicted_demand (score 0.64/1.0, see factors)",
-      "demand_source": "holidays library (python \"holidays\" package 0.108) country_holidays('TH', 2027)",
-      "buyer_ready_date": "2026-12-19",
-      "submission_deadline": "2026-11-14",
-      "production_start": "2026-10-29",
-      "production_deadline": "2026-11-12",
-      "schedule_status": "compressed",
-      "creative_concept": "Documentary-style photograph capturing: Scene built around วันเด็กแห่งชาติ. Natural light, authentic unposed moment, no readable text/logos.",
-      "differentiation_strategy": "Specific, culturally-accurate scene (named local custom/detail) rather than a generic/stock-looking holiday scene; avoid duplicating the static topic bank.",
-      "quantity_recommendation": 6,
-      "qc_ip_risk_notes": "Standard IP/QC checklist applies (no logos/text/brand references).",
-      "title": "วันเด็กแห่งชาติ themed photograph",
-      "keywords": [
-        "วันเด็กแห่งชาติ",
-        "national holiday"
-      ],
-      "target_platform": "adobe_and_magnific",
-      "opportunity_score": 0.6365,
-      "production_pipeline_status": "active",
-      "production_pipeline_note": "consumed by trends.py -> photo generation pipeline"
-    },
-    {
-      "event_country": "TH",
-      "event_name": "วันเด็กแห่งชาติ",
-      "event_date": "2027-01-09",
-      "format": "VECTOR_EPS",
-      "demand_evidence": "calendar_predicted_demand (score 0.64/1.0, see factors)",
-      "demand_source": "holidays library (python \"holidays\" package 0.108) country_holidays('TH', 2027)",
-      "buyer_ready_date": "2026-12-19",
-      "submission_deadline": "2026-11-14",
-      "production_start": "2026-10-29",
-      "production_deadline": "2026-11-12",
-      "schedule_status": "compressed",
-      "creative_concept": "Flat/vector illustration capturing: Scene built around วันเด็กแห่งชาติ. Clean editable paths, no raster embeds, no live-traced photo.",
-      "differentiation_strategy": "Specific, culturally-accurate scene (named local custom/detail) rather than a generic/stock-looking holiday scene; avoid duplicating the static topic bank.",
-      "quantity_recommendation": 6,
-      "qc_ip_risk_notes": "Standard IP/QC checklist applies (no logos/text/brand references).",
-      "title": "วันเด็กแห่งชาติ themed vector illustration",
-      "keywords": [
-        "วันเด็กแห่งชาติ",
-        "national holiday"
-      ],
-      "target_platform": "adobe_and_magnific",
-      "opportunity_score": 0.6365,
-      "production_pipeline_status": "planned_blocked",
-      "production_pipeline_note": "planning only: no pipeline consumes VECTOR_EPS briefs; creative vector generation is blocked (procedural icons/patterns only)"
-    },
-    {
       "event_country": "GLOBAL",
       "event_name": "International Women's Day",
       "event_date": "2027-03-08",
@@ -6842,6 +6790,60 @@
       "keywords": [
         "mahavir",
         "jayanti",
+        "national holiday"
+      ],
+      "target_platform": "adobe_and_magnific",
+      "opportunity_score": 0.6082,
+      "production_pipeline_status": "planned_blocked",
+      "production_pipeline_note": "planning only: no pipeline consumes VECTOR_EPS briefs; creative vector generation is blocked (procedural icons/patterns only)"
+    },
+    {
+      "event_country": "AU",
+      "event_name": "Australia Day",
+      "event_date": "2027-01-26",
+      "format": "PHOTO_JPG",
+      "demand_evidence": "calendar_predicted_demand (score 0.61/1.0, see factors)",
+      "demand_source": "holidays library (python \"holidays\" package 0.108) country_holidays('AU', 2027)",
+      "buyer_ready_date": "2027-01-05",
+      "submission_deadline": "2026-12-01",
+      "production_start": "2026-11-15",
+      "production_deadline": "2026-11-29",
+      "schedule_status": "on_time",
+      "creative_concept": "Documentary-style photograph capturing: Scene built around Australia Day. Natural light, authentic unposed moment, no readable text/logos.",
+      "differentiation_strategy": "Specific, culturally-accurate scene (named local custom/detail) rather than a generic/stock-looking holiday scene; avoid duplicating the static topic bank.",
+      "quantity_recommendation": 6,
+      "qc_ip_risk_notes": "Standard IP/QC checklist applies (no logos/text/brand references).",
+      "title": "Australia Day themed photograph",
+      "keywords": [
+        "australia",
+        "day",
+        "national holiday"
+      ],
+      "target_platform": "adobe_and_magnific",
+      "opportunity_score": 0.6082,
+      "production_pipeline_status": "active",
+      "production_pipeline_note": "consumed by trends.py -> photo generation pipeline"
+    },
+    {
+      "event_country": "AU",
+      "event_name": "Australia Day",
+      "event_date": "2027-01-26",
+      "format": "VECTOR_EPS",
+      "demand_evidence": "calendar_predicted_demand (score 0.61/1.0, see factors)",
+      "demand_source": "holidays library (python \"holidays\" package 0.108) country_holidays('AU', 2027)",
+      "buyer_ready_date": "2027-01-05",
+      "submission_deadline": "2026-12-01",
+      "production_start": "2026-11-15",
+      "production_deadline": "2026-11-29",
+      "schedule_status": "on_time",
+      "creative_concept": "Flat/vector illustration capturing: Scene built around Australia Day. Clean editable paths, no raster embeds, no live-traced photo.",
+      "differentiation_strategy": "Specific, culturally-accurate scene (named local custom/detail) rather than a generic/stock-looking holiday scene; avoid duplicating the static topic bank.",
+      "quantity_recommendation": 6,
+      "qc_ip_risk_notes": "Standard IP/QC checklist applies (no logos/text/brand references).",
+      "title": "Australia Day themed vector illustration",
+      "keywords": [
+        "australia",
+        "day",
         "national holiday"
       ],
       "target_platform": "adobe_and_magnific",
