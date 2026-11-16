@@ -1,10 +1,10 @@
 {
   "schema_version": 4,
-  "generated_at": "2026-11-15T13:51:23.940241+00:00",
-  "scan_date": "2026-11-15",
+  "generated_at": "2026-11-16T15:35:23.368277+00:00",
+  "scan_date": "2026-11-16",
   "horizon": {
-    "start": "2026-11-15",
-    "end": "2027-11-15",
+    "start": "2026-11-16",
+    "end": "2027-11-16",
     "days": 365,
     "calendar_years_generated": [
       2026,
@@ -14,7 +14,7 @@
   "provenance": {
     "generator": "stock_factory.trend_intelligence.scan",
     "git_sha": "ba4962cf5d05ed9eb28a64e599a2b6d4a6bf2cff",
-    "workflow_run_id": "43721159843",
+    "workflow_run_id": "43897907453",
     "workflow": "Stock Factory - global trend intelligence scan"
   },
   "countries_covered": [
@@ -44,7 +44,7 @@
     "US",
     "ZA"
   ],
-  "events_indexed": 413,
+  "events_indexed": 412,
   "duplicate_event_groups": 12,
   "adapter_status": {
     "adobe": {
@@ -629,8 +629,8 @@
     "note": "25 countries out of 501 the holidays library supports (and ~195 countries worldwide); plus GLOBAL UN observances and astronomical seasons."
   },
   "source_verification": {
-    "calendar_generated_on": "2026-11-15",
-    "feed_generated_at": "2026-11-15T13:51:23.940241+00:00",
+    "calendar_generated_on": "2026-11-16",
+    "feed_generated_at": "2026-11-16T15:35:23.368277+00:00",
     "holidays_library": {
       "version": "0.108",
       "method": "offline rule-based computation at scan time",
@@ -651,32 +651,32 @@
     "trend_adapters": "see adapter_status.<platform>.last_fetched_at / latest_observation_date"
   },
   "window_counts": {
-    "7": 4,
+    "7": 5,
     "30": 28,
-    "60": 89,
-    "90": 113,
-    "180": 248,
-    "365": 413
+    "60": 88,
+    "90": 112,
+    "180": 250,
+    "365": 412
   },
   "alerts": [
     {
-      "country": "MX",
-      "event_date": "2027-03-15",
-      "local_name": "Natalicio de Benito Juárez",
-      "english_name": "Natalicio de Benito Juárez",
+      "country": "ZA",
+      "event_date": "2026-12-16",
+      "local_name": "Day of Reconciliation",
+      "english_name": "Day of Reconciliation",
       "category": "national_holiday",
-      "source": "holidays library (python \"holidays\" package 0.108) country_holidays('MX', 2027)",
+      "source": "holidays library (python \"holidays\" package 0.108) country_holidays('ZA', 2026)",
       "verified_at": "",
       "region": "",
-      "timezone": "America/Mexico_City",
+      "timezone": "Africa/Johannesburg",
       "cultural_context": "",
       "commercial_relevance": "Commercial relevance not pre-rated; scored per-event by the opportunity engine.",
-      "hemisphere": "N",
-      "days_out": 120,
-      "threshold_days": 120,
-      "urgency": "ok",
+      "hemisphere": "S",
+      "days_out": 30,
+      "threshold_days": 30,
+      "urgency": "late",
       "thresholds_crossed": [
-        120
+        30
       ],
       "catch_up": false
     }
@@ -684,8 +684,8 @@
   "alert_state": {
     "history_file": "state/intelligence/alert_history.json",
     "history_load_status": "loaded",
-    "last_successful_scan_date": "2026-11-15",
-    "previous_scan_date": "2026-11-14",
+    "last_successful_scan_date": "2026-11-16",
+    "previous_scan_date": "2026-11-15",
     "scan_gap_days": 1,
     "events_tracked": 420,
     "production_status_source": "none wired -- every event reports production_status=\"unknown\" unless alert_history.set_production_status() recorded one"
@@ -746,6 +746,54 @@
         "portfolio_coverage: not_computed (excluded from total)",
         "historical_download_performance: unavailable (excluded from total)",
         "TOTAL = 0.735 (demand basis: calendar_predicted_demand)"
+      ]
+    },
+    {
+      "event": {
+        "country": "IN",
+        "event_date": "2027-01-26",
+        "local_name": "Republic Day",
+        "english_name": "Republic Day",
+        "category": "national_holiday",
+        "source": "holidays library (python \"holidays\" package 0.108) country_holidays('IN', 2027)",
+        "verified_at": "",
+        "region": "",
+        "timezone": "Asia/Kolkata",
+        "cultural_context": "",
+        "commercial_relevance": "Commercial relevance not pre-rated; scored per-event by the opportunity engine.",
+        "hemisphere": "N"
+      },
+      "total_score": 0.7141,
+      "demand_basis": "calendar_predicted_demand",
+      "competition_basis": "no_supply_data_available",
+      "schedule": {
+        "event_date": "2027-01-26",
+        "buyer_ready_date": "2027-01-05",
+        "submission_deadline": "2026-12-01",
+        "production_deadline": "2026-11-29",
+        "production_start": "2026-11-15",
+        "status": "compressed"
+      },
+      "factors": {
+        "market_size": 0.85,
+        "demand_evidence": 0.6,
+        "seasonal_urgency": 1.0,
+        "competition_gap": 0.5,
+        "buyer_intent": 0.7,
+        "cultural_accuracy_risk": 0.7,
+        "portfolio_coverage": "not_computed",
+        "historical_download_performance": "unavailable"
+      },
+      "explanation": [
+        "market_size: value=0.85 weight=0.12",
+        "demand_evidence: value=0.60 weight=0.25",
+        "seasonal_urgency: value=1.00 weight=0.15",
+        "competition_gap: value=0.50 weight=0.13",
+        "buyer_intent: value=0.70 weight=0.12",
+        "cultural_accuracy_risk: value=0.70 weight=0.08",
+        "portfolio_coverage: not_computed (excluded from total)",
+        "historical_download_performance: unavailable (excluded from total)",
+        "TOTAL = 0.714 (demand basis: calendar_predicted_demand)"
       ]
     },
     {
@@ -1086,54 +1134,6 @@
     },
     {
       "event": {
-        "country": "IN",
-        "event_date": "2027-01-26",
-        "local_name": "Republic Day",
-        "english_name": "Republic Day",
-        "category": "national_holiday",
-        "source": "holidays library (python \"holidays\" package 0.108) country_holidays('IN', 2027)",
-        "verified_at": "",
-        "region": "",
-        "timezone": "Asia/Kolkata",
-        "cultural_context": "",
-        "commercial_relevance": "Commercial relevance not pre-rated; scored per-event by the opportunity engine.",
-        "hemisphere": "N"
-      },
-      "total_score": 0.6788,
-      "demand_basis": "calendar_predicted_demand",
-      "competition_basis": "no_supply_data_available",
-      "schedule": {
-        "event_date": "2027-01-26",
-        "buyer_ready_date": "2027-01-05",
-        "submission_deadline": "2026-12-01",
-        "production_deadline": "2026-11-29",
-        "production_start": "2026-11-15",
-        "status": "on_time"
-      },
-      "factors": {
-        "market_size": 0.85,
-        "demand_evidence": 0.6,
-        "seasonal_urgency": 0.8,
-        "competition_gap": 0.5,
-        "buyer_intent": 0.7,
-        "cultural_accuracy_risk": 0.7,
-        "portfolio_coverage": "not_computed",
-        "historical_download_performance": "unavailable"
-      },
-      "explanation": [
-        "market_size: value=0.85 weight=0.12",
-        "demand_evidence: value=0.60 weight=0.25",
-        "seasonal_urgency: value=0.80 weight=0.15",
-        "competition_gap: value=0.50 weight=0.13",
-        "buyer_intent: value=0.70 weight=0.12",
-        "cultural_accuracy_risk: value=0.70 weight=0.08",
-        "portfolio_coverage: not_computed (excluded from total)",
-        "historical_download_performance: unavailable (excluded from total)",
-        "TOTAL = 0.679 (demand basis: calendar_predicted_demand)"
-      ]
-    },
-    {
-      "event": {
         "country": "JP",
         "event_date": "2027-01-11",
         "local_name": "成人の日",
@@ -1316,6 +1316,54 @@
         "market_size: value=0.85 weight=0.12",
         "demand_evidence: value=0.60 weight=0.25",
         "seasonal_urgency: value=0.60 weight=0.15",
+        "competition_gap: value=0.50 weight=0.13",
+        "buyer_intent: value=0.70 weight=0.12",
+        "cultural_accuracy_risk: value=0.70 weight=0.08",
+        "portfolio_coverage: not_computed (excluded from total)",
+        "historical_download_performance: unavailable (excluded from total)",
+        "TOTAL = 0.644 (demand basis: calendar_predicted_demand)"
+      ]
+    },
+    {
+      "event": {
+        "country": "AU",
+        "event_date": "2027-01-26",
+        "local_name": "Australia Day",
+        "english_name": "Australia Day",
+        "category": "national_holiday",
+        "source": "holidays library (python \"holidays\" package 0.108) country_holidays('AU', 2027)",
+        "verified_at": "",
+        "region": "",
+        "timezone": "Australia/Sydney",
+        "cultural_context": "",
+        "commercial_relevance": "Commercial relevance not pre-rated; scored per-event by the opportunity engine.",
+        "hemisphere": "S"
+      },
+      "total_score": 0.6435,
+      "demand_basis": "calendar_predicted_demand",
+      "competition_basis": "no_supply_data_available",
+      "schedule": {
+        "event_date": "2027-01-26",
+        "buyer_ready_date": "2027-01-05",
+        "submission_deadline": "2026-12-01",
+        "production_deadline": "2026-11-29",
+        "production_start": "2026-11-15",
+        "status": "compressed"
+      },
+      "factors": {
+        "market_size": 0.35,
+        "demand_evidence": 0.6,
+        "seasonal_urgency": 1.0,
+        "competition_gap": 0.5,
+        "buyer_intent": 0.7,
+        "cultural_accuracy_risk": 0.7,
+        "portfolio_coverage": "not_computed",
+        "historical_download_performance": "unavailable"
+      },
+      "explanation": [
+        "market_size: value=0.35 weight=0.12",
+        "demand_evidence: value=0.60 weight=0.25",
+        "seasonal_urgency: value=1.00 weight=0.15",
         "competition_gap: value=0.50 weight=0.13",
         "buyer_intent: value=0.70 weight=0.12",
         "cultural_accuracy_risk: value=0.70 weight=0.08",
@@ -1844,54 +1892,6 @@
         "market_size: value=0.85 weight=0.12",
         "demand_evidence: value=0.60 weight=0.25",
         "seasonal_urgency: value=0.40 weight=0.15",
-        "competition_gap: value=0.50 weight=0.13",
-        "buyer_intent: value=0.70 weight=0.12",
-        "cultural_accuracy_risk: value=0.70 weight=0.08",
-        "portfolio_coverage: not_computed (excluded from total)",
-        "historical_download_performance: unavailable (excluded from total)",
-        "TOTAL = 0.608 (demand basis: calendar_predicted_demand)"
-      ]
-    },
-    {
-      "event": {
-        "country": "AU",
-        "event_date": "2027-01-26",
-        "local_name": "Australia Day",
-        "english_name": "Australia Day",
-        "category": "national_holiday",
-        "source": "holidays library (python \"holidays\" package 0.108) country_holidays('AU', 2027)",
-        "verified_at": "",
-        "region": "",
-        "timezone": "Australia/Sydney",
-        "cultural_context": "",
-        "commercial_relevance": "Commercial relevance not pre-rated; scored per-event by the opportunity engine.",
-        "hemisphere": "S"
-      },
-      "total_score": 0.6082,
-      "demand_basis": "calendar_predicted_demand",
-      "competition_basis": "no_supply_data_available",
-      "schedule": {
-        "event_date": "2027-01-26",
-        "buyer_ready_date": "2027-01-05",
-        "submission_deadline": "2026-12-01",
-        "production_deadline": "2026-11-29",
-        "production_start": "2026-11-15",
-        "status": "on_time"
-      },
-      "factors": {
-        "market_size": 0.35,
-        "demand_evidence": 0.6,
-        "seasonal_urgency": 0.8,
-        "competition_gap": 0.5,
-        "buyer_intent": 0.7,
-        "cultural_accuracy_risk": 0.7,
-        "portfolio_coverage": "not_computed",
-        "historical_download_performance": "unavailable"
-      },
-      "explanation": [
-        "market_size: value=0.35 weight=0.12",
-        "demand_evidence: value=0.60 weight=0.25",
-        "seasonal_urgency: value=0.80 weight=0.15",
         "competition_gap: value=0.50 weight=0.13",
         "buyer_intent: value=0.70 weight=0.12",
         "cultural_accuracy_risk: value=0.70 weight=0.08",
@@ -3777,54 +3777,6 @@
     {
       "event": {
         "country": "BR",
-        "event_date": "2026-11-15",
-        "local_name": "Proclamação da República",
-        "english_name": "Proclamação da República",
-        "category": "national_holiday",
-        "source": "holidays library (python \"holidays\" package 0.108) country_holidays('BR', 2026)",
-        "verified_at": "",
-        "region": "",
-        "timezone": "America/Sao_Paulo",
-        "cultural_context": "",
-        "commercial_relevance": "Commercial relevance not pre-rated; scored per-event by the opportunity engine.",
-        "hemisphere": "S"
-      },
-      "total_score": 0.4953,
-      "demand_basis": "calendar_predicted_demand",
-      "competition_basis": "no_supply_data_available",
-      "schedule": {
-        "event_date": "2026-11-15",
-        "buyer_ready_date": "2026-10-25",
-        "submission_deadline": "2026-09-20",
-        "production_deadline": "2026-09-18",
-        "production_start": "2026-09-04",
-        "status": "late"
-      },
-      "factors": {
-        "market_size": 0.55,
-        "demand_evidence": 0.6,
-        "seasonal_urgency": 0.0,
-        "competition_gap": 0.5,
-        "buyer_intent": 0.7,
-        "cultural_accuracy_risk": 0.7,
-        "portfolio_coverage": "not_computed",
-        "historical_download_performance": "unavailable"
-      },
-      "explanation": [
-        "market_size: value=0.55 weight=0.12",
-        "demand_evidence: value=0.60 weight=0.25",
-        "seasonal_urgency: value=0.00 weight=0.15",
-        "competition_gap: value=0.50 weight=0.13",
-        "buyer_intent: value=0.70 weight=0.12",
-        "cultural_accuracy_risk: value=0.70 weight=0.08",
-        "portfolio_coverage: not_computed (excluded from total)",
-        "historical_download_performance: unavailable (excluded from total)",
-        "TOTAL = 0.495 (demand basis: calendar_predicted_demand)"
-      ]
-    },
-    {
-      "event": {
-        "country": "BR",
         "event_date": "2026-11-20",
         "local_name": "Dia Nacional de Zumbi e da Consciência Negra",
         "english_name": "Dia Nacional de Zumbi e da Consciência Negra",
@@ -5501,9 +5453,57 @@
         "historical_download_performance: unavailable (excluded from total)",
         "TOTAL = 0.460 (demand basis: calendar_predicted_demand)"
       ]
+    },
+    {
+      "event": {
+        "country": "TH",
+        "event_date": "2026-12-05",
+        "local_name": "วันคล้ายวันเฉลิมพระชนมพรรษาพระบาทสมเด็จพระบรมชนกาธิเบศร มหาภูมิพลอดุลยเดชมหาราช บรมนาถบพิตร; วันชาติ; วันพ่อแห่งชาติ",
+        "english_name": "วันคล้ายวันเฉลิมพระชนมพรรษาพระบาทสมเด็จพระบรมชนกาธิเบศร มหาภูมิพลอดุลยเดชมหาราช บรมนาถบพิตร; วันชาติ; วันพ่อแห่งชาติ",
+        "category": "national_holiday",
+        "source": "holidays library (python \"holidays\" package 0.108) country_holidays('TH', 2026)",
+        "verified_at": "",
+        "region": "",
+        "timezone": "Asia/Bangkok",
+        "cultural_context": "",
+        "commercial_relevance": "Commercial relevance not pre-rated; scored per-event by the opportunity engine.",
+        "hemisphere": "N"
+      },
+      "total_score": 0.46,
+      "demand_basis": "calendar_predicted_demand",
+      "competition_basis": "no_supply_data_available",
+      "schedule": {
+        "event_date": "2026-12-05",
+        "buyer_ready_date": "2026-11-14",
+        "submission_deadline": "2026-10-10",
+        "production_deadline": "2026-10-08",
+        "production_start": "2026-09-24",
+        "status": "late"
+      },
+      "factors": {
+        "market_size": 0.3,
+        "demand_evidence": 0.6,
+        "seasonal_urgency": 0.0,
+        "competition_gap": 0.5,
+        "buyer_intent": 0.7,
+        "cultural_accuracy_risk": 0.7,
+        "portfolio_coverage": "not_computed",
+        "historical_download_performance": "unavailable"
+      },
+      "explanation": [
+        "market_size: value=0.30 weight=0.12",
+        "demand_evidence: value=0.60 weight=0.25",
+        "seasonal_urgency: value=0.00 weight=0.15",
+        "competition_gap: value=0.50 weight=0.13",
+        "buyer_intent: value=0.70 weight=0.12",
+        "cultural_accuracy_risk: value=0.70 weight=0.08",
+        "portfolio_coverage: not_computed (excluded from total)",
+        "historical_download_performance: unavailable (excluded from total)",
+        "TOTAL = 0.460 (demand basis: calendar_predicted_demand)"
+      ]
     }
   ],
-  "late_opportunities_total": 88,
+  "late_opportunities_total": 87,
   "creative_briefs": [
     {
       "event_country": "US",
@@ -5562,6 +5562,60 @@
       ],
       "target_platform": "adobe_and_magnific",
       "opportunity_score": 0.7353,
+      "production_pipeline_status": "planned_blocked",
+      "production_pipeline_note": "planning only: no pipeline consumes VECTOR_EPS briefs; creative vector generation is blocked (procedural icons/patterns only)"
+    },
+    {
+      "event_country": "IN",
+      "event_name": "Republic Day",
+      "event_date": "2027-01-26",
+      "format": "PHOTO_JPG",
+      "demand_evidence": "calendar_predicted_demand (score 0.71/1.0, see factors)",
+      "demand_source": "holidays library (python \"holidays\" package 0.108) country_holidays('IN', 2027)",
+      "buyer_ready_date": "2027-01-05",
+      "submission_deadline": "2026-12-01",
+      "production_start": "2026-11-15",
+      "production_deadline": "2026-11-29",
+      "schedule_status": "compressed",
+      "creative_concept": "Documentary-style photograph capturing: Scene built around Republic Day. Natural light, authentic unposed moment, no readable text/logos.",
+      "differentiation_strategy": "Specific, culturally-accurate scene (named local custom/detail) rather than a generic/stock-looking holiday scene; avoid duplicating the static topic bank.",
+      "quantity_recommendation": 6,
+      "qc_ip_risk_notes": "Standard IP/QC checklist applies (no logos/text/brand references).",
+      "title": "Republic Day themed photograph",
+      "keywords": [
+        "republic",
+        "day",
+        "national holiday"
+      ],
+      "target_platform": "adobe_and_magnific",
+      "opportunity_score": 0.7141,
+      "production_pipeline_status": "active",
+      "production_pipeline_note": "consumed by trends.py -> photo generation pipeline"
+    },
+    {
+      "event_country": "IN",
+      "event_name": "Republic Day",
+      "event_date": "2027-01-26",
+      "format": "VECTOR_EPS",
+      "demand_evidence": "calendar_predicted_demand (score 0.71/1.0, see factors)",
+      "demand_source": "holidays library (python \"holidays\" package 0.108) country_holidays('IN', 2027)",
+      "buyer_ready_date": "2027-01-05",
+      "submission_deadline": "2026-12-01",
+      "production_start": "2026-11-15",
+      "production_deadline": "2026-11-29",
+      "schedule_status": "compressed",
+      "creative_concept": "Flat/vector illustration capturing: Scene built around Republic Day. Clean editable paths, no raster embeds, no live-traced photo.",
+      "differentiation_strategy": "Specific, culturally-accurate scene (named local custom/detail) rather than a generic/stock-looking holiday scene; avoid duplicating the static topic bank.",
+      "quantity_recommendation": 6,
+      "qc_ip_risk_notes": "Standard IP/QC checklist applies (no logos/text/brand references).",
+      "title": "Republic Day themed vector illustration",
+      "keywords": [
+        "republic",
+        "day",
+        "national holiday"
+      ],
+      "target_platform": "adobe_and_magnific",
+      "opportunity_score": 0.7141,
       "production_pipeline_status": "planned_blocked",
       "production_pipeline_note": "planning only: no pipeline consumes VECTOR_EPS briefs; creative vector generation is blocked (procedural icons/patterns only)"
     },
@@ -5926,60 +5980,6 @@
       "production_pipeline_note": "planning only: no pipeline consumes VECTOR_EPS briefs; creative vector generation is blocked (procedural icons/patterns only)"
     },
     {
-      "event_country": "IN",
-      "event_name": "Republic Day",
-      "event_date": "2027-01-26",
-      "format": "PHOTO_JPG",
-      "demand_evidence": "calendar_predicted_demand (score 0.68/1.0, see factors)",
-      "demand_source": "holidays library (python \"holidays\" package 0.108) country_holidays('IN', 2027)",
-      "buyer_ready_date": "2027-01-05",
-      "submission_deadline": "2026-12-01",
-      "production_start": "2026-11-15",
-      "production_deadline": "2026-11-29",
-      "schedule_status": "on_time",
-      "creative_concept": "Documentary-style photograph capturing: Scene built around Republic Day. Natural light, authentic unposed moment, no readable text/logos.",
-      "differentiation_strategy": "Specific, culturally-accurate scene (named local custom/detail) rather than a generic/stock-looking holiday scene; avoid duplicating the static topic bank.",
-      "quantity_recommendation": 6,
-      "qc_ip_risk_notes": "Standard IP/QC checklist applies (no logos/text/brand references).",
-      "title": "Republic Day themed photograph",
-      "keywords": [
-        "republic",
-        "day",
-        "national holiday"
-      ],
-      "target_platform": "adobe_and_magnific",
-      "opportunity_score": 0.6788,
-      "production_pipeline_status": "active",
-      "production_pipeline_note": "consumed by trends.py -> photo generation pipeline"
-    },
-    {
-      "event_country": "IN",
-      "event_name": "Republic Day",
-      "event_date": "2027-01-26",
-      "format": "VECTOR_EPS",
-      "demand_evidence": "calendar_predicted_demand (score 0.68/1.0, see factors)",
-      "demand_source": "holidays library (python \"holidays\" package 0.108) country_holidays('IN', 2027)",
-      "buyer_ready_date": "2027-01-05",
-      "submission_deadline": "2026-12-01",
-      "production_start": "2026-11-15",
-      "production_deadline": "2026-11-29",
-      "schedule_status": "on_time",
-      "creative_concept": "Flat/vector illustration capturing: Scene built around Republic Day. Clean editable paths, no raster embeds, no live-traced photo.",
-      "differentiation_strategy": "Specific, culturally-accurate scene (named local custom/detail) rather than a generic/stock-looking holiday scene; avoid duplicating the static topic bank.",
-      "quantity_recommendation": 6,
-      "qc_ip_risk_notes": "Standard IP/QC checklist applies (no logos/text/brand references).",
-      "title": "Republic Day themed vector illustration",
-      "keywords": [
-        "republic",
-        "day",
-        "national holiday"
-      ],
-      "target_platform": "adobe_and_magnific",
-      "opportunity_score": 0.6788,
-      "production_pipeline_status": "planned_blocked",
-      "production_pipeline_note": "planning only: no pipeline consumes VECTOR_EPS briefs; creative vector generation is blocked (procedural icons/patterns only)"
-    },
-    {
       "event_country": "JP",
       "event_name": "成人の日",
       "event_date": "2027-01-11",
@@ -6186,6 +6186,60 @@
       "keywords": [
         "id-ul-fitr",
         "estimated",
+        "national holiday"
+      ],
+      "target_platform": "adobe_and_magnific",
+      "opportunity_score": 0.6435,
+      "production_pipeline_status": "planned_blocked",
+      "production_pipeline_note": "planning only: no pipeline consumes VECTOR_EPS briefs; creative vector generation is blocked (procedural icons/patterns only)"
+    },
+    {
+      "event_country": "AU",
+      "event_name": "Australia Day",
+      "event_date": "2027-01-26",
+      "format": "PHOTO_JPG",
+      "demand_evidence": "calendar_predicted_demand (score 0.64/1.0, see factors)",
+      "demand_source": "holidays library (python \"holidays\" package 0.108) country_holidays('AU', 2027)",
+      "buyer_ready_date": "2027-01-05",
+      "submission_deadline": "2026-12-01",
+      "production_start": "2026-11-15",
+      "production_deadline": "2026-11-29",
+      "schedule_status": "compressed",
+      "creative_concept": "Documentary-style photograph capturing: Scene built around Australia Day. Natural light, authentic unposed moment, no readable text/logos.",
+      "differentiation_strategy": "Specific, culturally-accurate scene (named local custom/detail) rather than a generic/stock-looking holiday scene; avoid duplicating the static topic bank.",
+      "quantity_recommendation": 6,
+      "qc_ip_risk_notes": "Standard IP/QC checklist applies (no logos/text/brand references).",
+      "title": "Australia Day themed photograph",
+      "keywords": [
+        "australia",
+        "day",
+        "national holiday"
+      ],
+      "target_platform": "adobe_and_magnific",
+      "opportunity_score": 0.6435,
+      "production_pipeline_status": "active",
+      "production_pipeline_note": "consumed by trends.py -> photo generation pipeline"
+    },
+    {
+      "event_country": "AU",
+      "event_name": "Australia Day",
+      "event_date": "2027-01-26",
+      "format": "VECTOR_EPS",
+      "demand_evidence": "calendar_predicted_demand (score 0.64/1.0, see factors)",
+      "demand_source": "holidays library (python \"holidays\" package 0.108) country_holidays('AU', 2027)",
+      "buyer_ready_date": "2027-01-05",
+      "submission_deadline": "2026-12-01",
+      "production_start": "2026-11-15",
+      "production_deadline": "2026-11-29",
+      "schedule_status": "compressed",
+      "creative_concept": "Flat/vector illustration capturing: Scene built around Australia Day. Clean editable paths, no raster embeds, no live-traced photo.",
+      "differentiation_strategy": "Specific, culturally-accurate scene (named local custom/detail) rather than a generic/stock-looking holiday scene; avoid duplicating the static topic bank.",
+      "quantity_recommendation": 6,
+      "qc_ip_risk_notes": "Standard IP/QC checklist applies (no logos/text/brand references).",
+      "title": "Australia Day themed vector illustration",
+      "keywords": [
+        "australia",
+        "day",
         "national holiday"
       ],
       "target_platform": "adobe_and_magnific",
@@ -6790,60 +6844,6 @@
       "keywords": [
         "mahavir",
         "jayanti",
-        "national holiday"
-      ],
-      "target_platform": "adobe_and_magnific",
-      "opportunity_score": 0.6082,
-      "production_pipeline_status": "planned_blocked",
-      "production_pipeline_note": "planning only: no pipeline consumes VECTOR_EPS briefs; creative vector generation is blocked (procedural icons/patterns only)"
-    },
-    {
-      "event_country": "AU",
-      "event_name": "Australia Day",
-      "event_date": "2027-01-26",
-      "format": "PHOTO_JPG",
-      "demand_evidence": "calendar_predicted_demand (score 0.61/1.0, see factors)",
-      "demand_source": "holidays library (python \"holidays\" package 0.108) country_holidays('AU', 2027)",
-      "buyer_ready_date": "2027-01-05",
-      "submission_deadline": "2026-12-01",
-      "production_start": "2026-11-15",
-      "production_deadline": "2026-11-29",
-      "schedule_status": "on_time",
-      "creative_concept": "Documentary-style photograph capturing: Scene built around Australia Day. Natural light, authentic unposed moment, no readable text/logos.",
-      "differentiation_strategy": "Specific, culturally-accurate scene (named local custom/detail) rather than a generic/stock-looking holiday scene; avoid duplicating the static topic bank.",
-      "quantity_recommendation": 6,
-      "qc_ip_risk_notes": "Standard IP/QC checklist applies (no logos/text/brand references).",
-      "title": "Australia Day themed photograph",
-      "keywords": [
-        "australia",
-        "day",
-        "national holiday"
-      ],
-      "target_platform": "adobe_and_magnific",
-      "opportunity_score": 0.6082,
-      "production_pipeline_status": "active",
-      "production_pipeline_note": "consumed by trends.py -> photo generation pipeline"
-    },
-    {
-      "event_country": "AU",
-      "event_name": "Australia Day",
-      "event_date": "2027-01-26",
-      "format": "VECTOR_EPS",
-      "demand_evidence": "calendar_predicted_demand (score 0.61/1.0, see factors)",
-      "demand_source": "holidays library (python \"holidays\" package 0.108) country_holidays('AU', 2027)",
-      "buyer_ready_date": "2027-01-05",
-      "submission_deadline": "2026-12-01",
-      "production_start": "2026-11-15",
-      "production_deadline": "2026-11-29",
-      "schedule_status": "on_time",
-      "creative_concept": "Flat/vector illustration capturing: Scene built around Australia Day. Clean editable paths, no raster embeds, no live-traced photo.",
-      "differentiation_strategy": "Specific, culturally-accurate scene (named local custom/detail) rather than a generic/stock-looking holiday scene; avoid duplicating the static topic bank.",
-      "quantity_recommendation": 6,
-      "qc_ip_risk_notes": "Standard IP/QC checklist applies (no logos/text/brand references).",
-      "title": "Australia Day themed vector illustration",
-      "keywords": [
-        "australia",
-        "day",
         "national holiday"
       ],
       "target_platform": "adobe_and_magnific",

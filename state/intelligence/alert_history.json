@@ -7070,7 +7070,8 @@
       "alerted_thresholds": [
         120,
         90,
-        60
+        60,
+        30
       ],
       "alerts": [
         {
@@ -7080,6 +7081,13 @@
             120,
             90,
             60
+          ]
+        },
+        {
+          "catch_up": false,
+          "date": "2026-11-16",
+          "thresholds": [
+            30
           ]
         }
       ],
@@ -7279,7 +7287,7 @@
       "production_status": "unknown"
     }
   },
-  "last_successful_scan_date": "2026-11-15",
-  "previous_scan_date": "2026-11-14",
+  "last_successful_scan_date": "2026-11-16",
+  "previous_scan_date": "2026-11-15",
   "schema_version": 1
 }
