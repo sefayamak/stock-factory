@@ -6922,7 +6922,8 @@
     },
     "US:2027-02-15:washington's birthday": {
       "alerted_thresholds": [
-        120
+        120,
+        90
       ],
       "alerts": [
         {
@@ -6930,6 +6931,13 @@
           "date": "2026-11-04",
           "thresholds": [
             120
+          ]
+        },
+        {
+          "catch_up": false,
+          "date": "2026-11-17",
+          "thresholds": [
+            90
           ]
         }
       ],
@@ -7287,7 +7295,7 @@
       "production_status": "unknown"
     }
   },
-  "last_successful_scan_date": "2026-11-16",
-  "previous_scan_date": "2026-11-15",
+  "last_successful_scan_date": "2026-11-17",
+  "previous_scan_date": "2026-11-16",
   "schema_version": 1
 }
