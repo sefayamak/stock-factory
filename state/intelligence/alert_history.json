@@ -2550,6 +2550,18 @@
       "missed_reported_on": null,
       "production_status": "unknown"
     },
+    "GLOBAL:2027-11-19:international men's day": {
+      "alerted_thresholds": [],
+      "alerts": [],
+      "event": {
+        "country": "GLOBAL",
+        "english_name": "International Men's Day",
+        "event_date": "2027-11-19"
+      },
+      "first_seen": "2026-11-19",
+      "missed_reported_on": null,
+      "production_status": "unknown"
+    },
     "ID:2026-12-25:hari raya natal": {
       "alerted_thresholds": [
         120,
@@ -6899,7 +6911,8 @@
     "US:2027-01-18:martin luther king jr. day": {
       "alerted_thresholds": [
         120,
-        90
+        90,
+        60
       ],
       "alerts": [
         {
@@ -6908,6 +6921,13 @@
           "thresholds": [
             120,
             90
+          ]
+        },
+        {
+          "catch_up": false,
+          "date": "2026-11-19",
+          "thresholds": [
+            60
           ]
         }
       ],
@@ -7295,7 +7315,7 @@
       "production_status": "unknown"
     }
   },
-  "last_successful_scan_date": "2026-11-18",
-  "previous_scan_date": "2026-11-17",
+  "last_successful_scan_date": "2026-11-19",
+  "previous_scan_date": "2026-11-18",
   "schema_version": 1
 }

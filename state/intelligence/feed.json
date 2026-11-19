@@ -1,10 +1,10 @@
 {
   "schema_version": 4,
-  "generated_at": "2026-11-18T15:32:11.730576+00:00",
-  "scan_date": "2026-11-18",
+  "generated_at": "2026-11-19T15:39:26.844739+00:00",
+  "scan_date": "2026-11-19",
   "horizon": {
-    "start": "2026-11-18",
-    "end": "2027-11-18",
+    "start": "2026-11-19",
+    "end": "2027-11-19",
     "days": 365,
     "calendar_years_generated": [
       2026,
@@ -14,7 +14,7 @@
   "provenance": {
     "generator": "stock_factory.trend_intelligence.scan",
     "git_sha": "ba4962cf5d05ed9eb28a64e599a2b6d4a6bf2cff",
-    "workflow_run_id": "44336700173",
+    "workflow_run_id": "44557202908",
     "workflow": "Stock Factory - global trend intelligence scan"
   },
   "countries_covered": [
@@ -44,7 +44,7 @@
     "US",
     "ZA"
   ],
-  "events_indexed": 411,
+  "events_indexed": 412,
   "duplicate_event_groups": 12,
   "adapter_status": {
     "adobe": {
@@ -629,8 +629,8 @@
     "note": "25 countries out of 501 the holidays library supports (and ~195 countries worldwide); plus GLOBAL UN observances and astronomical seasons."
   },
   "source_verification": {
-    "calendar_generated_on": "2026-11-18",
-    "feed_generated_at": "2026-11-18T15:32:11.730576+00:00",
+    "calendar_generated_on": "2026-11-19",
+    "feed_generated_at": "2026-11-19T15:39:26.844739+00:00",
     "holidays_library": {
       "version": "0.109",
       "method": "offline rule-based computation at scan time",
@@ -651,21 +651,43 @@
     "trend_adapters": "see adapter_status.<platform>.last_fetched_at / latest_observation_date"
   },
   "window_counts": {
-    "7": 6,
+    "7": 7,
     "30": 27,
-    "60": 87,
+    "60": 88,
     "90": 112,
-    "180": 261,
-    "365": 411
+    "180": 265,
+    "365": 412
   },
-  "alerts": [],
+  "alerts": [
+    {
+      "country": "US",
+      "event_date": "2027-01-18",
+      "local_name": "Martin Luther King Jr. Day",
+      "english_name": "Martin Luther King Jr. Day",
+      "category": "national_holiday",
+      "source": "holidays library (python \"holidays\" package 0.109) country_holidays('US', 2027)",
+      "verified_at": "",
+      "region": "",
+      "timezone": "America/New_York",
+      "cultural_context": "",
+      "commercial_relevance": "Commercial relevance not pre-rated; scored per-event by the opportunity engine.",
+      "hemisphere": "N",
+      "days_out": 60,
+      "threshold_days": 60,
+      "urgency": "urgent",
+      "thresholds_crossed": [
+        60
+      ],
+      "catch_up": false
+    }
+  ],
   "alert_state": {
     "history_file": "state/intelligence/alert_history.json",
     "history_load_status": "loaded",
-    "last_successful_scan_date": "2026-11-18",
-    "previous_scan_date": "2026-11-17",
+    "last_successful_scan_date": "2026-11-19",
+    "previous_scan_date": "2026-11-18",
     "scan_gap_days": 1,
-    "events_tracked": 420,
+    "events_tracked": 421,
     "production_status_source": "none wired -- every event reports production_status=\"unknown\" unless alert_history.set_production_status() recorded one"
   },
   "missed_opportunities": [],
@@ -2025,6 +2047,54 @@
     {
       "event": {
         "country": "KR",
+        "event_date": "2027-03-01",
+        "local_name": "삼일절",
+        "english_name": "삼일절",
+        "category": "national_holiday",
+        "source": "holidays library (python \"holidays\" package 0.109) country_holidays('KR', 2027)",
+        "verified_at": "",
+        "region": "",
+        "timezone": "Asia/Seoul",
+        "cultural_context": "",
+        "commercial_relevance": "Commercial relevance not pre-rated; scored per-event by the opportunity engine.",
+        "hemisphere": "N"
+      },
+      "total_score": 0.6082,
+      "demand_basis": "calendar_predicted_demand",
+      "competition_basis": "no_supply_data_available",
+      "schedule": {
+        "event_date": "2027-03-01",
+        "buyer_ready_date": "2027-02-08",
+        "submission_deadline": "2027-01-04",
+        "production_deadline": "2027-01-02",
+        "production_start": "2026-12-19",
+        "status": "on_time"
+      },
+      "factors": {
+        "market_size": 0.35,
+        "demand_evidence": 0.6,
+        "seasonal_urgency": 0.8,
+        "competition_gap": 0.5,
+        "buyer_intent": 0.7,
+        "cultural_accuracy_risk": 0.7,
+        "portfolio_coverage": "not_computed",
+        "historical_download_performance": "unavailable"
+      },
+      "explanation": [
+        "market_size: value=0.35 weight=0.12",
+        "demand_evidence: value=0.60 weight=0.25",
+        "seasonal_urgency: value=0.80 weight=0.15",
+        "competition_gap: value=0.50 weight=0.13",
+        "buyer_intent: value=0.70 weight=0.12",
+        "cultural_accuracy_risk: value=0.70 weight=0.08",
+        "portfolio_coverage: not_computed (excluded from total)",
+        "historical_download_performance: unavailable (excluded from total)",
+        "TOTAL = 0.608 (demand basis: calendar_predicted_demand)"
+      ]
+    },
+    {
+      "event": {
+        "country": "KR",
         "event_date": "2027-02-09",
         "local_name": "설날 대체 휴일",
         "english_name": "설날 대체 휴일",
@@ -3028,54 +3098,6 @@
         "portfolio_coverage: not_computed (excluded from total)",
         "historical_download_performance: unavailable (excluded from total)",
         "TOTAL = 0.594 (demand basis: calendar_predicted_demand)"
-      ]
-    },
-    {
-      "event": {
-        "country": "IR",
-        "event_date": "2027-02-11",
-        "local_name": "پیروزی انقلاب اسلامی",
-        "english_name": "پیروزی انقلاب اسلامی",
-        "category": "national_holiday",
-        "source": "holidays library (python \"holidays\" package 0.109) country_holidays('IR', 2027)",
-        "verified_at": "",
-        "region": "",
-        "timezone": "Asia/Tehran",
-        "cultural_context": "",
-        "commercial_relevance": "Commercial relevance not pre-rated; scored per-event by the opportunity engine.",
-        "hemisphere": "N"
-      },
-      "total_score": 0.5871,
-      "demand_basis": "calendar_predicted_demand",
-      "competition_basis": "no_supply_data_available",
-      "schedule": {
-        "event_date": "2027-02-11",
-        "buyer_ready_date": "2027-01-21",
-        "submission_deadline": "2026-12-17",
-        "production_deadline": "2026-12-15",
-        "production_start": "2026-12-01",
-        "status": "on_time"
-      },
-      "factors": {
-        "market_size": 0.2,
-        "demand_evidence": 0.6,
-        "seasonal_urgency": 0.8,
-        "competition_gap": 0.5,
-        "buyer_intent": 0.7,
-        "cultural_accuracy_risk": 0.7,
-        "portfolio_coverage": "not_computed",
-        "historical_download_performance": "unavailable"
-      },
-      "explanation": [
-        "market_size: value=0.20 weight=0.12",
-        "demand_evidence: value=0.60 weight=0.25",
-        "seasonal_urgency: value=0.80 weight=0.15",
-        "competition_gap: value=0.50 weight=0.13",
-        "buyer_intent: value=0.70 weight=0.12",
-        "cultural_accuracy_risk: value=0.70 weight=0.08",
-        "portfolio_coverage: not_computed (excluded from total)",
-        "historical_download_performance: unavailable (excluded from total)",
-        "TOTAL = 0.587 (demand basis: calendar_predicted_demand)"
       ]
     }
   ],
