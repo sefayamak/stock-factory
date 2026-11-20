@@ -1,10 +1,10 @@
 {
   "schema_version": 4,
-  "generated_at": "2026-11-19T15:39:26.844739+00:00",
-  "scan_date": "2026-11-19",
+  "generated_at": "2026-11-20T15:20:19.796824+00:00",
+  "scan_date": "2026-11-20",
   "horizon": {
-    "start": "2026-11-19",
-    "end": "2027-11-19",
+    "start": "2026-11-20",
+    "end": "2027-11-20",
     "days": 365,
     "calendar_years_generated": [
       2026,
@@ -14,7 +14,7 @@
   "provenance": {
     "generator": "stock_factory.trend_intelligence.scan",
     "git_sha": "ba4962cf5d05ed9eb28a64e599a2b6d4a6bf2cff",
-    "workflow_run_id": "44557202908",
+    "workflow_run_id": "44762193853",
     "workflow": "Stock Factory - global trend intelligence scan"
   },
   "countries_covered": [
@@ -44,7 +44,7 @@
     "US",
     "ZA"
   ],
-  "events_indexed": 412,
+  "events_indexed": 413,
   "duplicate_event_groups": 12,
   "adapter_status": {
     "adobe": {
@@ -629,8 +629,8 @@
     "note": "25 countries out of 501 the holidays library supports (and ~195 countries worldwide); plus GLOBAL UN observances and astronomical seasons."
   },
   "source_verification": {
-    "calendar_generated_on": "2026-11-19",
-    "feed_generated_at": "2026-11-19T15:39:26.844739+00:00",
+    "calendar_generated_on": "2026-11-20",
+    "feed_generated_at": "2026-11-20T15:20:19.796824+00:00",
     "holidays_library": {
       "version": "0.109",
       "method": "offline rule-based computation at scan time",
@@ -652,31 +652,94 @@
   },
   "window_counts": {
     "7": 7,
-    "30": 27,
-    "60": 88,
-    "90": 112,
-    "180": 265,
-    "365": 412
+    "30": 26,
+    "60": 87,
+    "90": 111,
+    "180": 266,
+    "365": 413
   },
   "alerts": [
     {
-      "country": "US",
-      "event_date": "2027-01-18",
-      "local_name": "Martin Luther King Jr. Day",
-      "english_name": "Martin Luther King Jr. Day",
+      "country": "IR",
+      "event_date": "2027-03-20",
+      "local_name": "روز ملی شدن صنعت نفت ایران",
+      "english_name": "روز ملی شدن صنعت نفت ایران",
       "category": "national_holiday",
-      "source": "holidays library (python \"holidays\" package 0.109) country_holidays('US', 2027)",
+      "source": "holidays library (python \"holidays\" package 0.109) country_holidays('IR', 2027)",
       "verified_at": "",
       "region": "",
-      "timezone": "America/New_York",
+      "timezone": "Asia/Tehran",
       "cultural_context": "",
       "commercial_relevance": "Commercial relevance not pre-rated; scored per-event by the opportunity engine.",
       "hemisphere": "N",
-      "days_out": 60,
-      "threshold_days": 60,
-      "urgency": "urgent",
+      "days_out": 120,
+      "threshold_days": 120,
+      "urgency": "ok",
       "thresholds_crossed": [
-        60
+        120
+      ],
+      "catch_up": false
+    },
+    {
+      "country": "GLOBAL",
+      "event_date": "2027-03-20",
+      "local_name": "International Day of Happiness",
+      "english_name": "International Day of Happiness",
+      "category": "un_observance",
+      "source": "UN International Days (fixed annual date), https://www.un.org/en/observances/list-days-weeks",
+      "verified_at": "2026-11-04",
+      "region": "",
+      "timezone": "",
+      "cultural_context": "Globally observed; framing should avoid country-specific assumptions.",
+      "commercial_relevance": "Wellbeing, joy, lifestyle imagery.",
+      "hemisphere": "",
+      "days_out": 120,
+      "threshold_days": 120,
+      "urgency": "ok",
+      "thresholds_crossed": [
+        120
+      ],
+      "catch_up": false
+    },
+    {
+      "country": "GLOBAL",
+      "event_date": "2027-03-20",
+      "local_name": "March equinox",
+      "english_name": "March equinox -- start of spring (Northern Hemisphere)",
+      "category": "season",
+      "source": "Astronomical approximation (Meeus low-precision formula)",
+      "verified_at": "",
+      "region": "",
+      "timezone": "",
+      "cultural_context": "",
+      "commercial_relevance": "Seasonal retail/content shift: spring themes begin (Northern Hemisphere).",
+      "hemisphere": "N",
+      "days_out": 120,
+      "threshold_days": 120,
+      "urgency": "ok",
+      "thresholds_crossed": [
+        120
+      ],
+      "catch_up": false
+    },
+    {
+      "country": "GLOBAL",
+      "event_date": "2027-03-20",
+      "local_name": "March equinox",
+      "english_name": "March equinox -- start of autumn (Southern Hemisphere)",
+      "category": "season",
+      "source": "Astronomical approximation (Meeus low-precision formula)",
+      "verified_at": "",
+      "region": "",
+      "timezone": "",
+      "cultural_context": "",
+      "commercial_relevance": "Seasonal retail/content shift: autumn themes begin (Southern Hemisphere).",
+      "hemisphere": "S",
+      "days_out": 120,
+      "threshold_days": 120,
+      "urgency": "ok",
+      "thresholds_crossed": [
+        120
       ],
       "catch_up": false
     }
@@ -684,10 +747,10 @@
   "alert_state": {
     "history_file": "state/intelligence/alert_history.json",
     "history_load_status": "loaded",
-    "last_successful_scan_date": "2026-11-19",
-    "previous_scan_date": "2026-11-18",
+    "last_successful_scan_date": "2026-11-20",
+    "previous_scan_date": "2026-11-19",
     "scan_gap_days": 1,
-    "events_tracked": 421,
+    "events_tracked": 423,
     "production_status_source": "none wired -- every event reports production_status=\"unknown\" unless alert_history.set_production_status() recorded one"
   },
   "missed_opportunities": [],
@@ -1562,6 +1625,54 @@
         "portfolio_coverage: not_computed (excluded from total)",
         "historical_download_performance: unavailable (excluded from total)",
         "TOTAL = 0.622 (demand basis: calendar_predicted_demand)"
+      ]
+    },
+    {
+      "event": {
+        "country": "CN",
+        "event_date": "2027-05-01",
+        "local_name": "劳动节",
+        "english_name": "劳动节",
+        "category": "national_holiday",
+        "source": "holidays library (python \"holidays\" package 0.109) country_holidays('CN', 2027)",
+        "verified_at": "",
+        "region": "",
+        "timezone": "Asia/Shanghai",
+        "cultural_context": "",
+        "commercial_relevance": "Commercial relevance not pre-rated; scored per-event by the opportunity engine.",
+        "hemisphere": "N"
+      },
+      "total_score": 0.6153,
+      "demand_basis": "calendar_predicted_demand",
+      "competition_basis": "no_supply_data_available",
+      "schedule": {
+        "event_date": "2027-05-01",
+        "buyer_ready_date": "2027-04-10",
+        "submission_deadline": "2027-03-06",
+        "production_deadline": "2027-03-04",
+        "production_start": "2027-02-18",
+        "status": "on_time"
+      },
+      "factors": {
+        "market_size": 0.9,
+        "demand_evidence": 0.6,
+        "seasonal_urgency": 0.4,
+        "competition_gap": 0.5,
+        "buyer_intent": 0.7,
+        "cultural_accuracy_risk": 0.7,
+        "portfolio_coverage": "not_computed",
+        "historical_download_performance": "unavailable"
+      },
+      "explanation": [
+        "market_size: value=0.90 weight=0.12",
+        "demand_evidence: value=0.60 weight=0.25",
+        "seasonal_urgency: value=0.40 weight=0.15",
+        "competition_gap: value=0.50 weight=0.13",
+        "buyer_intent: value=0.70 weight=0.12",
+        "cultural_accuracy_risk: value=0.70 weight=0.08",
+        "portfolio_coverage: not_computed (excluded from total)",
+        "historical_download_performance: unavailable (excluded from total)",
+        "TOTAL = 0.615 (demand basis: calendar_predicted_demand)"
       ]
     },
     {
@@ -3028,54 +3139,6 @@
         "submission_deadline": "2026-12-14",
         "production_deadline": "2026-12-12",
         "production_start": "2026-11-28",
-        "status": "on_time"
-      },
-      "factors": {
-        "market_size": 0.25,
-        "demand_evidence": 0.6,
-        "seasonal_urgency": 0.8,
-        "competition_gap": 0.5,
-        "buyer_intent": 0.7,
-        "cultural_accuracy_risk": 0.7,
-        "portfolio_coverage": "not_computed",
-        "historical_download_performance": "unavailable"
-      },
-      "explanation": [
-        "market_size: value=0.25 weight=0.12",
-        "demand_evidence: value=0.60 weight=0.25",
-        "seasonal_urgency: value=0.80 weight=0.15",
-        "competition_gap: value=0.50 weight=0.13",
-        "buyer_intent: value=0.70 weight=0.12",
-        "cultural_accuracy_risk: value=0.70 weight=0.08",
-        "portfolio_coverage: not_computed (excluded from total)",
-        "historical_download_performance: unavailable (excluded from total)",
-        "TOTAL = 0.594 (demand basis: calendar_predicted_demand)"
-      ]
-    },
-    {
-      "event": {
-        "country": "AR",
-        "event_date": "2027-02-09",
-        "local_name": "Martes de Carnaval",
-        "english_name": "Martes de Carnaval",
-        "category": "national_holiday",
-        "source": "holidays library (python \"holidays\" package 0.109) country_holidays('AR', 2027)",
-        "verified_at": "",
-        "region": "",
-        "timezone": "America/Argentina/Buenos_Aires",
-        "cultural_context": "",
-        "commercial_relevance": "Commercial relevance not pre-rated; scored per-event by the opportunity engine.",
-        "hemisphere": "S"
-      },
-      "total_score": 0.5941,
-      "demand_basis": "calendar_predicted_demand",
-      "competition_basis": "no_supply_data_available",
-      "schedule": {
-        "event_date": "2027-02-09",
-        "buyer_ready_date": "2027-01-19",
-        "submission_deadline": "2026-12-15",
-        "production_deadline": "2026-12-13",
-        "production_start": "2026-11-29",
         "status": "on_time"
       },
       "factors": {
@@ -5503,7 +5566,7 @@
       ]
     }
   ],
-  "late_opportunities_total": 87,
+  "late_opportunities_total": 86,
   "creative_briefs": [
     {
       "event_country": "US",
@@ -6485,6 +6548,58 @@
     },
     {
       "event_country": "CN",
+      "event_name": "劳动节",
+      "event_date": "2027-05-01",
+      "format": "PHOTO_JPG",
+      "demand_evidence": "calendar_predicted_demand (score 0.62/1.0, see factors)",
+      "demand_source": "holidays library (python \"holidays\" package 0.109) country_holidays('CN', 2027)",
+      "buyer_ready_date": "2027-04-10",
+      "submission_deadline": "2027-03-06",
+      "production_start": "2027-02-18",
+      "production_deadline": "2027-03-04",
+      "schedule_status": "on_time",
+      "creative_concept": "Documentary-style photograph capturing: Scene built around 劳动节. Natural light, authentic unposed moment, no readable text/logos.",
+      "differentiation_strategy": "Specific, culturally-accurate scene (named local custom/detail) rather than a generic/stock-looking holiday scene; avoid duplicating the static topic bank.",
+      "quantity_recommendation": 6,
+      "qc_ip_risk_notes": "Standard IP/QC checklist applies (no logos/text/brand references).",
+      "title": "劳动节 themed photograph",
+      "keywords": [
+        "劳动节",
+        "national holiday"
+      ],
+      "target_platform": "adobe_and_magnific",
+      "opportunity_score": 0.6153,
+      "production_pipeline_status": "active",
+      "production_pipeline_note": "consumed by trends.py -> photo generation pipeline"
+    },
+    {
+      "event_country": "CN",
+      "event_name": "劳动节",
+      "event_date": "2027-05-01",
+      "format": "VECTOR_EPS",
+      "demand_evidence": "calendar_predicted_demand (score 0.62/1.0, see factors)",
+      "demand_source": "holidays library (python \"holidays\" package 0.109) country_holidays('CN', 2027)",
+      "buyer_ready_date": "2027-04-10",
+      "submission_deadline": "2027-03-06",
+      "production_start": "2027-02-18",
+      "production_deadline": "2027-03-04",
+      "schedule_status": "on_time",
+      "creative_concept": "Flat/vector illustration capturing: Scene built around 劳动节. Clean editable paths, no raster embeds, no live-traced photo.",
+      "differentiation_strategy": "Specific, culturally-accurate scene (named local custom/detail) rather than a generic/stock-looking holiday scene; avoid duplicating the static topic bank.",
+      "quantity_recommendation": 6,
+      "qc_ip_risk_notes": "Standard IP/QC checklist applies (no logos/text/brand references).",
+      "title": "劳动节 themed vector illustration",
+      "keywords": [
+        "劳动节",
+        "national holiday"
+      ],
+      "target_platform": "adobe_and_magnific",
+      "opportunity_score": 0.6153,
+      "production_pipeline_status": "planned_blocked",
+      "production_pipeline_note": "planning only: no pipeline consumes VECTOR_EPS briefs; creative vector generation is blocked (procedural icons/patterns only)"
+    },
+    {
+      "event_country": "CN",
       "event_name": "清明节",
       "event_date": "2027-04-05",
       "format": "PHOTO_JPG",
@@ -6800,60 +6915,6 @@
       "keywords": [
         "ram",
         "navami",
-        "national holiday"
-      ],
-      "target_platform": "adobe_and_magnific",
-      "opportunity_score": 0.6082,
-      "production_pipeline_status": "planned_blocked",
-      "production_pipeline_note": "planning only: no pipeline consumes VECTOR_EPS briefs; creative vector generation is blocked (procedural icons/patterns only)"
-    },
-    {
-      "event_country": "IN",
-      "event_name": "Mahavir Jayanti",
-      "event_date": "2027-04-18",
-      "format": "PHOTO_JPG",
-      "demand_evidence": "calendar_predicted_demand (score 0.61/1.0, see factors)",
-      "demand_source": "holidays library (python \"holidays\" package 0.109) country_holidays('IN', 2027)",
-      "buyer_ready_date": "2027-03-28",
-      "submission_deadline": "2027-02-21",
-      "production_start": "2027-02-05",
-      "production_deadline": "2027-02-19",
-      "schedule_status": "on_time",
-      "creative_concept": "Documentary-style photograph capturing: Scene built around Mahavir Jayanti. Natural light, authentic unposed moment, no readable text/logos.",
-      "differentiation_strategy": "Specific, culturally-accurate scene (named local custom/detail) rather than a generic/stock-looking holiday scene; avoid duplicating the static topic bank.",
-      "quantity_recommendation": 6,
-      "qc_ip_risk_notes": "Standard IP/QC checklist applies (no logos/text/brand references).",
-      "title": "Mahavir Jayanti themed photograph",
-      "keywords": [
-        "mahavir",
-        "jayanti",
-        "national holiday"
-      ],
-      "target_platform": "adobe_and_magnific",
-      "opportunity_score": 0.6082,
-      "production_pipeline_status": "active",
-      "production_pipeline_note": "consumed by trends.py -> photo generation pipeline"
-    },
-    {
-      "event_country": "IN",
-      "event_name": "Mahavir Jayanti",
-      "event_date": "2027-04-18",
-      "format": "VECTOR_EPS",
-      "demand_evidence": "calendar_predicted_demand (score 0.61/1.0, see factors)",
-      "demand_source": "holidays library (python \"holidays\" package 0.109) country_holidays('IN', 2027)",
-      "buyer_ready_date": "2027-03-28",
-      "submission_deadline": "2027-02-21",
-      "production_start": "2027-02-05",
-      "production_deadline": "2027-02-19",
-      "schedule_status": "on_time",
-      "creative_concept": "Flat/vector illustration capturing: Scene built around Mahavir Jayanti. Clean editable paths, no raster embeds, no live-traced photo.",
-      "differentiation_strategy": "Specific, culturally-accurate scene (named local custom/detail) rather than a generic/stock-looking holiday scene; avoid duplicating the static topic bank.",
-      "quantity_recommendation": 6,
-      "qc_ip_risk_notes": "Standard IP/QC checklist applies (no logos/text/brand references).",
-      "title": "Mahavir Jayanti themed vector illustration",
-      "keywords": [
-        "mahavir",
-        "jayanti",
         "national holiday"
       ],
       "target_platform": "adobe_and_magnific",

@@ -368,6 +368,18 @@
       "missed_reported_on": null,
       "production_status": "unknown"
     },
+    "AR:2027-11-20:día de la soberanía nacional": {
+      "alerted_thresholds": [],
+      "alerts": [],
+      "event": {
+        "country": "AR",
+        "english_name": "Día de la Soberanía Nacional",
+        "event_date": "2027-11-20"
+      },
+      "first_seen": "2026-11-20",
+      "missed_reported_on": null,
+      "production_status": "unknown"
+    },
     "AU:2026-12-25:christmas day": {
       "alerted_thresholds": [
         120,
@@ -695,6 +707,18 @@
         "event_date": "2027-11-15"
       },
       "first_seen": "2026-11-15",
+      "missed_reported_on": null,
+      "production_status": "unknown"
+    },
+    "BR:2027-11-20:dia nacional de zumbi e da consciência negra": {
+      "alerted_thresholds": [],
+      "alerts": [],
+      "event": {
+        "country": "BR",
+        "english_name": "Dia Nacional de Zumbi e da Consciência Negra",
+        "event_date": "2027-11-20"
+      },
+      "first_seen": "2026-11-20",
       "missed_reported_on": null,
       "production_status": "unknown"
     },
@@ -2263,8 +2287,18 @@
       "production_status": "unknown"
     },
     "GLOBAL:2027-03-20:international day of happiness": {
-      "alerted_thresholds": [],
-      "alerts": [],
+      "alerted_thresholds": [
+        120
+      ],
+      "alerts": [
+        {
+          "catch_up": false,
+          "date": "2026-11-20",
+          "thresholds": [
+            120
+          ]
+        }
+      ],
       "event": {
         "country": "GLOBAL",
         "english_name": "International Day of Happiness",
@@ -2275,8 +2309,18 @@
       "production_status": "unknown"
     },
     "GLOBAL:2027-03-20:march equinox -- start of autumn (southern hemisphere)": {
-      "alerted_thresholds": [],
-      "alerts": [],
+      "alerted_thresholds": [
+        120
+      ],
+      "alerts": [
+        {
+          "catch_up": false,
+          "date": "2026-11-20",
+          "thresholds": [
+            120
+          ]
+        }
+      ],
       "event": {
         "country": "GLOBAL",
         "english_name": "March equinox -- start of autumn (Southern Hemisphere)",
@@ -2287,8 +2331,18 @@
       "production_status": "unknown"
     },
     "GLOBAL:2027-03-20:march equinox -- start of spring (northern hemisphere)": {
-      "alerted_thresholds": [],
-      "alerts": [],
+      "alerted_thresholds": [
+        120
+      ],
+      "alerts": [
+        {
+          "catch_up": false,
+          "date": "2026-11-20",
+          "thresholds": [
+            120
+          ]
+        }
+      ],
       "event": {
         "country": "GLOBAL",
         "english_name": "March equinox -- start of spring (Northern Hemisphere)",
@@ -3987,8 +4041,18 @@
       "production_status": "unknown"
     },
     "IR:2027-03-20:روز ملی شدن صنعت نفت ایران": {
-      "alerted_thresholds": [],
-      "alerts": [],
+      "alerted_thresholds": [
+        120
+      ],
+      "alerts": [
+        {
+          "catch_up": false,
+          "date": "2026-11-20",
+          "thresholds": [
+            120
+          ]
+        }
+      ],
       "event": {
         "country": "IR",
         "english_name": "روز ملی شدن صنعت نفت ایران",
@@ -7315,7 +7379,7 @@
       "production_status": "unknown"
     }
   },
-  "last_successful_scan_date": "2026-11-19",
-  "previous_scan_date": "2026-11-18",
+  "last_successful_scan_date": "2026-11-20",
+  "previous_scan_date": "2026-11-19",
   "schema_version": 1
 }
