@@ -2170,7 +2170,8 @@
       "alerted_thresholds": [
         120,
         90,
-        60
+        60,
+        30
       ],
       "alerts": [
         {
@@ -2180,6 +2181,13 @@
             120,
             90,
             60
+          ]
+        },
+        {
+          "catch_up": false,
+          "date": "2026-11-21",
+          "thresholds": [
+            30
           ]
         }
       ],
@@ -2196,7 +2204,8 @@
       "alerted_thresholds": [
         120,
         90,
-        60
+        60,
+        30
       ],
       "alerts": [
         {
@@ -2206,6 +2215,13 @@
             120,
             90,
             60
+          ]
+        },
+        {
+          "catch_up": false,
+          "date": "2026-11-21",
+          "thresholds": [
+            30
           ]
         }
       ],
@@ -2353,8 +2369,18 @@
       "production_status": "unknown"
     },
     "GLOBAL:2027-03-21:international day of forests": {
-      "alerted_thresholds": [],
-      "alerts": [],
+      "alerted_thresholds": [
+        120
+      ],
+      "alerts": [
+        {
+          "catch_up": false,
+          "date": "2026-11-21",
+          "thresholds": [
+            120
+          ]
+        }
+      ],
       "event": {
         "country": "GLOBAL",
         "english_name": "International Day of Forests",
@@ -4063,8 +4089,18 @@
       "production_status": "unknown"
     },
     "IR:2027-03-21:جشن نوروز": {
-      "alerted_thresholds": [],
-      "alerts": [],
+      "alerted_thresholds": [
+        120
+      ],
+      "alerts": [
+        {
+          "catch_up": false,
+          "date": "2026-11-21",
+          "thresholds": [
+            120
+          ]
+        }
+      ],
       "event": {
         "country": "IR",
         "english_name": "جشن نوروز",
@@ -4681,8 +4717,18 @@
       "production_status": "unknown"
     },
     "JP:2027-03-21:春分の日": {
-      "alerted_thresholds": [],
-      "alerts": [],
+      "alerted_thresholds": [
+        120
+      ],
+      "alerts": [
+        {
+          "catch_up": false,
+          "date": "2026-11-21",
+          "thresholds": [
+            120
+          ]
+        }
+      ],
       "event": {
         "country": "JP",
         "english_name": "春分の日",
@@ -7271,8 +7317,18 @@
       "production_status": "unknown"
     },
     "ZA:2027-03-21:human rights day": {
-      "alerted_thresholds": [],
-      "alerts": [],
+      "alerted_thresholds": [
+        120
+      ],
+      "alerts": [
+        {
+          "catch_up": false,
+          "date": "2026-11-21",
+          "thresholds": [
+            120
+          ]
+        }
+      ],
       "event": {
         "country": "ZA",
         "english_name": "Human Rights Day",
@@ -7379,7 +7435,7 @@
       "production_status": "unknown"
     }
   },
-  "last_successful_scan_date": "2026-11-20",
-  "previous_scan_date": "2026-11-19",
+  "last_successful_scan_date": "2026-11-21",
+  "previous_scan_date": "2026-11-20",
   "schema_version": 1
 }
