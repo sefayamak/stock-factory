@@ -2260,7 +2260,8 @@
     },
     "GLOBAL:2027-02-20:world day of social justice": {
       "alerted_thresholds": [
-        120
+        120,
+        90
       ],
       "alerts": [
         {
@@ -2268,6 +2269,13 @@
           "date": "2026-11-04",
           "thresholds": [
             120
+          ]
+        },
+        {
+          "catch_up": false,
+          "date": "2026-11-22",
+          "thresholds": [
+            90
           ]
         }
       ],
@@ -2391,8 +2399,18 @@
       "production_status": "unknown"
     },
     "GLOBAL:2027-03-22:world water day": {
-      "alerted_thresholds": [],
-      "alerts": [],
+      "alerted_thresholds": [
+        120
+      ],
+      "alerts": [
+        {
+          "catch_up": false,
+          "date": "2026-11-22",
+          "thresholds": [
+            120
+          ]
+        }
+      ],
       "event": {
         "country": "GLOBAL",
         "english_name": "World Water Day",
@@ -3243,8 +3261,18 @@
       "production_status": "unknown"
     },
     "IL:2027-03-22:תענית אסתר": {
-      "alerted_thresholds": [],
-      "alerts": [],
+      "alerted_thresholds": [
+        120
+      ],
+      "alerts": [
+        {
+          "catch_up": false,
+          "date": "2026-11-22",
+          "thresholds": [
+            120
+          ]
+        }
+      ],
       "event": {
         "country": "IL",
         "english_name": "תענית אסתר",
@@ -3693,8 +3721,18 @@
       "production_status": "unknown"
     },
     "IN:2027-03-22:holi": {
-      "alerted_thresholds": [],
-      "alerts": [],
+      "alerted_thresholds": [
+        120
+      ],
+      "alerts": [
+        {
+          "catch_up": false,
+          "date": "2026-11-22",
+          "thresholds": [
+            120
+          ]
+        }
+      ],
       "event": {
         "country": "IN",
         "english_name": "Holi",
@@ -4111,8 +4149,18 @@
       "production_status": "unknown"
     },
     "IR:2027-03-22:عیدنوروز": {
-      "alerted_thresholds": [],
-      "alerts": [],
+      "alerted_thresholds": [
+        120
+      ],
+      "alerts": [
+        {
+          "catch_up": false,
+          "date": "2026-11-22",
+          "thresholds": [
+            120
+          ]
+        }
+      ],
       "event": {
         "country": "IR",
         "english_name": "عیدنوروز",
@@ -4739,8 +4787,18 @@
       "production_status": "unknown"
     },
     "JP:2027-03-22:振替休日": {
-      "alerted_thresholds": [],
-      "alerts": [],
+      "alerted_thresholds": [
+        120
+      ],
+      "alerts": [
+        {
+          "catch_up": false,
+          "date": "2026-11-22",
+          "thresholds": [
+            120
+          ]
+        }
+      ],
       "event": {
         "country": "JP",
         "english_name": "振替休日",
@@ -7339,8 +7397,18 @@
       "production_status": "unknown"
     },
     "ZA:2027-03-22:human rights day (observed)": {
-      "alerted_thresholds": [],
-      "alerts": [],
+      "alerted_thresholds": [
+        120
+      ],
+      "alerts": [
+        {
+          "catch_up": false,
+          "date": "2026-11-22",
+          "thresholds": [
+            120
+          ]
+        }
+      ],
       "event": {
         "country": "ZA",
         "english_name": "Human Rights Day (observed)",
@@ -7435,7 +7503,7 @@
       "production_status": "unknown"
     }
   },
-  "last_successful_scan_date": "2026-11-21",
-  "previous_scan_date": "2026-11-20",
+  "last_successful_scan_date": "2026-11-22",
+  "previous_scan_date": "2026-11-21",
   "schema_version": 1
 }

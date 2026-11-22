@@ -1,10 +1,10 @@
 {
   "schema_version": 4,
-  "generated_at": "2026-11-21T14:33:40.593265+00:00",
-  "scan_date": "2026-11-21",
+  "generated_at": "2026-11-22T14:28:24.222413+00:00",
+  "scan_date": "2026-11-22",
   "horizon": {
-    "start": "2026-11-21",
-    "end": "2027-11-21",
+    "start": "2026-11-22",
+    "end": "2027-11-22",
     "days": 365,
     "calendar_years_generated": [
       2026,
@@ -14,7 +14,7 @@
   "provenance": {
     "generator": "stock_factory.trend_intelligence.scan",
     "git_sha": "ba4962cf5d05ed9eb28a64e599a2b6d4a6bf2cff",
-    "workflow_run_id": "44914542833",
+    "workflow_run_id": "45032969110",
     "workflow": "Stock Factory - global trend intelligence scan"
   },
   "countries_covered": [
@@ -629,8 +629,8 @@
     "note": "25 countries out of 501 the holidays library supports (and ~195 countries worldwide); plus GLOBAL UN observances and astronomical seasons."
   },
   "source_verification": {
-    "calendar_generated_on": "2026-11-21",
-    "feed_generated_at": "2026-11-21T14:33:40.593265+00:00",
+    "calendar_generated_on": "2026-11-22",
+    "feed_generated_at": "2026-11-22T14:28:24.222413+00:00",
     "holidays_library": {
       "version": "0.109",
       "method": "offline rule-based computation at scan time",
@@ -654,58 +654,37 @@
     "7": 6,
     "30": 27,
     "60": 86,
-    "90": 110,
+    "90": 111,
     "180": 268,
     "365": 412
   },
   "alerts": [
     {
-      "country": "GLOBAL",
-      "event_date": "2026-12-21",
-      "local_name": "December solstice",
-      "english_name": "December solstice -- start of winter (Northern Hemisphere)",
-      "category": "season",
-      "source": "Astronomical approximation (Meeus low-precision formula)",
+      "country": "IN",
+      "event_date": "2027-03-22",
+      "local_name": "Holi",
+      "english_name": "Holi",
+      "category": "religious_cultural",
+      "source": "holidays library (python \"holidays\" package 0.109) country_holidays('IN', 2027)",
       "verified_at": "",
       "region": "",
-      "timezone": "",
-      "cultural_context": "",
-      "commercial_relevance": "Seasonal retail/content shift: winter themes begin (Northern Hemisphere).",
+      "timezone": "Asia/Kolkata",
+      "cultural_context": "Hindu festival of colors/spring; colored powder, water play, community gathering.",
+      "commercial_relevance": "Commercial relevance not pre-rated; scored per-event by the opportunity engine.",
       "hemisphere": "N",
-      "days_out": 30,
-      "threshold_days": 30,
-      "urgency": "late",
+      "days_out": 120,
+      "threshold_days": 120,
+      "urgency": "ok",
       "thresholds_crossed": [
-        30
-      ],
-      "catch_up": false
-    },
-    {
-      "country": "GLOBAL",
-      "event_date": "2026-12-21",
-      "local_name": "December solstice",
-      "english_name": "December solstice -- start of summer (Southern Hemisphere)",
-      "category": "season",
-      "source": "Astronomical approximation (Meeus low-precision formula)",
-      "verified_at": "",
-      "region": "",
-      "timezone": "",
-      "cultural_context": "",
-      "commercial_relevance": "Seasonal retail/content shift: summer themes begin (Southern Hemisphere).",
-      "hemisphere": "S",
-      "days_out": 30,
-      "threshold_days": 30,
-      "urgency": "late",
-      "thresholds_crossed": [
-        30
+        120
       ],
       "catch_up": false
     },
     {
       "country": "JP",
-      "event_date": "2027-03-21",
-      "local_name": "春分の日",
-      "english_name": "春分の日",
+      "event_date": "2027-03-22",
+      "local_name": "振替休日",
+      "english_name": "振替休日",
       "category": "national_holiday",
       "source": "holidays library (python \"holidays\" package 0.109) country_holidays('JP', 2027)",
       "verified_at": "",
@@ -723,10 +702,31 @@
       "catch_up": false
     },
     {
+      "country": "IL",
+      "event_date": "2027-03-22",
+      "local_name": "תענית אסתר",
+      "english_name": "תענית אסתר",
+      "category": "national_holiday",
+      "source": "holidays library (python \"holidays\" package 0.109) country_holidays('IL', 2027)",
+      "verified_at": "",
+      "region": "",
+      "timezone": "Asia/Jerusalem",
+      "cultural_context": "",
+      "commercial_relevance": "Commercial relevance not pre-rated; scored per-event by the opportunity engine.",
+      "hemisphere": "N",
+      "days_out": 120,
+      "threshold_days": 120,
+      "urgency": "ok",
+      "thresholds_crossed": [
+        120
+      ],
+      "catch_up": false
+    },
+    {
       "country": "IR",
-      "event_date": "2027-03-21",
-      "local_name": "جشن نوروز",
-      "english_name": "جشن نوروز",
+      "event_date": "2027-03-22",
+      "local_name": "عیدنوروز",
+      "english_name": "عیدنوروز",
       "category": "national_holiday",
       "source": "holidays library (python \"holidays\" package 0.109) country_holidays('IR', 2027)",
       "verified_at": "",
@@ -745,9 +745,9 @@
     },
     {
       "country": "ZA",
-      "event_date": "2027-03-21",
-      "local_name": "Human Rights Day",
-      "english_name": "Human Rights Day",
+      "event_date": "2027-03-22",
+      "local_name": "Human Rights Day (observed)",
+      "english_name": "Human Rights Day (observed)",
       "category": "national_holiday",
       "source": "holidays library (python \"holidays\" package 0.109) country_holidays('ZA', 2027)",
       "verified_at": "",
@@ -766,16 +766,37 @@
     },
     {
       "country": "GLOBAL",
-      "event_date": "2027-03-21",
-      "local_name": "International Day of Forests",
-      "english_name": "International Day of Forests",
+      "event_date": "2027-02-20",
+      "local_name": "World Day of Social Justice",
+      "english_name": "World Day of Social Justice",
       "category": "un_observance",
       "source": "UN International Days (fixed annual date), https://www.un.org/en/observances/list-days-weeks",
       "verified_at": "2026-11-04",
       "region": "",
       "timezone": "",
       "cultural_context": "Globally observed; framing should avoid country-specific assumptions.",
-      "commercial_relevance": "Nature, forestry, conservation, sustainability imagery.",
+      "commercial_relevance": "Equity, community support, workplace fairness imagery.",
+      "hemisphere": "",
+      "days_out": 90,
+      "threshold_days": 90,
+      "urgency": "ok",
+      "thresholds_crossed": [
+        90
+      ],
+      "catch_up": false
+    },
+    {
+      "country": "GLOBAL",
+      "event_date": "2027-03-22",
+      "local_name": "World Water Day",
+      "english_name": "World Water Day",
+      "category": "un_observance",
+      "source": "UN International Days (fixed annual date), https://www.un.org/en/observances/list-days-weeks",
+      "verified_at": "2026-11-04",
+      "region": "",
+      "timezone": "",
+      "cultural_context": "Globally observed; framing should avoid country-specific assumptions.",
+      "commercial_relevance": "Water conservation, access, environmental imagery.",
       "hemisphere": "",
       "days_out": 120,
       "threshold_days": 120,
@@ -789,8 +810,8 @@
   "alert_state": {
     "history_file": "state/intelligence/alert_history.json",
     "history_load_status": "loaded",
-    "last_successful_scan_date": "2026-11-21",
-    "previous_scan_date": "2026-11-20",
+    "last_successful_scan_date": "2026-11-22",
+    "previous_scan_date": "2026-11-21",
     "scan_gap_days": 1,
     "events_tracked": 423,
     "production_status_source": "none wired -- every event reports production_status=\"unknown\" unless alert_history.set_production_status() recorded one"
@@ -1235,6 +1256,54 @@
         "portfolio_coverage: not_computed (excluded from total)",
         "historical_download_performance: unavailable (excluded from total)",
         "TOTAL = 0.686 (demand basis: calendar_predicted_demand)"
+      ]
+    },
+    {
+      "event": {
+        "country": "MX",
+        "event_date": "2027-02-01",
+        "local_name": "Día de la Constitución",
+        "english_name": "Día de la Constitución",
+        "category": "national_holiday",
+        "source": "holidays library (python \"holidays\" package 0.109) country_holidays('MX', 2027)",
+        "verified_at": "",
+        "region": "",
+        "timezone": "America/Mexico_City",
+        "cultural_context": "",
+        "commercial_relevance": "Commercial relevance not pre-rated; scored per-event by the opportunity engine.",
+        "hemisphere": "N"
+      },
+      "total_score": 0.6506,
+      "demand_basis": "calendar_predicted_demand",
+      "competition_basis": "no_supply_data_available",
+      "schedule": {
+        "event_date": "2027-02-01",
+        "buyer_ready_date": "2027-01-11",
+        "submission_deadline": "2026-12-07",
+        "production_deadline": "2026-12-05",
+        "production_start": "2026-11-21",
+        "status": "compressed"
+      },
+      "factors": {
+        "market_size": 0.4,
+        "demand_evidence": 0.6,
+        "seasonal_urgency": 1.0,
+        "competition_gap": 0.5,
+        "buyer_intent": 0.7,
+        "cultural_accuracy_risk": 0.7,
+        "portfolio_coverage": "not_computed",
+        "historical_download_performance": "unavailable"
+      },
+      "explanation": [
+        "market_size: value=0.40 weight=0.12",
+        "demand_evidence: value=0.60 weight=0.25",
+        "seasonal_urgency: value=1.00 weight=0.15",
+        "competition_gap: value=0.50 weight=0.13",
+        "buyer_intent: value=0.70 weight=0.12",
+        "cultural_accuracy_risk: value=0.70 weight=0.08",
+        "portfolio_coverage: not_computed (excluded from total)",
+        "historical_download_performance: unavailable (excluded from total)",
+        "TOTAL = 0.651 (demand basis: calendar_predicted_demand)"
       ]
     },
     {
@@ -1815,6 +1884,54 @@
     },
     {
       "event": {
+        "country": "CN",
+        "event_date": "2027-05-03",
+        "local_name": "劳动节（补假）",
+        "english_name": "劳动节（补假）",
+        "category": "national_holiday",
+        "source": "holidays library (python \"holidays\" package 0.109) country_holidays('CN', 2027)",
+        "verified_at": "",
+        "region": "",
+        "timezone": "Asia/Shanghai",
+        "cultural_context": "",
+        "commercial_relevance": "Commercial relevance not pre-rated; scored per-event by the opportunity engine.",
+        "hemisphere": "N"
+      },
+      "total_score": 0.6153,
+      "demand_basis": "calendar_predicted_demand",
+      "competition_basis": "no_supply_data_available",
+      "schedule": {
+        "event_date": "2027-05-03",
+        "buyer_ready_date": "2027-04-12",
+        "submission_deadline": "2027-03-08",
+        "production_deadline": "2027-03-06",
+        "production_start": "2027-02-20",
+        "status": "on_time"
+      },
+      "factors": {
+        "market_size": 0.9,
+        "demand_evidence": 0.6,
+        "seasonal_urgency": 0.4,
+        "competition_gap": 0.5,
+        "buyer_intent": 0.7,
+        "cultural_accuracy_risk": 0.7,
+        "portfolio_coverage": "not_computed",
+        "historical_download_performance": "unavailable"
+      },
+      "explanation": [
+        "market_size: value=0.90 weight=0.12",
+        "demand_evidence: value=0.60 weight=0.25",
+        "seasonal_urgency: value=0.40 weight=0.15",
+        "competition_gap: value=0.50 weight=0.13",
+        "buyer_intent: value=0.70 weight=0.12",
+        "cultural_accuracy_risk: value=0.70 weight=0.08",
+        "portfolio_coverage: not_computed (excluded from total)",
+        "historical_download_performance: unavailable (excluded from total)",
+        "TOTAL = 0.615 (demand basis: calendar_predicted_demand)"
+      ]
+    },
+    {
+      "event": {
         "country": "ID",
         "event_date": "2027-02-06",
         "local_name": "Tahun Baru Imlek",
@@ -1837,54 +1954,6 @@
         "submission_deadline": "2026-12-12",
         "production_deadline": "2026-12-10",
         "production_start": "2026-11-26",
-        "status": "on_time"
-      },
-      "factors": {
-        "market_size": 0.4,
-        "demand_evidence": 0.6,
-        "seasonal_urgency": 0.8,
-        "competition_gap": 0.5,
-        "buyer_intent": 0.7,
-        "cultural_accuracy_risk": 0.7,
-        "portfolio_coverage": "not_computed",
-        "historical_download_performance": "unavailable"
-      },
-      "explanation": [
-        "market_size: value=0.40 weight=0.12",
-        "demand_evidence: value=0.60 weight=0.25",
-        "seasonal_urgency: value=0.80 weight=0.15",
-        "competition_gap: value=0.50 weight=0.13",
-        "buyer_intent: value=0.70 weight=0.12",
-        "cultural_accuracy_risk: value=0.70 weight=0.08",
-        "portfolio_coverage: not_computed (excluded from total)",
-        "historical_download_performance: unavailable (excluded from total)",
-        "TOTAL = 0.615 (demand basis: calendar_predicted_demand)"
-      ]
-    },
-    {
-      "event": {
-        "country": "MX",
-        "event_date": "2027-02-01",
-        "local_name": "Día de la Constitución",
-        "english_name": "Día de la Constitución",
-        "category": "national_holiday",
-        "source": "holidays library (python \"holidays\" package 0.109) country_holidays('MX', 2027)",
-        "verified_at": "",
-        "region": "",
-        "timezone": "America/Mexico_City",
-        "cultural_context": "",
-        "commercial_relevance": "Commercial relevance not pre-rated; scored per-event by the opportunity engine.",
-        "hemisphere": "N"
-      },
-      "total_score": 0.6153,
-      "demand_basis": "calendar_predicted_demand",
-      "competition_basis": "no_supply_data_available",
-      "schedule": {
-        "event_date": "2027-02-01",
-        "buyer_ready_date": "2027-01-11",
-        "submission_deadline": "2026-12-07",
-        "production_deadline": "2026-12-05",
-        "production_start": "2026-11-21",
         "status": "on_time"
       },
       "factors": {
@@ -3149,54 +3218,6 @@
         "market_size: value=1.00 weight=0.12",
         "demand_evidence: value=0.60 weight=0.25",
         "seasonal_urgency: value=0.20 weight=0.15",
-        "competition_gap: value=0.50 weight=0.13",
-        "buyer_intent: value=0.70 weight=0.12",
-        "cultural_accuracy_risk: value=0.70 weight=0.08",
-        "portfolio_coverage: not_computed (excluded from total)",
-        "historical_download_performance: unavailable (excluded from total)",
-        "TOTAL = 0.594 (demand basis: calendar_predicted_demand)"
-      ]
-    },
-    {
-      "event": {
-        "country": "FR",
-        "event_date": "2027-03-29",
-        "local_name": "Lundi de Pâques",
-        "english_name": "Lundi de Pâques",
-        "category": "national_holiday",
-        "source": "holidays library (python \"holidays\" package 0.109) country_holidays('FR', 2027)",
-        "verified_at": "",
-        "region": "",
-        "timezone": "Europe/Paris",
-        "cultural_context": "",
-        "commercial_relevance": "Commercial relevance not pre-rated; scored per-event by the opportunity engine.",
-        "hemisphere": "N"
-      },
-      "total_score": 0.5941,
-      "demand_basis": "calendar_predicted_demand",
-      "competition_basis": "no_supply_data_available",
-      "schedule": {
-        "event_date": "2027-03-29",
-        "buyer_ready_date": "2027-03-08",
-        "submission_deadline": "2027-02-01",
-        "production_deadline": "2027-01-30",
-        "production_start": "2027-01-16",
-        "status": "on_time"
-      },
-      "factors": {
-        "market_size": 0.5,
-        "demand_evidence": 0.6,
-        "seasonal_urgency": 0.6,
-        "competition_gap": 0.5,
-        "buyer_intent": 0.7,
-        "cultural_accuracy_risk": 0.7,
-        "portfolio_coverage": "not_computed",
-        "historical_download_performance": "unavailable"
-      },
-      "explanation": [
-        "market_size: value=0.50 weight=0.12",
-        "demand_evidence: value=0.60 weight=0.25",
-        "seasonal_urgency: value=0.60 weight=0.15",
         "competition_gap: value=0.50 weight=0.13",
         "buyer_intent: value=0.70 weight=0.12",
         "cultural_accuracy_risk: value=0.70 weight=0.08",
@@ -6085,6 +6106,60 @@
       "production_pipeline_note": "planning only: no pipeline consumes VECTOR_EPS briefs; creative vector generation is blocked (procedural icons/patterns only)"
     },
     {
+      "event_country": "MX",
+      "event_name": "Día de la Constitución",
+      "event_date": "2027-02-01",
+      "format": "PHOTO_JPG",
+      "demand_evidence": "calendar_predicted_demand (score 0.65/1.0, see factors)",
+      "demand_source": "holidays library (python \"holidays\" package 0.109) country_holidays('MX', 2027)",
+      "buyer_ready_date": "2027-01-11",
+      "submission_deadline": "2026-12-07",
+      "production_start": "2026-11-21",
+      "production_deadline": "2026-12-05",
+      "schedule_status": "compressed",
+      "creative_concept": "Documentary-style photograph capturing: Scene built around Día de la Constitución. Natural light, authentic unposed moment, no readable text/logos.",
+      "differentiation_strategy": "Specific, culturally-accurate scene (named local custom/detail) rather than a generic/stock-looking holiday scene; avoid duplicating the static topic bank.",
+      "quantity_recommendation": 6,
+      "qc_ip_risk_notes": "Standard IP/QC checklist applies (no logos/text/brand references).",
+      "title": "Día de la Constitución themed photograph",
+      "keywords": [
+        "día",
+        "constitución",
+        "national holiday"
+      ],
+      "target_platform": "adobe_and_magnific",
+      "opportunity_score": 0.6506,
+      "production_pipeline_status": "active",
+      "production_pipeline_note": "consumed by trends.py -> photo generation pipeline"
+    },
+    {
+      "event_country": "MX",
+      "event_name": "Día de la Constitución",
+      "event_date": "2027-02-01",
+      "format": "VECTOR_EPS",
+      "demand_evidence": "calendar_predicted_demand (score 0.65/1.0, see factors)",
+      "demand_source": "holidays library (python \"holidays\" package 0.109) country_holidays('MX', 2027)",
+      "buyer_ready_date": "2027-01-11",
+      "submission_deadline": "2026-12-07",
+      "production_start": "2026-11-21",
+      "production_deadline": "2026-12-05",
+      "schedule_status": "compressed",
+      "creative_concept": "Flat/vector illustration capturing: Scene built around Día de la Constitución. Clean editable paths, no raster embeds, no live-traced photo.",
+      "differentiation_strategy": "Specific, culturally-accurate scene (named local custom/detail) rather than a generic/stock-looking holiday scene; avoid duplicating the static topic bank.",
+      "quantity_recommendation": 6,
+      "qc_ip_risk_notes": "Standard IP/QC checklist applies (no logos/text/brand references).",
+      "title": "Día de la Constitución themed vector illustration",
+      "keywords": [
+        "día",
+        "constitución",
+        "national holiday"
+      ],
+      "target_platform": "adobe_and_magnific",
+      "opportunity_score": 0.6506,
+      "production_pipeline_status": "planned_blocked",
+      "production_pipeline_note": "planning only: no pipeline consumes VECTOR_EPS briefs; creative vector generation is blocked (procedural icons/patterns only)"
+    },
+    {
       "event_country": "IN",
       "event_name": "Good Friday",
       "event_date": "2027-03-26",
@@ -6745,6 +6820,58 @@
       "production_pipeline_note": "planning only: no pipeline consumes VECTOR_EPS briefs; creative vector generation is blocked (procedural icons/patterns only)"
     },
     {
+      "event_country": "CN",
+      "event_name": "劳动节（补假）",
+      "event_date": "2027-05-03",
+      "format": "PHOTO_JPG",
+      "demand_evidence": "calendar_predicted_demand (score 0.62/1.0, see factors)",
+      "demand_source": "holidays library (python \"holidays\" package 0.109) country_holidays('CN', 2027)",
+      "buyer_ready_date": "2027-04-12",
+      "submission_deadline": "2027-03-08",
+      "production_start": "2027-02-20",
+      "production_deadline": "2027-03-06",
+      "schedule_status": "on_time",
+      "creative_concept": "Documentary-style photograph capturing: Scene built around 劳动节（补假）. Natural light, authentic unposed moment, no readable text/logos.",
+      "differentiation_strategy": "Specific, culturally-accurate scene (named local custom/detail) rather than a generic/stock-looking holiday scene; avoid duplicating the static topic bank.",
+      "quantity_recommendation": 6,
+      "qc_ip_risk_notes": "Standard IP/QC checklist applies (no logos/text/brand references).",
+      "title": "劳动节（补假） themed photograph",
+      "keywords": [
+        "劳动节（补假）",
+        "national holiday"
+      ],
+      "target_platform": "adobe_and_magnific",
+      "opportunity_score": 0.6153,
+      "production_pipeline_status": "active",
+      "production_pipeline_note": "consumed by trends.py -> photo generation pipeline"
+    },
+    {
+      "event_country": "CN",
+      "event_name": "劳动节（补假）",
+      "event_date": "2027-05-03",
+      "format": "VECTOR_EPS",
+      "demand_evidence": "calendar_predicted_demand (score 0.62/1.0, see factors)",
+      "demand_source": "holidays library (python \"holidays\" package 0.109) country_holidays('CN', 2027)",
+      "buyer_ready_date": "2027-04-12",
+      "submission_deadline": "2027-03-08",
+      "production_start": "2027-02-20",
+      "production_deadline": "2027-03-06",
+      "schedule_status": "on_time",
+      "creative_concept": "Flat/vector illustration capturing: Scene built around 劳动节（补假）. Clean editable paths, no raster embeds, no live-traced photo.",
+      "differentiation_strategy": "Specific, culturally-accurate scene (named local custom/detail) rather than a generic/stock-looking holiday scene; avoid duplicating the static topic bank.",
+      "quantity_recommendation": 6,
+      "qc_ip_risk_notes": "Standard IP/QC checklist applies (no logos/text/brand references).",
+      "title": "劳动节（补假） themed vector illustration",
+      "keywords": [
+        "劳动节（补假）",
+        "national holiday"
+      ],
+      "target_platform": "adobe_and_magnific",
+      "opportunity_score": 0.6153,
+      "production_pipeline_status": "planned_blocked",
+      "production_pipeline_note": "planning only: no pipeline consumes VECTOR_EPS briefs; creative vector generation is blocked (procedural icons/patterns only)"
+    },
+    {
       "event_country": "ID",
       "event_name": "Tahun Baru Imlek",
       "event_date": "2027-02-06",
@@ -6801,60 +6928,6 @@
       "production_pipeline_note": "planning only: no pipeline consumes VECTOR_EPS briefs; creative vector generation is blocked (procedural icons/patterns only)"
     },
     {
-      "event_country": "MX",
-      "event_name": "Día de la Constitución",
-      "event_date": "2027-02-01",
-      "format": "PHOTO_JPG",
-      "demand_evidence": "calendar_predicted_demand (score 0.62/1.0, see factors)",
-      "demand_source": "holidays library (python \"holidays\" package 0.109) country_holidays('MX', 2027)",
-      "buyer_ready_date": "2027-01-11",
-      "submission_deadline": "2026-12-07",
-      "production_start": "2026-11-21",
-      "production_deadline": "2026-12-05",
-      "schedule_status": "on_time",
-      "creative_concept": "Documentary-style photograph capturing: Scene built around Día de la Constitución. Natural light, authentic unposed moment, no readable text/logos.",
-      "differentiation_strategy": "Specific, culturally-accurate scene (named local custom/detail) rather than a generic/stock-looking holiday scene; avoid duplicating the static topic bank.",
-      "quantity_recommendation": 6,
-      "qc_ip_risk_notes": "Standard IP/QC checklist applies (no logos/text/brand references).",
-      "title": "Día de la Constitución themed photograph",
-      "keywords": [
-        "día",
-        "constitución",
-        "national holiday"
-      ],
-      "target_platform": "adobe_and_magnific",
-      "opportunity_score": 0.6153,
-      "production_pipeline_status": "active",
-      "production_pipeline_note": "consumed by trends.py -> photo generation pipeline"
-    },
-    {
-      "event_country": "MX",
-      "event_name": "Día de la Constitución",
-      "event_date": "2027-02-01",
-      "format": "VECTOR_EPS",
-      "demand_evidence": "calendar_predicted_demand (score 0.62/1.0, see factors)",
-      "demand_source": "holidays library (python \"holidays\" package 0.109) country_holidays('MX', 2027)",
-      "buyer_ready_date": "2027-01-11",
-      "submission_deadline": "2026-12-07",
-      "production_start": "2026-11-21",
-      "production_deadline": "2026-12-05",
-      "schedule_status": "on_time",
-      "creative_concept": "Flat/vector illustration capturing: Scene built around Día de la Constitución. Clean editable paths, no raster embeds, no live-traced photo.",
-      "differentiation_strategy": "Specific, culturally-accurate scene (named local custom/detail) rather than a generic/stock-looking holiday scene; avoid duplicating the static topic bank.",
-      "quantity_recommendation": 6,
-      "qc_ip_risk_notes": "Standard IP/QC checklist applies (no logos/text/brand references).",
-      "title": "Día de la Constitución themed vector illustration",
-      "keywords": [
-        "día",
-        "constitución",
-        "national holiday"
-      ],
-      "target_platform": "adobe_and_magnific",
-      "opportunity_score": 0.6153,
-      "production_pipeline_status": "planned_blocked",
-      "production_pipeline_note": "planning only: no pipeline consumes VECTOR_EPS briefs; creative vector generation is blocked (procedural icons/patterns only)"
-    },
-    {
       "event_country": "IN",
       "event_name": "Holi",
       "event_date": "2027-03-22",
@@ -6903,62 +6976,6 @@
       ],
       "target_platform": "adobe_and_magnific",
       "opportunity_score": 0.6112,
-      "production_pipeline_status": "planned_blocked",
-      "production_pipeline_note": "planning only: no pipeline consumes VECTOR_EPS briefs; creative vector generation is blocked (procedural icons/patterns only)"
-    },
-    {
-      "event_country": "IN",
-      "event_name": "Dr. B. R. Ambedkar's Jayanti",
-      "event_date": "2027-04-14",
-      "format": "PHOTO_JPG",
-      "demand_evidence": "calendar_predicted_demand (score 0.61/1.0, see factors)",
-      "demand_source": "holidays library (python \"holidays\" package 0.109) country_holidays('IN', 2027)",
-      "buyer_ready_date": "2027-03-24",
-      "submission_deadline": "2027-02-17",
-      "production_start": "2027-02-01",
-      "production_deadline": "2027-02-15",
-      "schedule_status": "on_time",
-      "creative_concept": "Documentary-style photograph capturing: Scene built around Dr. B. R. Ambedkar's Jayanti. Natural light, authentic unposed moment, no readable text/logos.",
-      "differentiation_strategy": "Specific, culturally-accurate scene (named local custom/detail) rather than a generic/stock-looking holiday scene; avoid duplicating the static topic bank.",
-      "quantity_recommendation": 6,
-      "qc_ip_risk_notes": "Standard IP/QC checklist applies (no logos/text/brand references).",
-      "title": "Dr. B. R. Ambedkar's Jayanti themed photograph",
-      "keywords": [
-        "dr.",
-        "ambedkar's",
-        "jayanti",
-        "national holiday"
-      ],
-      "target_platform": "adobe_and_magnific",
-      "opportunity_score": 0.6082,
-      "production_pipeline_status": "active",
-      "production_pipeline_note": "consumed by trends.py -> photo generation pipeline"
-    },
-    {
-      "event_country": "IN",
-      "event_name": "Dr. B. R. Ambedkar's Jayanti",
-      "event_date": "2027-04-14",
-      "format": "VECTOR_EPS",
-      "demand_evidence": "calendar_predicted_demand (score 0.61/1.0, see factors)",
-      "demand_source": "holidays library (python \"holidays\" package 0.109) country_holidays('IN', 2027)",
-      "buyer_ready_date": "2027-03-24",
-      "submission_deadline": "2027-02-17",
-      "production_start": "2027-02-01",
-      "production_deadline": "2027-02-15",
-      "schedule_status": "on_time",
-      "creative_concept": "Flat/vector illustration capturing: Scene built around Dr. B. R. Ambedkar's Jayanti. Clean editable paths, no raster embeds, no live-traced photo.",
-      "differentiation_strategy": "Specific, culturally-accurate scene (named local custom/detail) rather than a generic/stock-looking holiday scene; avoid duplicating the static topic bank.",
-      "quantity_recommendation": 6,
-      "qc_ip_risk_notes": "Standard IP/QC checklist applies (no logos/text/brand references).",
-      "title": "Dr. B. R. Ambedkar's Jayanti themed vector illustration",
-      "keywords": [
-        "dr.",
-        "ambedkar's",
-        "jayanti",
-        "national holiday"
-      ],
-      "target_platform": "adobe_and_magnific",
-      "opportunity_score": 0.6082,
       "production_pipeline_status": "planned_blocked",
       "production_pipeline_note": "planning only: no pipeline consumes VECTOR_EPS briefs; creative vector generation is blocked (procedural icons/patterns only)"
     }
