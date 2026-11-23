@@ -3283,8 +3283,18 @@
       "production_status": "unknown"
     },
     "IL:2027-03-23:פורים": {
-      "alerted_thresholds": [],
-      "alerts": [],
+      "alerted_thresholds": [
+        120
+      ],
+      "alerts": [
+        {
+          "catch_up": false,
+          "date": "2026-11-23",
+          "thresholds": [
+            120
+          ]
+        }
+      ],
       "event": {
         "country": "IL",
         "english_name": "פורים",
@@ -3930,7 +3940,8 @@
       "alerted_thresholds": [
         120,
         90,
-        60
+        60,
+        30
       ],
       "alerts": [
         {
@@ -3940,6 +3951,13 @@
             120,
             90,
             60
+          ]
+        },
+        {
+          "catch_up": false,
+          "date": "2026-11-23",
+          "thresholds": [
+            30
           ]
         }
       ],
@@ -4171,8 +4189,18 @@
       "production_status": "unknown"
     },
     "IR:2027-03-23:عیدنوروز": {
-      "alerted_thresholds": [],
-      "alerts": [],
+      "alerted_thresholds": [
+        120
+      ],
+      "alerts": [
+        {
+          "catch_up": false,
+          "date": "2026-11-23",
+          "thresholds": [
+            120
+          ]
+        }
+      ],
       "event": {
         "country": "IR",
         "english_name": "عیدنوروز",
@@ -4925,6 +4953,18 @@
         "event_date": "2027-11-03"
       },
       "first_seen": "2026-11-04",
+      "missed_reported_on": null,
+      "production_status": "unknown"
+    },
+    "JP:2027-11-23:勤労感謝の日": {
+      "alerted_thresholds": [],
+      "alerts": [],
+      "event": {
+        "country": "JP",
+        "english_name": "勤労感謝の日",
+        "event_date": "2027-11-23"
+      },
+      "first_seen": "2026-11-23",
       "missed_reported_on": null,
       "production_status": "unknown"
     },
@@ -6466,7 +6506,8 @@
     },
     "TH:2027-02-21:วันมาฆบูชา": {
       "alerted_thresholds": [
-        120
+        120,
+        90
       ],
       "alerts": [
         {
@@ -6474,6 +6515,13 @@
           "date": "2026-11-04",
           "thresholds": [
             120
+          ]
+        },
+        {
+          "catch_up": false,
+          "date": "2026-11-23",
+          "thresholds": [
+            90
           ]
         }
       ],
@@ -7503,7 +7551,7 @@
       "production_status": "unknown"
     }
   },
-  "last_successful_scan_date": "2026-11-22",
-  "previous_scan_date": "2026-11-21",
+  "last_successful_scan_date": "2026-11-23",
+  "previous_scan_date": "2026-11-22",
   "schema_version": 1
 }
