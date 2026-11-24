@@ -237,8 +237,18 @@
       "production_status": "unknown"
     },
     "AR:2027-03-24:día nacional de la memoria por la verdad y la justicia": {
-      "alerted_thresholds": [],
-      "alerts": [],
+      "alerted_thresholds": [
+        120
+      ],
+      "alerts": [
+        {
+          "catch_up": false,
+          "date": "2026-11-24",
+          "thresholds": [
+            120
+          ]
+        }
+      ],
       "event": {
         "country": "AR",
         "english_name": "Día Nacional de la Memoria por la Verdad y la Justicia",
@@ -4211,8 +4221,18 @@
       "production_status": "unknown"
     },
     "IR:2027-03-24:عیدنوروز": {
-      "alerted_thresholds": [],
-      "alerts": [],
+      "alerted_thresholds": [
+        120
+      ],
+      "alerts": [
+        {
+          "catch_up": false,
+          "date": "2026-11-24",
+          "thresholds": [
+            120
+          ]
+        }
+      ],
       "event": {
         "country": "IR",
         "english_name": "عیدنوروز",
@@ -6116,7 +6136,8 @@
     },
     "SA:2027-02-22:يوم التأسيس": {
       "alerted_thresholds": [
-        120
+        120,
+        90
       ],
       "alerts": [
         {
@@ -6124,6 +6145,13 @@
           "date": "2026-11-04",
           "thresholds": [
             120
+          ]
+        },
+        {
+          "catch_up": false,
+          "date": "2026-11-24",
+          "thresholds": [
+            90
           ]
         }
       ],
@@ -6536,7 +6564,8 @@
     },
     "TH:2027-02-22:ชดเชยวันมาฆบูชา": {
       "alerted_thresholds": [
-        120
+        120,
+        90
       ],
       "alerts": [
         {
@@ -6544,6 +6573,13 @@
           "date": "2026-11-04",
           "thresholds": [
             120
+          ]
+        },
+        {
+          "catch_up": false,
+          "date": "2026-11-24",
+          "thresholds": [
+            90
           ]
         }
       ],
@@ -7551,7 +7587,7 @@
       "production_status": "unknown"
     }
   },
-  "last_successful_scan_date": "2026-11-23",
-  "previous_scan_date": "2026-11-22",
+  "last_successful_scan_date": "2026-11-24",
+  "previous_scan_date": "2026-11-23",
   "schema_version": 1
 }
