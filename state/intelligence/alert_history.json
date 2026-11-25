@@ -128,7 +128,8 @@
       "alerted_thresholds": [
         120,
         90,
-        60
+        60,
+        30
       ],
       "alerts": [
         {
@@ -138,6 +139,13 @@
             120,
             90,
             60
+          ]
+        },
+        {
+          "catch_up": false,
+          "date": "2026-11-25",
+          "thresholds": [
+            30
           ]
         }
       ],
@@ -259,8 +267,18 @@
       "production_status": "unknown"
     },
     "AR:2027-03-25:jueves santo": {
-      "alerted_thresholds": [],
-      "alerts": [],
+      "alerted_thresholds": [
+        120
+      ],
+      "alerts": [
+        {
+          "catch_up": false,
+          "date": "2026-11-25",
+          "thresholds": [
+            120
+          ]
+        }
+      ],
       "event": {
         "country": "AR",
         "english_name": "Jueves Santo",
@@ -394,7 +412,8 @@
       "alerted_thresholds": [
         120,
         90,
-        60
+        60,
+        30
       ],
       "alerts": [
         {
@@ -404,6 +423,13 @@
             120,
             90,
             60
+          ]
+        },
+        {
+          "catch_up": false,
+          "date": "2026-11-25",
+          "thresholds": [
+            30
           ]
         }
       ],
@@ -588,7 +614,8 @@
       "alerted_thresholds": [
         120,
         90,
-        60
+        60,
+        30
       ],
       "alerts": [
         {
@@ -598,6 +625,13 @@
             120,
             90,
             60
+          ]
+        },
+        {
+          "catch_up": false,
+          "date": "2026-11-25",
+          "thresholds": [
+            30
           ]
         }
       ],
@@ -736,7 +770,8 @@
       "alerted_thresholds": [
         120,
         90,
-        60
+        60,
+        30
       ],
       "alerts": [
         {
@@ -746,6 +781,13 @@
             120,
             90,
             60
+          ]
+        },
+        {
+          "catch_up": false,
+          "date": "2026-11-25",
+          "thresholds": [
+            30
           ]
         }
       ],
@@ -1174,7 +1216,8 @@
       "alerted_thresholds": [
         120,
         90,
-        60
+        60,
+        30
       ],
       "alerts": [
         {
@@ -1184,6 +1227,13 @@
             120,
             90,
             60
+          ]
+        },
+        {
+          "catch_up": false,
+          "date": "2026-11-25",
+          "thresholds": [
+            30
           ]
         }
       ],
@@ -1602,7 +1652,8 @@
       "alerted_thresholds": [
         120,
         90,
-        60
+        60,
+        30
       ],
       "alerts": [
         {
@@ -1612,6 +1663,13 @@
             120,
             90,
             60
+          ]
+        },
+        {
+          "catch_up": false,
+          "date": "2026-11-25",
+          "thresholds": [
+            30
           ]
         }
       ],
@@ -1762,7 +1820,8 @@
       "alerted_thresholds": [
         120,
         90,
-        60
+        60,
+        30
       ],
       "alerts": [
         {
@@ -1772,6 +1831,13 @@
             120,
             90,
             60
+          ]
+        },
+        {
+          "catch_up": false,
+          "date": "2026-11-25",
+          "thresholds": [
+            30
           ]
         }
       ],
@@ -1922,7 +1988,8 @@
       "alerted_thresholds": [
         120,
         90,
-        60
+        60,
+        30
       ],
       "alerts": [
         {
@@ -1932,6 +1999,13 @@
             120,
             90,
             60
+          ]
+        },
+        {
+          "catch_up": false,
+          "date": "2026-11-25",
+          "thresholds": [
+            30
           ]
         }
       ],
@@ -2247,7 +2321,8 @@
     "GLOBAL:2027-01-24:international day of education": {
       "alerted_thresholds": [
         120,
-        90
+        90,
+        60
       ],
       "alerts": [
         {
@@ -2256,6 +2331,13 @@
           "thresholds": [
             120,
             90
+          ]
+        },
+        {
+          "catch_up": false,
+          "date": "2026-11-25",
+          "thresholds": [
+            60
           ]
         }
       ],
@@ -2670,11 +2752,24 @@
       "missed_reported_on": null,
       "production_status": "unknown"
     },
+    "GLOBAL:2027-11-25:international day for the elimination of violence against women": {
+      "alerted_thresholds": [],
+      "alerts": [],
+      "event": {
+        "country": "GLOBAL",
+        "english_name": "International Day for the Elimination of Violence against Women",
+        "event_date": "2027-11-25"
+      },
+      "first_seen": "2026-11-25",
+      "missed_reported_on": null,
+      "production_status": "unknown"
+    },
     "ID:2026-12-25:hari raya natal": {
       "alerted_thresholds": [
         120,
         90,
-        60
+        60,
+        30
       ],
       "alerts": [
         {
@@ -2684,6 +2779,13 @@
             120,
             90,
             60
+          ]
+        },
+        {
+          "catch_up": false,
+          "date": "2026-11-25",
+          "thresholds": [
+            30
           ]
         }
       ],
@@ -3650,7 +3752,8 @@
       "alerted_thresholds": [
         120,
         90,
-        60
+        60,
+        30
       ],
       "alerts": [
         {
@@ -3660,6 +3763,13 @@
             120,
             90,
             60
+          ]
+        },
+        {
+          "catch_up": false,
+          "date": "2026-11-25",
+          "thresholds": [
+            30
           ]
         }
       ],
@@ -4015,7 +4125,8 @@
     "IR:2027-01-24:ولادت حضرت قائم عجل الله تعالی فرجه و جشن نیمه شعبان (تخمینی)": {
       "alerted_thresholds": [
         120,
-        90
+        90,
+        60
       ],
       "alerts": [
         {
@@ -4024,6 +4135,13 @@
           "thresholds": [
             120,
             90
+          ]
+        },
+        {
+          "catch_up": false,
+          "date": "2026-11-25",
+          "thresholds": [
+            60
           ]
         }
       ],
@@ -4460,7 +4578,8 @@
       "alerted_thresholds": [
         120,
         90,
-        60
+        60,
+        30
       ],
       "alerts": [
         {
@@ -4470,6 +4589,13 @@
             120,
             90,
             60
+          ]
+        },
+        {
+          "catch_up": false,
+          "date": "2026-11-25",
+          "thresholds": [
+            30
           ]
         }
       ],
@@ -4792,7 +4918,8 @@
     },
     "JP:2027-02-23:天皇誕生日": {
       "alerted_thresholds": [
-        120
+        120,
+        90
       ],
       "alerts": [
         {
@@ -4800,6 +4927,13 @@
           "date": "2026-11-04",
           "thresholds": [
             120
+          ]
+        },
+        {
+          "catch_up": false,
+          "date": "2026-11-25",
+          "thresholds": [
+            90
           ]
         }
       ],
@@ -4992,7 +5126,8 @@
       "alerted_thresholds": [
         120,
         90,
-        60
+        60,
+        30
       ],
       "alerts": [
         {
@@ -5002,6 +5137,13 @@
             120,
             90,
             60
+          ]
+        },
+        {
+          "catch_up": false,
+          "date": "2026-11-25",
+          "thresholds": [
+            30
           ]
         }
       ],
@@ -5406,7 +5548,8 @@
       "alerted_thresholds": [
         120,
         90,
-        60
+        60,
+        30
       ],
       "alerts": [
         {
@@ -5416,6 +5559,13 @@
             120,
             90,
             60
+          ]
+        },
+        {
+          "catch_up": false,
+          "date": "2026-11-25",
+          "thresholds": [
+            30
           ]
         }
       ],
@@ -5540,7 +5690,8 @@
       "alerted_thresholds": [
         120,
         90,
-        60
+        60,
+        30
       ],
       "alerts": [
         {
@@ -5550,6 +5701,13 @@
             120,
             90,
             60
+          ]
+        },
+        {
+          "catch_up": false,
+          "date": "2026-11-25",
+          "thresholds": [
+            30
           ]
         }
       ],
@@ -5832,7 +5990,8 @@
       "alerted_thresholds": [
         120,
         90,
-        60
+        60,
+        30
       ],
       "alerts": [
         {
@@ -5842,6 +6001,13 @@
             120,
             90,
             60
+          ]
+        },
+        {
+          "catch_up": false,
+          "date": "2026-11-25",
+          "thresholds": [
+            30
           ]
         }
       ],
@@ -7112,7 +7278,8 @@
       "alerted_thresholds": [
         120,
         90,
-        60
+        60,
+        30
       ],
       "alerts": [
         {
@@ -7122,6 +7289,13 @@
             120,
             90,
             60
+          ]
+        },
+        {
+          "catch_up": false,
+          "date": "2026-11-25",
+          "thresholds": [
+            30
           ]
         }
       ],
@@ -7318,6 +7492,18 @@
       "missed_reported_on": null,
       "production_status": "unknown"
     },
+    "US:2027-11-25:thanksgiving day": {
+      "alerted_thresholds": [],
+      "alerts": [],
+      "event": {
+        "country": "US",
+        "english_name": "Thanksgiving Day",
+        "event_date": "2027-11-25"
+      },
+      "first_seen": "2026-11-25",
+      "missed_reported_on": null,
+      "production_status": "unknown"
+    },
     "ZA:2026-11-04:local government elections": {
       "alerted_thresholds": [
         120,
@@ -7384,7 +7570,8 @@
       "alerted_thresholds": [
         120,
         90,
-        60
+        60,
+        30
       ],
       "alerts": [
         {
@@ -7394,6 +7581,13 @@
             120,
             90,
             60
+          ]
+        },
+        {
+          "catch_up": false,
+          "date": "2026-11-25",
+          "thresholds": [
+            30
           ]
         }
       ],
@@ -7587,7 +7781,7 @@
       "production_status": "unknown"
     }
   },
-  "last_successful_scan_date": "2026-11-24",
-  "previous_scan_date": "2026-11-23",
+  "last_successful_scan_date": "2026-11-25",
+  "previous_scan_date": "2026-11-24",
   "schema_version": 1
 }
