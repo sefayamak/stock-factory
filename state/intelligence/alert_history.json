@@ -289,8 +289,18 @@
       "production_status": "unknown"
     },
     "AR:2027-03-26:viernes santo": {
-      "alerted_thresholds": [],
-      "alerts": [],
+      "alerted_thresholds": [
+        120
+      ],
+      "alerts": [
+        {
+          "catch_up": false,
+          "date": "2026-11-26",
+          "thresholds": [
+            120
+          ]
+        }
+      ],
       "event": {
         "country": "AR",
         "english_name": "Viernes Santo",
@@ -446,7 +456,8 @@
       "alerted_thresholds": [
         120,
         90,
-        60
+        60,
+        30
       ],
       "alerts": [
         {
@@ -456,6 +467,13 @@
             120,
             90,
             60
+          ]
+        },
+        {
+          "catch_up": false,
+          "date": "2026-11-26",
+          "thresholds": [
+            30
           ]
         }
       ],
@@ -519,8 +537,18 @@
       "production_status": "unknown"
     },
     "AU:2027-03-26:good friday": {
-      "alerted_thresholds": [],
-      "alerts": [],
+      "alerted_thresholds": [
+        120
+      ],
+      "alerts": [
+        {
+          "catch_up": false,
+          "date": "2026-11-26",
+          "thresholds": [
+            120
+          ]
+        }
+      ],
       "event": {
         "country": "AU",
         "english_name": "Good Friday",
@@ -671,8 +699,18 @@
       "production_status": "unknown"
     },
     "BR:2027-03-26:sexta-feira santa": {
-      "alerted_thresholds": [],
-      "alerts": [],
+      "alerted_thresholds": [
+        120
+      ],
+      "alerts": [
+        {
+          "catch_up": false,
+          "date": "2026-11-26",
+          "thresholds": [
+            120
+          ]
+        }
+      ],
       "event": {
         "country": "BR",
         "english_name": "Sexta-feira Santa",
@@ -827,8 +865,18 @@
       "production_status": "unknown"
     },
     "CA:2027-03-26:good friday": {
-      "alerted_thresholds": [],
-      "alerts": [],
+      "alerted_thresholds": [
+        120
+      ],
+      "alerts": [
+        {
+          "catch_up": false,
+          "date": "2026-11-26",
+          "thresholds": [
+            120
+          ]
+        }
+      ],
       "event": {
         "country": "CA",
         "english_name": "Good Friday",
@@ -1250,7 +1298,8 @@
       "alerted_thresholds": [
         120,
         90,
-        60
+        60,
+        30
       ],
       "alerts": [
         {
@@ -1260,6 +1309,13 @@
             120,
             90,
             60
+          ]
+        },
+        {
+          "catch_up": false,
+          "date": "2026-11-26",
+          "thresholds": [
+            30
           ]
         }
       ],
@@ -1299,8 +1355,18 @@
       "production_status": "unknown"
     },
     "DE:2027-03-26:karfreitag": {
-      "alerted_thresholds": [],
-      "alerts": [],
+      "alerted_thresholds": [
+        120
+      ],
+      "alerts": [
+        {
+          "catch_up": false,
+          "date": "2026-11-26",
+          "thresholds": [
+            120
+          ]
+        }
+      ],
       "event": {
         "country": "DE",
         "english_name": "Karfreitag",
@@ -1741,8 +1807,18 @@
       "production_status": "unknown"
     },
     "ES:2027-03-26:viernes santo": {
-      "alerted_thresholds": [],
-      "alerts": [],
+      "alerted_thresholds": [
+        120
+      ],
+      "alerts": [
+        {
+          "catch_up": false,
+          "date": "2026-11-26",
+          "thresholds": [
+            120
+          ]
+        }
+      ],
       "event": {
         "country": "ES",
         "english_name": "Viernes Santo",
@@ -2022,7 +2098,8 @@
       "alerted_thresholds": [
         120,
         90,
-        60
+        60,
+        30
       ],
       "alerts": [
         {
@@ -2032,6 +2109,13 @@
             120,
             90,
             60
+          ]
+        },
+        {
+          "catch_up": false,
+          "date": "2026-11-26",
+          "thresholds": [
+            30
           ]
         }
       ],
@@ -2097,8 +2181,18 @@
       "production_status": "unknown"
     },
     "GB:2027-03-26:good friday": {
-      "alerted_thresholds": [],
-      "alerts": [],
+      "alerted_thresholds": [
+        120
+      ],
+      "alerts": [
+        {
+          "catch_up": false,
+          "date": "2026-11-26",
+          "thresholds": [
+            120
+          ]
+        }
+      ],
       "event": {
         "country": "GB",
         "english_name": "Good Friday",
@@ -2953,8 +3047,18 @@
       "production_status": "unknown"
     },
     "ID:2027-03-26:wafat yesus kristus": {
-      "alerted_thresholds": [],
-      "alerts": [],
+      "alerted_thresholds": [
+        120
+      ],
+      "alerts": [
+        {
+          "catch_up": false,
+          "date": "2026-11-26",
+          "thresholds": [
+            120
+          ]
+        }
+      ],
       "event": {
         "country": "ID",
         "english_name": "Wafat Yesus Kristus",
@@ -3873,8 +3977,18 @@
       "production_status": "unknown"
     },
     "IN:2027-03-26:good friday": {
-      "alerted_thresholds": [],
-      "alerts": [],
+      "alerted_thresholds": [
+        120
+      ],
+      "alerts": [
+        {
+          "catch_up": false,
+          "date": "2026-11-26",
+          "thresholds": [
+            120
+          ]
+        }
+      ],
       "event": {
         "country": "IN",
         "english_name": "Good Friday",
@@ -4612,7 +4726,8 @@
       "alerted_thresholds": [
         120,
         90,
-        60
+        60,
+        30
       ],
       "alerts": [
         {
@@ -4622,6 +4737,13 @@
             120,
             90,
             60
+          ]
+        },
+        {
+          "catch_up": false,
+          "date": "2026-11-26",
+          "thresholds": [
+            30
           ]
         }
       ],
@@ -5724,7 +5846,8 @@
       "alerted_thresholds": [
         120,
         90,
-        60
+        60,
+        30
       ],
       "alerts": [
         {
@@ -5734,6 +5857,13 @@
             120,
             90,
             60
+          ]
+        },
+        {
+          "catch_up": false,
+          "date": "2026-11-26",
+          "thresholds": [
+            30
           ]
         }
       ],
@@ -5843,8 +5973,18 @@
       "production_status": "unknown"
     },
     "NG:2027-03-26:good friday": {
-      "alerted_thresholds": [],
-      "alerts": [],
+      "alerted_thresholds": [
+        120
+      ],
+      "alerts": [
+        {
+          "catch_up": false,
+          "date": "2026-11-26",
+          "thresholds": [
+            120
+          ]
+        }
+      ],
       "event": {
         "country": "NG",
         "english_name": "Good Friday",
@@ -6024,7 +6164,8 @@
       "alerted_thresholds": [
         120,
         90,
-        60
+        60,
+        30
       ],
       "alerts": [
         {
@@ -6034,6 +6175,13 @@
             120,
             90,
             60
+          ]
+        },
+        {
+          "catch_up": false,
+          "date": "2026-11-26",
+          "thresholds": [
+            30
           ]
         }
       ],
@@ -6217,8 +6365,18 @@
       "production_status": "unknown"
     },
     "NZ:2027-03-26:good friday": {
-      "alerted_thresholds": [],
-      "alerts": [],
+      "alerted_thresholds": [
+        120
+      ],
+      "alerts": [
+        {
+          "catch_up": false,
+          "date": "2026-11-26",
+          "thresholds": [
+            120
+          ]
+        }
+      ],
       "event": {
         "country": "NZ",
         "english_name": "Good Friday",
@@ -7504,6 +7662,18 @@
       "missed_reported_on": null,
       "production_status": "unknown"
     },
+    "US:2027-11-26:black friday": {
+      "alerted_thresholds": [],
+      "alerts": [],
+      "event": {
+        "country": "US",
+        "english_name": "Black Friday",
+        "event_date": "2027-11-26"
+      },
+      "first_seen": "2026-11-26",
+      "missed_reported_on": null,
+      "production_status": "unknown"
+    },
     "ZA:2026-11-04:local government elections": {
       "alerted_thresholds": [
         120,
@@ -7604,7 +7774,8 @@
       "alerted_thresholds": [
         120,
         90,
-        60
+        60,
+        30
       ],
       "alerts": [
         {
@@ -7614,6 +7785,13 @@
             120,
             90,
             60
+          ]
+        },
+        {
+          "catch_up": false,
+          "date": "2026-11-26",
+          "thresholds": [
+            30
           ]
         }
       ],
@@ -7697,8 +7875,18 @@
       "production_status": "unknown"
     },
     "ZA:2027-03-26:good friday": {
-      "alerted_thresholds": [],
-      "alerts": [],
+      "alerted_thresholds": [
+        120
+      ],
+      "alerts": [
+        {
+          "catch_up": false,
+          "date": "2026-11-26",
+          "thresholds": [
+            120
+          ]
+        }
+      ],
       "event": {
         "country": "ZA",
         "english_name": "Good Friday",
@@ -7781,7 +7969,7 @@
       "production_status": "unknown"
     }
   },
-  "last_successful_scan_date": "2026-11-25",
-  "previous_scan_date": "2026-11-24",
+  "last_successful_scan_date": "2026-11-26",
+  "previous_scan_date": "2026-11-25",
   "schema_version": 1
 }
