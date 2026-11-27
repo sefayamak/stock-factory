@@ -515,7 +515,8 @@
     "AU:2027-01-26:australia day": {
       "alerted_thresholds": [
         120,
-        90
+        90,
+        60
       ],
       "alerts": [
         {
@@ -524,6 +525,13 @@
           "thresholds": [
             120,
             90
+          ]
+        },
+        {
+          "catch_up": false,
+          "date": "2026-11-27",
+          "thresholds": [
+            60
           ]
         }
       ],
@@ -3889,7 +3897,8 @@
     "IN:2027-01-26:republic day": {
       "alerted_thresholds": [
         120,
-        90
+        90,
+        60
       ],
       "alerts": [
         {
@@ -3898,6 +3907,13 @@
           "thresholds": [
             120,
             90
+          ]
+        },
+        {
+          "catch_up": false,
+          "date": "2026-11-27",
+          "thresholds": [
+            60
           ]
         }
       ],
@@ -7969,7 +7985,7 @@
       "production_status": "unknown"
     }
   },
-  "last_successful_scan_date": "2026-11-26",
-  "previous_scan_date": "2026-11-25",
+  "last_successful_scan_date": "2026-11-27",
+  "previous_scan_date": "2026-11-26",
   "schema_version": 1
 }
